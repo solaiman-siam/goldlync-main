@@ -17,7 +17,11 @@ export const route = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />,
+        element: (
+          <PageTitle title="Home">
+            <Home />
+          </PageTitle>
+        ),
       },
     ],
   },
