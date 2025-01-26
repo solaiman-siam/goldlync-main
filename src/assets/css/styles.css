@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: hsl(0, 0%, 100%);
+    --foreground: hsl(0, 0%, 0%);
+    --card: hsl(21, 100%, 96%);
+    --card-foreground: hsl(0, 0%, 0%);
+    --popover: hsl(0, 0%, 96%);
+    --popover-foreground: hsl(0, 0%, 0%);
+    --primary: hsl(22, 100%, 54%);
+    --primary-foreground: hsl(0, 0%, 100%);
+    --secondary: hsl(0, 0%, 96%);
+    --secondary-foreground: hsl(0, 0%, 0%);
+    --muted: hsl(0, 0%, 96%);
+    --muted-foreground: hsl(0, 0%, 29%);
+    --accent: hsl(22, 100%, 54%);
+    --accent-foreground: hsl(0, 0%, 100%);
+    --destructive: hsl(0, 72.2%, 50.6%);
+    --destructive-foreground: hsl(0, 0%, 100%);
+    --border: hsl(0, 0%, 88%);
+    --input: hsl(0, 0%, 67%);
+    --ring: hsl(22, 100%, 54%);
+    --radius: 0.75rem;
+    --chart-1: hsl(22, 100%, 54%);
+    --chart-2: hsl(173, 58%, 39%);
+    --chart-3: hsl(197, 37%, 24%);
+    --chart-4: hsl(43, 74%, 66%);
+    --chart-5: hsl(27, 87%, 67%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: var(--background);
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--accent);
+    border-radius: 10px;
+  }
+  * {
+    @apply border-border;
+    scrollbar-width: 10px;
+    scrollbar-color: var(--accent);
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
