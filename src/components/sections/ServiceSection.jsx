@@ -63,7 +63,7 @@ const PrimaryServiceSkeletons = () => {
 
 const ServiceItem = ({ path, image, title, details, minPrice, maxPrice }) => {
   return (
-    <Link to={path} className="overflow-hidden bg-secondary rounded-md">
+    <Link to={path} className="overflow-hidden rounded-md bg-secondary">
       <figure className="aspect-video w-full overflow-hidden">
         <img
           src={image}

@@ -78,7 +78,12 @@ const LoginForm = () => {
               </FormItem>
             )}
           />
-          <Link className="text-accent hover:underline font-medium" to="/forget-password">Forget Password?</Link>
+          <Link
+            className="font-medium text-accent hover:underline"
+            to="/forget-password"
+          >
+            Forget Password?
+          </Link>
         </div>
         <Button type="submit" className="w-full">
           Log In

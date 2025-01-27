@@ -13,6 +13,15 @@ export {
   ServiceIcon6,
 } from "./ServiceIcon";
 export { FeatureIcon1, FeatureIcon2, FeatureIcon3 } from "./FeatureIcon";
+export {
+  BalanceIcon1,
+  BookmarkIcon1,
+  FileIcon1,
+  LogoutIcon1,
+  NotificationIcon1,
+  ProfileIcon1,
+  SupportIcon1,
+} from "./ProfileSidebarIcon";
 
 export const UserIcon1 = ({ ...props }) => (
   <svg

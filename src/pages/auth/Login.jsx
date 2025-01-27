@@ -6,7 +6,7 @@ import LoginForm from "@/components/forms/auth/LoginForm";
 
 const Login = () => {
   return (
-    <div className="flex font-poppins h-screen overflow-hidden">
+    <div className="flex h-screen overflow-hidden font-poppins">
       <div className="hidden w-full bg-muted lg:block lg:w-[40%]">
         <img
           src={loginImage}

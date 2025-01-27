@@ -8,6 +8,8 @@ import NotFoundError from "@/pages/Error/NotFoundError";
 import Register from "@/pages/auth/Register";
 import Login from "@/pages/auth/Login";
 import ForgetPassword from "@/pages/auth/ForgetPassword";
+import ProfileLayout from "@/layouts/ProfileLayout";
+import ProfileDetails from "@/pages/private/profile/ProfileDetails";
 
 export const route = createBrowserRouter([
   {
@@ -22,6 +24,28 @@ export const route = createBrowserRouter([
             <Home />
           </PageTitle>
         ),
+      },
+      {
+        path: "/profile",
+        element: <ProfileLayout />,
+        children: [
+          {
+            index: true,
+            element: (
+              <PageTitle title="Profile details">
+                <ProfileDetails />
+              </PageTitle>
+            ),
+          },
+          {
+            path: "profile-details",
+            element: (
+              <PageTitle title="Profile details">
+                <ProfileDetails />
+              </PageTitle>
+            ),
+          },
+        ],
       },
     ],
   },

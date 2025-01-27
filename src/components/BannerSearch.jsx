@@ -11,7 +11,11 @@ const BannerSearch = () => {
       <div className="h-full border-l border-foreground" />
       <div className="flex h-full items-center gap-2">
         <LocationIcon1 />
-        <input className="w-full font-semibold placeholder:text-foreground outline-none" type="number" placeholder="Zip Code" />
+        <input
+          className="w-full font-semibold outline-none placeholder:text-foreground"
+          type="number"
+          placeholder="Zip Code"
+        />
       </div>
       <Button className="h-full [&_svg]:size-6" type="submit">
         <SearchIcon1 className="text-white" />
