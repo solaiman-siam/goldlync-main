@@ -4,6 +4,15 @@ export {
   InstagramIcon1,
   TwitterIcon1,
 } from "./SocialIcon";
+export {
+  ServiceIcon1,
+  ServiceIcon2,
+  ServiceIcon3,
+  ServiceIcon4,
+  ServiceIcon5,
+  ServiceIcon6,
+} from "./ServiceIcon";
+export { FeatureIcon1, FeatureIcon2, FeatureIcon3 } from "./FeatureIcon";
 
 export const UserIcon1 = ({ ...props }) => (
   <svg

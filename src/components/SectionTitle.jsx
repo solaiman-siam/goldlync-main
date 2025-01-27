@@ -3,7 +3,8 @@ import { forwardRef } from "react";
 
 const SectionTitle = forwardRef(
   ({ children, className, tagName, ...props }, ref) => {
-    const Comp = tagName || "h2";
+    const Comp = tagName || "h3";
+
     return (
       <Comp
         className={cn(

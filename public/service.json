@@ -1,0 +1,53 @@
+{
+  "status": true,
+  "data": [
+    {
+      "id": 1,
+      "thumbnail": "/estimate-image.png",
+      "title": "House Cleaning",
+      "details": "set your budget, and bring your vision to life—all in one place.",
+      "minPrice": 140,
+      "maxPrice": 150
+    },
+    {
+      "id": 2,
+      "thumbnail": "/estimate-image.png",
+      "title": "House Cleaning",
+      "details": "set your budget, and bring your vision to life—all in one place.",
+      "minPrice": 140,
+      "maxPrice": 150
+    },
+    {
+      "id": 3,
+      "thumbnail": "/estimate-image.png",
+      "title": "House Cleaning",
+      "details": "set your budget, and bring your vision to life—all in one place.",
+      "minPrice": 140,
+      "maxPrice": 150
+    },
+    {
+      "id": 4,
+      "thumbnail": "/estimate-image.png",
+      "title": "House Cleaning",
+      "details": "set your budget, and bring your vision to life—all in one place.",
+      "minPrice": 140,
+      "maxPrice": 150
+    },
+    {
+      "id": 5,
+      "thumbnail": "/estimate-image.png",
+      "title": "House Cleaning",
+      "details": "set your budget, and bring your vision to life—all in one place.",
+      "minPrice": 140,
+      "maxPrice": 150
+    },
+    {
+      "id": 6,
+      "thumbnail": "/estimate-image.png",
+      "title": "House Cleaning",
+      "details": "set your budget, and bring your vision to life—all in one place.",
+      "minPrice": 140,
+      "maxPrice": 150
+    }
+  ]
+}

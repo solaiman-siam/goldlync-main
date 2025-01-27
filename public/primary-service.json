@@ -1,0 +1,35 @@
+{
+  "status": true,
+  "data": [
+    {
+      "id": 1,
+      "title": "Handy Man",
+      "details": "Reliable, efficient, and always ready to lend a helping hand—let us make your life easier."
+    },
+    {
+      "id": 2,
+      "title": "Cleaning",
+      "details": "Reliable, efficient, and always ready to lend a helping hand—let us make your life easier."
+    },
+    {
+      "id": 3,
+      "title": "Home Improvement and Repair",
+      "details": "Reliable, efficient, and always ready to lend a helping hand—let us make your life easier."
+    },
+    {
+      "id": 4,
+      "title": "Automotive Service",
+      "details": "Reliable, efficient, and always ready to lend a helping hand—let us make your life easier."
+    },
+    {
+      "id": 5,
+      "title": "Pet Care",
+      "details": "Reliable, efficient, and always ready to lend a helping hand—let us make your life easier."
+    },
+    {
+      "id": 6,
+      "title": "Catering",
+      "details": "Reliable, efficient, and always ready to lend a helping hand—let us make your life easier."
+    }
+  ]
+}
