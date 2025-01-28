@@ -1,41 +1,63 @@
 import { Link } from "react-router";
 import SiteLogo from "../SiteLogo";
+import {
+  FacebookIcon2,
+  GithubIcon2,
+  InstagramIcon2,
+  TwitterIcon2,
+} from "@/assets/icons/SocialIcon";
+import footerImage from "@/assets/images/footer-image.png";
 
 const Footer = () => {
-  const firstLinks = [
-    { path: "#", text: "Post a job" },
-    { path: "#", text: "How does it work" },
-    { path: "#", text: "Find a professional" },
-    { path: "#", text: "Help desk for clients" },
+  const footerLinks = [
+    {
+      links: [
+        { path: "#", text: "Post a job" },
+        { path: "#", text: "How does it work" },
+        { path: "#", text: "Find a professional" },
+        { path: "#", text: "Help desk for clients" },
+      ],
+    },
+    {
+      links: [
+        { path: "#", text: "Register as a professional" },
+        { path: "#", text: "Register as a professional" },
+        { path: "#", text: "Quality requirements" },
+        { path: "#", text: "Help desk for professionals" },
+      ],
+    },
+    {
+      links: [
+        { path: "#", text: "About us" },
+        { path: "#", text: "Press and media" },
+        { path: "#", text: "Vacancies" },
+        { path: "#", text: "Become our partner" },
+        { path: "#", text: "Become an affiliate" },
+      ],
+    },
+    {
+      links: [
+        { path: "#", text: "Occupations" },
+        { path: "#", text: "Services" },
+        { path: "#", text: "To do odd jobs" },
+        { path: "#", text: "Find professionals near" },
+      ],
+    },
   ];
-  const secondLinks = [
-    { path: "#", text: "Register as a professional" },
-    { path: "#", text: "Register as a professional" },
-    { path: "#", text: "Quality requirements" },
-    { path: "#", text: "Help desk for professionals" },
-  ];
-  const thirdLinks = [
-    { path: "#", text: "About us" },
-    { path: "#", text: "Press and media" },
-    { path: "#", text: "Vacancies" },
-    { path: "#", text: "Become our partner" },
-    { path: "#", text: "Become an affiliate" },
-  ];
-  const forthLinks = [
-    { path: "#", text: "Occupations" },
-    { path: "#", text: "Services" },
-    { path: "#", text: "To do odd jobs" },
-    { path: "#", text: "Find professionals near" },
-  ];
+
   return (
     <footer className="mt-8 bg-card px-4 py-16">
       <div className="container">
-        <div className="grid grid-cols-2 gap-x-12 gap-y-16 md:col-span-3 lg:grid-cols-6">
+        <SiteLogo />
+        <div className="mt-10 grid grid-cols-2 gap-x-12 gap-y-16 md:col-span-3 lg:grid-cols-6">
           <FooterLogo />
-          <FooterLinks keyPrefix="first-link" links={firstLinks} />
-          <FooterLinks keyPrefix="second-link" links={secondLinks} />
-          <FooterLinks keyPrefix="third-link" links={thirdLinks} />
-          <FooterLinks keyPrefix="forth-link" links={forthLinks} />
+          {footerLinks?.map((footerLink, idx) => (
+            <FooterLinks
+              key={`footer-links-${idx}`}
+              keyPrefix={`footer-link-${idx}`}
+              links={footerLink.links}
+            />
+          ))}
         </div>
 
         <hr className="my-9 border-border" />
@@ -77,76 +99,36 @@ const Footer = () => {
 
 const FooterLogo = () => (
   <div className="col-span-2 md:col-span-3 lg:col-span-2 lg:pr-8">
-    <SiteLogo />
-    <ul className="mt-9 flex items-center space-x-3">
-      <SocialLink
-        href="#"
-        icon={
-          <svg
-            className="h-4 w-4"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-          >
-            <path d="M19.633 7.997..." />
-          </svg>
-        }
-      />
-      <SocialLink
-        href="#"
-        icon={
-          <svg
-            className="h-4 w-4"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-          >
-            <path d="M13.397 20.997v-8.196..." />
-          </svg>
-        }
-      />
-      <SocialLink
-        href="#"
-        icon={
-          <svg
-            className="h-4 w-4"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-          >
-            <path d="M11.999 7.377a4.623 4.623..." />
-          </svg>
-        }
-      />
-      <SocialLink
-        href="#"
-        icon={
-          <svg
-            className="h-4 w-4"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M12.026 2c-5.509..."
-            />
-          </svg>
-        }
-      />
+    <img src={footerImage} alt="image" />
+    <div className="text-base mt-2 font-medium leading-6 text-[#334155] opacity-70">
+      4900+ 5 Stars
+    </div>
+    <ul className="mt-10 flex items-center gap-5">
+      <SocialLink path="https://x.com">
+        <TwitterIcon2 />
+      </SocialLink>
+      <SocialLink path="https://facebook.com">
+        <FacebookIcon2 />
+      </SocialLink>
+      <SocialLink path="https://instagram.com">
+        <InstagramIcon2 />
+      </SocialLink>
+      <SocialLink path="https://github.com">
+        <GithubIcon2 />
+      </SocialLink>
     </ul>
   </div>
 );
 
-const SocialLink = ({ href, icon }) => (
+const SocialLink = ({ path, children }) => (
   <li>
-    <a
-      href={href}
-      className="flex h-7 w-7 items-center justify-center rounded-full bg-gray-800 text-white transition-all duration-200 hover:bg-blue-600 focus:bg-blue-600"
+    <Link
+      to={path}
+      target="_blank"
+      className="inline-flex size-[35px] items-center justify-center [&_svg]:w-full"
     >
-      {icon}
-    </a>
+      {children}
+    </Link>
   </li>
 );
 
