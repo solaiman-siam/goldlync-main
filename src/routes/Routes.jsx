@@ -10,6 +10,11 @@ import Login from "@/pages/auth/Login";
 import ForgetPassword from "@/pages/auth/ForgetPassword";
 import ProfileLayout from "@/layouts/ProfileLayout";
 import ProfileDetails from "@/pages/private/profile/ProfileDetails";
+import Balance from "@/pages/private/profile/Balance";
+import ProfileMyJobLayout from "@/layouts/ProfileMyJobLayout";
+import CompleteJobs from "@/pages/private/profile/my-jobs/CompleteJobs";
+import PendingJobs from "@/pages/private/profile/my-jobs/PendingJobs";
+import CancelJobs from "@/pages/private/profile/my-jobs/CancelJobs";
 
 export const route = createBrowserRouter([
   {
@@ -44,6 +49,52 @@ export const route = createBrowserRouter([
                 <ProfileDetails />
               </PageTitle>
             ),
+          },
+          {
+            path: "balance",
+            element: (
+              <PageTitle title="Balance">
+                <Balance />
+              </PageTitle>
+            ),
+          },
+          {
+            path: "my-jobs",
+            element: <ProfileMyJobLayout />,
+            children: [
+              {
+                index: true,
+                element: (
+                  <PageTitle title="My complete jobs">
+                    <CompleteJobs />
+                  </PageTitle>
+                ),
+              },
+              {
+                path: "complete",
+                element: (
+                  <PageTitle title="My complete jobs">
+                    <CompleteJobs />
+                  </PageTitle>
+                ),
+              },
+              {
+                path: "pending",
+                element: (
+                  <PageTitle title="My complete jobs">
+                    <PendingJobs />
+                  </PageTitle>
+                ),
+              },
+              {
+                path: "cancel",
+                element: (
+                  <PageTitle title="My complete jobs">
+                    <CancelJobs />
+                  </PageTitle>
+                ),
+              },
+            ],
           },
         ],
       },

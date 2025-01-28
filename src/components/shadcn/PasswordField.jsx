@@ -15,7 +15,7 @@ const PasswordField = forwardRef(
         <Input
           ref={ref}
           type={showIcon ? "text" : "password"}
-          className={cn("h-14 pl-12 pr-12", className)}
+          className={cn("h-14 pl-12 rounded-md pr-12", className)}
           {...props}
         />
         <button

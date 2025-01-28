@@ -9,12 +9,13 @@ import {
   FormMessage,
 } from "@/components/shadcn/ui/form";
 import AuthInput from "@/components/shadcn/AuthInput";
-import { MailIcon1, PhoneIcon1, UserIcon1 } from "@/assets/icons";
+import { MailIcon1, PhoneIcon1 } from "@/assets/icons";
 import SelectLanguage from "@/components/shadcn/SelectLanguage";
 import PasswordField from "@/components/shadcn/PasswordField";
 import { Button } from "@/components/shadcn/ui/button";
 
 const RegisterForm = () => {
+
   const form = useForm({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -30,24 +31,6 @@ const RegisterForm = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <AuthInput
-                  type="text"
-                  containerClassName="[&_svg]:text-input"
-                  icon={<UserIcon1 className="w-6" />}
-                  placeholder="Enter Your Name"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
         <FormField
           control={form.control}
           name="email"

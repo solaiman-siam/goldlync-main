@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { NavLink, useLocation } from "react-router";
 import { Avatar, AvatarFallback, AvatarImage } from "../shadcn/ui/avatar";
 import userImage from "@/assets/images/user-1.png";
 import { cn } from "@/lib/shadcn/utils";
@@ -14,7 +14,7 @@ import {
 
 const ProfileSidebar = () => {
   return (
-    <aside className="flex w-[420px] flex-col items-start gap-8">
+    <aside className="flex flex-shrink-0 w-[420px] flex-col items-start gap-8">
       <div className="flex items-center gap-3">
         <Avatar className="size-[70px]">
           <AvatarImage src={userImage} alt="user image" />
@@ -77,6 +77,11 @@ const ProfileSidebar = () => {
 };
 
 const SidebarLink = ({ path, children }) => {
+  const { pathname } = useLocation();
+
+  const isActiveLocation =
+    pathname === "/profile" && path === "/profile/profile-details";
+
   return (
     <li>
       <NavLink
@@ -84,7 +89,8 @@ const SidebarLink = ({ path, children }) => {
         className={({ isActive }) =>
           cn(
             "flex items-center gap-5 px-3 py-5 font-manrope text-xl font-normal transition-colors duration-300 [&_svg]:w-[30px]",
-            isActive ? "bg-card" : "hover:bg-card"
+            isActive ? "bg-card" : "hover:bg-card",
+            isActiveLocation ? "bg-card" : "hover:bg-card"
           )
         }
       >

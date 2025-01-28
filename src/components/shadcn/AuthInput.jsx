@@ -11,7 +11,7 @@ const AuthInput = forwardRef(
       <Input
         ref={ref}
         className={cn(
-          "h-14",
+          "h-14 rounded-md",
           iconPlace === "left" && "pl-12",
           iconPlace === "right" && "pr-12",
           className

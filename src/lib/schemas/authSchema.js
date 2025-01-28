@@ -1,4 +1,10 @@
 import * as z from "zod";
+import { MAX_PROFILE_IMAGE_SIZE } from "../staticData";
+
+const nameValidation = z
+  .string({ required_error: "Full name is required" })
+  .min(1, "Full name is required")
+  .max(80, "Full name is too long");
 
 const emailValidation = z
   .string({ required_error: "Email address is required" })
@@ -12,10 +18,7 @@ const passwordValidation = z
 
 export const registerSchema = z
   .object({
-    name: z
-      .string({ required_error: "Full name is required" })
-      .min(1, "Full name is required")
-      .max(80, "Full name is too long"),
+    name: nameValidation,
     email: emailValidation,
     phoneNumber: z.string().optional().nullable(),
     language: z
@@ -37,4 +40,27 @@ export const loginSchema = z.object({
 
 export const forgetSchema = z.object({
   email: emailValidation,
+});
+
+export const profileUpdateSchema = z.object({
+  avatar: z
+    .instanceof(File, {
+      message: "Please upload the valid image file",
+    })
+    .refine(
+      (file) => ["image/jpg", "image/jpeg", "image/png"].includes(file.type),
+      {
+        message: "Image must be in JPG or JPEG or PNG format",
+      }
+    )
+    .refine((file) => file.size <= MAX_PROFILE_IMAGE_SIZE, {
+      message: "Image size should be less than 5 MB",
+    })
+    .nullable()
+    .optional(),
+  name: nameValidation,
+  email: emailValidation,
+  phoneNumber: z.string().optional().nullable(),
+  address: z.string().optional().nullable(),
+  bio: z.string().max(2000, "Bio is too long").optional().nullable(),
 });
