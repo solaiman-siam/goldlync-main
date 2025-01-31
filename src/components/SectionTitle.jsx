@@ -7,10 +7,7 @@ const SectionTitle = forwardRef(
 
     return (
       <Comp
-        className={cn(
-          "mx-auto my-3 w-full max-w-[600px] text-center font-manrope text-4xl font-bold leading-[120%]",
-          className
-        )}
+        className={`mx-auto my-3 w-full max-w-[600px] text-center font-manrope text-4xl font-bold leading-[120%] ${className}`}
         ref={ref}
         {...props}
       >
@@ -19,6 +16,7 @@ const SectionTitle = forwardRef(
     );
   }
 );
+
 SectionTitle.displayName = "SectionTitle";
 
 export default SectionTitle;
