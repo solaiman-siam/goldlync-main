@@ -15,6 +15,8 @@ import ProfileMyJobLayout from "@/layouts/ProfileMyJobLayout";
 import CompleteJobs from "@/pages/private/profile/my-jobs/CompleteJobs";
 import PendingJobs from "@/pages/private/profile/my-jobs/PendingJobs";
 import CancelJobs from "@/pages/private/profile/my-jobs/CancelJobs";
+import ConstructorProfileDetails from "@/pages/private/ConstructorProfile/ConstructorProfileDetails";
+import ConstructorProfileLayout from "@/layouts/ConstructorProfileLayout";
 
 export const route = createBrowserRouter([
   {
@@ -95,6 +97,28 @@ export const route = createBrowserRouter([
                 ),
               },
             ],
+          },
+        ],
+      },
+      {
+        path: "/constructor-profile",
+        element: <ConstructorProfileLayout />,
+        children: [
+          {
+            index: true,
+            element: (
+              <PageTitle title="Constructor Profile details">
+                <ConstructorProfileDetails />
+              </PageTitle>
+            ),
+          },
+          {
+            path: "profile-details",
+            element: (
+              <PageTitle title="Profile details">
+                <ConstructorProfileDetails />
+              </PageTitle>
+            ),
           },
         ],
       },
