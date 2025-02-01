@@ -62,7 +62,7 @@ const PrimaryServiceSection = () => {
       )}
       <div className="text-center">
         <Button asChild>
-          <Link to="#">View All</Link>
+          <Link to="services">View All</Link>
         </Button>
       </div>
     </section>

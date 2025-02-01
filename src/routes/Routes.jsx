@@ -17,6 +17,10 @@ import PendingJobs from "@/pages/private/profile/my-jobs/PendingJobs";
 import CancelJobs from "@/pages/private/profile/my-jobs/CancelJobs";
 import ConstructorProfileDetails from "@/pages/private/ConstructorProfile/ConstructorProfileDetails";
 import ConstructorProfileLayout from "@/layouts/ConstructorProfileLayout";
+import Service from "@/pages/public/Services/Services";
+import ServiceCategories from "@/pages/public/ServiceCategories/ServiceCategories";
+
+import ServiceQuestionnaries from "@/pages/public/ServiceQuestionnaries/ServiceQuestionnaries";
 
 export const route = createBrowserRouter([
   {
@@ -29,6 +33,30 @@ export const route = createBrowserRouter([
         element: (
           <PageTitle title="Home">
             <Home />
+          </PageTitle>
+        ),
+      },
+      {
+        path: '/services',
+        element: (
+          <PageTitle title="Service">
+            <Service/>
+          </PageTitle>
+        ),
+      },
+      {
+        path: '/service-questionnaries',
+        element: (
+          <PageTitle title="Questionnaries">
+            <ServiceQuestionnaries/>
+          </PageTitle>
+        ),
+      },
+      {
+        path: '/service-categories',
+        element: (
+          <PageTitle title="Service Categories">
+            <ServiceCategories/>
           </PageTitle>
         ),
       },

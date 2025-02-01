@@ -54,7 +54,7 @@ function RecentProjects() {
         initial="hidden"
         animate="visible"
         variants={gridVariants}
-        className="grid grid-cols-2 gap-6 pt-10"
+        className="grid grid-cols-2 gap-8 pt-10"
       >
         {recentProjects[0]?.sections?.map((projects, index) => (
           <motion.div
