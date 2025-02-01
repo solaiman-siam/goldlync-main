@@ -1,10 +1,11 @@
 import Footer from "@/components/shared/Footer";
 import HomeTopbar from "@/components/shared/HomeTopbar";
-import { Outlet } from "react-router";
+import { Outlet, ScrollRestoration } from "react-router";
 
 const MainLayout = () => {
   return (
     <div className="font-poppins">
+      <ScrollRestoration/>
       <header className="relative z-50 bg-background">
         <HomeTopbar />
       </header>

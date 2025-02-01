@@ -13,15 +13,12 @@ import { Skeleton } from "@/components/shadcn/ui/skeleton";
 import { useGetAllPrimaryServices } from "@/hooks/api-hooks/service.hook";
 
 function Categories() {
-
   const { data, isLoading, isError } = useGetAllPrimaryServices();
 
   return (
     <div>
       <section className="my-[80px]">
-      <SectionTitle tagName="h3">
-          Services Tailored to Your Needs.
-        </SectionTitle>
+        <SectionTitle tagName="h3">Handyman</SectionTitle>
         <SectionText>
           Connect with trusted professionals, set your budget, and bring your
           vision to life—all in one place.
@@ -82,7 +79,7 @@ const PrimaryServiceSkeletons = () => {
 const PrimaryServiceItem = ({ path, icon, title, details }) => {
   return (
     <Link
-      to={path}
+      to={'/service-questionnaries'}
       className="flex flex-col items-center justify-center gap-5 rounded-md border border-card bg-card px-8 py-10 text-center text-card-foreground transition-all duration-300 hover:-translate-y-2 hover:border-input hover:shadow-md"
     >
       <span className="inline-flex size-[100px] items-center justify-center rounded-full bg-accent [&_svg]:w-[50%] [&_svg]:text-accent-foreground">

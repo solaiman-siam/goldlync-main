@@ -18,6 +18,8 @@ import CancelJobs from "@/pages/private/profile/my-jobs/CancelJobs";
 import Service from "@/pages/public/Services/Services";
 import ServiceCategories from "@/pages/public/ServiceCategories/ServiceCategories";
 
+import ServiceQuestionnaries from "@/pages/public/ServiceQuestionnaries/ServiceQuestionnaries";
+
 export const route = createBrowserRouter([
   {
     path: "/",
@@ -37,6 +39,14 @@ export const route = createBrowserRouter([
         element: (
           <PageTitle title="Service">
             <Service/>
+          </PageTitle>
+        ),
+      },
+      {
+        path: '/service-questionnaries',
+        element: (
+          <PageTitle title="Questionnaries">
+            <ServiceQuestionnaries/>
           </PageTitle>
         ),
       },
