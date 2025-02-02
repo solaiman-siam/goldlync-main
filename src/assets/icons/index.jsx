@@ -11,6 +11,7 @@ export {
   ServiceIcon4,
   ServiceIcon5,
   ServiceIcon6,
+  Coin1,
 } from "./ServiceIcon";
 export { FeatureIcon1, FeatureIcon2, FeatureIcon3 } from "./FeatureIcon";
 export {

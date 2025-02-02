@@ -11,6 +11,7 @@ import {
   ProfileIcon1,
   SupportIcon1,
 } from "@/assets/icons";
+import { Constructor1, Constructor10, Constructor11, Constructor12, Constructor2, Constructor3, Constructor4, Constructor5, Constructor6, Constructor7, Constructor8, Constructor9 } from "@/assets/icons/ProfileSidebarIcon";
 
 const ConstructorProfileSidebar = () => {
   return (
@@ -30,24 +31,58 @@ const ConstructorProfileSidebar = () => {
       <div className="flex w-full flex-grow flex-col gap-1.5">
         <div className="font-manrope text-xl font-bold">Account</div>
         <ul className="flex w-full flex-col gap-1.5">
-          <SidebarLink path="/profile/profile-details">
-            <FileIcon1 />
-            <span>Profile Details</span>
+          <SidebarLink path="/constructor-profile/profile-details">
+            <Constructor1 />
+            <span>Company description</span>
           </SidebarLink>
-          <SidebarLink path="/profile/message">
-            <ProfileIcon1 />
-            <span>Message</span>
+          <SidebarLink path="/constructor-profile/reviews">
+            <Constructor2 />
+            <span>Reviews</span>
           </SidebarLink>
-          <SidebarLink path="/profile/my-jobs">
-            <BookmarkIcon1 />
-            <span>My Job</span>
+          <SidebarLink path="/constructor-profile/portfolio">
+            <Constructor3 />
+            <span>Portfolio</span>
           </SidebarLink>
-          <SidebarLink path="/profile/request-pro">
-            <BookmarkIcon1 />
-            <span>Request pro</span>
+        </ul>
+      </div>
+      <div className="flex w-full flex-col gap-1.5">
+        <div className="font-manrope text-xl font-bold">Account</div>
+        <ul className="flex w-full flex-col gap-1.5">
+          <SidebarLink path="/profile/balance">
+            <Constructor4 />
+            <span>Company details</span>
           </SidebarLink>
-          <SidebarLink path="/profile/notifications">
-            <NotificationIcon1 />
+          <SidebarLink path="/constructor-profile/manage-account">
+          <Constructor5 />
+            <span>Manage Account</span>
+          </SidebarLink>
+          <SidebarLink path="/constructor-profile/saved-commands">
+          <Constructor6 />
+            <span>Saved commands</span>
+          </SidebarLink>
+        </ul>
+      </div>
+      <div className="flex w-full flex-col gap-1.5">
+        <div className="font-manrope text-xl font-bold">Settings for jobs</div>
+        <ul className="flex w-full flex-col gap-1.5">
+          <SidebarLink path="/constructor-profile/jobs">
+          <Constructor7 />
+            <span>Jobs</span>
+          </SidebarLink>
+          <SidebarLink path="/profile/online-help-desk">
+          <Constructor7 />
+            <span>Working area</span>
+          </SidebarLink>
+          <SidebarLink path="/profile/online-help-desk">
+          <Constructor8 />
+            <span>Services</span>
+          </SidebarLink>
+          <SidebarLink path="/profile/online-help-desk">
+          <Constructor9 />
+            <span>My message templates</span>
+          </SidebarLink>
+          <SidebarLink path="/constructor-profile/notification-settings">
+          <Constructor10 />
             <span>Notifications</span>
           </SidebarLink>
         </ul>
@@ -55,8 +90,8 @@ const ConstructorProfileSidebar = () => {
       <div className="flex w-full flex-col gap-1.5">
         <div className="font-manrope text-xl font-bold">Payments</div>
         <ul className="flex w-full flex-col gap-1.5">
-          <SidebarLink path="/profile/balance">
-            <BalanceIcon1 />
+          <SidebarLink path="/constructor-profile/balance">
+          <Constructor11 />
             <span>Balance</span>
           </SidebarLink>
         </ul>
@@ -65,8 +100,17 @@ const ConstructorProfileSidebar = () => {
         <div className="font-manrope text-xl font-bold">Support</div>
         <ul className="flex w-full flex-col gap-1.5">
           <SidebarLink path="/profile/online-help-desk">
+          <Constructor12 />
+            <span>Online Helpdesk</span>
+          </SidebarLink>
+        </ul>
+      </div>
+      <div className="flex w-full flex-col gap-1.5">
+        <div className="font-manrope text-xl font-bold">Discover</div>
+        <ul className="flex w-full flex-col gap-1.5">
+          <SidebarLink path="/profile/online-help-desk">
             <SupportIcon1 />
-            <span>Online Help desk</span>
+            <span>Offers and Benefits</span>
           </SidebarLink>
         </ul>
       </div>

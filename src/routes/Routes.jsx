@@ -21,6 +21,14 @@ import Service from "@/pages/public/Services/Services";
 import ServiceCategories from "@/pages/public/ServiceCategories/ServiceCategories";
 
 import ServiceQuestionnaries from "@/pages/public/ServiceQuestionnaries/ServiceQuestionnaries";
+import Reviews from "@/pages/private/ConstructorProfile/Reviews";
+import Portfolio from "@/pages/private/ConstructorProfile/Portfolio";
+import ManageAccount from "@/pages/private/ConstructorProfile/ManageAccount";
+import SavedJobs from "@/pages/private/ConstructorProfile/SavedJobs";
+import NotificationSettings from "@/pages/private/ConstructorProfile/NotificationSettings";
+import ConstructorBalance from "@/pages/private/ConstructorProfile/ConstructorBalance";
+import Jobs from "@/pages/private/ConstructorProfile/Jobs";
+import RegistrationComplete from "@/pages/private/ConstructorProfile/RegistrationComplete";
 
 export const route = createBrowserRouter([
   {
@@ -143,12 +151,72 @@ export const route = createBrowserRouter([
           {
             path: "profile-details",
             element: (
-              <PageTitle title="Profile details">
+              <PageTitle title="Company details">
                 <ConstructorProfileDetails />
               </PageTitle>
             ),
           },
+          {
+            path: "reviews",
+            element: (
+              <PageTitle title="Reviews">
+                <Reviews />
+              </PageTitle>
+            ),
+          },
+          {
+            path: "portfolio",
+            element: (
+              <PageTitle title="Portfolio">
+                <Portfolio/>
+              </PageTitle>
+            ),
+          },
+          {
+            path: "manage-account",
+            element: (
+              <PageTitle title="Manage Account">
+                <ManageAccount />
+              </PageTitle>
+            ),
+          },
+          {
+            path: "saved-commands",
+            element: (
+              <PageTitle title="Saved commands">
+                <SavedJobs />
+              </PageTitle>
+            ),
+          },
+          {
+            path: "notification-settings",
+            element: (
+              <PageTitle title="Notification Settings">
+                <NotificationSettings />
+              </PageTitle>
+            ),
+          },
+          {
+            path: "balance",
+            element: (
+              <PageTitle title="Constructor Balance">
+                <ConstructorBalance />
+              </PageTitle>
+            ),
+          },
+          {
+            path: "jobs",
+            element: (
+              <PageTitle title="Jobs">
+                <Jobs />
+              </PageTitle>
+            ),
+          },
         ],
+      },
+      {
+        path: "/registration-complete",
+        element: <RegistrationComplete />,
       },
     ],
   },
