@@ -8,7 +8,7 @@ const ConstructorProfileLayout = () => {
       <h1 className="mb-12 font-manrope text-[32px] font-bold">
         Profile
       </h1>
-      <div className="flex items-start gap-4">
+      <div className="flex items-start gap-12">
         <ConstructorProfileSidebar />
         <div className="flex-grow">
           <Outlet />

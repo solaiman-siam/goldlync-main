@@ -27,7 +27,7 @@ const ServiceSection = () => {
       ) : data?.length === 0 ? (
         <div className="my-8 text-center">No Data Found!</div>
       ) : (
-        <div className="container my-8 grid grid-cols-[repeat(auto-fill,minmax(420px,1fr))] gap-4">
+        <div className="container my-8 grid grid-cols-[repeat(auto-fill,minmax(420px,1fr))] gap-6">
           {data?.map((service, idx) => (
             <ServiceItem
               key={`service-${idx}`}

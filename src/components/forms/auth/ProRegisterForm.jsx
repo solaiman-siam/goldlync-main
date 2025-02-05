@@ -10,18 +10,16 @@ import {
 } from "@/components/shadcn/ui/form";
 import AuthInput from "@/components/shadcn/AuthInput";
 import { AuthUser1, Location1, MailIcon1, PhoneIcon1 } from "@/assets/icons";
-import SelectLanguage from "@/components/shadcn/SelectLanguage";
 import PasswordField from "@/components/shadcn/PasswordField";
 import { Button } from "@/components/shadcn/ui/button";
 
-const RegisterForm = () => {
+const ProRegisterForm = () => {
   const form = useForm({
     resolver: zodResolver(registerSchema),
     defaultValues: {
       name: "",
       phoneNumber: "",
       address: "",
-      language: "",
       email: "",
       password: "",
       confirmPassword: "",
@@ -40,6 +38,9 @@ const RegisterForm = () => {
           name="name"
           render={({ field }) => (
             <FormItem>
+              <p className="text-lg font-medium text-[#161C24]">
+                Business Owner*
+              </p>
               <FormControl>
                 <AuthInput
                   type="text"
@@ -58,12 +59,15 @@ const RegisterForm = () => {
           name="phoneNumber"
           render={({ field }) => (
             <FormItem>
+              <p className="text-lg font-medium text-[#161C24]">
+                Phone Number*
+              </p>
               <FormControl>
                 <AuthInput
                   type="text"
                   containerClassName="[&_svg]:text-input"
                   icon={<PhoneIcon1 className="w-6" />}
-                  placeholder="Enter Your Phone Number"
+                  placeholder="+1 123 456 7890"
                   {...field}
                 />
               </FormControl>
@@ -76,26 +80,17 @@ const RegisterForm = () => {
           name="address"
           render={({ field }) => (
             <FormItem>
+              <p className="text-lg font-medium text-[#161C24]">
+                Company address*
+              </p>
               <FormControl>
                 <AuthInput
                   type="text"
                   containerClassName="[&_svg]:text-input"
                   icon={<Location1 className="w-6" />}
-                  placeholder="Enter Your Address"
+                  placeholder="Company Address"
                   {...field}
                 />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="language"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <SelectLanguage value={field.value} setValue={field.onChange} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -106,6 +101,7 @@ const RegisterForm = () => {
           name="email"
           render={({ field }) => (
             <FormItem>
+              <p className="text-lg font-medium text-[#161C24]">Email*</p>
               <FormControl>
                 <AuthInput
                   type="email"
@@ -124,8 +120,9 @@ const RegisterForm = () => {
           name="password"
           render={({ field }) => (
             <FormItem>
+              <p className="text-lg font-medium text-[#161C24]">Password*</p>
               <FormControl>
-                <PasswordField placeholder="Password" {...field} />
+                <PasswordField placeholder="Create your password" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -151,4 +148,4 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm;
+export default ProRegisterForm;
