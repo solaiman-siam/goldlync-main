@@ -22,12 +22,12 @@ export const explorMoreData = [
         title: 'Room Cleaning'
     },
     {
-        id: 3,
+        id: 5,
         image: 'https://images.pexels.com/photos/6195130/pexels-photo-6195130.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         title: 'Cleaning'
     },
     {
-        id: 4,
+        id: 6,
         image: 'https://images.pexels.com/photos/4239130/pexels-photo-4239130.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         title: 'Room Cleaning'
     },

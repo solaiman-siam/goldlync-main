@@ -1,11 +1,11 @@
-import bannerImage from "@/assets/images/banner-image.png";
+import BannerImage from "../../assets/images/home-banner.png"
 import BannerSearch from "../BannerSearch";
 
 const HomeBanner = () => {
   return (
     <div
-      className="flex min-h-[calc(100vh-92px)] items-center justify-center bg-cover bg-center bg-no-repeat p-4 md:gap-1 lg:gap-1"
-      style={{ backgroundImage: `url('${bannerImage}')` }}
+      className="flex min-h-[calc(100vh-92px)] relative  items-center justify-center bg-cover bg-center bg-no-repeat p-4 md:gap-1 lg:gap-1"
+      // style={{ backgroundImage: `url('${}')` }}
     >
       <div className="flex w-full max-w-[1096px] shrink-0 flex-col items-start gap-5 rounded-2xl border border-solid border-[rgba(255,255,255,0.29)] bg-[rgba(255,255,255,0.06)] px-[73px] py-[86px] text-center font-manrope text-white backdrop-blur-[6px]">
         <h1 className="text-center text-[64px] font-bold leading-[120%]">
@@ -22,6 +22,7 @@ const HomeBanner = () => {
           Try. My kitchen eink is leaking or want to repaint my living
         </div>
       </div>
+      <img className='absolute top-0 z-[-2] left-0 w-full h-full object-cover' src={BannerImage} alt="" />
     </div>
   );
 };
