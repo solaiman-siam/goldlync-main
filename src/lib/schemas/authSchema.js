@@ -32,7 +32,7 @@ export const registerSchema = z
     address: addressValidation,
     language: z
       .string({ required_error: "Language is required" })
-      .min(1, "Language is required"),
+      .min(1, "Language is required").optional(),
     email: emailValidation,
     password: passwordValidation,
     confirmPassword: passwordValidation,

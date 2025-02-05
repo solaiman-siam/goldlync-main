@@ -3,6 +3,9 @@ export {
   GoogleIcon1,
   InstagramIcon1,
   TwitterIcon1,
+  Facebook,
+  Twitter,
+  Linkedin,
 } from "./SocialIcon";
 export {
   ServiceIcon1,
