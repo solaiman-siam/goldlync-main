@@ -3,6 +3,9 @@ export {
   GoogleIcon1,
   InstagramIcon1,
   TwitterIcon1,
+  Facebook,
+  Twitter,
+  Linkedin,
 } from "./SocialIcon";
 export {
   ServiceIcon1,
@@ -11,6 +14,9 @@ export {
   ServiceIcon4,
   ServiceIcon5,
   ServiceIcon6,
+  Coin1,
+  AuthUser1,
+  Location1,
 } from "./ServiceIcon";
 export { FeatureIcon1, FeatureIcon2, FeatureIcon3 } from "./FeatureIcon";
 export {
