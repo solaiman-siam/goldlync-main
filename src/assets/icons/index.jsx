@@ -12,6 +12,8 @@ export {
   ServiceIcon5,
   ServiceIcon6,
   Coin1,
+  AuthUser1,
+  Location1,
 } from "./ServiceIcon";
 export { FeatureIcon1, FeatureIcon2, FeatureIcon3 } from "./FeatureIcon";
 export {

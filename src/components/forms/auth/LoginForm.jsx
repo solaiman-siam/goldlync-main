@@ -82,7 +82,7 @@ const LoginForm = () => {
             className="font-medium text-accent hover:underline"
             to="/forget-password"
           >
-            Forget Password?
+            Forgot password?
           </Link>
         </div>
         <Button type="submit" className="w-full">

@@ -6,6 +6,15 @@ const nameValidation = z
   .min(1, "Full name is required")
   .max(80, "Full name is too long");
 
+const phoneNumberValidation = z
+  .string({ required_error: "Phone number is required" })
+  .min(1, "Phone number is required")
+
+const addressValidation = z
+  .string({ required_error: "Address is required" })
+  .min(10, "Address must be at least 10 characters long")
+  .max(200, "Address must not exceed 200 characters");
+
 const emailValidation = z
   .string({ required_error: "Email address is required" })
   .email({ message: "Email address is required" })
@@ -19,11 +28,12 @@ const passwordValidation = z
 export const registerSchema = z
   .object({
     name: nameValidation,
-    email: emailValidation,
-    phoneNumber: z.string().optional().nullable(),
+    phoneNumber: phoneNumberValidation,
+    address: addressValidation,
     language: z
       .string({ required_error: "Language is required" })
       .min(1, "Language is required"),
+    email: emailValidation,
     password: passwordValidation,
     confirmPassword: passwordValidation,
   })

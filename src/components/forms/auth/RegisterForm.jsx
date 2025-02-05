@@ -9,39 +9,43 @@ import {
   FormMessage,
 } from "@/components/shadcn/ui/form";
 import AuthInput from "@/components/shadcn/AuthInput";
-import { MailIcon1, PhoneIcon1 } from "@/assets/icons";
+import { AuthUser1, Location1, MailIcon1, PhoneIcon1 } from "@/assets/icons";
 import SelectLanguage from "@/components/shadcn/SelectLanguage";
 import PasswordField from "@/components/shadcn/PasswordField";
 import { Button } from "@/components/shadcn/ui/button";
 
 const RegisterForm = () => {
-
   const form = useForm({
     resolver: zodResolver(registerSchema),
     defaultValues: {
       name: "",
+      phoneNumber: "",
+      address: "",
+      language: "",
       email: "",
       password: "",
       confirmPassword: "",
     },
   });
 
-  const handleSubmit = async (e) => {};
+  const handleSubmit = async (e) => {
+    console.log(e);
+  };
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
         <FormField
           control={form.control}
-          name="email"
+          name="name"
           render={({ field }) => (
             <FormItem>
               <FormControl>
                 <AuthInput
-                  type="email"
+                  type="text"
                   containerClassName="[&_svg]:text-input"
-                  icon={<MailIcon1 className="w-6" />}
-                  placeholder="Enter Your  Address"
+                  icon={<AuthUser1 className="w-6" />}
+                  placeholder="Enter Your Name"
                   {...field}
                 />
               </FormControl>
@@ -69,11 +73,47 @@ const RegisterForm = () => {
         />
         <FormField
           control={form.control}
+          name="address"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <AuthInput
+                  type="text"
+                  containerClassName="[&_svg]:text-input"
+                  icon={<Location1 className="w-6" />}
+                  placeholder="Enter Your Address"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name="language"
           render={({ field }) => (
             <FormItem>
               <FormControl>
                 <SelectLanguage value={field.value} setValue={field.onChange} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <AuthInput
+                  type="email"
+                  containerClassName="[&_svg]:text-input"
+                  icon={<MailIcon1 className="w-6" />}
+                  placeholder="Enter Your Email"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>

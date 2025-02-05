@@ -21,6 +21,7 @@ const Register = () => {
           className="h-full w-full object-cover object-top"
         />
       </div>
+      
       <div className="flex w-full flex-col items-center overflow-auto p-6 md:p-10 lg:w-[60%]">
         <div className="flex w-full max-w-xl flex-1 flex-col items-center justify-center">
           <SiteLogo />
