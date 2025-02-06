@@ -29,14 +29,14 @@ function RatingStar({ rate, ...props }) {
               x2="100%"
               y2="0%"
             >
-              <stop offset={`${rate}%`} stopColor="#FF6A16" />
+              <stop offset={`${rate}%`} stopColor="#FFC916" />
               <stop offset={`${rate}%`} stopColor="#ffffff" />
             </linearGradient>
           </defs>
           <path
             d="M6 0.5L7.54117 4.37876L11.7063 4.6459L8.49367 7.31024L9.52671 11.3541L6 9.122L2.47329 11.3541L3.50633 7.31024L0.293661 4.6459L4.45883 4.37876L6 0.5Z"
             fill={`url(#gradient-fill-${index}-${id})`}
-            stroke="#FF6A16"
+            stroke="#FFC916"
             strokeWidth="0.5"
             strokeLinejoin="round"
             strokeLinecap="round"

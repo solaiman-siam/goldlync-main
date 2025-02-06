@@ -32,6 +32,7 @@ import RegistrationComplete from "@/pages/private/ConstructorProfile/Registratio
 import ProRegister from "@/pages/auth/ProRegister";
 import Blog from "@/pages/public/Blog/Blog";
 import BlogDetails from "@/pages/public/Blog/BlogDetails";
+import ConstructorProfileDetails from "@/pages/private/ConstructorProfile/ConstructorProfileDetails";
 
 export const route = createBrowserRouter([
   {
@@ -44,6 +45,14 @@ export const route = createBrowserRouter([
         element: (
           <PageTitle title="Home">
             <Home />
+          </PageTitle>
+        ),
+      },
+      {
+        path: "/constructor",
+        element: (
+          <PageTitle title="Constructor">
+            <ConstructorProfileDetails/>
           </PageTitle>
         ),
       },
