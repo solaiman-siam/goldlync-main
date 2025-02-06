@@ -14,10 +14,10 @@ const Home = () => {
       <HomeBanner />
       <PrimaryServiceSection />
       <FeatureSection />
-      <ServiceSection />
-      <ExploreMoreSection/>
-      <RecentProjects/>
+      <ServiceSection/>
+      {/* <ExploreMoreSection/> */}
       <VisitHomeResource/>
+      <RecentProjects/>
       <WhatOurClientSays/>
       <GetInTouchBanner/>
     </>

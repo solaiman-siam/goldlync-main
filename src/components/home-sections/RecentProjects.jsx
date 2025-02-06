@@ -85,7 +85,7 @@ function RecentProjects() {
       </motion.div>
 
       <div className="pt-10 flex justify-center items-center">
-        <button className="px-14 py-4 font-medium rounded-full bg-primary text-lg text-white">Sign as a pro</button>
+        <button className="px-14 py-4 font-medium rounded-full bg-primary text-lg text-white">Join as a pro</button>
       </div>
     </div>
   );

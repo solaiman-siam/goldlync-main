@@ -7,11 +7,11 @@ import registerImage from "@/assets/images/auth-2.png";
 import ProRegisterForm from "@/components/forms/auth/ProRegisterForm";
 
 const ProRegister = () => {
-  const { chooseRole } = useAuth();
+  // const { chooseRole } = useAuth();
 
-  if (chooseRole !== "customer" && chooseRole !== "pro") {
-    return <Navigate to="/choose" />;
-  }
+  // if (chooseRole !== "customer" && chooseRole !== "pro") {
+  //   return <Navigate to="/choose" />;
+  // }
 
   return (
     <div className="flex h-screen overflow-hidden font-poppins">
@@ -29,7 +29,7 @@ const ProRegister = () => {
           <div className="my-4 space-y-4">
             <div className="space-y-4 text-center">
               <h1 className="text-center text-5xl font-bold leading-[120%]">
-                Create your account
+                Create your PRO account
               </h1>
               <p className="text-center text-lg font-normal leading-[150%] text-[#8D8D8D]">
               Enter your name exactly as your company documents

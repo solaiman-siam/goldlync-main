@@ -26,10 +26,10 @@ const HomeTopbar = () => {
       </ul>
       <div className="flex items-center gap-2">
         <Button variant="outline" asChild>
-          <Link to="/login">log in</Link>
+          <Link to="/login">Sign in</Link>
         </Button>
         <Button asChild>
-          <Link to="/choose">Sign as a Pro</Link>
+          <Link to="/pro-register">Join as a Pro</Link>
         </Button>
       </div>
     </nav>
