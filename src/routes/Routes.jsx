@@ -15,7 +15,7 @@ import ProfileMyJobLayout from "@/layouts/ProfileMyJobLayout";
 import CompleteJobs from "@/pages/private/profile/my-jobs/CompleteJobs";
 import PendingJobs from "@/pages/private/profile/my-jobs/PendingJobs";
 import CancelJobs from "@/pages/private/profile/my-jobs/CancelJobs";
-import ConstructorProfileDetails from "@/pages/private/ConstructorProfile/ConstructorProfileDetails";
+import ConstructorProfile from "@/pages/private/ConstructorProfile/ConstructorProfile";
 import ConstructorProfileLayout from "@/layouts/ConstructorProfileLayout";
 import Service from "@/pages/public/Services/Services";
 import ServiceCategories from "@/pages/public/ServiceCategories/ServiceCategories";
@@ -163,7 +163,7 @@ export const route = createBrowserRouter([
             index: true,
             element: (
               <PageTitle title="Constructor Profile details">
-                <ConstructorProfileDetails />
+                <ConstructorProfile />
               </PageTitle>
             ),
           },
@@ -171,7 +171,7 @@ export const route = createBrowserRouter([
             path: "profile-details",
             element: (
               <PageTitle title="Company details">
-                <ConstructorProfileDetails />
+                <ConstructorProfile />
               </PageTitle>
             ),
           },

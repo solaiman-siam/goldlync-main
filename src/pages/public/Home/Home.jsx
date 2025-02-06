@@ -12,7 +12,7 @@ const Home = () => {
   return (
     <>
       <HomeBanner />
-      <PrimaryServiceSection />
+      <PrimaryServiceSection limit={6} />
       <FeatureSection />
       <ServiceSection/>
       {/* <ExploreMoreSection/> */}

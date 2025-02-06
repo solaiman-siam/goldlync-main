@@ -22,7 +22,7 @@ const FormSchema = z.object({
   }),
 });
 
-const ConstructorProfileDetails = () => {
+const ConstructorProfile = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [readMore, setReadMore] = useState(true);
 
@@ -159,4 +159,4 @@ const ConstructorProfileDetails = () => {
   );
 };
 
-export default ConstructorProfileDetails;
+export default ConstructorProfile;

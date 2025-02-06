@@ -10,10 +10,10 @@ import {
   ServiceIcon6,
 } from "@/assets/icons";
 import { Skeleton } from "@/components/shadcn/ui/skeleton";
-import { useGetAllPrimaryServices } from "@/hooks/api-hooks/service.hook";
+import { useGetSubCategoryServices } from "@/hooks/api-hooks/service.hook";
 
 function Categories() {
-  const { data, isLoading, isError } = useGetAllPrimaryServices();
+  const { data, isLoading, isError } = useGetSubCategoryServices();
 
   return (
     <div>
@@ -24,7 +24,7 @@ function Categories() {
           vision to life—all in one place.
         </SectionText>
         {isLoading ? (
-          <div className="container my-8 grid grid-cols-[repeat(auto-fill,minmax(420px,1fr))] gap-4">
+          <div className="container my-8 grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4">
             <PrimaryServiceSkeletons />
           </div>
         ) : isError ? (
@@ -34,31 +34,27 @@ function Categories() {
         ) : data?.length === 0 ? (
           <div className="my-8 text-center">No Data Found!</div>
         ) : (
-          <div className="container my-8 grid grid-cols-[repeat(auto-fill,minmax(420px,1fr))] gap-4">
-            {data?.map((service, idx) => (
-              <PrimaryServiceItem
-                key={`primary-service-${idx}`}
-                path={`/service/${service.slug}`}
-                icon={
-                  idx === 0 ? (
-                    <ServiceIcon1 />
-                  ) : idx === 1 ? (
-                    <ServiceIcon2 />
-                  ) : idx === 2 ? (
-                    <ServiceIcon3 />
-                  ) : idx === 3 ? (
-                    <ServiceIcon4 />
-                  ) : idx === 4 ? (
-                    <ServiceIcon5 />
-                  ) : idx === 5 ? (
-                    <ServiceIcon6 />
-                  ) : null
-                }
-                title={service?.title}
-                details={service?.details}
-              />
-            ))}
-          </div>
+          <>
+            <div className="container mt-12">
+              <figure className="w-full h-[500px] rounded-xl overflow-hidden">
+                <img
+                  src="https://i.ibb.co.com/j9L2b4Gz/Rectangle-25153.png"
+                  alt=""
+                  className="w-full h-full object-cover object-center"
+                />
+              </figure>
+            </div>
+            <div className="container my-12 grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-x-8 gap-y-10">
+              {data?.map((service, idx) => (
+                <PrimaryServiceItem
+                  key={`primary-service-${idx}`}
+                  path={`/service/${service.slug}`}
+                  title={service?.title}
+                  details={service?.description}
+                />
+              ))}
+            </div>
+          </>
         )}
       </section>
     </div>
@@ -79,18 +75,17 @@ const PrimaryServiceSkeletons = () => {
 const PrimaryServiceItem = ({ path, icon, title, details }) => {
   return (
     <Link
-      to={'/service-questionnaries'}
-      className="flex flex-col items-center justify-center gap-5 rounded-md border border-card bg-card px-8 py-10 text-center text-card-foreground transition-all duration-300 hover:-translate-y-2 hover:border-input hover:shadow-md"
+      to={"/service-questionnaries"}
+      className="relative group"
     >
-      <span className="inline-flex size-[100px] items-center justify-center rounded-full bg-accent [&_svg]:w-[50%] [&_svg]:text-accent-foreground">
-        {icon}
-      </span>
-      <h3 className="font-manrope text-2xl font-semibold leading-[130%] text-card-foreground">
-        {title}
-      </h3>
-      <p className="font-poppins text-lg font-normal leading-[180%] text-[#494949]">
-        {details}
-      </p>
+      <figure className="w-full aspect-square rounded-xl overflow-hidden">
+        <img src="https://i.ibb.co.com/SwwJshLC/service-1.png" className="w-full h-full object-cover object-center" alt="" />
+      </figure>
+      <img src="https://i.ibb.co.com/JjPYw8Zk/service-2.png" alt="" className="w-full h-full absolute top-0 left-0 group-hover:opacity-0 transition-all duration-500"/>
+      <div className=" absolute left-3 right-3 bottom-3 bg-[#ff6b16e5] rounded-lg text-white text-center p-4 space-y-2.5">
+        <h4 className="text-xl font-semibold">{title}</h4>
+        <p className="font-medium text-sm">{details} </p>
+      </div>
     </Link>
   );
 };
