@@ -17,6 +17,19 @@ export {
   Coin1,
   AuthUser1,
   Location1,
+  TopBadge1,
+  Hired1,
+  Location2,
+  Employees,
+  Experience,
+  Trophy,
+  BackwardSign,
+  ForwardSign,
+  Support,
+  PaymentProtection,
+  CommunicationSafetyIcon,
+  OnSiteSafetyIcon,
+  SafetyIcon,
 } from "./ServiceIcon";
 export { FeatureIcon1, FeatureIcon2, FeatureIcon3 } from "./FeatureIcon";
 export {

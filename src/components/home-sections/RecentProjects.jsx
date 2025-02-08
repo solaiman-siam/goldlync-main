@@ -3,6 +3,7 @@ import SectionText from "../SectionText";
 import SectionTitle from "../SectionTitle";
 import { recentProjectsData } from "@/utils/staticData";
 import { motion } from "framer-motion";
+import { Link } from "react-router";
 function RecentProjects() {
   const [activeTabIdx, setActiveTabIdx] = useState(0);
   const [recentProjects, setRecentProjects] = useState(
@@ -64,22 +65,22 @@ function RecentProjects() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="relative group transition-all duration-300 flex h-full w-full items-end justify-start overflow-hidden rounded-lg object-cover">
+            <Link to="/project-details" className="relative group transition-all duration-300 flex h-full w-full items-end justify-start overflow-hidden rounded-lg object-cover group">
               <div className="absolute z-[4] pb-4 pl-4">
-                <h4 className="text-xl font-semibold text-white">
+                <h4 className="text-xl font-semibold text-white opacity-0 group-hover:opacity-100 transition-all duration-300">
                   {projects?.title}
                 </h4>
-                <h4 className="pt-1 text-sm font-light text-white">
+                <h4 className="pt-1 text-sm font-light text-white opacity-0 group-hover:opacity-100 transition-all duration-300">
                   {projects?.description}
                 </h4>
               </div>
-              <div className="absolute z-[2] h-full w-full bg-black/40 object-cover"></div>
+              <div className="absolute z-[2] h-full w-full bg-black/40 object-cover opacity-30 group-hover:opacity-100 transition-all duration-300"></div>
               <img
                 className="left-0 group-hover:scale-110 transition-all duration-300 top-0 h-full w-full object-cover"
                 src={projects?.imageUrl}
                 alt=""
               />
-            </div>
+            </Link>
           </motion.div>
         ))}
       </motion.div>

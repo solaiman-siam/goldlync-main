@@ -5,7 +5,7 @@ import { Button } from "@/components/shadcn/ui/button";
 
 const HomeTopbar = () => {
   return (
-    <nav className="container my-4 flex items-center justify-between gap-2 bg-background">
+    <nav className="container pt-5 pb-6 flex items-center justify-between gap-2 bg-background">
       <SiteLogo />
       <ul className="flex list-none items-center gap-8">
         <li>

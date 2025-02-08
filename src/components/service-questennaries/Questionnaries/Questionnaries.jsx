@@ -1,5 +1,6 @@
 import SectionTitle from "@/components/SectionTitle";
 import CommonSelect from "./CommonSelect";
+import { Link } from "react-router";
 
 function Questionnaries() {
   const selectData = [
@@ -75,9 +76,9 @@ function Questionnaries() {
             </div>
 
             <div className="flex justify-center pt-8">
-              <button className="w-80 rounded-full bg-primary py-4 font-medium text-white">
+              <Link to="/pros" className="w-80 rounded-full bg-primary py-4 font-medium text-white text-center">
                 Submit
-              </button>
+              </Link>
             </div>
           </form>
         </div>

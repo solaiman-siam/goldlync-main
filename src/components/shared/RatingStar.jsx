@@ -9,7 +9,6 @@ function RatingStar({ rate, ...props }) {
   const rate4 = rateNum >= 4 ? 100 : Math.max(0, rateNum - 3) * 100;
   const rate5 = rateNum >= 5 ? 100 : Math.max(0, rateNum - 4) * 100;
 
-  console.log(props);
 
   return (
     <div className="flex gap-[2px]">

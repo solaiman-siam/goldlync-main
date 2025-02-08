@@ -2,10 +2,42 @@ import { Link } from "react-router";
 import siteLogo from "@/assets/images/site-logo.png";
 import profileImg from "@/assets/images/constructor.png";
 import RatingStar from "@/components/shared/RatingStar";
+import workImg from "@/assets/images/work.jpg";
+import Reviewprofile from "@/assets/images/Reviewprofile.png";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ConstructorProfile/accordion";
 import { useState } from "react";
+import {
+  BackwardSign,
+  Employees,
+  Experience,
+  ForwardSign,
+  Hired1,
+  Location2,
+  TopBadge1,
+  Trophy,
+} from "@/assets/icons";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
+
+import { FreeMode, Navigation } from "swiper/modules";
 
 const ConstructorProfileDetails = () => {
   const [activeTab, selectActiveTab] = useState(1);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isDaysExpanded, setIsDaysExpanded] = useState(false);
+  const text =
+    "Installing a new kitchen tap and addressing a leak at the connection between the hose and the water pipe is essential to maintaining a functional and efficient kitchen. The leak appears to be coming from the coupling, which may require replacement, as worn-out or loose couplings can cause water seepage, leading to potential damage and increased utility bills. To resolve this issue, it is crucial to assess the condition of the existing tap, choose a suitable replacement, and gather the necessary tools, including an adjustable wrench, pipe wrench, plumber’s tape, and new couplings. The installation process involves turning off the water supply, draining any remaining water, disconnecting the old tap, and carefully removing the faulty couplings. Once the new tap is positioned and secured, replacing the couplings and ensuring a watertight seal with plumber’s tape helps prevent future leaks. Reconnecting the supply lines and testing the water flow ensures that everything is properly installed. By taking these steps, a secure and durable connection is achieved, improving the overall functionality of the kitchen plumbing and preventing further complications";
+  const words = text.split(" ");
+  const displayedText = isExpanded ? text : words.slice(0, 70).join(" ");
   const tabs = [
     {
       id: 1,
@@ -32,7 +64,7 @@ const ConstructorProfileDetails = () => {
   return (
     <section className="container my-[80px]">
       <div className="grid grid-cols-3 gap-10">
-        <div className="left col-span-2 h-[1000px]">
+        <div className="left col-span-2">
           <Link to="#" className="flex items-center gap-1.5">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +94,7 @@ const ConstructorProfileDetails = () => {
               </figure>
             </div>
             <div className="right">
-              <h2 className="mb-4 text-2xl font-bold">Signa Clorian</h2>
+              <h2 className="mb-4 text-xl font-bold">Signa Clorian</h2>
               <div className="mb-4 flex gap-1 text-xl font-medium">
                 <p>Title:</p>
                 <svg
@@ -110,7 +142,7 @@ const ConstructorProfileDetails = () => {
               <button
                 key={tab.id}
                 type="button"
-                className={`relative px-4 py-3 text-2xl hover:text-primary ${activeTab === tab.id ? "text-primary after:absolute after:-bottom-px after:left-0 after:w-full after:border-b after:border-primary" : "text-[#3D3D3D]"} transition-all duration-300`}
+                className={`relative px-4 py-3 text-xl hover:text-primary ${activeTab === tab.id ? "text-primary after:absolute after:-bottom-px after:left-0 after:w-full after:border-b after:border-primary" : "text-[#3D3D3D]"} transition-all duration-300`}
                 onClick={() => selectActiveTab(tab.id)}
               >
                 {tab.name}
@@ -118,23 +150,383 @@ const ConstructorProfileDetails = () => {
             ))}
           </div>
           {activeTab === 1 && (
-            <div className="">
-              <h4 className="mb-3 text-2xl font-semibold">Introduction</h4>
-              <p className="text-[#575757]">
-                I need assistance with installing a new kitchen tap and
-                addressing a leak at the connection between the hose and the
-                water pipe. The leak appears to be coming from the coupling,
-                which may require replacement. In addition to installing the new
-                tap, I would like the couplings and any necessary fittings to be
-                replaced to ensure a secure <span className="text-primary cursor-pointer">Read More... </span>
+            <div className="border-b pb-12">
+              <h4 className="mb-3 text-xl font-semibold">Introduction</h4>
+              <p className="mb-7 text-[#575757]">
+                {displayedText}{" "}
+                {isExpanded || (
+                  <span
+                    className="cursor-pointer text-primary"
+                    onClick={() => setIsExpanded((prev) => !prev)}
+                  >
+                    Read More...{" "}
+                  </span>
+                )}
               </p>
+              <div className="flex gap-12">
+                <div className="left flex-1 space-y-8">
+                  <div className="">
+                    <h4 className="mb-3 text-xl font-semibold">Overview</h4>
+                    <div className="space-y-4">
+                      <p className="flex items-center gap-1 text-[#575757]">
+                        <TopBadge1 className="size-6" /> Current Top Pro
+                      </p>
+                      <p className="flex items-center gap-1 text-[#575757]">
+                        <Hired1 className="size-6" /> Hired 250 Time
+                      </p>
+                      <p className="flex items-center gap-1 text-[#575757]">
+                        <Location2 className="size-6" /> 10 Similar work done
+                        near your location{" "}
+                      </p>
+                      <p className="flex items-center gap-1 text-[#575757]">
+                        <Employees className="size-6" /> 10 employees
+                      </p>
+                      <p className="flex items-center gap-1 text-[#575757]">
+                        <Experience className="size-6" /> 2 years business
+                        experience
+                      </p>
+                    </div>
+                  </div>
+                  <div className="">
+                    <h4 className="mb-3 text-xl font-semibold">
+                      Business hours
+                    </h4>
+                    <div className="space-y-1.5 rounded border p-3">
+                      <div className="flex items-center justify-between text-[#575757]">
+                        <p>Sunday</p>
+                        <p>Close</p>
+                      </div>
+                      <div className="flex items-center justify-between text-[#575757]">
+                        <p>Monday</p>
+                        <p>9:00 AM - 6:00 PM</p>
+                      </div>
+                      {isDaysExpanded || (
+                        <button
+                          type="button"
+                          onClick={() => setIsDaysExpanded((prev) => !prev)}
+                          className="w-full text-right text-primary"
+                        >
+                          Read More
+                        </button>
+                      )}
+                      {isDaysExpanded && (
+                        <>
+                          <div className="flex items-center justify-between text-[#575757]">
+                            <p>Tuesday</p>
+                            <p>9:00 AM - 6:00 PM</p>
+                          </div>
+                          <div className="flex items-center justify-between text-[#575757]">
+                            <p>Wednesday</p>
+                            <p>9:00 AM - 6:00 PM</p>
+                          </div>
+                          <div className="flex items-center justify-between text-[#575757]">
+                            <p>Thursday</p>
+                            <p>9:00 AM - 6:00 PM</p>
+                          </div>
+                          <div className="flex items-center justify-between text-[#575757]">
+                            <p>Friday</p>
+                            <p>9:00 AM - 6:00 PM</p>
+                          </div>
+                          <div className="flex items-center justify-between text-[#575757]">
+                            <p>Saturday </p>
+                            <p>9:00 AM - 6:00 PM</p>
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                </div>
+                <div className="right flex-1 space-y-8">
+                  <div className="">
+                    <h4 className="mb-3 text-xl font-semibold">
+                      Payment Methods
+                    </h4>
+                    <p className="w-[80%]">
+                      This Pro accepts payments via Credit card, Venmo, and
+                      zelle.
+                    </p>
+                  </div>
+                  <div className="">
+                    <h4 className="mb-3 text-xl font-semibold">
+                      Top Pro Status
+                    </h4>
+                    <p className="mb-3 w-[80%]">
+                      I need assistance with installing a new kitchen tap and
+                      addressing a leak at the connection
+                    </p>
+                    <div className="flex items-center gap-5 text-[#575757]">
+                      <div className="flex flex-col items-center">
+                        <Trophy className="size-10" />
+                        <p>2022</p>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <Trophy className="size-10" />
+                        <p>2024</p>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <Trophy className="size-10" />
+                        <p>2025</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           )}
+          <div className="border-b py-12">
+            <div className="mb-7 flex items-center justify-between">
+              <h4 className="text-3xl font-semibold">Recent Work</h4>
+              <div className="flex gap-5">
+                <button className="workPrev rounded-[2px] border border-primary p-1">
+                  <BackwardSign />
+                </button>
+                <button className="workNext rounded-[2px] border border-primary bg-primary p-1">
+                  <ForwardSign />
+                </button>
+              </div>
+            </div>
+
+            <Swiper
+              slidesPerView={1}
+              spaceBetween={20}
+              autoplay={true}
+              loop={true}
+              freeMode={true}
+              navigation={{
+                prevEl: `.workPrev`,
+                nextEl: `.workNext`,
+              }}
+              modules={[FreeMode, Navigation]}
+              className="mySwiper"
+              breakpoints={{
+                // when window width is >= 430px
+                430: {
+                  slidesPerView: 2,
+                  spaceBetween: 15,
+                },
+                // when window width is >= 850px
+                850: {
+                  slidesPerView: 3,
+                  spaceBetween: 20,
+                },
+              }}
+            >
+              {Array(6)
+                .fill(null)
+                .map((_, idx) => (
+                  <SwiperSlide key={idx}>
+                    <figure className="relative h-[200px] w-full overflow-hidden rounded">
+                      <img
+                        src={workImg}
+                        alt=""
+                        className="h-full w-full object-cover object-center"
+                      />
+                      <div className="overlay absolute left-0 top-0 h-full w-full bg-black/50"></div>
+                      <p className="absolute bottom-3 left-3 font-semibold text-white">
+                        Essential home services
+                      </p>
+                    </figure>
+                  </SwiperSlide>
+                ))}
+            </Swiper>
+          </div>
+          <div className="border-b py-12">
+            <div className="mb-7 flex items-center justify-between">
+              <h4 className="text-3xl font-semibold">Services</h4>
+            </div>
+
+            <div className="space-y-5">
+              <div className="">
+                <h4 className="mb-3 text-xl font-semibold">House Cleaning</h4>
+                <p className="text-[#575757]">
+                  I need assistance with installing a new kitchen tap and
+                  addressing a leak at the connection between the hose and the
+                  water pipe. The leak appears to be coming from the coupling,
+                  which may require replacement. In addition to installing the
+                  new tap, I would like the couplings and any necessary fittings
+                  to be replaced to ensure a secure
+                </p>
+              </div>
+              <div className="">
+                <h4 className="mb-3 text-xl font-semibold">AC wash</h4>
+                <p className="text-[#575757]">
+                  I need assistance with installing a new kitchen tap and
+                  addressing a leak at the connection between the hose and the
+                  water pipe. The leak appears to be coming from the coupling,
+                  which may require replacement. In addition to installing the
+                  new tap, I would like the couplings and any necessary fittings
+                  to be replaced to ensure a secure
+                </p>
+              </div>
+              <div className="">
+                <h4 className="mb-3 text-xl font-semibold">Window cleaning</h4>
+                <p className="text-[#575757]">
+                  I need assistance with installing a new kitchen tap and
+                  addressing a leak at the connection between the hose and the
+                  water pipe. The leak appears to be coming from the coupling,
+                  which may require replacement. In addition to installing the
+                  new tap, I would like the couplings and any necessary fittings
+                  to be replaced to ensure a secure
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="border-b py-12">
+            <h4 className="text-3xl font-semibold">Reviews</h4>
+            <p className="py-4 text-[#2C2C2C]">
+              I need assistance with installing a new kitchen tap and addressing
+              a leak at the connection between the hose and the water pipe. The
+              leak appears to be coming from the coupling,{" "}
+              <span className="font-semibold">
+                work quality, professionalism & responsibly.
+              </span>
+            </p>
+            <div className="mb-7 flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <h5 className="text-xl font-semibold">Average Rating: 4.4</h5>
+                <RatingStar rate={4.4} className={"size-6"}></RatingStar>
+                <p className="text-xl text-primary">(120 review)</p>
+              </div>
+              <div className="flex gap-5">
+                <button className="reviewPrev rounded-[2px] border border-primary p-1">
+                  <BackwardSign />
+                </button>
+                <button className="reviewNext rounded-[2px] border border-primary bg-primary p-1">
+                  <ForwardSign />
+                </button>
+              </div>
+            </div>
+            <Swiper
+              slidesPerView={1}
+              spaceBetween={20}
+              autoplay={true}
+              loop={true}
+              freeMode={true}
+              navigation={{
+                prevEl: `.reviewPrev`,
+                nextEl: `.reviewNext`,
+              }}
+              modules={[FreeMode, Navigation]}
+              className="mySwiper"
+              breakpoints={{
+                // when window width is >= 430px
+                650: {
+                  slidesPerView: 2,
+                  spaceBetween: 30,
+                },
+              }}
+            >
+              {Array(6)
+                .fill(null)
+                .map((_, idx) => (
+                  <SwiperSlide key={idx}>
+                    <div className="rounded bg-[#FFF2EB] p-4 pt-6">
+                      <RatingStar rate={5} className={"size-6"} />
+                      <h5 className="mb-1 mt-2 font-semibold text-[#3D3D3D]">
+                        Great Work, Supper Cleaning
+                      </h5>
+                      <p className="text-[#575757]">
+                        I need assistance with installing a new kitchen tap and
+                        addressing a leak at the{" "}
+                      </p>
+                      <div className="divider my-4 border-b"></div>
+                      <div className="flex items-center gap-2.5">
+                        <figure className="size-12 overflow-hidden rounded-full">
+                          <img
+                            src={Reviewprofile}
+                            alt=""
+                            className="size-full object-cover object-center"
+                          />
+                        </figure>
+                        <p className="font-semibold text-[#3D3D3D]">
+                          Mali Lisa
+                        </p>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+            </Swiper>
+          </div>
+          <div className="py-12">
+            <h4 className="mb-7 text-3xl font-semibold">
+              Frequently Asked Question
+            </h4>
+            <Accordion type="single" collapsible>
+              <AccordionItem value="item-1">
+                <AccordionTrigger>What Services do you offer?</AccordionTrigger>
+                <AccordionContent>
+                  Signa Clorian is a Top Pro in house cleaning services,
+                  specializing in maintaining and improving home cleanliness.
+                  Services include kitchen maintenance, such as installing new
+                  taps, fixing leaks, and addressing plumbing issues related to
+                  loose or worn-out couplings. Additionally, Signa ensures a
+                  high standard of work, making sure homes stay functional,
+                  clean, and efficient.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-2">
+                <AccordionTrigger>
+                  What is the starting price for services?
+                </AccordionTrigger>
+                <AccordionContent>
+                  The starting price for services is $140, but the final cost
+                  may vary depending on the complexity of the job, the materials
+                  required, and the service location. For an exact quote, it is
+                  recommended to check availability and discuss details
+                  directly.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-3">
+                <AccordionTrigger>
+                  How can I check availability?
+                </AccordionTrigger>
+                <AccordionContent>
+                  To check availability, simply click on the 'Check
+                  availability' button on the profile page. This will allow you
+                  to see open slots and schedule a service at a convenient time.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-4">
+                <AccordionTrigger>
+                  How quickly does Signa Clorian respond to inquiries?
+                </AccordionTrigger>
+                <AccordionContent>
+                  Signa Clorian is known for quick response times, typically
+                  replying to messages and booking requests within 10 minutes.
+                  This ensures that clients receive prompt assistance and can
+                  schedule services without long wait times.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-5">
+                <AccordionTrigger>
+                  How do I share this profile with others?
+                </AccordionTrigger>
+                <AccordionContent>
+                  If you would like to recommend Signa Clorian to friends,
+                  family, or colleagues, you can use the "Share Profile" button
+                  on the page. This will allow you to easily send the profile
+                  link via social media, email, or direct messaging.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-6">
+                <AccordionTrigger>
+                  Where can I find reviews and recent work?
+                </AccordionTrigger>
+                <AccordionContent>
+                  To see customer feedback and examples of past work, navigate
+                  to the "Recent Work" and "Reviews" tabs on the profile page.
+                  Here, you can find real testimonials from satisfied customers
+                  and view completed projects to get a better idea of service
+                  quality.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
         </div>
         <div className="right h-full">
           <div className="sticky top-20 rounded-md bg-[#FFF2EB] px-5 py-6">
             <p className="mb-1.5 text-xl text-[#494949]">Starting price</p>
-            <h2 className="mb-1.5 text-2xl">$140</h2>
+            <h2 className="mb-1.5 text-xl">$140</h2>
             <Link className="text-xl text-primary">View Works</Link>
             <button
               type="button"

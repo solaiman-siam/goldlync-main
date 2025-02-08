@@ -33,6 +33,10 @@ import ProRegister from "@/pages/auth/ProRegister";
 import Blog from "@/pages/public/Blog/Blog";
 import BlogDetails from "@/pages/public/Blog/BlogDetails";
 import ConstructorProfileDetails from "@/pages/private/ConstructorProfile/ConstructorProfileDetails";
+import Pros from "@/pages/public/Pros";
+import SafetyGuideline from "@/pages/public/SafetyGuideline";
+import SubmissionComplete from "@/pages/private/ConstructorProfile/SubmissionComplete";
+import ExploreProjects from "@/pages/public/ExploreProjects";
 
 export const route = createBrowserRouter([
   {
@@ -45,6 +49,22 @@ export const route = createBrowserRouter([
         element: (
           <PageTitle title="Home">
             <Home />
+          </PageTitle>
+        ),
+      },
+      {
+        path: "/pros",
+        element: (
+          <PageTitle title="Pros">
+            <Pros/>
+          </PageTitle>
+        ),
+      },
+      {
+        path: "/safety-guideline",
+        element: (
+          <PageTitle title="Pros">
+            <SafetyGuideline/>
           </PageTitle>
         ),
       },
@@ -69,6 +89,22 @@ export const route = createBrowserRouter([
         element: (
           <PageTitle title="Questionnaries">
             <ServiceQuestionnaries />
+          </PageTitle>
+        ),
+      },
+      {
+        path: "/project-details",
+        element: (
+          <PageTitle title="Project-Details">
+            <ExploreProjects />
+          </PageTitle>
+        ),
+      },
+      {
+        path: "/service-categories",
+        element: (
+          <PageTitle title="Service Categories">
+            <ServiceCategories />
           </PageTitle>
         ),
       },
@@ -245,6 +281,10 @@ export const route = createBrowserRouter([
       {
         path: "/registration-complete",
         element: <RegistrationComplete />,
+      },
+      {
+        path: "/submission-complete",
+        element: <SubmissionComplete />,
       },
     ],
   },
