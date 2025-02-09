@@ -5,6 +5,14 @@ import RatingStar from "@/components/shared/RatingStar";
 import workImg from "@/assets/images/work.jpg";
 import Reviewprofile from "@/assets/images/Reviewprofile.png";
 import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/shared/ProjectsDialog"
+import {
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -12,6 +20,7 @@ import {
 } from "@/components/ConstructorProfile/accordion";
 import { useState } from "react";
 import {
+  BackSign,
   BackwardSign,
   Employees,
   Experience,
@@ -29,8 +38,10 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 
 import { FreeMode, Navigation } from "swiper/modules";
+import ImageContainer from "@/components/ImageContainer";
 
 const ConstructorProfileDetails = () => {
+  const [openShowALl, setOpenShowALl] = useState(false);
   const [activeTab, selectActiveTab] = useState(1);
   const [isExpanded, setIsExpanded] = useState(false);
   const [isDaysExpanded, setIsDaysExpanded] = useState(false);
@@ -65,23 +76,8 @@ const ConstructorProfileDetails = () => {
     <section className="container my-[80px]">
       <div className="grid grid-cols-3 gap-10">
         <div className="left col-span-2">
-          <Link to="#" className="flex items-center gap-1.5">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-            >
-              <path
-                d="M14.9998 19.92L8.47984 13.4C7.70984 12.63 7.70984 11.37 8.47984 10.6L14.9998 4.07996"
-                stroke="#FF6A16"
-                strokeWidth="1.5"
-                strokeMiterlimit="10"
-                strokeLinejoin="round"
-                strokeLinecap="round"
-              />
-            </svg>
+          <Link to="/pros" className="flex items-center gap-1.5">
+            <BackSign className="stroke-primary"/>
             <span className="text-primary">See more pro profile</span>
           </Link>
           <div className="bread-crumb mt-5 text-[#242424]">
@@ -277,6 +273,23 @@ const ConstructorProfileDetails = () => {
             <div className="mb-7 flex items-center justify-between">
               <h4 className="text-3xl font-semibold">Recent Work</h4>
               <div className="flex gap-5">
+
+                <Dialog open={openShowALl} onOpenChange={setOpenShowALl}>
+                  <DialogTrigger className="font-semibold">
+                    Show all
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle className="text-2xl text-white">
+                      Recent Work
+                      </DialogTitle>
+                      <DialogDescription>
+                        <ImageContainer />
+                      </DialogDescription>
+                    </DialogHeader>
+                  </DialogContent>
+                </Dialog>
+
                 <button className="workPrev rounded-[2px] border border-primary p-1">
                   <BackwardSign />
                 </button>
@@ -481,8 +494,8 @@ const ConstructorProfileDetails = () => {
                   How can I check availability?
                 </AccordionTrigger>
                 <AccordionContent>
-                  To check availability, simply click on the 'Check
-                  availability' button on the profile page. This will allow you
+                  To check availability, simply click on the &quot;Check
+                  availability&apos; button on the profile page. This will allow you
                   to see open slots and schedule a service at a convenient time.
                 </AccordionContent>
               </AccordionItem>
@@ -503,7 +516,7 @@ const ConstructorProfileDetails = () => {
                 </AccordionTrigger>
                 <AccordionContent>
                   If you would like to recommend Signa Clorian to friends,
-                  family, or colleagues, you can use the "Share Profile" button
+                  family, or colleagues, you can use the &quot;Share Profile&quot; button
                   on the page. This will allow you to easily send the profile
                   link via social media, email, or direct messaging.
                 </AccordionContent>
@@ -514,7 +527,7 @@ const ConstructorProfileDetails = () => {
                 </AccordionTrigger>
                 <AccordionContent>
                   To see customer feedback and examples of past work, navigate
-                  to the "Recent Work" and "Reviews" tabs on the profile page.
+                  to the &quot;Recent Work&quot; and &quot;Reviews&quot; tabs on the profile page.
                   Here, you can find real testimonials from satisfied customers
                   and view completed projects to get a better idea of service
                   quality.

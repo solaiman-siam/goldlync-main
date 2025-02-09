@@ -17,8 +17,8 @@ function Categories() {
 
   return (
     <div>
-      <section className="mb-[80px]">
-        <figure className="relative h-[600px] w-full overflow-hidden mb-20">
+      <section className="">
+        <figure className="relative h-[600px] w-full overflow-hidden mb-24">
           <img
             src="https://i.ibb.co.com/j9L2b4Gz/Rectangle-25153.png"
             alt=""

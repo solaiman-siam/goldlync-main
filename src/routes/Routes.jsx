@@ -37,6 +37,8 @@ import Pros from "@/pages/public/Pros";
 import SafetyGuideline from "@/pages/public/SafetyGuideline";
 import SubmissionComplete from "@/pages/private/ConstructorProfile/SubmissionComplete";
 import ExploreProjects from "@/pages/public/ExploreProjects";
+import AssignmentDetails from "@/pages/private/ConstructorProfile/AssignmentDetails";
+import Message from "@/pages/Message";
 
 export const route = createBrowserRouter([
   {
@@ -109,10 +111,18 @@ export const route = createBrowserRouter([
         ),
       },
       {
-        path: "/service-categories",
+        path: "/assignment-details",
         element: (
-          <PageTitle title="Service Categories">
-            <ServiceCategories />
+          <PageTitle title="Assignment Details">
+            <AssignmentDetails />
+          </PageTitle>
+        ),
+      },
+      {
+        path: "/message",
+        element: (
+          <PageTitle title="Message">
+            <Message />
           </PageTitle>
         ),
       },

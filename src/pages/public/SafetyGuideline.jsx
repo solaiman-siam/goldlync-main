@@ -170,7 +170,7 @@ const SafetyGuideline = () => {
                 </FormItem>
               )}
             />
-            <Button type="submit" className={`px-40 ${form.formState.errors.consent && "bg-[#c91a1a]"}`}>
+            <Button type="submit" className={`px-40 ${form.formState.errors.consent && "bg-[#ff0000]/80"}`}>
               {form.formState.errors.consent ? "You need to give Consent First" : "Submit"}
             </Button>
           </form>
