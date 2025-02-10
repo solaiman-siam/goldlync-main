@@ -14,7 +14,7 @@ import {
 import { loginSchema } from "@/lib/schemas/authSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const LoginForm = () => {
   const form = useForm({
@@ -25,7 +25,11 @@ const LoginForm = () => {
     },
   });
 
-  const handleSubmit = async (e) => {};
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    navigate('/constructor-profile')
+  };
 
   return (
     <Form {...form}>

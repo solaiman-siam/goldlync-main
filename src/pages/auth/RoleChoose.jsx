@@ -15,7 +15,12 @@ const RoleChoose = () => {
       setErrorMessage("Please select a role");
       return;
     }
-    navigate("/register");
+    else if(chooseRole=="pro"){
+      navigate("/pro-register");
+    }
+    else{
+      navigate("/register");
+    }
   };
 
   return (

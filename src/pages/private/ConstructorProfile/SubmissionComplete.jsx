@@ -1,14 +1,10 @@
 import { Button } from "@/components/shadcn/ui/button";
-import React from "react";
 
-const RegistrationComplete = () => {
+const SubmissionComplete = () => {
   return (
     <div className="container mt-10">
       <div className="flex flex-col items-center gap-12 py-16 text-center">
-        <h4 className="text-3xl font-medium text-accent">
-          Registration completed
-        </h4>
-        <div className="w-fit relative">
+        <div className="relative w-fit">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="size-[320px]"
@@ -27,7 +23,7 @@ const RegistrationComplete = () => {
             height="100"
             viewBox="0 0 179 127"
             fill="none"
-            className=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
           >
             <path
               d="M63.6107 126.125C62.2399 126.127 60.8823 125.857 59.6159 125.332C58.3495 124.808 57.1993 124.038 56.2314 123.067L4.04386 70.8797C3.04698 69.9168 2.25184 68.7651 1.70482 67.4917C1.1578 66.2183 0.869859 64.8487 0.857816 63.4628C0.845773 62.0769 1.10986 60.7025 1.63466 59.4198C2.15947 58.137 2.9345 56.9717 3.9145 55.9917C4.89451 55.0117 6.05988 54.2366 7.34261 53.7118C8.62534 53.187 9.99973 52.9229 11.3856 52.935C12.7715 52.947 14.1411 53.235 15.4145 53.782C16.6879 54.329 17.8397 55.1241 18.8025 56.121L63.6107 100.929L160.606 3.93351C161.569 2.93663 162.721 2.14149 163.994 1.59447C165.268 1.04745 166.637 0.759507 168.023 0.747464C169.409 0.735421 170.784 0.999506 172.066 1.52431C173.349 2.04912 174.514 2.82415 175.494 3.80415C176.474 4.78416 177.249 5.94953 177.774 7.23226C178.299 8.51499 178.563 9.88938 178.551 11.2753C178.539 12.6612 178.251 14.0308 177.704 15.3042C177.157 16.5776 176.362 17.7293 175.365 18.6922L70.99 123.067C70.022 124.038 68.8718 124.808 67.6055 125.332C66.3391 125.857 64.9815 126.127 63.6107 126.125Z"
@@ -35,19 +31,12 @@ const RegistrationComplete = () => {
             />
           </svg>
         </div>
-        <p className="w-[800px] text-center text-[#777777]">
-          Welcome to the GOLDLYNC community! We're excited to have you on board.
-          Your registration was successful, and you're now ready to explore our
-          services and start benefiting from all we offer. If you have any
-          questions or need assistance, feel free to reach out. We're here to
-          help!
-        </p>
-        <Button className="rounded" type="submit">
-          Complete
-        </Button>
+        <h4 className="text-5xl font-bold leading-[120%]">
+          Thank you for your <br /> submission.
+        </h4>
       </div>
     </div>
   );
 };
 
-export default RegistrationComplete;
+export default SubmissionComplete;

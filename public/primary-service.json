@@ -30,6 +30,31 @@
       "id": 6,
       "title": "Catering",
       "details": "Reliable, efficient, and always ready to lend a helping hand—let us make your life easier."
+    },
+    {
+      "id": 7,
+      "title": "Automotive Service",
+      "details": "Reliable, efficient, and always ready to lend a helping hand—let us make your life easier."
+    },
+    {
+      "id": 8,
+      "title": "Pet Care",
+      "details": "Reliable, efficient, and always ready to lend a helping hand—let us make your life easier."
+    },
+    {
+      "id": 9,
+      "title": "Catering",
+      "details": "Reliable, efficient, and always ready to lend a helping hand—let us make your life easier."
+    },
+    {
+      "id": 10,
+      "title": "Pet Care",
+      "details": "Reliable, efficient, and always ready to lend a helping hand—let us make your life easier."
+    },
+    {
+      "id": 11,
+      "title": "Catering",
+      "details": "Reliable, efficient, and always ready to lend a helping hand—let us make your life easier."
     }
   ]
 }

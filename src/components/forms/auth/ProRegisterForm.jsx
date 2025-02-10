@@ -12,6 +12,7 @@ import AuthInput from "@/components/shadcn/AuthInput";
 import { AuthUser1, Location1, MailIcon1, PhoneIcon1 } from "@/assets/icons";
 import PasswordField from "@/components/shadcn/PasswordField";
 import { Button } from "@/components/shadcn/ui/button";
+import { useNavigate } from 'react-router';
 
 const ProRegisterForm = () => {
   const form = useForm({
@@ -26,8 +27,11 @@ const ProRegisterForm = () => {
     },
   });
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     console.log(e);
+    navigate('/constructor-profile');
   };
 
   return (

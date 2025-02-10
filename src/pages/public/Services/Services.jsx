@@ -6,7 +6,7 @@ function Services() {
   return (
     <div>
       <AllServices/>
-      <SetJobPref/>
+      {/* <SetJobPref/> */}
       <GetInTouchBanner/>
     </div>
   )

@@ -13,7 +13,7 @@ import { useGetAllPrimaryServices } from "@/hooks/api-hooks/service.hook";
 import { Skeleton } from "../shadcn/ui/skeleton";
 import { Button } from "../shadcn/ui/button";
 
-const PrimaryServiceSection = () => {
+const PrimaryServiceSection = ({limit =false}) => {
   const { data, isLoading, isError } = useGetAllPrimaryServices();
 
   return (
@@ -35,7 +35,29 @@ const PrimaryServiceSection = () => {
         <div className="my-8 text-center">No Data Found!</div>
       ) : (
         <div className="container my-8 grid grid-cols-[repeat(auto-fill,minmax(420px,1fr))] gap-4">
-          {data?.map((service, idx) => (
+          {limit ? data?.slice(0,limit).map((service, idx) => (
+            <PrimaryServiceItem
+              key={`primary-service-${idx}`}
+              path={`/service/${service.slug}`}
+              icon={
+                idx === 0 ? (
+                  <ServiceIcon1 />
+                ) : idx === 1 ? (
+                  <ServiceIcon2 />
+                ) : idx === 2 ? (
+                  <ServiceIcon3 />
+                ) : idx === 3 ? (
+                  <ServiceIcon4 />
+                ) : idx === 4 ? (
+                  <ServiceIcon5 />
+                ) : idx === 5 ? (
+                  <ServiceIcon6 />
+                ) : null
+              }
+              title={service?.title}
+              details={service?.details}
+            />
+          )) : data?.map((service, idx) => (
             <PrimaryServiceItem
               key={`primary-service-${idx}`}
               path={`/service/${service.slug}`}
@@ -83,7 +105,7 @@ const PrimaryServiceSkeletons = () => {
 const PrimaryServiceItem = ({ path, icon, title, details }) => {
   return (
     <Link
-      to={path}
+      to={'/service-categories'}
       className="flex flex-col items-center justify-center gap-5 rounded-md border border-card bg-card px-8 py-10 text-center text-card-foreground transition-all duration-300 hover:-translate-y-2 hover:border-input hover:shadow-md"
     >
       <span className="inline-flex size-[100px] items-center justify-center rounded-full bg-accent [&_svg]:w-[50%] [&_svg]:text-accent-foreground">

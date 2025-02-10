@@ -15,7 +15,7 @@ import ProfileMyJobLayout from "@/layouts/ProfileMyJobLayout";
 import CompleteJobs from "@/pages/private/profile/my-jobs/CompleteJobs";
 import PendingJobs from "@/pages/private/profile/my-jobs/PendingJobs";
 import CancelJobs from "@/pages/private/profile/my-jobs/CancelJobs";
-import ConstructorProfileDetails from "@/pages/private/ConstructorProfile/ConstructorProfileDetails";
+import ConstructorProfile from "@/pages/private/ConstructorProfile/ConstructorProfile";
 import ConstructorProfileLayout from "@/layouts/ConstructorProfileLayout";
 import Service from "@/pages/public/Services/Services";
 import ServiceCategories from "@/pages/public/ServiceCategories/ServiceCategories";
@@ -32,6 +32,13 @@ import RegistrationComplete from "@/pages/private/ConstructorProfile/Registratio
 import ProRegister from "@/pages/auth/ProRegister";
 import Blog from "@/pages/public/Blog/Blog";
 import BlogDetails from "@/pages/public/Blog/BlogDetails";
+import ConstructorProfileDetails from "@/pages/private/ConstructorProfile/ConstructorProfileDetails";
+import Pros from "@/pages/public/Pros";
+import SafetyGuideline from "@/pages/public/SafetyGuideline";
+import SubmissionComplete from "@/pages/private/ConstructorProfile/SubmissionComplete";
+import ExploreProjects from "@/pages/public/ExploreProjects";
+import AssignmentDetails from "@/pages/private/ConstructorProfile/AssignmentDetails";
+import Message from "@/pages/Message";
 
 export const route = createBrowserRouter([
   {
@@ -44,6 +51,30 @@ export const route = createBrowserRouter([
         element: (
           <PageTitle title="Home">
             <Home />
+          </PageTitle>
+        ),
+      },
+      {
+        path: "/pros",
+        element: (
+          <PageTitle title="Pros">
+            <Pros/>
+          </PageTitle>
+        ),
+      },
+      {
+        path: "/safety-guideline",
+        element: (
+          <PageTitle title="Pros">
+            <SafetyGuideline/>
+          </PageTitle>
+        ),
+      },
+      {
+        path: "/constructor",
+        element: (
+          <PageTitle title="Constructor">
+            <ConstructorProfileDetails/>
           </PageTitle>
         ),
       },
@@ -64,10 +95,34 @@ export const route = createBrowserRouter([
         ),
       },
       {
+        path: "/project-details",
+        element: (
+          <PageTitle title="Project-Details">
+            <ExploreProjects />
+          </PageTitle>
+        ),
+      },
+      {
         path: "/service-categories",
         element: (
           <PageTitle title="Service Categories">
             <ServiceCategories />
+          </PageTitle>
+        ),
+      },
+      {
+        path: "/assignment-details",
+        element: (
+          <PageTitle title="Assignment Details">
+            <AssignmentDetails />
+          </PageTitle>
+        ),
+      },
+      {
+        path: "/message",
+        element: (
+          <PageTitle title="Message">
+            <Message />
           </PageTitle>
         ),
       },
@@ -163,7 +218,7 @@ export const route = createBrowserRouter([
             index: true,
             element: (
               <PageTitle title="Constructor Profile details">
-                <ConstructorProfileDetails />
+                <ConstructorProfile />
               </PageTitle>
             ),
           },
@@ -171,7 +226,7 @@ export const route = createBrowserRouter([
             path: "profile-details",
             element: (
               <PageTitle title="Company details">
-                <ConstructorProfileDetails />
+                <ConstructorProfile />
               </PageTitle>
             ),
           },
@@ -236,6 +291,10 @@ export const route = createBrowserRouter([
       {
         path: "/registration-complete",
         element: <RegistrationComplete />,
+      },
+      {
+        path: "/submission-complete",
+        element: <SubmissionComplete />,
       },
     ],
   },
