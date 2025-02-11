@@ -69,11 +69,11 @@ const ConstructorProfileSidebar = () => {
           <Constructor7 />
             <span>Jobs</span>
           </SidebarLink>
-          <SidebarLink path="/profile/online-help-desk">
+          <SidebarLink path="/constructor-profile/online-help-desk">
           <Constructor7 />
             <span>Working area</span>
           </SidebarLink>
-          <SidebarLink path="/profile/online-help-desk">
+          <SidebarLink path="/constructor-profile/add-services">
           <Constructor8 />
             <span>Services</span>
           </SidebarLink>

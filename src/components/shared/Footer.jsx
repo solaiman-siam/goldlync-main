@@ -46,7 +46,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="mt-8 bg-card px-4 py-16">
+    <footer className="bg-card px-4 py-16">
       <div className="container">
         <SiteLogo />
         <div className="mt-10 grid grid-cols-2 gap-x-12 gap-y-16 md:col-span-3 lg:grid-cols-6">

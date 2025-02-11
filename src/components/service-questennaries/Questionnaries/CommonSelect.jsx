@@ -6,15 +6,15 @@ import {
   SelectValue,
 } from "@/components/shadcn/ui/select"
 
-function CommonSelect({label,options}) {
+function CommonSelect({id,label,options}) {
   return (
-    <div className="flex flex-col gap-3">
-    <label className="font-medium" htmlFor="">
-      {label}
+    <div className="flex flex-col gap-4">
+    <label className="font-semibold text-xl" htmlFor="">
+      {id}  .{" "}{label}
     </label>
     <Select>
       <SelectTrigger className="w-full px-4 py-8">
-        <SelectValue placeholder="what type of property needs gutter cleaning? " />
+        <SelectValue placeholder={label} />
       </SelectTrigger>
       <SelectContent>
         {

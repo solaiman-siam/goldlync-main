@@ -39,6 +39,9 @@ import SubmissionComplete from "@/pages/private/ConstructorProfile/SubmissionCom
 import ExploreProjects from "@/pages/public/ExploreProjects";
 import AssignmentDetails from "@/pages/private/ConstructorProfile/AssignmentDetails";
 import Message from "@/pages/Message";
+import UpdateProfileDetails from "@/pages/private/profile/UpdateProfileDetails";
+import CoinPurchase from "@/pages/public/CoinPurchase";
+import AddServicesByConstructor from "@/pages/public/Services/AddServicesByConstructor";
 
 export const route = createBrowserRouter([
   {
@@ -58,7 +61,15 @@ export const route = createBrowserRouter([
         path: "/pros",
         element: (
           <PageTitle title="Pros">
-            <Pros/>
+            <Pros />
+          </PageTitle>
+        ),
+      },
+      {
+        path: "/coin-purchase",
+        element: (
+          <PageTitle title="Coin Purchase">
+            <CoinPurchase />
           </PageTitle>
         ),
       },
@@ -66,7 +77,7 @@ export const route = createBrowserRouter([
         path: "/safety-guideline",
         element: (
           <PageTitle title="Pros">
-            <SafetyGuideline/>
+            <SafetyGuideline />
           </PageTitle>
         ),
       },
@@ -74,7 +85,7 @@ export const route = createBrowserRouter([
         path: "/constructor",
         element: (
           <PageTitle title="Constructor">
-            <ConstructorProfileDetails/>
+            <ConstructorProfileDetails />
           </PageTitle>
         ),
       },
@@ -143,6 +154,14 @@ export const route = createBrowserRouter([
             element: (
               <PageTitle title="Profile details">
                 <ProfileDetails />
+              </PageTitle>
+            ),
+          },
+          {
+            path: "update-profile-details",
+            element: (
+              <PageTitle title="Profile details">
+                <UpdateProfileDetails />
               </PageTitle>
             ),
           },
@@ -227,6 +246,14 @@ export const route = createBrowserRouter([
             element: (
               <PageTitle title="Company details">
                 <ConstructorProfile />
+              </PageTitle>
+            ),
+          },
+          {
+            path: "add-services",
+            element: (
+              <PageTitle title="Add Services">
+                <AddServicesByConstructor />
               </PageTitle>
             ),
           },

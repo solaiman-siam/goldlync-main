@@ -5,7 +5,7 @@ const ProfileLayout = () => {
   return (
     <div className="container mt-10">
       <h1 className="mb-12 font-manrope text-[32px] font-bold">
-        Profile Setting
+        Profile
       </h1>
       <div className="flex items-start gap-4">
         <ProfileSidebar />

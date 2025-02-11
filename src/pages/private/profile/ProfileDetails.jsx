@@ -1,171 +1,115 @@
 import ProfileSection from "@/components/profile/ProfileSection";
-import ProfileUpload from "@/components/profile/ProfileUpload";
-import { Button } from "@/components/shadcn/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/shadcn/ui/form";
-import { Input } from "@/components/shadcn/ui/input";
-import { Textarea } from "@/components/shadcn/ui/textarea";
-import Spinner from "@/components/Spinner";
-import { profileUpdateSchema } from "@/lib/schemas/authSchema";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { Link } from "react-router";
 
 const ProfileDetails = () => {
   return (
     <ProfileSection title="Profile Details">
-      <ProfileUpdateFrom />
-    </ProfileSection>
-  );
-};
-
-const ProfileUpdateFrom = () => {
-  const [isLoading, setIsLoading] = useState(false);
-
-  const form = useForm({
-    resolver: zodResolver(profileUpdateSchema),
-    defaultValues: {
-      avatar: null,
-      name: "",
-      email: "",
-      phoneNumber: "",
-      address: "",
-      bio: "",
-    },
-  });
-
-  const handleSubmit = async (e) => {
-    console.log(e);
-  };
-
-  console.log(form.getValues("avatar"));
-
-  return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(handleSubmit)}>
-        <FormField
-          control={form.control}
-          name="avatar"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <ProfileUpload
-                  setValue={field.onChange}
-                  value={field.value}
-                  setError={(errorMessage) => {
-                    form.setError("avatar", errorMessage);
-                  }}
-                  disabled={isLoading}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+      <figure className="mb-8 size-28 overflow-hidden rounded-full">
+        <img
+          src="https://i.ibb.co/J83jd1f/image-8.png"
+          alt=""
+          className="h-full w-full object-cover object-center"
         />
-        <div className="mb-5 mt-10 grid grid-cols-2 gap-5">
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Name</FormLabel>
-                <FormControl>
-                  <Input
-                    type="text"
-                    placeholder="Your Name"
-                    disabled={isLoading}
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input
-                    type="text"
-                    placeholder="Your Email"
-                    readOnly
-                    disabled
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="phoneNumber"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Phone number</FormLabel>
-                <FormControl>
-                  <Input
-                    type="text"
-                    placeholder="Phone number"
-                    disabled={isLoading}
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="address"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Address</FormLabel>
-                <FormControl>
-                  <Input
-                    type="text"
-                    placeholder="Address"
-                    disabled={isLoading}
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="bio"
-            render={({ field }) => (
-              <FormItem className="col-span-2">
-                <FormLabel>Bio</FormLabel>
-                <FormControl>
-                  <Textarea
-                    className="min-h-[200px]"
-                    placeholder="Enter you bio here...."
-                    disabled={isLoading}
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+      </figure>
+      <div className="mb-6 flex items-end justify-between">
+        <h2 className="text-3xl font-bold text-[#313133]">Floyd Miles</h2>
+        <Link
+          to="/profile/update-profile-details"
+          className="flex items-center gap-3 text-xl text-[#262627]"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            fill="none"
+          >
+            <path
+              d="M1.99826 29C1.85714 29.0009 1.71745 28.9718 1.58835 28.9149C1.45925 28.8579 1.34368 28.7742 1.24923 28.6694C1.15477 28.5645 1.08358 28.4409 1.04032 28.3065C0.997069 28.1722 0.982733 28.0303 0.998258 27.89L1.76826 20.89C1.79567 20.6663 1.89786 20.4584 2.05826 20.3L18.4183 3.94001C18.7155 3.64218 19.0685 3.4059 19.4572 3.24469C19.8459 3.08347 20.2625 3.00049 20.6833 3.00049C21.104 3.00049 21.5207 3.08347 21.9093 3.24469C22.298 3.4059 22.651 3.64218 22.9483 3.94001L26.0583 7.05001C26.3561 7.34724 26.5924 7.70029 26.7536 8.08894C26.9148 8.4776 26.9978 8.89424 26.9978 9.31501C26.9978 9.73577 26.9148 10.1524 26.7536 10.5411C26.5924 10.9297 26.3561 11.2828 26.0583 11.58L9.70826 27.93C9.54989 28.0904 9.34199 28.1926 9.11826 28.22L2.11826 28.99L1.99826 29ZM3.72826 21.45L3.12826 26.87L8.54826 26.27L24.6483 10.17C24.7601 10.0585 24.8489 9.92605 24.9095 9.78019C24.97 9.63433 25.0012 9.47794 25.0012 9.32001C25.0012 9.16207 24.97 9.00569 24.9095 8.85982C24.8489 8.71396 24.7601 8.58149 24.6483 8.47001L21.5283 5.35001C21.4168 5.23814 21.2843 5.14937 21.1384 5.0888C20.9926 5.02824 20.8362 4.99706 20.6783 4.99706C20.5203 4.99706 20.3639 5.02824 20.2181 5.0888C20.0722 5.14937 19.9397 5.23814 19.8283 5.35001L3.72826 21.45Z"
+              fill="#101820"
+            />
+            <path
+              d="M22.9992 14.2102C22.8676 14.2109 22.7372 14.1857 22.6153 14.1359C22.4935 14.0862 22.3827 14.0128 22.2892 13.9202L16.0792 7.69017C15.986 7.59693 15.912 7.48624 15.8616 7.36442C15.8111 7.24259 15.7852 7.11203 15.7852 6.98017C15.7852 6.84831 15.8111 6.71774 15.8616 6.59592C15.912 6.47409 15.986 6.3634 16.0792 6.27017C16.1725 6.17693 16.2832 6.10297 16.405 6.05251C16.5268 6.00205 16.6574 5.97607 16.7892 5.97607C16.9211 5.97607 17.0517 6.00205 17.1735 6.05251C17.2953 6.10297 17.406 6.17693 17.4992 6.27017L23.7292 12.5002C23.823 12.5931 23.8974 12.7037 23.9481 12.8256C23.9989 12.9474 24.025 13.0782 24.025 13.2102C24.025 13.3422 23.9989 13.4729 23.9481 13.5947C23.8974 13.7166 23.823 13.8272 23.7292 13.9202C23.6334 14.0153 23.5194 14.09 23.3939 14.1398C23.2685 14.1897 23.1342 14.2136 22.9992 14.2102Z"
+              fill="#101820"
+            />
+            <path
+              d="M16.0821 12.5038L8.29688 20.2891L9.71109 21.7033L17.4963 13.918L16.0821 12.5038Z"
+              fill="#101820"
+            />
+            <path
+              d="M30 29H14C13.7348 29 13.4804 28.8946 13.2929 28.7071C13.1054 28.5196 13 28.2652 13 28C13 27.7348 13.1054 27.4804 13.2929 27.2929C13.4804 27.1054 13.7348 27 14 27H30C30.2652 27 30.5196 27.1054 30.7071 27.2929C30.8946 27.4804 31 27.7348 31 28C31 28.2652 30.8946 28.5196 30.7071 28.7071C30.5196 28.8946 30.2652 29 30 29Z"
+              fill="#101820"
+            />
+          </svg>
+          Edit Profile
+        </Link>
+      </div>
+      <div className="mb-8">
+        <div className="card flex items-center gap-3 border-b border-[#FFF2EB] px-2 py-4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="33"
+            height="33"
+            viewBox="0 0 33 33"
+            fill="none"
+          >
+            <path
+              d="M4.28906 9.73796C4.28906 9.03071 4.57001 8.35243 5.07011 7.85234C5.57021 7.35224 6.24849 7.07129 6.95573 7.07129H25.6224C26.3296 7.07129 27.0079 7.35224 27.508 7.85234C28.0081 8.35243 28.2891 9.03071 28.2891 9.73796M4.28906 9.73796V23.0713C4.28906 23.7785 4.57001 24.4568 5.07011 24.9569C5.57021 25.457 6.24849 25.738 6.95573 25.738H25.6224C26.3296 25.738 27.0079 25.457 27.508 24.9569C28.0081 24.4568 28.2891 23.7785 28.2891 23.0713V9.73796M4.28906 9.73796L16.2891 17.738L28.2891 9.73796"
+              stroke="black"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <p>willie.jennings@example.com</p>
         </div>
-        <Button className="rounded" type="submit" disabled={isLoading}>
-          {isLoading ? <Spinner /> : "update your profile"}
-        </Button>
-      </form>
-    </Form>
+        <div className="card flex items-center gap-3 border-b border-[#FFF2EB] px-2 py-4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="33"
+            height="33"
+            viewBox="0 0 33 33"
+            fill="none"
+          >
+            <path
+              d="M6.95573 5.9873H12.2891L14.9557 12.654L11.6224 14.654C13.0503 17.5493 15.3937 19.8927 18.2891 21.3206L20.2891 17.9873L26.9557 20.654V25.9873C26.9557 26.6945 26.6748 27.3728 26.1747 27.8729C25.6746 28.373 24.9963 28.654 24.2891 28.654C19.0881 28.3379 14.1826 26.1293 10.4982 22.4449C6.81373 18.7604 4.60513 13.855 4.28906 8.65397C4.28906 7.94673 4.57001 7.26845 5.07011 6.76835C5.57021 6.26826 6.24849 5.9873 6.95573 5.9873Z"
+              stroke="black"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <p>843.555.0130</p>
+        </div>
+        <div className="card flex items-center gap-3 border-b border-[#FFF2EB] px-2 py-4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="33"
+            height="33"
+            viewBox="0 0 33 33"
+            fill="none"
+          >
+            <path
+              d="M16.1168 29.5428C15.4714 29.5019 14.8632 29.2269 14.4061 28.7695L8.74742 23.1121C7.41923 21.7833 6.46557 20.1273 5.98294 18.3115C5.50032 16.4958 5.50584 14.5848 5.99895 12.7719C6.49206 10.9589 7.45527 9.30841 8.79112 7.98729C10.127 6.66617 11.7881 5.72132 13.6063 5.24833C15.4246 4.77535 17.3356 4.79101 19.1459 5.29374C20.9561 5.79647 22.6015 6.76842 23.9155 8.11126C25.2295 9.4541 26.1656 11.1202 26.6289 12.941C27.0922 14.7617 27.0664 16.6726 26.5541 18.4801M20.29 26.2362L22.9567 28.9028L28.29 23.5695M12.29 15.5695C12.29 16.6304 12.7115 17.6478 13.4616 18.3979C14.2118 19.1481 15.2292 19.5695 16.29 19.5695C17.3509 19.5695 18.3683 19.1481 19.1185 18.3979C19.8686 17.6478 20.29 16.6304 20.29 15.5695C20.29 14.5086 19.8686 13.4912 19.1185 12.7411C18.3683 11.9909 17.3509 11.5695 16.29 11.5695C15.2292 11.5695 14.2118 11.9909 13.4616 12.7411C12.7115 13.4912 12.29 14.5086 12.29 15.5695Z"
+              stroke="black"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <p>1901 Thornridge Cir. Shiloh, Hawaii 81063</p>
+        </div>
+      </div>
+      <div className="">
+        <h3 className="mb-4 text-xl font-bold text-[#313133]">Bio</h3>
+        <p className="text-xl w-[80%] text-[#313133]">
+          About Kroolo Innovations BV Kroolo Innovations BV is a
+          forward-thinking technology company based in Amsterdam, Netherlands.
+          Founded with a mission to simplify and enhance business processes
+          through…
+        </p>
+      </div>
+    </ProfileSection>
   );
 };
 
