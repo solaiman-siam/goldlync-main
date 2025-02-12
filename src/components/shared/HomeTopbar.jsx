@@ -18,9 +18,6 @@ const HomeTopbar = () => {
           <NavItem path="/services">Services</NavItem>
         </li>
         <li>
-          <NavItem path="/features">Features</NavItem>
-        </li>
-        <li>
           <NavItem path="/contact">Contact</NavItem>
         </li>
       </ul>

@@ -42,6 +42,9 @@ import Message from "@/pages/Message";
 import UpdateProfileDetails from "@/pages/private/profile/UpdateProfileDetails";
 import CoinPurchase from "@/pages/public/CoinPurchase";
 import AddServicesByConstructor from "@/pages/public/Services/AddServicesByConstructor";
+import About from "@/pages/public/About";
+import Contact from "@/pages/public/Contact";
+import OnlineHelpdesk from "@/pages/OnlineHelpdesk";
 
 export const route = createBrowserRouter([
   {
@@ -62,6 +65,30 @@ export const route = createBrowserRouter([
         element: (
           <PageTitle title="Pros">
             <Pros />
+          </PageTitle>
+        ),
+      },
+      {
+        path: "/about-us",
+        element: (
+          <PageTitle title="About Us">
+            <About />
+          </PageTitle>
+        ),
+      },
+      {
+        path: "/online-help-desk",
+        element: (
+          <PageTitle title="/Online Help Desk">
+            <OnlineHelpdesk />
+          </PageTitle>
+        ),
+      },
+      {
+        path: "/contact",
+        element: (
+          <PageTitle title="Contact">
+            <Contact />
           </PageTitle>
         ),
       },
@@ -174,6 +201,14 @@ export const route = createBrowserRouter([
             ),
           },
           {
+            path: "notifications",
+            element: (
+              <PageTitle title="Notifications">
+                <NotificationSettings />
+              </PageTitle>
+            ),
+          },
+          {
             path: "my-jobs",
             element: <ProfileMyJobLayout />,
             children: [
@@ -246,6 +281,14 @@ export const route = createBrowserRouter([
             element: (
               <PageTitle title="Company details">
                 <ConstructorProfile />
+              </PageTitle>
+            ),
+          },
+          {
+            path: "working-area",
+            element: (
+              <PageTitle title="Working Area">
+                <div className="">/working-area</div>
               </PageTitle>
             ),
           },
