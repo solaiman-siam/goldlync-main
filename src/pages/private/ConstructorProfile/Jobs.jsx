@@ -2,6 +2,7 @@ import { Button } from "@/components/shadcn/ui/button";
 import { jobs } from "@/utils/staticData";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router";
 
 const Jobs = () => {
   const [activeTabIdx, setActiveTabIdx] = useState(0);
@@ -140,9 +141,11 @@ const Jobs = () => {
                 30 min ago
               </p>
             </div>
-            <Button type="button" className="w-[230px] text-lg">
-              View more
-            </Button>
+            <Link to="/assignment-details" className="block">
+              <Button type="button" className="w-[230px] text-lg">
+                View more
+              </Button>
+            </Link>
           </div>
         ))}
       </motion.div>

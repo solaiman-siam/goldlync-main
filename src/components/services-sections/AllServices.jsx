@@ -16,54 +16,50 @@ function AllServices() {
   const { data, isLoading, isError } = useGetAllPrimaryServices();
 
   return (
-    <div>
-      <section className="my-[80px]">
-        <SectionTitle tagName="h3">
-          Services Tailored to Your Needs.
-        </SectionTitle>
-        <SectionText>
-          Connect with trusted professionals, set your budget, and bring your
-          vision to life—all in one place.
-        </SectionText>
-        {isLoading ? (
-          <div className="container my-8 grid grid-cols-[repeat(auto-fill,minmax(420px,1fr))] gap-4">
-            <PrimaryServiceSkeletons />
-          </div>
-        ) : isError ? (
-          <div className="my-8 text-center text-destructive">
-            Something went wrong!
-          </div>
-        ) : data?.length === 0 ? (
-          <div className="my-8 text-center">No Data Found!</div>
-        ) : (
-          <div className="container my-8 grid grid-cols-[repeat(auto-fill,minmax(420px,1fr))] gap-4">
-            {data?.map((service, idx) => (
-              <PrimaryServiceItem
-                key={`primary-service-${idx}`}
-                path={`/service/${service.slug}`}
-                icon={
-                  idx === 0 ? (
-                    <ServiceIcon1 />
-                  ) : idx === 1 ? (
-                    <ServiceIcon2 />
-                  ) : idx === 2 ? (
-                    <ServiceIcon3 />
-                  ) : idx === 3 ? (
-                    <ServiceIcon4 />
-                  ) : idx === 4 ? (
-                    <ServiceIcon5 />
-                  ) : (
-                    <ServiceIcon6 />
-                  )
-                }
-                title={service?.title}
-                details={service?.details}
-              />
-            ))}
-          </div>
-        )}
-      </section>
-    </div>
+    <section className="my-[80px]">
+      <SectionTitle tagName="h3">Services Tailored to Your Needs.</SectionTitle>
+      <SectionText>
+        Connect with trusted professionals, set your budget, and bring your
+        vision to life—all in one place.
+      </SectionText>
+      {isLoading ? (
+        <div className="container my-8 grid grid-cols-[repeat(auto-fill,minmax(420px,1fr))] gap-4">
+          <PrimaryServiceSkeletons />
+        </div>
+      ) : isError ? (
+        <div className="my-8 text-center text-destructive">
+          Something went wrong!
+        </div>
+      ) : data?.length === 0 ? (
+        <div className="my-8 text-center">No Data Found!</div>
+      ) : (
+        <div className="container my-8 grid grid-cols-[repeat(auto-fill,minmax(420px,1fr))] gap-4">
+          {data?.map((service, idx) => (
+            <PrimaryServiceItem
+              key={`primary-service-${idx}`}
+              path={`/service/${service.slug}`}
+              icon={
+                idx === 0 ? (
+                  <ServiceIcon1 />
+                ) : idx === 1 ? (
+                  <ServiceIcon2 />
+                ) : idx === 2 ? (
+                  <ServiceIcon3 />
+                ) : idx === 3 ? (
+                  <ServiceIcon4 />
+                ) : idx === 4 ? (
+                  <ServiceIcon5 />
+                ) : (
+                  <ServiceIcon6 />
+                )
+              }
+              title={service?.title}
+              details={service?.details}
+            />
+          ))}
+        </div>
+      )}
+    </section>
   );
 }
 

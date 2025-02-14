@@ -39,6 +39,12 @@ import SubmissionComplete from "@/pages/private/ConstructorProfile/SubmissionCom
 import ExploreProjects from "@/pages/public/ExploreProjects";
 import AssignmentDetails from "@/pages/private/ConstructorProfile/AssignmentDetails";
 import Message from "@/pages/Message";
+import UpdateProfileDetails from "@/pages/private/profile/UpdateProfileDetails";
+import CoinPurchase from "@/pages/public/CoinPurchase";
+import AddServicesByConstructor from "@/pages/public/Services/AddServicesByConstructor";
+import About from "@/pages/public/About";
+import Contact from "@/pages/public/Contact";
+import OnlineHelpdesk from "@/pages/OnlineHelpdesk";
 
 export const route = createBrowserRouter([
   {
@@ -58,7 +64,39 @@ export const route = createBrowserRouter([
         path: "/pros",
         element: (
           <PageTitle title="Pros">
-            <Pros/>
+            <Pros />
+          </PageTitle>
+        ),
+      },
+      {
+        path: "/about-us",
+        element: (
+          <PageTitle title="About Us">
+            <About />
+          </PageTitle>
+        ),
+      },
+      {
+        path: "/online-help-desk",
+        element: (
+          <PageTitle title="/Online Help Desk">
+            <OnlineHelpdesk />
+          </PageTitle>
+        ),
+      },
+      {
+        path: "/contact",
+        element: (
+          <PageTitle title="Contact">
+            <Contact />
+          </PageTitle>
+        ),
+      },
+      {
+        path: "/coin-purchase",
+        element: (
+          <PageTitle title="Coin Purchase">
+            <CoinPurchase />
           </PageTitle>
         ),
       },
@@ -66,7 +104,7 @@ export const route = createBrowserRouter([
         path: "/safety-guideline",
         element: (
           <PageTitle title="Pros">
-            <SafetyGuideline/>
+            <SafetyGuideline />
           </PageTitle>
         ),
       },
@@ -74,7 +112,7 @@ export const route = createBrowserRouter([
         path: "/constructor",
         element: (
           <PageTitle title="Constructor">
-            <ConstructorProfileDetails/>
+            <ConstructorProfileDetails />
           </PageTitle>
         ),
       },
@@ -147,10 +185,26 @@ export const route = createBrowserRouter([
             ),
           },
           {
+            path: "update-profile-details",
+            element: (
+              <PageTitle title="Profile details">
+                <UpdateProfileDetails />
+              </PageTitle>
+            ),
+          },
+          {
             path: "balance",
             element: (
               <PageTitle title="Balance">
                 <Balance />
+              </PageTitle>
+            ),
+          },
+          {
+            path: "notifications",
+            element: (
+              <PageTitle title="Notifications">
+                <NotificationSettings />
               </PageTitle>
             ),
           },
@@ -227,6 +281,22 @@ export const route = createBrowserRouter([
             element: (
               <PageTitle title="Company details">
                 <ConstructorProfile />
+              </PageTitle>
+            ),
+          },
+          {
+            path: "working-area",
+            element: (
+              <PageTitle title="Working Area">
+                <div className="">/working-area</div>
+              </PageTitle>
+            ),
+          },
+          {
+            path: "add-services",
+            element: (
+              <PageTitle title="Add Services">
+                <AddServicesByConstructor />
               </PageTitle>
             ),
           },

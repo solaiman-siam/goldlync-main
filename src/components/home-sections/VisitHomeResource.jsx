@@ -1,22 +1,36 @@
-function VisitHomeResource() {
+import { Link } from "react-router";
+
+function VisitHomeResource({
+  title = "Visit our Home Resource Center",
+  description = "Sometimes getting started is the hardest part. Our resource center tas project guides. cost estimates and how-to guides to help you kick off your next home project.",
+  btnName = "See More",
+  link = "#",
+}) {
   return (
-    <div className="relative w-full flex justify-center items-center h-[500px]">
-        <div className="flex items-center absolute z-[8] text-white flex-col gap-4">
-          <h3 className="text-4xl text-center w-5/12 font-semibold">Visit our Home Resource Center</h3>
-          <h4 className="w-6/12 font-light pt-2 text-center ">
-            Sometimes getting started is the hardest part. Our resource center
-            -tas project guides. cost estimates and how-to guides to help you
-            kick off your next home project.
-          </h4>
+    <div className="relative flex h-[500px] w-full items-center justify-center">
+      <div className="absolute top-1/2 left-1/2 -translate-y-1/2  -translate-x-1/2 z-[8] flex flex-col items-center gap-4 text-white">
+        <h3 className="w-5/12 text-center text-4xl font-semibold">{title}</h3>
+        <h4 className="w-6/12 pt-2 text-center font-light">{description}</h4>
 
-          <div className="pt-8">
-            <button className="rounded-full bg-primary text-lg px-14 py-4 font-medium text-white">
-              See More
-            </button>
-          </div>
+        <div className="pt-8">
+          <Link
+            className="rounded-full bg-primary px-20 py-4 text-lg font-medium text-white"
+            onClick={() =>
+              document
+                .getElementById({link})
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+          >
+            {btnName}
+          </Link>
         </div>
+      </div>
 
-        <img className="absolute top-0 left-0" src="https://i.ibb.co.com/bjb5ZTwB/Rectangle-25146.png" alt="" />
+      <img
+        className="absolute left-0 right-0 top-0 w-full"
+        src="https://i.ibb.co.com/bjb5ZTwB/Rectangle-25146.png"
+        alt=""
+      />
     </div>
   );
 }

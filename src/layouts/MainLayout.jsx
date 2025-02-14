@@ -1,18 +1,21 @@
 import Footer from "@/components/shared/Footer";
 import HomeTopbar from "@/components/shared/HomeTopbar";
-import { Outlet, ScrollRestoration } from "react-router";
+import { Outlet, ScrollRestoration, useLocation } from "react-router";
 
 const MainLayout = () => {
+  const location = useLocation();
+  const hideFooterPaths = ["/message"];
+
   return (
     <div className="font-poppins">
-      <ScrollRestoration/>
+      <ScrollRestoration />
       <header className="relative z-50 bg-background">
         <HomeTopbar />
       </header>
       <main>
         <Outlet />
       </main>
-      <Footer />
+      {!hideFooterPaths.includes(location.pathname) && <Footer />}
     </div>
   );
 };

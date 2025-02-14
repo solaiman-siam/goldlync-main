@@ -3,9 +3,9 @@ import featureImg1 from "@/assets/images/feature-1.png";
 import featureImg2 from "@/assets/images/feature-2.png";
 import featureImg3 from "@/assets/images/feature-3.png";
 
-const FeatureSection = () => {
+const FeatureSection = ({bg="bg-card"}) => {
   return (
-    <section className="bg-card py-20">
+    <section className={`py-20 ${bg}`}>
       <div className="container flex items-center justify-between gap-2">
         <div className="relative flex h-full w-[40%] items-center">
           <div className="relative z-[3] h-fit w-fit">

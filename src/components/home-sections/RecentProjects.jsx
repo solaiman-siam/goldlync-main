@@ -88,7 +88,7 @@ function RecentProjects() {
         ))}
       </motion.div>
 
-      <div className="flex items-center justify-center pt-10">
+      <div className="flex items-center justify-center pt-16">
         <Link to="/pro-register" className="rounded-full bg-primary px-14 py-4 text-lg font-medium text-white">
           Join as a pro
         </Link>

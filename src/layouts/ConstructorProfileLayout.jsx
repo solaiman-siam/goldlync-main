@@ -4,7 +4,7 @@ import { Outlet } from "react-router";
 
 const ConstructorProfileLayout = () => {
   return (
-    <div className="container mt-10">
+    <div className="container mt-10 mb-24">
       <h1 className="mb-12 font-manrope text-[32px] font-bold">
         Profile
       </h1>

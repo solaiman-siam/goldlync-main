@@ -3,7 +3,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "../shadcn/ui/avatar";
 import userImage from "@/assets/images/user-1.png";
 import { cn } from "@/lib/shadcn/utils";
 import {
-  BalanceIcon1,
   BookmarkIcon1,
   FileIcon1,
   LogoutIcon1,
@@ -22,24 +21,20 @@ const ProfileSidebar = () => {
         </Avatar>
         <div className="font-manrope text-xl font-bold">Floyd Miles</div>
       </div>
-      <div className="flex w-full flex-grow flex-col gap-1.5">
+      <div className="flex w-full flex-grow flex-col gap-1.5 mb-20">
         <div className="font-manrope text-xl font-bold">Account</div>
         <ul className="flex w-full flex-col gap-1.5">
           <SidebarLink path="/profile/profile-details">
             <FileIcon1 />
             <span>Profile Details</span>
           </SidebarLink>
-          <SidebarLink path="/profile/message">
+          <SidebarLink path="/message">
             <ProfileIcon1 />
             <span>Message</span>
           </SidebarLink>
           <SidebarLink path="/profile/my-jobs">
             <BookmarkIcon1 />
             <span>My Job</span>
-          </SidebarLink>
-          <SidebarLink path="/profile/request-pro">
-            <BookmarkIcon1 />
-            <span>Request pro</span>
           </SidebarLink>
           <SidebarLink path="/profile/notifications">
             <NotificationIcon1 />
@@ -48,20 +43,11 @@ const ProfileSidebar = () => {
         </ul>
       </div>
       <div className="flex w-full flex-col gap-1.5">
-        <div className="font-manrope text-xl font-bold">Payments</div>
-        <ul className="flex w-full flex-col gap-1.5">
-          <SidebarLink path="/profile/balance">
-            <BalanceIcon1 />
-            <span>Balance</span>
-          </SidebarLink>
-        </ul>
-      </div>
-      <div className="flex w-full flex-col gap-1.5">
         <div className="font-manrope text-xl font-bold">Support</div>
         <ul className="flex w-full flex-col gap-1.5">
-          <SidebarLink path="/profile/online-help-desk">
+          <SidebarLink path="/online-help-desk">
             <SupportIcon1 />
-            <span>Online Help desk</span>
+            <span>Online Help Desk</span>
           </SidebarLink>
         </ul>
       </div>
