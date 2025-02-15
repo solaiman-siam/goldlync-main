@@ -6,10 +6,10 @@ const AddServicesByConstructor = () => {
       <div className="mb-12 space-y-8">
         <p className="text-3xl font-semibold">Add Services</p>
         <input
-          className="block w-full rounded-md border p-4 outline-primary"
+          className="block w-full rounded border px-6 py-4 outline-primary border-input"
           placeholder="Type services you provide here"
         />
-        <Button className="px-16">Add service</Button>
+        <Button className="px-16" type="button">Add service</Button>
       </div>
       <div className="mb-12 space-y-8">
         <p className="text-3xl font-semibold">Services</p>
@@ -18,7 +18,7 @@ const AddServicesByConstructor = () => {
           .map((_, idx) => {
             return (
               <div className="relative" key={idx}>
-                <p className="w-full rounded-md border p-4">Leak fixing</p>
+                <p className="w-full rounded border p-4">Leak fixing</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="23"

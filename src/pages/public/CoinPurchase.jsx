@@ -275,17 +275,17 @@ const CoinPurchase = () => {
                 <path
                   d="M0.999997 40.8082C0.999997 40.8082 43.9587 1.00001 108.877 1.00001C173.795 1.00001 216.754 40.8083 216.754 40.8083"
                   stroke="#FF6A16"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-dasharray="12 8"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeDasharray="12 8"
                 />
                 <path
                   d="M215.551 28.6094L217.502 41.5909L204.555 43.4268"
                   stroke="#FF6A16"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </g>
             </svg>
@@ -301,10 +301,6 @@ const CoinPurchase = () => {
                 className="stroke-primary group-hover:stroke-white"
               >
                 <g clipPath="url(#clip0_17982_17257)">
-                  <path
-                    opacity="0.2"
-                    d="M10.001 15.9981C10.001 14.0202 10.5875 12.0868 11.6863 10.4423C12.7851 8.79786 14.3469 7.51613 16.1742 6.75926C18.0014 6.00238 20.0121 5.80435 21.9519 6.1902C23.8917 6.57605 25.6735 7.52846 27.0721 8.92698C28.4706 10.3255 29.423 12.1073 29.8089 14.0471C30.1947 15.987 29.9967 17.9976 29.2398 19.8249C28.4829 21.6521 27.2012 23.2139 25.5567 24.3127C23.9122 25.4116 21.9788 25.9981 20.001 25.9981H9.00101C8.0083 25.9971 7.02716 25.785 6.12269 25.3758C5.21823 24.9667 4.41114 24.3698 3.75498 23.6249C3.09882 22.88 2.60862 22.004 2.31689 21.0551C2.02517 20.1063 1.9386 19.1062 2.06294 18.1213C2.18727 17.1364 2.51967 16.1892 3.03806 15.3426C3.55645 14.496 4.24898 13.7694 5.06969 13.2109C5.89039 12.6524 6.8205 12.2749 7.79827 12.1033C8.77604 11.9318 9.77912 11.9702 10.7409 12.216"
-                  />
                   <path
                     d="M12.001 25.998H9.00101C8.0083 25.9971 7.02716 25.785 6.1227 25.3758C5.21823 24.9667 4.41114 24.3698 3.75498 23.6249C3.09882 22.88 2.60862 22.004 2.31689 21.0551C2.02517 20.1063 1.9386 19.1062 2.06294 18.1213C2.18727 17.1364 2.51967 16.1892 3.03806 15.3426C3.55645 14.496 4.24898 13.7694 5.06969 13.2109C5.89039 12.6524 6.8205 12.2749 7.79827 12.1033C8.77604 11.9318 9.77912 11.9702 10.7409 12.216"
                     strokeWidth="2"
@@ -352,17 +348,17 @@ const CoinPurchase = () => {
                 <path
                   d="M0.999997 8.19175C0.999997 8.19175 43.9587 48 108.877 48C173.795 48 216.754 8.19174 216.754 8.19174"
                   stroke="#FF6A16"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-dasharray="12 8"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeDasharray="12 8"
                 />
                 <path
                   d="M215.551 20.3906L217.502 7.40915L204.555 5.57318"
                   stroke="#FF6A16"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </g>
             </svg>
@@ -429,17 +425,17 @@ const CoinPurchase = () => {
                 <path
                   d="M0.999997 40.8082C0.999997 40.8082 43.9587 1.00001 108.877 1.00001C173.795 1.00001 216.754 40.8083 216.754 40.8083"
                   stroke="#FF6A16"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-dasharray="12 8"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeDasharray="12 8"
                 />
                 <path
                   d="M215.551 28.6094L217.502 41.5909L204.555 43.4268"
                   stroke="#FF6A16"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </g>
             </svg>

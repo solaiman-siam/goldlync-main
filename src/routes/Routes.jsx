@@ -45,6 +45,8 @@ import AddServicesByConstructor from "@/pages/public/Services/AddServicesByConst
 import About from "@/pages/public/About";
 import Contact from "@/pages/public/Contact";
 import OnlineHelpdesk from "@/pages/OnlineHelpdesk";
+import WorkArea from "@/pages/WorkArea";
+import ConstructorForm from "@/pages/ConstructorForm";
 
 export const route = createBrowserRouter([
   {
@@ -65,6 +67,14 @@ export const route = createBrowserRouter([
         element: (
           <PageTitle title="Pros">
             <Pros />
+          </PageTitle>
+        ),
+      },
+      {
+        path: "/constructor-form",
+        element: (
+          <PageTitle title="Constructor Form">
+            <ConstructorForm />
           </PageTitle>
         ),
       },
@@ -288,7 +298,7 @@ export const route = createBrowserRouter([
             path: "working-area",
             element: (
               <PageTitle title="Working Area">
-                <div className="">/working-area</div>
+                <WorkArea/>
               </PageTitle>
             ),
           },
