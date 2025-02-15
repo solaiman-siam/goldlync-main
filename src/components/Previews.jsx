@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 
-const Previews = (props) => {
+const Previews = ({props, limit=20}) => {
   const thumbsContainer = {
     display: "flex",
     flexDirection: "row",
@@ -54,7 +54,7 @@ const Previews = (props) => {
         ).map((name) => allFiles.find((file) => file.name === name));
 
         // Limit to 5 files
-        return uniqueFiles.slice(0, 20);
+        return uniqueFiles.slice(0, limit);
       });
     },
   });
@@ -84,7 +84,7 @@ const Previews = (props) => {
     <section className="container">
       <div {...getRootProps({ className: "dropzone" })}>
         <input {...getInputProps()} />
-        <div className="flex h-[64px] items-center justify-between rounded border px-4">
+        <div className="flex h-[64px] items-center justify-between rounded border  border-input px-4">
           <div className="flex items-center gap-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -4,7 +4,7 @@ const Portfolio = () => {
       <div className="mb-6">
         <p className="text-3xl font-semibold">Portfolio</p>
       </div>
-      <div className="">
+      {/* <div className="">
         <div className="heading flex items-center justify-between text-xl font-semibold">
           <p className="text-xl">Order Status</p>
         </div>
@@ -16,9 +16,9 @@ const Portfolio = () => {
           <p className="">Started</p>
           <p>Completed</p>
         </div>
-      </div>
+      </div> */}
 
-      <div className="mt-8 space-y-5 rounded-lg border p-4">
+      {/* <div className="mt-8 space-y-5 rounded-lg border p-4">
         <div className="flex items-center justify-between rounded-sm bg-[#FFF2EB] px-6 py-4">
           <p className="text-xl text-black">
             I will provide professional home repair services for your project
@@ -66,11 +66,26 @@ const Portfolio = () => {
             Cancel
           </button>
         </div>
-      </div>
+      </div> */}
 
-      <div className="mb-[160px] mt-20">
+      <div className="mb-[160px]">
         <div className="heading mb-5 flex items-center justify-between text-xl font-semibold">
-          <p className="text-xl">Completed</p>
+          <p className="text-xl">Completed Projects</p>
+          <button type="button" className="inline-flex items-center gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="23"
+              height="23"
+              viewBox="0 0 23 23"
+              fill="none"
+            >
+              <path
+                d="M0.819336 22.2002L1.10427 20.7755L2.16022 15.4958L15.9629 1.69309L16.9099 0.746094L17.8569 1.69309L21.3222 5.15842L22.2734 6.10961L21.3264 7.05661L7.52373 20.8593L2.24402 21.9152L0.819336 22.2002ZM6.86167 19.6232L17.5007 8.98831L14.0354 5.52298L3.39634 16.1578L2.52896 20.4905L6.86167 19.6232ZM18.4477 8.04132L20.3752 6.10961L16.9099 2.64428L14.9782 4.57179L18.4435 8.03713L18.4477 8.04132Z"
+                fill="#262627"
+              />
+            </svg>
+            Add Projects
+          </button>
         </div>
         <div className="grid grid-cols-3 gap-x-7 gap-y-8">
           {[...Array(9)].map((_, index) => (
