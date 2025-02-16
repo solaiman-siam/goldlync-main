@@ -7,6 +7,15 @@ import { Textarea } from "@/components/shadcn/ui/textarea";
 import { FaDiscord, FaInstagram, FaTwitter } from "react-icons/fa";
 
 const Contact = () => {
+
+  const handelSubmit =(e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+    console.log(e.target.firstName.value);
+    console.log(data);
+  }
+
   return (
     <section className="container py-24">
       <SectionTitle tagName={"h3"}>Contact Us</SectionTitle>
@@ -92,9 +101,9 @@ const Contact = () => {
           </div>
 
           <div className="right relative col-span-3">
-            <form className="space-y-12 p-6">
+            <form className="space-y-12 p-6" onSubmit={handelSubmit}>
               <div className="grid grid-cols-2 gap-6">
-                <div className="space-y-2">
+                <fieldset className="space-y-2">
                   <Label
                     htmlFor="firstName"
                     className="text-sm font-normal text-gray-600"
@@ -106,7 +115,7 @@ const Contact = () => {
                     placeholder="Dain"
                     className="h-8 rounded-none border-x-0 border-b border-t-0 px-0 focus-visible:border-gray-950 focus-visible:ring-0"
                   />
-                </div>
+                </fieldset>
                 <div className="space-y-2">
                   <Label
                     htmlFor="lastName"
