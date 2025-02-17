@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 const Portfolio = () => {
   return (
     <>
@@ -71,7 +73,7 @@ const Portfolio = () => {
       <div className="mb-[160px]">
         <div className="heading mb-5 flex items-center justify-between text-xl font-semibold">
           <p className="text-xl">Completed Projects</p>
-          <button type="button" className="inline-flex items-center gap-2">
+          <Link to="/constructor-profile/add-project" type="button" className="inline-flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="23"
@@ -85,7 +87,7 @@ const Portfolio = () => {
               />
             </svg>
             Add Projects
-          </button>
+          </Link>
         </div>
         <div className="grid grid-cols-3 gap-x-7 gap-y-8">
           {[...Array(9)].map((_, index) => (

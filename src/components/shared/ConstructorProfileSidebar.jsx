@@ -64,6 +64,10 @@ const ConstructorProfileSidebar = () => {
           <Constructor8 />
             <span>Add Services</span>
           </SidebarLink>
+          <SidebarLink path="/constructor-profile/add-project">
+          <Constructor4 />
+            <span>Add Project</span>
+          </SidebarLink>
           <SidebarLink path="/constructor-profile/notification-settings">
           <Constructor10 />
             <span>Notifications</span>

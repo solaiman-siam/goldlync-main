@@ -47,6 +47,7 @@ import Contact from "@/pages/public/Contact";
 import OnlineHelpdesk from "@/pages/OnlineHelpdesk";
 import WorkArea from "@/pages/WorkArea";
 import ConstructorForm from "@/pages/ConstructorForm";
+import AddProjects from "@/pages/AddProjects";
 
 export const route = createBrowserRouter([
   {
@@ -291,6 +292,14 @@ export const route = createBrowserRouter([
             element: (
               <PageTitle title="Company details">
                 <ConstructorProfile />
+              </PageTitle>
+            ),
+          },
+          {
+            path: "add-project",
+            element: (
+              <PageTitle title="Add Projects">
+                <AddProjects/>
               </PageTitle>
             ),
           },
