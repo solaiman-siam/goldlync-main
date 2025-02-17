@@ -1,8 +1,14 @@
-
 import CommonSelect from "./CommonSelect";
 import { Link } from "react-router";
 import { useState } from "react";
 import Previews from "@/components/Previews";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTrigger,
+} from "@/components/shadcn/ui/custom-dialog";
 
 function Questionnaries() {
   const selectData = [
@@ -55,6 +61,11 @@ function Questionnaries() {
     setBudget((prevBudget) => prevBudget + increment);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("form submitted", e);
+  };
+
   return (
     <div>
       <div className="container py-24">
@@ -62,7 +73,7 @@ function Questionnaries() {
           Gutter cleaning questionnaire
         </h3>
         <div className="pt-12 font-manrope">
-          <form action="" className="space-y-8">
+          <form className="space-y-8" onSubmit={handleSubmit}>
             <div className="space-y-8">
               {selectData.map((select) => (
                 <CommonSelect
@@ -194,30 +205,57 @@ function Questionnaries() {
                     placeholder="City"
                   />
                 </div>
-                <div className="">
-                  <input
-                    type="text"
-                    className="h-[64px] w-full rounded border px-4 outline-primary"
-                    placeholder="Country"
-                  />
-                </div>
 
                 <div className="">
                   <input
                     type="text"
                     className="h-[64px] w-full rounded border px-4 outline-primary"
-                    placeholder="Phone Number"
+                    placeholder="Phone Number *"
+                  />
+                </div>
+                <div className="">
+                  <input
+                    type="text"
+                    className="h-[64px] w-full rounded border px-4 outline-primary"
+                    placeholder="Phone Number (Optional)"
                   />
                 </div>
               </div>
             </div>
 
-            <Link
-              to="/pros"
-              className="block w-80 rounded-full bg-primary py-4 text-center font-medium text-white"
-            >
-              Submit
-            </Link>
+            <Dialog>
+              <DialogTrigger
+                type="submit"
+                className="block w-80 rounded-full bg-primary py-4 text-center font-medium text-white"
+              >
+                Submit
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogDescription>
+                    <div className="flex flex-col p-20">
+                      <h2 className="mb-12 text-center text-4xl font-bold leading-[120%]">
+                        Top-Rated Pros at Your <br /> Service
+                      </h2>
+                      <Link
+                        to="/pros"
+                        type="button"
+                        className="mx-auto mb-6 w-[80%] rounded-full border border-primary bg-primary py-3 text-lg font-semibold text-white text-center"
+                      >
+                        Choose Your Pro
+                      </Link>
+                      <Link
+                        to="/safety-guideline"
+                        type="button"
+                        className="mx-auto w-[80%] rounded-full border border-primary py-3 text-center text-lg font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-white"
+                      >
+                        Submit to random pro
+                      </Link>
+                    </div>
+                  </DialogDescription>
+                </DialogHeader>
+              </DialogContent>
+            </Dialog>
           </form>
 
           <div className="mt-24">

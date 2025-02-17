@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link as ScrollLink } from "react-scroll";
 import siteLogo from "@/assets/images/site-logo.png";
 import profileImg from "@/assets/images/constructor.png";
 import RatingStar from "@/components/shared/RatingStar";
@@ -11,7 +11,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/shared/ProjectsDialog"
+} from "@/components/shared/ProjectsDialog";
 import {
   Accordion,
   AccordionContent,
@@ -39,6 +39,7 @@ import "swiper/css/pagination";
 
 import { FreeMode, Navigation } from "swiper/modules";
 import ImageContainer from "@/components/ImageContainer";
+import { Link } from "react-router";
 
 const ConstructorProfileDetails = () => {
   const [openShowALl, setOpenShowALl] = useState(false);
@@ -53,22 +54,32 @@ const ConstructorProfileDetails = () => {
     {
       id: 1,
       name: "About",
+      contentId: "about",
+      offset: -70,
     },
     {
       id: 2,
       name: "Recent Work",
+      contentId: "works",
+      offset: -50,
     },
     {
       id: 3,
       name: "Services",
+      contentId: "services",
+      offset: -50,
     },
     {
       id: 4,
       name: "Reviews",
+      contentId: "reviews",
+      offset: -50,
     },
     {
       id: 5,
       name: "FAQ",
+      contentId: "faq",
+      offset: -50,
     },
   ];
 
@@ -77,7 +88,7 @@ const ConstructorProfileDetails = () => {
       <div className="grid grid-cols-3 gap-10">
         <div className="left col-span-2">
           <Link to="/pros" className="flex items-center gap-1.5">
-            <BackSign className="stroke-primary"/>
+            <BackSign className="stroke-primary" />
             <span className="text-primary">See more pro profile</span>
           </Link>
           <div className="bread-crumb mt-5 text-[#242424]">
@@ -133,147 +144,145 @@ const ConstructorProfileDetails = () => {
               </button>
             </div>
           </div>
-          <div className="mb-7 border-b">
+          <div className="sticky top-0 z-10 mb-7 border-b bg-white">
             {tabs.map((tab) => (
-              <button
+              <ScrollLink
+                to={tab?.contentId}
+                smooth={true}
+                duration={500}
+                offset={tab?.offset}
                 key={tab.id}
                 type="button"
-                className={`relative px-4 py-3 text-xl hover:text-primary ${activeTab === tab.id ? "text-primary after:absolute after:-bottom-px after:left-0 after:w-full after:border-b after:border-primary" : "text-[#3D3D3D]"} transition-all duration-300`}
+                className={`relative px-4 py-3 text-xl hover:text-primary ${activeTab === tab.id ? "text-primary after:absolute after:-bottom-px after:left-0 after:w-full after:border-b after:border-primary" : "text-[#3D3D3D]"} transition-all duration-300 cursor-pointer inline-block`}
                 onClick={() => selectActiveTab(tab.id)}
               >
                 {tab.name}
-              </button>
+              </ScrollLink>
             ))}
           </div>
-          {activeTab === 1 && (
-            <div className="border-b pb-12">
-              <h4 className="mb-3 text-xl font-semibold">Introduction</h4>
-              <p className="mb-7 text-[#575757]">
-                {displayedText}{" "}
-                {isExpanded || (
-                  <span
-                    className="cursor-pointer text-primary"
-                    onClick={() => setIsExpanded((prev) => !prev)}
-                  >
-                    Read More...{" "}
-                  </span>
-                )}
-              </p>
-              <div className="flex gap-12">
-                <div className="left flex-1 space-y-8">
-                  <div className="">
-                    <h4 className="mb-3 text-xl font-semibold">Overview</h4>
-                    <div className="space-y-4">
-                      <p className="flex items-center gap-1 text-[#575757]">
-                        <TopBadge1 className="size-6" /> Current Top Pro
-                      </p>
-                      <p className="flex items-center gap-1 text-[#575757]">
-                        <Hired1 className="size-6" /> Hired 250 Time
-                      </p>
-                      <p className="flex items-center gap-1 text-[#575757]">
-                        <Location2 className="size-6" /> 10 Similar work done
-                        near your location{" "}
-                      </p>
-                      <p className="flex items-center gap-1 text-[#575757]">
-                        <Employees className="size-6" /> 10 employees
-                      </p>
-                      <p className="flex items-center gap-1 text-[#575757]">
-                        <Experience className="size-6" /> 2 years business
-                        experience
-                      </p>
-                    </div>
-                  </div>
-                  <div className="">
-                    <h4 className="mb-3 text-xl font-semibold">
-                      Business hours
-                    </h4>
-                    <div className="space-y-1.5 rounded border p-3">
-                      <div className="flex items-center justify-between text-[#575757]">
-                        <p>Sunday</p>
-                        <p>Close</p>
-                      </div>
-                      <div className="flex items-center justify-between text-[#575757]">
-                        <p>Monday</p>
-                        <p>9:00 AM - 6:00 PM</p>
-                      </div>
-                      {isDaysExpanded || (
-                        <button
-                          type="button"
-                          onClick={() => setIsDaysExpanded((prev) => !prev)}
-                          className="w-full text-right text-primary"
-                        >
-                          Read More
-                        </button>
-                      )}
-                      {isDaysExpanded && (
-                        <>
-                          <div className="flex items-center justify-between text-[#575757]">
-                            <p>Tuesday</p>
-                            <p>9:00 AM - 6:00 PM</p>
-                          </div>
-                          <div className="flex items-center justify-between text-[#575757]">
-                            <p>Wednesday</p>
-                            <p>9:00 AM - 6:00 PM</p>
-                          </div>
-                          <div className="flex items-center justify-between text-[#575757]">
-                            <p>Thursday</p>
-                            <p>9:00 AM - 6:00 PM</p>
-                          </div>
-                          <div className="flex items-center justify-between text-[#575757]">
-                            <p>Friday</p>
-                            <p>9:00 AM - 6:00 PM</p>
-                          </div>
-                          <div className="flex items-center justify-between text-[#575757]">
-                            <p>Saturday </p>
-                            <p>9:00 AM - 6:00 PM</p>
-                          </div>
-                        </>
-                      )}
-                    </div>
+          <div className="border-b pb-12" id="about">
+            <h4 className="mb-3 text-xl font-semibold">Introduction</h4>
+            <p className="mb-7 text-[#575757]">
+              {displayedText}{" "}
+              {isExpanded || (
+                <span
+                  className="cursor-pointer text-primary"
+                  onClick={() => setIsExpanded((prev) => !prev)}
+                >
+                  Read More...{" "}
+                </span>
+              )}
+            </p>
+            <div className="flex gap-12">
+              <div className="left flex-1 space-y-8">
+                <div className="">
+                  <h4 className="mb-3 text-xl font-semibold">Overview</h4>
+                  <div className="space-y-4">
+                    <p className="flex items-center gap-1 text-[#575757]">
+                      <TopBadge1 className="size-6" /> Current Top Pro
+                    </p>
+                    <p className="flex items-center gap-1 text-[#575757]">
+                      <Hired1 className="size-6" /> Hired 250 Time
+                    </p>
+                    <p className="flex items-center gap-1 text-[#575757]">
+                      <Location2 className="size-6" /> 10 Similar work done near
+                      your location{" "}
+                    </p>
+                    <p className="flex items-center gap-1 text-[#575757]">
+                      <Employees className="size-6" /> 10 employees
+                    </p>
+                    <p className="flex items-center gap-1 text-[#575757]">
+                      <Experience className="size-6" /> 2 years business
+                      experience
+                    </p>
                   </div>
                 </div>
-                <div className="right flex-1 space-y-8">
-                  <div className="">
-                    <h4 className="mb-3 text-xl font-semibold">
-                      Payment Methods
-                    </h4>
-                    <p className="w-[80%]">
-                      This Pro accepts payments via Credit card, Venmo, and
-                      zelle.
-                    </p>
+                <div className="">
+                  <h4 className="mb-3 text-xl font-semibold">Business hours</h4>
+                  <div className="space-y-1.5 rounded border p-3">
+                    <div className="flex items-center justify-between text-[#575757]">
+                      <p>Sunday</p>
+                      <p>Close</p>
+                    </div>
+                    <div className="flex items-center justify-between text-[#575757]">
+                      <p>Monday</p>
+                      <p>9:00 AM - 6:00 PM</p>
+                    </div>
+                    {isDaysExpanded || (
+                      <button
+                        type="button"
+                        onClick={() => setIsDaysExpanded((prev) => !prev)}
+                        className="w-full text-right text-primary"
+                      >
+                        Read More
+                      </button>
+                    )}
+                    {isDaysExpanded && (
+                      <>
+                        <div className="flex items-center justify-between text-[#575757]">
+                          <p>Tuesday</p>
+                          <p>9:00 AM - 6:00 PM</p>
+                        </div>
+                        <div className="flex items-center justify-between text-[#575757]">
+                          <p>Wednesday</p>
+                          <p>9:00 AM - 6:00 PM</p>
+                        </div>
+                        <div className="flex items-center justify-between text-[#575757]">
+                          <p>Thursday</p>
+                          <p>9:00 AM - 6:00 PM</p>
+                        </div>
+                        <div className="flex items-center justify-between text-[#575757]">
+                          <p>Friday</p>
+                          <p>9:00 AM - 6:00 PM</p>
+                        </div>
+                        <div className="flex items-center justify-between text-[#575757]">
+                          <p>Saturday </p>
+                          <p>9:00 AM - 6:00 PM</p>
+                        </div>
+                      </>
+                    )}
                   </div>
-                  <div className="">
-                    <h4 className="mb-3 text-xl font-semibold">
-                      Top Pro Status
-                    </h4>
-                    <p className="mb-3 w-[80%]">
-                      I need assistance with installing a new kitchen tap and
-                      addressing a leak at the connection
-                    </p>
-                    <div className="flex items-center gap-5 text-[#575757]">
-                      <div className="flex flex-col items-center">
-                        <Trophy className="size-10" />
-                        <p>2022</p>
-                      </div>
-                      <div className="flex flex-col items-center">
-                        <Trophy className="size-10" />
-                        <p>2024</p>
-                      </div>
-                      <div className="flex flex-col items-center">
-                        <Trophy className="size-10" />
-                        <p>2025</p>
-                      </div>
+                </div>
+              </div>
+              <div className="right flex-1 space-y-8">
+                <div className="">
+                  <h4 className="mb-3 text-xl font-semibold">
+                    Payment Methods
+                  </h4>
+                  <p className="w-[80%]">
+                    This Pro accepts payments via Credit card, Venmo, and zelle.
+                  </p>
+                </div>
+                <div className="">
+                  <h4 className="mb-3 text-xl font-semibold">Top Pro Status</h4>
+                  <p className="mb-3 w-[80%]">
+                    I need assistance with installing a new kitchen tap and
+                    addressing a leak at the connection
+                  </p>
+                  <div className="flex items-center gap-5 text-[#575757]">
+                    <div className="flex flex-col items-center">
+                      <Trophy className="size-10" />
+                      <p>2022</p>
+                    </div>
+                    <div className="flex flex-col items-center">
+                      <Trophy className="size-10" />
+                      <p>2024</p>
+                    </div>
+                    <div className="flex flex-col items-center">
+                      <Trophy className="size-10" />
+                      <p>2025</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          )}
-          <div className="border-b py-12">
+          </div>
+          <div className="border-b py-12" id="works">
             <div className="mb-7 flex items-center justify-between">
-              <h4 className="text-3xl font-semibold">Recent Work</h4>
+              <h4 className="text-3xl font-semibold">
+                Recent Work
+              </h4>
               <div className="flex gap-5">
-
                 <Dialog open={openShowALl} onOpenChange={setOpenShowALl}>
                   <DialogTrigger className="font-semibold">
                     Show all
@@ -281,7 +290,7 @@ const ConstructorProfileDetails = () => {
                   <DialogContent>
                     <DialogHeader>
                       <DialogTitle className="text-2xl text-white">
-                      Recent Work
+                        Recent Work
                       </DialogTitle>
                       <DialogDescription>
                         <ImageContainer />
@@ -343,7 +352,7 @@ const ConstructorProfileDetails = () => {
                 ))}
             </Swiper>
           </div>
-          <div className="border-b py-12">
+          <div className="border-b py-12" id="services">
             <div className="mb-7 flex items-center justify-between">
               <h4 className="text-3xl font-semibold">Services</h4>
             </div>
@@ -384,7 +393,7 @@ const ConstructorProfileDetails = () => {
               </div>
             </div>
           </div>
-          <div className="border-b py-12">
+          <div className="border-b py-12" id="reviews">
             <h4 className="text-3xl font-semibold">Reviews</h4>
             <p className="py-4 text-[#2C2C2C]">
               I need assistance with installing a new kitchen tap and addressing
@@ -460,7 +469,7 @@ const ConstructorProfileDetails = () => {
                 ))}
             </Swiper>
           </div>
-          <div className="py-12">
+          <div className="py-12" id="faq">
             <h4 className="mb-7 text-3xl font-semibold">
               Frequently Asked Question
             </h4>
@@ -495,8 +504,9 @@ const ConstructorProfileDetails = () => {
                 </AccordionTrigger>
                 <AccordionContent>
                   To check availability, simply click on the &quot;Check
-                  availability&apos; button on the profile page. This will allow you
-                  to see open slots and schedule a service at a convenient time.
+                  availability&apos; button on the profile page. This will allow
+                  you to see open slots and schedule a service at a convenient
+                  time.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-4">
@@ -516,9 +526,10 @@ const ConstructorProfileDetails = () => {
                 </AccordionTrigger>
                 <AccordionContent>
                   If you would like to recommend Signa Clorian to friends,
-                  family, or colleagues, you can use the &quot;Share Profile&quot; button
-                  on the page. This will allow you to easily send the profile
-                  link via social media, email, or direct messaging.
+                  family, or colleagues, you can use the &quot;Share
+                  Profile&quot; button on the page. This will allow you to
+                  easily send the profile link via social media, email, or
+                  direct messaging.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-6">
@@ -527,25 +538,33 @@ const ConstructorProfileDetails = () => {
                 </AccordionTrigger>
                 <AccordionContent>
                   To see customer feedback and examples of past work, navigate
-                  to the &quot;Recent Work&quot; and &quot;Reviews&quot; tabs on the profile page.
-                  Here, you can find real testimonials from satisfied customers
-                  and view completed projects to get a better idea of service
-                  quality.
+                  to the &quot;Recent Work&quot; and &quot;Reviews&quot; tabs on
+                  the profile page. Here, you can find real testimonials from
+                  satisfied customers and view completed projects to get a
+                  better idea of service quality.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
           </div>
         </div>
         <div className="right h-full">
-          <div className="sticky top-20 rounded-md bg-[#FFF2EB] px-5 py-6">
+          <div className="sticky top-10 rounded-md bg-[#FFF2EB] px-5 py-6">
             <p className="mb-1.5 text-xl text-[#494949]">Starting price</p>
             <h2 className="mb-1.5 text-xl">$140</h2>
-            <Link className="text-xl text-primary">View Works</Link>
+            <ScrollLink
+              to="works"
+              smooth={true}
+              duration={500}
+              offset={-50}
+              className="cursor-pointer text-xl text-primary"
+            >
+              View Works
+            </ScrollLink>
             <button
               type="button"
-              className="my-4 block w-full rounded-md bg-primary py-3 text-center text-xl text-white"
+              className="my-4 block w-full rounded-md bg-primary py-3 text-center text-xl text-white font-semibold"
             >
-              Check availability
+              Connect Now
             </button>
             <div className="mb-7 flex items-center justify-center gap-1.5 border-b-2 pb-7 text-[#3D3D3D]">
               <svg
@@ -597,10 +616,7 @@ const ConstructorProfileDetails = () => {
               <p className="text-xl font-bold">GOLDLYNC Guarantee</p>
             </div>
             <p className="text-lg">
-              If you this pro, you’re covered by a money-back guarantee.{" "}
-              <Link to="#" className="text-primary">
-                Learn more
-              </Link>
+              If you hire this pro, you’re covered by a money-back guarantee.
             </p>
           </div>
         </div>

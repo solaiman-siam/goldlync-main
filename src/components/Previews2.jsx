@@ -1,38 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
+import { IoMdClose } from "react-icons/io";
 
 const Previews2 = (props) => {
-  const thumbsContainer = {
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    marginTop: 16,
-  };
-
-  const thumb = {
-    display: "inline-flex",
-    borderRadius: 2,
-    border: "1px solid #eaeaea",
-    marginBottom: 8,
-    marginRight: 8,
-    width: 100,
-    height: 100,
-    padding: 4,
-    boxSizing: "border-box",
-  };
-
-  const thumbInner = {
-    display: "flex",
-    minWidth: 0,
-    overflow: "hidden",
-  };
-
-  const img = {
-    display: "block",
-    width: "auto",
-    height: "100%",
-  };
-
   const [files, setFiles] = useState([]);
   const { getRootProps, getInputProps } = useDropzone({
     accept: {
@@ -60,19 +30,24 @@ const Previews2 = (props) => {
   });
 
   const thumbs = files.map((file) => (
-    <div style={thumb} key={file.name}>
-      <div style={thumbInner}>
-        <figure className="size-24 overflow-hidden">
-          <img
-            src={file.preview}
-            className="size-full object-cover object-center"
-            // Revoke data uri after image is loaded
-            onLoad={() => {
-              URL.revokeObjectURL(file.preview);
-            }}
-          />
-        </figure>
-      </div>
+    <div className="relative" key={file.name}>
+      <figure className="size-24 overflow-hidden border p-1 shadow-md">
+        <img
+          src={file.preview}
+          className="size-full object-cover object-center"
+          // Revoke data uri after image is loaded
+          onLoad={() => {
+            URL.revokeObjectURL(file.preview);
+          }}
+        />
+      </figure>
+      <button
+        type="button"
+        className="absolute -right-2 -top-2 flex size-5 items-center justify-center rounded-full bg-red-800"
+        onClick={() => setFiles(files.filter((f) => f.name !== file.name))}
+      >
+        <IoMdClose className="text-white" />
+      </button>
     </div>
   ));
 
@@ -84,7 +59,7 @@ const Previews2 = (props) => {
     <section className="container">
       <div {...getRootProps({ className: "dropzone" })}>
         <input {...getInputProps()} />
-        <div className="flex justify-center h-[400px] items-center rounded border bg-[#F1F1F1] px-4">
+        <div className="flex h-[400px] items-center justify-center rounded border bg-[#F1F1F1] px-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="120"
@@ -107,7 +82,7 @@ const Previews2 = (props) => {
           </svg>
         </div>
       </div>
-      <aside style={thumbsContainer}>{thumbs}</aside>
+      <aside className="my-5 flex flex-wrap gap-4">{thumbs}</aside>
     </section>
   );
 };

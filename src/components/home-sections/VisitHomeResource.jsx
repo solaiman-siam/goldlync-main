@@ -7,7 +7,7 @@ function VisitHomeResource({
   link = "#",
 }) {
   return (
-    <div className="relative flex h-[500px] w-full items-center justify-center">
+    <div className="relative h-[500px] overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-y-1/2  -translate-x-1/2 z-[8] flex flex-col items-center gap-4 text-white">
         <h3 className="w-5/12 text-center text-4xl font-semibold">{title}</h3>
         <h4 className="w-6/12 pt-2 text-center font-light">{description}</h4>
@@ -27,7 +27,7 @@ function VisitHomeResource({
       </div>
 
       <img
-        className="absolute left-0 right-0 top-0 w-full"
+        className="w-full h-full object-cover object-center"
         src="https://i.ibb.co.com/bjb5ZTwB/Rectangle-25146.png"
         alt=""
       />

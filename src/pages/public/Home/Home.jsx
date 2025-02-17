@@ -14,10 +14,10 @@ const Home = () => {
       <HomeBanner />
       <PrimaryServiceSection limit={6} />
       <FeatureSection />
-      <ServiceSection/>
+      <RecentProjects/>
       {/* <ExploreMoreSection/> */}
       <VisitHomeResource/>
-      <RecentProjects/>
+      <ServiceSection/>
       <WhatOurClientSays/>
       <GetInTouchBanner/>
     </>

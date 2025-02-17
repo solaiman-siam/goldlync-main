@@ -60,7 +60,7 @@ const ConstructorForm = () => {
             {selectedTab == 0 && (
               <>
                 <h2 className="my-6 text-xl font-semibold text-[#222]">
-                Enter your Company Name
+                  Enter your Company Name
                 </h2>
                 <FormField
                   control={form.control}
@@ -79,9 +79,260 @@ const ConstructorForm = () => {
                   )}
                 />
                 <h2 className="my-6 text-xl font-semibold text-[#222]">
-                Your Company Logo
+                  Upload your company logo
                 </h2>
-                <Previews limit={1}/>
+                <Previews limit={1} />
+                <>
+                  <h2 className="my-6 text-xl font-semibold text-[#222]">
+                    How long have you been in business?
+                  </h2>
+
+                  <FormField
+                    control={form.control}
+                    name="type"
+                    render={({ field }) => (
+                      <FormItem className="space-y-3">
+                        <FormControl>
+                          <RadioGroup
+                            onValueChange={field.onChange}
+                            defaultValue={field.value}
+                            className="flex flex-col space-y-1"
+                          >
+                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
+                              <FormControl>
+                                <RadioGroupItem value="lessThanOne" />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                Less than one year
+                              </FormLabel>
+                            </FormItem>
+                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
+                              <FormControl>
+                                <RadioGroupItem value="oneToThree" />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                1-2 year experience
+                              </FormLabel>
+                            </FormItem>
+                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
+                              <FormControl>
+                                <RadioGroupItem value="threeToFive" />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                3-5 year experience
+                              </FormLabel>
+                            </FormItem>
+                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
+                              <FormControl>
+                                <RadioGroupItem value="fivePlus" />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                5 year above
+                              </FormLabel>
+                            </FormItem>
+                          </RadioGroup>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </>
+                <>
+                  <h2 className="my-6 text-xl font-semibold text-[#222]">
+                    How many employee do you have?
+                  </h2>
+
+                  <FormField
+                    control={form.control}
+                    name="type"
+                    render={({ field }) => (
+                      <FormItem className="space-y-3">
+                        <FormControl>
+                          <RadioGroup
+                            onValueChange={field.onChange}
+                            defaultValue={field.value}
+                            className="flex flex-col space-y-1"
+                          >
+                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
+                              <FormControl>
+                                <RadioGroupItem value="self" />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                I am a self-employed entrepreneur, without
+                                employees
+                              </FormLabel>
+                            </FormItem>
+                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
+                              <FormControl>
+                                <RadioGroupItem value="twoToFive" />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                2-5 employee
+                              </FormLabel>
+                            </FormItem>
+                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
+                              <FormControl>
+                                <RadioGroupItem value="sixToFifteen" />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                6 to 15 employees
+                              </FormLabel>
+                            </FormItem>
+                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
+                              <FormControl>
+                                <RadioGroupItem value="fifteenPlus" />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                More than 15 employees
+                              </FormLabel>
+                            </FormItem>
+                          </RadioGroup>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </>
+                <h2 className="my-6 text-xl font-semibold text-[#222]">
+                  what set your company apart from other competitors?{" "}
+                  <span className="text-base font-normal text-primary">
+                    (Tell us 100 words)
+                  </span>
+                </h2>
+                <FormField
+                  control={form.control}
+                  name="benefits"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Textarea
+                          placeholder="Type..."
+                          className="h-[180px] resize-none"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <>
+                  <h2 className="my-6 text-xl font-semibold text-[#222]">
+                    Select all the language you speak?
+                  </h2>
+
+                  <FormField
+                    control={form.control}
+                    name="type"
+                    render={({ field }) => (
+                      <FormItem className="space-y-3">
+                        <FormControl>
+                          <RadioGroup
+                            onValueChange={field.onChange}
+                            defaultValue={field.value}
+                            className="flex flex-col space-y-1"
+                          >
+                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
+                              <FormControl>
+                                <RadioGroupItem value="english" />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                English
+                              </FormLabel>
+                            </FormItem>
+                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
+                              <FormControl>
+                                <RadioGroupItem value="italian" />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                Italian
+                              </FormLabel>
+                            </FormItem>
+                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
+                              <FormControl>
+                                <RadioGroupItem value="germany" />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                Germany
+                              </FormLabel>
+                            </FormItem>
+                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
+                              <FormControl>
+                                <RadioGroupItem value="Spanish" />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                Spanish
+                              </FormLabel>
+                            </FormItem>
+                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
+                              <FormControl>
+                                <RadioGroupItem value="portuguese" />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                Portuguese
+                              </FormLabel>
+                            </FormItem>
+                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
+                              <FormControl>
+                                <RadioGroupItem value="others" />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                Others
+                              </FormLabel>
+                            </FormItem>
+                          </RadioGroup>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <h2 className="my-6 text-xl font-semibold text-[#222]">
+                    How did you hear about us?
+                  </h2>
+
+                  <FormField
+                    control={form.control}
+                    name="type"
+                    render={({ field }) => (
+                      <FormItem className="space-y-3">
+                        <FormControl>
+                          <RadioGroup
+                            onValueChange={field.onChange}
+                            defaultValue={field.value}
+                            className="flex flex-col space-y-1"
+                          >
+                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
+                              <FormControl>
+                                <RadioGroupItem value="social-media" />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                Social media
+                              </FormLabel>
+                            </FormItem>
+                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
+                              <FormControl>
+                                <RadioGroupItem value="google" />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                Google
+                              </FormLabel>
+                            </FormItem>
+                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
+                              <FormControl>
+                                <RadioGroupItem value="nearest-pearson" />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                Nearest Pearson
+                              </FormLabel>
+                            </FormItem>
+                          </RadioGroup>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </>
                 <AddServicesByConstructor />
                 <div className="space-x-3">
                   <Button type="button" className="bg-[#9B9B9B]" asChild>

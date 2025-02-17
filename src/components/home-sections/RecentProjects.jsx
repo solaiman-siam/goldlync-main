@@ -31,7 +31,7 @@ function RecentProjects() {
   };
 
   return (
-    <div className="container py-24">
+    <div className="container py-24" id="explore-projects">
       <SectionTitle tagName={"h3"}>Explore Projects</SectionTitle>
       <SectionText>
         Connect with trusted professionals, set your budget, and bring your
@@ -88,11 +88,11 @@ function RecentProjects() {
         ))}
       </motion.div>
 
-      <div className="flex items-center justify-center pt-16">
+      {/* <div className="flex items-center justify-center pt-16">
         <Link to="/pro-register" className="rounded-full bg-primary px-14 py-4 text-lg font-medium text-white">
           Join as a pro
         </Link>
-      </div>
+      </div> */}
     </div>
   );
 }

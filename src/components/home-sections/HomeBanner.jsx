@@ -4,7 +4,7 @@ import BannerSearch from "../BannerSearch";
 const HomeBanner = () => {
   return (
     <div
-      className="flex min-h-[calc(100vh-92px)] items-center justify-center bg-cover bg-center bg-no-repeat p-4 md:gap-1 lg:gap-1"
+      className="flex !max-h-[850px] h-[calc(100vh-92px)] items-center justify-center bg-cover bg-center bg-no-repeat p-4 md:gap-1 lg:gap-1"
       style={{ backgroundImage: `url('${bannerImage}')` }}
     >
       <div className="flex w-full max-w-[1096px] shrink-0 flex-col items-start gap-5 rounded-2xl border border-solid border-[rgba(255,255,255,0.29)] bg-[rgba(255,255,255,0.06)] px-[73px] py-[86px] text-center font-manrope text-white backdrop-blur-[6px]">
