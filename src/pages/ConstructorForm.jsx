@@ -3,7 +3,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/shadcn/ui/button";
-import { Slider } from "@/components/shadcn/ui/slider";
 import {
   Form,
   FormControl,
@@ -12,9 +11,9 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/shadcn/ui/form";
+import { Checkbox } from "@/components/shadcn/ui/checkbox";
 import { Input } from "@/components/shadcn/ui/input";
-import AddServicesByConstructor from "./public/Services/AddServicesByConstructor";
-import { Link, Navigate } from "react-router";
+import { Link } from "react-router";
 import { useState } from "react";
 import Previews2 from "@/components/Previews2";
 import { Textarea } from "@/components/shadcn/ui/textarea";
@@ -25,65 +24,124 @@ import {
   RadioGroupItem,
 } from "@/components/shadcn/ui/custom-radio-group";
 import Previews from "@/components/Previews";
+import ConstructorBenefits from "@/components/shared/ConstructorBenefits";
+import AddServicesByConstructor from "./public/Services/AddServicesByConstructor";
+import { Slider } from "@/components/shadcn/ui/slider";
+import AddCategories from "./public/Services/AddCategories";
 
-const formSchema = z.object({
-  companyName: z.string().min(2, {
-    message: "Company Name must be at least 2 characters.",
-  }),
-  searchArea: z.string().min(1, "Search area cannot be empty"),
-});
+const items = [
+  {
+    id: "on-time",
+    label: "On-time",
+  },
+  {
+    id: "assure-quality",
+    label: "Assure Quality",
+  },
+  {
+    id: "trustworthy",
+    label: "Trustworthy",
+  },
+  {
+    id: "detailed-oriented",
+    label: "Detailed oriented",
+  },
+  {
+    id: "fastest",
+    label: "Fastest",
+  },
+];
+
+const languages = ["English", "Italian", "Spanish"];
+
+const tabsTitle = [
+  "Fill up your company information",
+  "Add Services",
+  "Add Service Area",
+  "Set your budget preference",
+  "Additional Information",
+];
+
+const formSchema = z
+  .object({
+    companyName: z.string().min(2, {
+      message: "Company Name must be at least 2 characters.",
+    }),
+    searchArea: z.string().min(1, "Search area cannot be empty"),
+    type: z.string().min(1, "Please select an option"), // Ensuring radio selection
+    benefits: z
+      .string()
+      .min(20, "Please write at least 20 characters.")
+      .max(1000, "Maximum 1000 characters allowed."),
+    quality: z
+      .array(z.string())
+      .min(3, "Please select at least 3 attributes.")
+      .max(3, "You can only select up to 3 attributes."), // Restricts to exactly 3 selections
+  })
+  .passthrough();
 
 const ConstructorForm = () => {
   const [selectedTab, setSelectedTab] = useState(0);
-  const [value, setValue] = useState(33);
+  const [value, setValue] = useState(20);
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
       companyName: "",
       searchArea: "",
+      type: "",
+      benefits: "",
+      quality: [], // Ensure an empty array for multi-checkbox selection
     },
   });
 
   function onSubmit(values) {
     console.log(values);
+    console.log("submited");
   }
 
   return (
     <section className="container my-20">
       <h2 className="mb-7 text-3xl font-semibold text-[#222]">
-        Fill up some information
+        {tabsTitle[selectedTab]}
       </h2>
-      <Progress value={selectedTab * 25} className="h-2" />
+      <Progress
+        value={(selectedTab / tabsTitle.length) * 100}
+        className="h-2"
+      />
       <div className="mt-12 w-[60%]">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="">
             {selectedTab == 0 && (
               <>
-                <h2 className="my-6 text-xl font-semibold text-[#222]">
-                  Enter your Company Name
-                </h2>
-                <FormField
-                  control={form.control}
-                  name="companyName"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Input
-                          placeholder="Name of your company"
-                          {...field}
-                          className="px-5 py-4"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <h2 className="my-6 text-xl font-semibold text-[#222]">
-                  Upload your company logo
-                </h2>
-                <Previews limit={1} />
                 <>
-                  <h2 className="my-6 text-xl font-semibold text-[#222]">
+                  <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
+                    Enter your Company Name
+                  </h2>
+                  <FormField
+                    control={form.control}
+                    name="companyName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input
+                            placeholder="Name of your company"
+                            {...field}
+                            className="px-5 py-4"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </>
+                <>
+                  <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
+                    Upload your company logo
+                  </h2>
+                  <Previews limit={1} />
+                </>
+                <>
+                  <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
                     How long have you been in business?
                   </h2>
 
@@ -138,7 +196,7 @@ const ConstructorForm = () => {
                   />
                 </>
                 <>
-                  <h2 className="my-6 text-xl font-semibold text-[#222]">
+                  <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
                     How many employee do you have?
                   </h2>
 
@@ -193,101 +251,212 @@ const ConstructorForm = () => {
                     )}
                   />
                 </>
-                <h2 className="my-6 text-xl font-semibold text-[#222]">
-                  what set your company apart from other competitors?{" "}
-                  <span className="text-base font-normal text-primary">
-                    (Tell us 100 words)
-                  </span>
-                </h2>
-                <FormField
-                  control={form.control}
-                  name="benefits"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Textarea
-                          placeholder="Type..."
-                          className="h-[180px] resize-none"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
                 <>
-                  <h2 className="my-6 text-xl font-semibold text-[#222]">
-                    Select all the language you speak?
+                  <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
+                    what set your company apart from other competitors?{" "}
+                    <span className="text-base font-normal text-primary">
+                      (Tell us 100 words)
+                    </span>
                   </h2>
-
                   <FormField
                     control={form.control}
-                    name="type"
+                    name="benefits"
                     render={({ field }) => (
-                      <FormItem className="space-y-3">
+                      <FormItem>
                         <FormControl>
-                          <RadioGroup
-                            onValueChange={field.onChange}
-                            defaultValue={field.value}
-                            className="flex flex-col space-y-1"
-                          >
-                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                              <FormControl>
-                                <RadioGroupItem value="english" />
-                              </FormControl>
-                              <FormLabel className="font-normal">
-                                English
-                              </FormLabel>
-                            </FormItem>
-                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                              <FormControl>
-                                <RadioGroupItem value="italian" />
-                              </FormControl>
-                              <FormLabel className="font-normal">
-                                Italian
-                              </FormLabel>
-                            </FormItem>
-                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                              <FormControl>
-                                <RadioGroupItem value="germany" />
-                              </FormControl>
-                              <FormLabel className="font-normal">
-                                Germany
-                              </FormLabel>
-                            </FormItem>
-                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                              <FormControl>
-                                <RadioGroupItem value="Spanish" />
-                              </FormControl>
-                              <FormLabel className="font-normal">
-                                Spanish
-                              </FormLabel>
-                            </FormItem>
-                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                              <FormControl>
-                                <RadioGroupItem value="portuguese" />
-                              </FormControl>
-                              <FormLabel className="font-normal">
-                                Portuguese
-                              </FormLabel>
-                            </FormItem>
-                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                              <FormControl>
-                                <RadioGroupItem value="others" />
-                              </FormControl>
-                              <FormLabel className="font-normal">
-                                Others
-                              </FormLabel>
-                            </FormItem>
-                          </RadioGroup>
+                          <Textarea
+                            placeholder="Type..."
+                            className="h-[180px] resize-none"
+                            {...field}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-
-                  <h2 className="my-6 text-xl font-semibold text-[#222]">
+                </>
+                <>
+                  <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
+                    Select 3 attributes why customers should hire you{" "}
+                    <span className="text-primary">
+                      {form.getValues().quality.length}/3
+                    </span>{" "}
+                    ?
+                  </h2>
+                  <FormField
+                    control={form.control}
+                    name="quality"
+                    render={() => (
+                      <FormItem>
+                        {items.map((item) => (
+                          <FormField
+                            key={item.id}
+                            control={form.control}
+                            name="quality"
+                            render={({ field }) => {
+                              const valueArray = Array.isArray(field.value)
+                                ? field.value
+                                : []; // Ensure it's an array
+                              return (
+                                <FormItem
+                                  key={item.id}
+                                  className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4"
+                                >
+                                  <FormControl>
+                                    <Checkbox
+                                      checked={valueArray.includes(item.id)}
+                                      onCheckedChange={(checked) => {
+                                        field.onChange(
+                                          checked
+                                            ? [...valueArray, item.id]
+                                            : valueArray.filter(
+                                                (value) => value !== item.id
+                                              )
+                                        );
+                                      }}
+                                    />
+                                  </FormControl>
+                                  <FormLabel className="font-normal">
+                                    {item.label}
+                                  </FormLabel>
+                                </FormItem>
+                              );
+                            }}
+                          />
+                        ))}
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </>
+                <div className="mt-8 space-x-3">
+                  <Button type="button" className="bg-[#9B9B9B]" asChild>
+                    <Link to="/constructor-profile">Cancel</Link>
+                  </Button>
+                  <Button type="button" onClick={() => setSelectedTab(1)}>
+                    Next
+                  </Button>
+                </div>
+              </>
+            )}
+            {selectedTab == 1 && (
+              <>
+                <AddCategories />
+                <>
+                  <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
+                    Upload your any license or certification
+                  </h2>
+                  <Previews2 />
+                </>
+                <div className="mt-8 space-x-3">
+                  <Button
+                    type="button"
+                    className="bg-[#9B9B9B]"
+                    onClick={() => setSelectedTab(0)}
+                  >
+                    Back
+                  </Button>
+                  <Button type="button" onClick={() => setSelectedTab(2)}>
+                    Next
+                  </Button>
+                </div>
+              </>
+            )}
+            {selectedTab == 2 && (
+              <>
+                <>
+                  <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
+                    What is your area of work?
+                  </h2>
+                  <FormField
+                    control={form.control}
+                    name="searchArea"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input
+                            placeholder="Search your area"
+                            {...field}
+                            className="px-5 py-4"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
+                    Set your maximum distance around your area
+                  </h2>
+                  <Slider
+                    defaultValue={[value]}
+                    max={50}
+                    min={5}
+                    step={1}
+                    onValueChange={(val) => setValue(val)}
+                  />
+                  <p className="my-4">Area of Service: {value} Miles</p>
+                  <div className="flex h-[450px] w-full items-center justify-center border">
+                    Map
+                  </div>
+                </>
+                <div className="mt-8 space-x-3">
+                  <Button
+                    type="button"
+                    className="bg-[#9B9B9B]"
+                    onClick={() => setSelectedTab(1)}
+                  >
+                    Back
+                  </Button>
+                  <Button type="button" onClick={() => setSelectedTab(3)}>
+                    Next
+                  </Button>
+                </div>
+              </>
+            )}
+            {selectedTab == 3 && (
+              <>
+              <></>
+                <h2 className="my-6 text-xl font-semibold text-[#222]">
+                  Set your starting budget preference
+                </h2>
+                <FormField
+                  control={form.control}
+                  name="price"
+                  render={({ field }) => (
+                    <FormItem className="relative w-1/3">
+                      <FormControl>
+                        <Input
+                          placeholder="100"
+                          {...field}
+                          className="px-5 py-4"
+                        />
+                      </FormControl>
+                      <FaDollarSign className="absolute right-6 top-1/2 !mt-0 -translate-y-1/2 text-primary" />
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <figure className="w-full h-[350px] rounded-md overflow-hidden mt-8">
+                  <img src="https://i.ibb.co.com/hFLYHzqX/Rectangle-25152.png" alt="" className="w-full h-full object-cover object-center" />
+                </figure>
+                <div className="mt-8 space-x-3">
+                  <Button
+                    type="button"
+                    className="bg-[#9B9B9B]"
+                    onClick={() => setSelectedTab(2)}
+                  >
+                    Back
+                  </Button>
+                  <Button type="button" onClick={() => setSelectedTab(4)}>
+                    Next
+                  </Button>
+                </div>
+              </>
+            )}
+            {selectedTab == 4 && (
+              <>
+                <>
+                  <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
                     How did you hear about us?
                   </h2>
 
@@ -333,301 +502,19 @@ const ConstructorForm = () => {
                     )}
                   />
                 </>
-                <AddServicesByConstructor />
-                <div className="space-x-3">
-                  <Button type="button" className="bg-[#9B9B9B]" asChild>
-                    <Link to="/constructor-profile">Cancel</Link>
-                  </Button>
-                  <Button type="button" onClick={() => setSelectedTab(1)}>
-                    Next
-                  </Button>
-                </div>
-              </>
-            )}
-            {selectedTab == 1 && (
-              <>
-                <div className="">
-                  <h2 className="mb-6 text-xl font-semibold text-[#222]">
-                    What is your area of work?
-                  </h2>
-                  <FormField
-                    control={form.control}
-                    name="searchArea"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input
-                            placeholder="Search your area"
-                            {...field}
-                            className="px-5 py-4"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <h2 className="my-6 text-xl font-semibold text-[#222]">
-                    Set your maximum distance around your area
-                  </h2>
-                  <Slider
-                    defaultValue={[value]}
-                    max={50}
-                    min={5}
-                    step={1}
-                    onValueChange={(val) => setValue(val)}
-                  />
-                  <p className="my-4">Area of Service: {value} Miles</p>
-                  <div className="flex h-[450px] w-full items-center justify-center border">
-                    Map
-                  </div>
-                </div>
-                <div className="space-x-3">
-                  <Button type="button" className="bg-[#9B9B9B]" asChild>
-                    <Link to="/constructor-profile">Cancel</Link>
-                  </Button>
-                  <Button type="button" onClick={() => setSelectedTab(2)}>
-                    Next
-                  </Button>
-                </div>
-              </>
-            )}
-            {selectedTab == 2 && (
-              <>
-                <div className="">
-                  <h2 className="mb-6 text-xl font-semibold text-[#222]">
-                    Upload your any license or certification
-                  </h2>
-                  <div className="flex flex-1 flex-col gap-3">
-                    <Previews2 />
-                  </div>
-                  <h2 className="my-6 text-xl font-semibold text-[#222]">
-                    Write a brief summary about your company.
-                  </h2>
-                  <FormField
-                    control={form.control}
-                    name="bio"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Textarea
-                            placeholder="Type..."
-                            className="h-[250px] resize-none"
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <h2 className="my-6 text-xl font-semibold text-[#222]">
-                    Set your starting budget preference
-                  </h2>
-                  <FormField
-                    control={form.control}
-                    name="price"
-                    render={({ field }) => (
-                      <FormItem className="relative w-1/3">
-                        <FormControl>
-                          <Input
-                            placeholder="100"
-                            {...field}
-                            className="px-5 py-4"
-                          />
-                        </FormControl>
-                        <FaDollarSign className="absolute right-6 top-1/2 !mt-0 -translate-y-1/2 text-primary" />
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <CustomRadioGroup form={form} />
-                </div>
-                <div className="space-x-3">
-                  <Button type="button" className="bg-[#9B9B9B]" asChild>
-                    <Link to="/constructor-profile">Cancel</Link>
-                  </Button>
-                  <Button type="button" onClick={() => setSelectedTab(3)}>
-                    Next
-                  </Button>
-                </div>
-              </>
-            )}
-            {selectedTab == 3 && (
-              <>
-                <h2 className="my-6 text-xl font-semibold text-[#222]">
-                  How many employee work in your company?
-                </h2>
-
-                <FormField
-                  control={form.control}
-                  name="type"
-                  render={({ field }) => (
-                    <FormItem className="space-y-3">
-                      <FormControl>
-                        <RadioGroup
-                          onValueChange={field.onChange}
-                          defaultValue={field.value}
-                          className="flex flex-col space-y-1"
-                        >
-                          <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                            <FormControl>
-                              <RadioGroupItem value="self" />
-                            </FormControl>
-                            <FormLabel className="font-normal">
-                              I am a self-employed entrepreneur, without
-                              employees
-                            </FormLabel>
-                          </FormItem>
-                          <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                            <FormControl>
-                              <RadioGroupItem value="twoToFive" />
-                            </FormControl>
-                            <FormLabel className="font-normal">
-                              2-5 employee
-                            </FormLabel>
-                          </FormItem>
-                          <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                            <FormControl>
-                              <RadioGroupItem value="sixToFifteen" />
-                            </FormControl>
-                            <FormLabel className="font-normal">
-                              6 to 15 employees
-                            </FormLabel>
-                          </FormItem>
-                          <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                            <FormControl>
-                              <RadioGroupItem value="fifteenPlus" />
-                            </FormControl>
-                            <FormLabel className="font-normal">
-                              More than 15 employees
-                            </FormLabel>
-                          </FormItem>
-                        </RadioGroup>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                <AddCategories
+                  sectionTitle="What language do you speak?"
+                  placeholder="Select Language"
+                  data={languages}
                 />
-
-                <h2 className="my-6 text-xl font-semibold text-[#222]">
-                  Select all the language you speak?
-                </h2>
-
-                <FormField
-                  control={form.control}
-                  name="type"
-                  render={({ field }) => (
-                    <FormItem className="space-y-3">
-                      <FormControl>
-                        <RadioGroup
-                          onValueChange={field.onChange}
-                          defaultValue={field.value}
-                          className="flex flex-col space-y-1"
-                        >
-                          <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                            <FormControl>
-                              <RadioGroupItem value="english" />
-                            </FormControl>
-                            <FormLabel className="font-normal">
-                              English
-                            </FormLabel>
-                          </FormItem>
-                          <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                            <FormControl>
-                              <RadioGroupItem value="italian" />
-                            </FormControl>
-                            <FormLabel className="font-normal">
-                              Italian
-                            </FormLabel>
-                          </FormItem>
-                          <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                            <FormControl>
-                              <RadioGroupItem value="germany" />
-                            </FormControl>
-                            <FormLabel className="font-normal">
-                              Germany
-                            </FormLabel>
-                          </FormItem>
-                          <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                            <FormControl>
-                              <RadioGroupItem value="Spanish" />
-                            </FormControl>
-                            <FormLabel className="font-normal">
-                              Spanish
-                            </FormLabel>
-                          </FormItem>
-                          <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                            <FormControl>
-                              <RadioGroupItem value="portuguese" />
-                            </FormControl>
-                            <FormLabel className="font-normal">
-                              Portuguese
-                            </FormLabel>
-                          </FormItem>
-                          <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                            <FormControl>
-                              <RadioGroupItem value="others" />
-                            </FormControl>
-                            <FormLabel className="font-normal">
-                              Others
-                            </FormLabel>
-                          </FormItem>
-                        </RadioGroup>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <h2 className="my-6 text-xl font-semibold text-[#222]">
-                  How did you hear about us?
-                </h2>
-
-                <FormField
-                  control={form.control}
-                  name="type"
-                  render={({ field }) => (
-                    <FormItem className="space-y-3">
-                      <FormControl>
-                        <RadioGroup
-                          onValueChange={field.onChange}
-                          defaultValue={field.value}
-                          className="flex flex-col space-y-1"
-                        >
-                          <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                            <FormControl>
-                              <RadioGroupItem value="social-media" />
-                            </FormControl>
-                            <FormLabel className="font-normal">
-                              Social media
-                            </FormLabel>
-                          </FormItem>
-                          <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                            <FormControl>
-                              <RadioGroupItem value="google" />
-                            </FormControl>
-                            <FormLabel className="font-normal">
-                              Google
-                            </FormLabel>
-                          </FormItem>
-                          <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                            <FormControl>
-                              <RadioGroupItem value="nearest-pearson" />
-                            </FormControl>
-                            <FormLabel className="font-normal">
-                              Nearest Pearson
-                            </FormLabel>
-                          </FormItem>
-                        </RadioGroup>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <div className="space-x-3">
-                  <Button type="button" className="bg-[#9B9B9B]" asChild>
-                    <Link to="/constructor-profile">Cancel</Link>
+                <div className="mt-8 space-x-3">
+                  <Button
+                    type="button"
+                    className="bg-[#9B9B9B]"
+                    onClick={() => setSelectedTab(3)}
+                  >
+                    Back
                   </Button>
-
                   <Button type="button" asChild>
                     <Link to="/constructor-profile">Done</Link>
                   </Button>
@@ -637,6 +524,7 @@ const ConstructorForm = () => {
           </form>
         </Form>
       </div>
+      <ConstructorBenefits />
     </section>
   );
 };

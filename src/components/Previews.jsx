@@ -29,7 +29,7 @@ const Previews = ({ props, limit = 20 }) => {
 
   const thumbs = files.map((file) => (
     <div className="relative" key={file.name}>
-      <figure className="size-24 overflow-hidden p-1 border shadow-md">
+      <figure className="size-24 overflow-hidden border p-1 shadow-md">
         <img
           src={file.preview}
           className="size-full object-cover object-center"
@@ -96,7 +96,9 @@ const Previews = ({ props, limit = 20 }) => {
           </svg>
         </div>
       </div>
-      <aside className="my-5 flex flex-wrap gap-4">{thumbs}</aside>
+      {files.length > 0 && (
+        <aside className="my-5 flex flex-wrap gap-4">{thumbs}</aside>
+      )}
     </section>
   );
 };

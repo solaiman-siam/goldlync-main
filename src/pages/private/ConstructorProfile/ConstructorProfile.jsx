@@ -25,12 +25,15 @@ const FormSchema = z.object({
 const ConstructorProfile = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [readMore, setReadMore] = useState(true);
+  const [editable, setEditable] = useState(false);
 
   const form = useForm({
     resolver: zodResolver(FormSchema),
   });
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
+    setEditable(false);
     console.log(e);
   };
 
@@ -42,7 +45,11 @@ const ConstructorProfile = () => {
       <div className="mb-10">
         <div className="heading mb-6 flex items-center justify-between text-xl font-semibold">
           <p className="text-xl">About your company</p>
-          <button type="button" className="inline-flex items-center gap-2">
+          <button
+            type="button"
+            className="inline-flex items-center gap-2"
+            onClick={() => setEditable(true)}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="23"
@@ -58,25 +65,37 @@ const ConstructorProfile = () => {
             Change
           </button>
         </div>
-        <p
-          className={`${readMore && "line-clamp-3"} mb-1 text-xl leading-[35px]`}
-        >
-          About Kroolo Innovations BV Kroolo Innovations BV is a
-          forward-thinking technology company based in Amsterdam, Netherlands.
-          Founded with a mission to simplify and enhance the business processes
-          through technology company based in Amsterdam, Netherlands. Founded
-          with a mission to simplify and enhance through technology company
-          based in Amsterdam, Netherlands. Founded with a mission to simplify
-          and enhance business processes through
-        </p>
-        {readMore && (
-          <button
-            type="button"
-            className="text-lg font-bold"
-            onClick={() => setReadMore(false)}
-          >
-            Read more
-          </button>
+        {editable ? (
+          <form className=" relative" onSubmit={handleSubmit}>
+            <textarea type="text" className="w-full border h-[200px] rounded-md p-5" />
+            <Button type="submit" className=" absolute right-3 bottom-5">
+              Save
+            </Button>
+          </form>
+        ) : (
+          <>
+            <p
+              className={`${readMore && "line-clamp-3"} mb-1 text-xl leading-[35px]`}
+            >
+              About Kroolo Innovations BV Kroolo Innovations BV is a
+              forward-thinking technology company based in Amsterdam,
+              Netherlands. Founded with a mission to simplify and enhance the
+              business processes through technology company based in Amsterdam,
+              Netherlands. Founded with a mission to simplify and enhance
+              through technology company based in Amsterdam, Netherlands.
+              Founded with a mission to simplify and enhance business processes
+              through
+            </p>
+            {readMore && (
+              <button
+                type="button"
+                className="text-lg font-bold"
+                onClick={() => setReadMore(false)}
+              >
+                Read more
+              </button>
+            )}
+          </>
         )}
       </div>
       <div className="">

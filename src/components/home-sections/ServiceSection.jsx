@@ -63,15 +63,15 @@ const PrimaryServiceSkeletons = () => {
 
 const ServiceItem = ({ path, image, title, details, minPrice, maxPrice }) => {
   return (
-    <Link to={path} className="overflow-hidden rounded-md bg-secondary">
-      <figure className="aspect-video w-full overflow-hidden">
+    <Link to={path} className="overflow-hidden rounded-md bg-secondary p-5">
+      <figure className="aspect-video w-full overflow-hidden rounded">
         <img
           src={image}
           className="h-full w-full object-cover object-center"
           alt={title}
         />
       </figure>
-      <div className="space-y-3 p-3">
+      <div className="space-y-3 mt-4">
         <h6 className="font-manrope text-xl font-medium leading-[130%]">
           {title}
         </h6>

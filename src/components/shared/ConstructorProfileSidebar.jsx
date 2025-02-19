@@ -3,15 +3,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "../shadcn/ui/avatar";
 import userImage from "@/assets/images/user-1.png";
 import { cn } from "@/lib/shadcn/utils";
 import {
-  BalanceIcon1,
-  BookmarkIcon1,
-  FileIcon1,
   LogoutIcon1,
-  NotificationIcon1,
-  ProfileIcon1,
   SupportIcon1,
 } from "@/assets/icons";
-import { Constructor1, Constructor10, Constructor11, Constructor12, Constructor2, Constructor3, Constructor4, Constructor5, Constructor6, Constructor7, Constructor8, Constructor9 } from "@/assets/icons/ProfileSidebarIcon";
+import { Constructor1, Constructor10, Constructor11, Constructor12, Constructor2, Constructor3, Constructor4, Constructor5, Constructor7, Constructor8 } from "@/assets/icons/ProfileSidebarIcon";
 
 const ConstructorProfileSidebar = () => {
   return (
@@ -64,10 +59,6 @@ const ConstructorProfileSidebar = () => {
           <Constructor8 />
             <span>Add Services</span>
           </SidebarLink>
-          <SidebarLink path="/constructor-profile/add-project">
-          <Constructor4 />
-            <span>Add Project</span>
-          </SidebarLink>
           <SidebarLink path="/constructor-profile/notification-settings">
           <Constructor10 />
             <span>Notifications</span>
@@ -89,15 +80,6 @@ const ConstructorProfileSidebar = () => {
           <SidebarLink path="/online-help-desk">
           <Constructor12 />
             <span>Online Help Desk</span>
-          </SidebarLink>
-        </ul>
-      </div>
-      <div className="flex w-full flex-col gap-1.5">
-        <div className="font-manrope text-xl font-bold">Discover</div>
-        <ul className="flex w-full flex-col gap-1.5">
-          <SidebarLink path="/coin-purchase">
-            <SupportIcon1 />
-            <span>Offers and Benefits</span>
           </SidebarLink>
         </ul>
       </div>

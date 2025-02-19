@@ -473,7 +473,7 @@ const ConstructorProfileDetails = () => {
             <h4 className="mb-7 text-3xl font-semibold">
               Frequently Asked Question
             </h4>
-            <Accordion type="single" collapsible>
+            <Accordion type="single" collapsible defaultValue="item-1">
               <AccordionItem value="item-1">
                 <AccordionTrigger>What Services do you offer?</AccordionTrigger>
                 <AccordionContent>
