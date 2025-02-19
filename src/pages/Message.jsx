@@ -1,12 +1,12 @@
 import { Button } from "@/components/shadcn/ui/button";
 import profile from "@/assets/images/constructor.png";
 import { AiOutlineSend } from "react-icons/ai";
-import Notification from "@/components/shared/Notification";
+import NotifySection from "@/components/NotifySection";
 
 const Message = () => {
   return (
     <div className="container mb-[2.5vh] mt-14">
-      <Notification/>
+      <NotifySection/>
       <h1 className="mb-7 text-left text-3xl font-bold leading-[120%]">Chat</h1>
 
       <div className="grid grid-cols-5 gap-10">
