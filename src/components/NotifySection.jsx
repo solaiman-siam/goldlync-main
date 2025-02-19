@@ -12,20 +12,29 @@ import { Link } from "react-router";
 
 const NotifySection = () => {
   return (
-    <div className="flex gap-2.5 w-fit">
+    <div className="flex w-fit gap-2.5 h-[56px]">
       <DropdownMenu>
         <DropdownMenuTrigger className="outline-none">
-          <span className="p-2.5 border border-primary rounded-full block">
+          <span className="block rounded-full border border-primary p-2.5">
             <NotificationIcon />
           </span>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="border-none bg-transparent shadow-none p-0">
+        <DropdownMenuContent className="border-none bg-transparent p-0 shadow-none">
           <Notification />
         </DropdownMenuContent>
       </DropdownMenu>
-      <Link to="/message" className="p-2.5 border border-primary rounded-full block">
+      <Link
+        to="/message"
+        className="block rounded-full border border-primary p-2.5"
+      >
         <MessageIcon />
-        </Link>
+      </Link>
+      <Link
+        to="/constructor-profile"
+        className="h-full aspect-square rounded-full overflow-hidden"
+      >
+        <img src="https://i.ibb.co.com/V7XRPhM/image-6-1.png" alt="" className="size-full object-cover object-center" />
+      </Link>
     </div>
   );
 };
