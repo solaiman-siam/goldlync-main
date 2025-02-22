@@ -1,5 +1,5 @@
-import bannerImage from "@/assets/images/banner-image.png";
-import aboutImage from "@/assets/images/aboutImg.png";
+import bannerImage from "../../assets/images/home-banner.png";
+import aboutImage from "../../assets/images/aboutImg.png"
 import bond from "@/assets/images/bond.jpg";
 import SlotCounter from "react-slot-counter";
 import { useState, useEffect, useRef } from "react";

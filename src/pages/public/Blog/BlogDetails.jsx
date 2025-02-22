@@ -1,6 +1,5 @@
 import { Facebook, Linkedin, Twitter } from "@/assets/icons";
-import SectionTitle from "@/components/SectionTitle";
-import React, { useState } from "react";
+import{ useState } from "react";
 import { Link } from "react-router";
 import Article from "./Article";
 

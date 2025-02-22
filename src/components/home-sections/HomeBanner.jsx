@@ -1,4 +1,4 @@
-import bannerImage from "@/assets/images/banner-image.png";
+import BannerImage from "../../assets/images/home-banner.png"
 import BannerSearch from "../BannerSearch";
 
 const HomeBanner = () => {
@@ -22,6 +22,7 @@ const HomeBanner = () => {
           Try. My kitchen eink is leaking or want to repaint my living
         </div>
       </div>
+      <img className='absolute top-0 z-[-2] left-0 w-full h-full object-cover' src={BannerImage} alt="" />
     </div>
   );
 };
