@@ -1,38 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
+import { IoMdClose } from "react-icons/io";
 
-const Previews = ({props, limit=20}) => {
-  const thumbsContainer = {
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    marginTop: 16,
-  };
-
-  const thumb = {
-    display: "inline-flex",
-    borderRadius: 2,
-    border: "1px solid #eaeaea",
-    marginBottom: 8,
-    marginRight: 8,
-    width: 100,
-    height: 100,
-    padding: 4,
-    boxSizing: "border-box",
-  };
-
-  const thumbInner = {
-    display: "flex",
-    minWidth: 0,
-    overflow: "hidden",
-  };
-
-  const img = {
-    display: "block",
-    width: "auto",
-    height: "100%",
-  };
-
+const Previews = ({ props, limit = 20 }) => {
   const [files, setFiles] = useState([]);
   const { getRootProps, getInputProps } = useDropzone({
     accept: {
@@ -52,39 +22,41 @@ const Previews = ({props, limit=20}) => {
         const uniqueFiles = Array.from(
           new Set(allFiles.map((file) => file.name))
         ).map((name) => allFiles.find((file) => file.name === name));
-
-        // Limit to 5 files
         return uniqueFiles.slice(0, limit);
       });
     },
   });
 
   const thumbs = files.map((file) => (
-    <div style={thumb} key={file.name}>
-      <div style={thumbInner}>
-        <figure className="size-24 overflow-hidden">
-          <img
-            src={file.preview}
-            className="size-full object-cover object-center"
-            // Revoke data uri after image is loaded
-            onLoad={() => {
-              URL.revokeObjectURL(file.preview);
-            }}
-          />
-        </figure>
-      </div>
+    <div className="relative" key={file.name}>
+      <figure className="size-24 overflow-hidden border p-1 shadow-md">
+        <img
+          src={file.preview}
+          className="size-full object-cover object-center"
+          // Revoke data uri after image is loaded
+          onLoad={() => {
+            URL.revokeObjectURL(file.preview);
+          }}
+        />
+      </figure>
+      <button
+        type="button"
+        className="absolute -right-2 -top-2 flex size-5 items-center justify-center rounded-full bg-red-800"
+        onClick={() => setFiles(files.filter((f) => f.name !== file.name))}
+      >
+        <IoMdClose className="text-white" />
+      </button>
     </div>
   ));
 
   useEffect(() => {
-    // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
     return () => files.forEach((file) => URL.revokeObjectURL(file.preview));
   }, [files]);
   return (
     <section className="container">
       <div {...getRootProps({ className: "dropzone" })}>
         <input {...getInputProps()} />
-        <div className="flex h-[64px] items-center justify-between rounded border  border-input px-4">
+        <div className="flex h-[64px] items-center justify-between rounded border border-input px-4">
           <div className="flex items-center gap-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +96,9 @@ const Previews = ({props, limit=20}) => {
           </svg>
         </div>
       </div>
-      <aside style={thumbsContainer}>{thumbs}</aside>
+      {files.length > 0 && (
+        <aside className="my-5 flex flex-wrap gap-4">{thumbs}</aside>
+      )}
     </section>
   );
 };

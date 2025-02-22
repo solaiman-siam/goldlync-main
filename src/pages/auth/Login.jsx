@@ -36,7 +36,7 @@ const Login = () => {
             <SocialAuth />
             <div className="text-center text-lg font-medium leading-[120%]">
               You don’t Have an account?
-              <Link to="/choose" className="ml-1 text-accent">
+              <Link to="/register" className="ml-1 text-accent">
                 Create Account
               </Link>
             </div>

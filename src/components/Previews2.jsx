@@ -1,38 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
+import { IoMdClose } from "react-icons/io";
 
 const Previews2 = (props) => {
-  const thumbsContainer = {
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    marginTop: 16,
-  };
-
-  const thumb = {
-    display: "inline-flex",
-    borderRadius: 2,
-    border: "1px solid #eaeaea",
-    marginBottom: 8,
-    marginRight: 8,
-    width: 100,
-    height: 100,
-    padding: 4,
-    boxSizing: "border-box",
-  };
-
-  const thumbInner = {
-    display: "flex",
-    minWidth: 0,
-    overflow: "hidden",
-  };
-
-  const img = {
-    display: "block",
-    width: "auto",
-    height: "100%",
-  };
-
   const [files, setFiles] = useState([]);
   const { getRootProps, getInputProps } = useDropzone({
     accept: {
@@ -60,19 +30,24 @@ const Previews2 = (props) => {
   });
 
   const thumbs = files.map((file) => (
-    <div style={thumb} key={file.name}>
-      <div style={thumbInner}>
-        <figure className="size-24 overflow-hidden">
-          <img
-            src={file.preview}
-            className="size-full object-cover object-center"
-            // Revoke data uri after image is loaded
-            onLoad={() => {
-              URL.revokeObjectURL(file.preview);
-            }}
-          />
-        </figure>
-      </div>
+    <div className="relative" key={file.name}>
+      <figure className="size-24 overflow-hidden border p-1 shadow-md">
+        <img
+          src={file.preview}
+          className="size-full object-cover object-center"
+          // Revoke data uri after image is loaded
+          onLoad={() => {
+            URL.revokeObjectURL(file.preview);
+          }}
+        />
+      </figure>
+      <button
+        type="button"
+        className="absolute -right-2 -top-2 flex size-5 items-center justify-center rounded-full bg-red-800"
+        onClick={() => setFiles(files.filter((f) => f.name !== file.name))}
+      >
+        <IoMdClose className="text-white" />
+      </button>
     </div>
   ));
 
@@ -84,11 +59,10 @@ const Previews2 = (props) => {
     <section className="container">
       <div {...getRootProps({ className: "dropzone" })}>
         <input {...getInputProps()} />
-        <div className="flex justify-center h-[400px] items-center rounded border bg-[#F1F1F1] px-4">
+        <div className="flex h-[350px] gap-4 items-center justify-center rounded border bg-[#F1F1F1] px-4 cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="120"
-            height="121"
+            className="size-20"
             viewBox="0 0 120 121"
             fill="none"
           >
@@ -105,9 +79,43 @@ const Previews2 = (props) => {
               fill="#C4CDD5"
             />
           </svg>
+          <div className="bg-primary flex items-center gap-2.5 py-4 px-8 rounded-full">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="21"
+              height="20"
+              viewBox="0 0 21 20"
+              fill="none"
+            >
+              <path
+                d="M18 12.5V15.8333C18 16.2754 17.8244 16.6993 17.5118 17.0118C17.1993 17.3244 16.7754 17.5 16.3333 17.5H4.66667C4.22464 17.5 3.80072 17.3244 3.48816 17.0118C3.17559 16.6993 3 16.2754 3 15.8333V12.5"
+                stroke="white"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M14.6654 6.66667L10.4987 2.5L6.33203 6.66667"
+                stroke="white"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M10.5 2.5V12.5"
+                stroke="white"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <p className="text-white">Upload</p>
+          </div>
         </div>
       </div>
-      <aside style={thumbsContainer}>{thumbs}</aside>
+      {files.length > 0 && (
+        <aside className="my-5 flex flex-wrap gap-4">{thumbs}</aside>
+      )}
     </section>
   );
 };

@@ -1,24 +1,73 @@
-import { Button } from "@/components/shadcn/ui/button";
+import { useState } from "react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/shadcn/ui/select";
 
 const AddServicesByConstructor = () => {
+  const services = [
+    "Handy man",
+    "Cleaning",
+    "Home Improvement & Repair",
+    "Automotive service",
+    "Pet care",
+    "Catering",
+  ];
+
+  const [selectedServices, setSelectedServices] = useState([]);
+
+  const handleSelectService = (service) => {
+    setSelectedServices((prevSelectedServices) => {
+      if (!prevSelectedServices.includes(service)) {
+        return [...prevSelectedServices, service];
+      }
+      return prevSelectedServices;
+    });
+  };
+
+  const removeService = (serviceToRemove) => {
+    setSelectedServices((prevSelectedServices) =>
+      prevSelectedServices.filter((service) => service !== serviceToRemove)
+    );
+  };
+
   return (
     <>
       <div className="mb-12 space-y-8">
         <p className="text-3xl font-semibold">Add Services</p>
-        <input
-          className="block w-full rounded border px-6 py-4 outline-primary border-input"
-          placeholder="Type services you provide here"
-        />
-        <Button className="px-16" type="button">Add service</Button>
+        <div className="flex flex-col gap-4">
+          <label className="text-xl font-semibold" htmlFor=""></label>
+          <Select onValueChange={handleSelectService}>
+            <SelectTrigger className="w-full px-4 py-8">
+              <SelectValue placeholder={"Select Service"} />
+            </SelectTrigger>
+            <SelectContent>
+              {services.map((option) => (
+                <SelectItem key={option} value={option}>
+                  {option}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        {/* <Button className="px-16" type="button">
+          Add service
+        </Button> */}
       </div>
       <div className="mb-12 space-y-8">
-        <p className="text-3xl font-semibold">Services</p>
-        {Array(5)
-          .fill(null)
-          .map((_, idx) => {
-            return (
-              <div className="relative" key={idx}>
-                <p className="w-full rounded border p-4">Leak fixing</p>
+        <p className="text-3xl font-semibold">Selected Services</p>
+        {selectedServices.map((service, idx) => {
+          return (
+            <div className="relative" key={idx}>
+              <p className="w-full rounded border p-4">{service}</p>
+              <button
+                type="button"
+                onClick={() => removeService(service)}
+                className="block"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="23"
@@ -52,9 +101,10 @@ const AddServicesByConstructor = () => {
                     </clipPath>
                   </defs>
                 </svg>
-              </div>
-            );
-          })}
+              </button>
+            </div>
+          );
+        })}
       </div>
     </>
   );

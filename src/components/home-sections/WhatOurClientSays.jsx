@@ -3,7 +3,7 @@ import SectionTitle from "../SectionTitle";
 import Twitter from "../../assets/images/Twitter.png";
 function WhatOurClientSays() {
   return (
-    <div className="bg-[#FFF2EB] py-24">
+    <div className="bg-[#FFF2EB] py-24" id="client-review">
       <div className="container">
       <div className=" ">
         <SectionTitle>What our clients are saying?</SectionTitle>

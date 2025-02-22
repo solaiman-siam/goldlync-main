@@ -1,35 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
+import { IoMdClose } from "react-icons/io";
 
 const Previews3 = ({props, customHeight="h-[150px]"}) => {
-  const thumbsContainer = {
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    marginTop: 16,
-  };
-
-  const thumb = {
-    display: "inline-flex",
-    borderRadius: 2,
-    border: "1px solid #eaeaea",
-    marginBottom: 8,
-    marginRight: 8,
-    padding: 4,
-    boxSizing: "border-box",
-  };
-
-  const thumbInner = {
-    display: "flex",
-    minWidth: 0,
-    overflow: "hidden",
-  };
-
-  const img = {
-    display: "block",
-    width: "auto",
-    height: "100%",
-  };
 
   const [files, setFiles] = useState([]);
   const { getRootProps, getInputProps } = useDropzone({
@@ -58,21 +31,27 @@ const Previews3 = ({props, customHeight="h-[150px]"}) => {
   });
 
   const thumbs = files.map((file) => (
-    <div style={thumb} key={file.name}>
-      <div style={thumbInner}>
-        <figure className="h-24 aspect-video overflow-hidden">
+      <div className="relative" key={file.name}>
+        <figure className="size-24 overflow-hidden border p-1 shadow-md">
           <img
             src={file.preview}
-            className="w-full h-full object-cover object-center"
+            className="size-full object-cover object-center"
             // Revoke data uri after image is loaded
             onLoad={() => {
               URL.revokeObjectURL(file.preview);
             }}
           />
         </figure>
+        <button
+          type="button"
+          className="absolute -right-2 -top-2 flex size-5 items-center justify-center rounded-full bg-red-800"
+          onClick={() => setFiles(files.filter((f) => f.name !== file.name))}
+        >
+          <IoMdClose className="text-white" />
+        </button>
       </div>
-    </div>
-  ));
+    ));
+  
 
   useEffect(() => {
     // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
@@ -97,7 +76,7 @@ const Previews3 = ({props, customHeight="h-[150px]"}) => {
           </svg>
         </div>
       </div>
-      <aside style={thumbsContainer}>{thumbs}</aside>
+      <aside className="my-5 flex flex-wrap gap-4">{thumbs}</aside>
     </section>
   );
 };

@@ -42,6 +42,8 @@ export {
   Cause4,
   Clock4,
   Order4,
+  NotificationIcon,
+  MessageIcon,
 } from "./ServiceIcon";
 export { FeatureIcon1, FeatureIcon2, FeatureIcon3 } from "./FeatureIcon";
 export {
