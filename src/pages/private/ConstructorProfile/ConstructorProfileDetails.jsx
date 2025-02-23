@@ -91,9 +91,9 @@ const ConstructorProfileDetails = () => {
   ];
 
   const qualities = [
-    { name: "Communication" },
-    { name: "Problem Solving" },
-    { name: "Time Management" },
+    { name: "Detailed oriented" },
+    { name: "Trustworthy" },
+    { name: "On-time" },
   ];
 
   return (
@@ -587,7 +587,7 @@ const ConstructorProfileDetails = () => {
                 ))}
               </div>
             </div>
-            
+
             {/* Qualities Section */}
             <div className="my-4 flex">
               <h3 className="min-w-[110px] text-lg font-semibold text-[#3D3D3D]">
