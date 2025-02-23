@@ -549,7 +549,7 @@ const ConstructorProfileDetails = () => {
         </div>
         <div className="right h-full">
           <div className="sticky top-10 rounded-md bg-[#FFF2EB] px-5 py-6">
-            <p className="mb-1.5 text-xl text-[#494949]">Starting price</p>
+            <p className="mb-1.5 text-xl text-[#494949]">Starting Budget</p>
             <h2 className="mb-1.5 text-xl">$140</h2>
             <ScrollLink
               to="works"
