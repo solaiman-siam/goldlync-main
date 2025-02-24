@@ -7,14 +7,14 @@ import { Link } from "react-router";
 function RecentProjects() {
   const [activeTabIdx, setActiveTabIdx] = useState(0);
   const [recentProjects, setRecentProjects] = useState(
-    recentProjectsData.tabs.filter((item) => item.name === "Home Maintenance")
+    recentProjectsData.tabs.filter((item) => item.name === "Home Improvement")
   );
 
   const tabsMenu = [
-    "Home Maintenance",
-    "Home Remodeling",
-    "Weddings",
-    "Events",
+    "Home Improvement",
+    "Cleaning",
+    "Handyman",
+    "Interior Painting",
   ];
 
   const handleTab = (index, name) => {

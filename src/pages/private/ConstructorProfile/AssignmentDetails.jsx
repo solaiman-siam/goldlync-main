@@ -18,6 +18,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 
+
 import assignmentDetailsBanner from "@/assets/images/assignmentDetailsBanner.png";
 import { Button } from "@/components/shadcn/ui/button";
 import { FreeMode } from "swiper/modules";
@@ -87,7 +88,7 @@ const AssignmentDetails = () => {
             </p>
             <div className="space-y-3">
               <div className="flex">
-                <div className="w-[35px]  flex-shrink-0">
+                <div className="w-[35px] flex-shrink-0">
                   <Note4 className="" />
                 </div>
                 <p className="text-[#637381]">
@@ -99,7 +100,7 @@ const AssignmentDetails = () => {
                 </p>
               </div>
               <div className="flex">
-                <div className="w-[35px]  flex-shrink-0">
+                <div className="w-[35px] flex-shrink-0">
                   <Location4 className="" />
                 </div>
                 <p className="text-[#637381]">
@@ -110,7 +111,7 @@ const AssignmentDetails = () => {
                 </p>
               </div>
               <div className="flex">
-                <div className="w-[35px]  flex-shrink-0">
+                <div className="w-[35px] flex-shrink-0">
                   <Cause4 className="" />
                 </div>
                 <p className="text-[#637381]">
@@ -120,7 +121,7 @@ const AssignmentDetails = () => {
                 </p>
               </div>
               <div className="flex">
-                <div className="w-[35px]  flex-shrink-0">
+                <div className="w-[35px] flex-shrink-0">
                   <Clock4 />
                 </div>
                 <p className="text-[#637381]">
@@ -131,7 +132,7 @@ const AssignmentDetails = () => {
                 </p>
               </div>
               <div className="flex">
-                <div className="w-[35px]  flex-shrink-0">
+                <div className="w-[35px] flex-shrink-0">
                   <Order4 />
                 </div>
                 <p className="text-[#637381]">

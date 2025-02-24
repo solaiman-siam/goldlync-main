@@ -40,6 +40,7 @@ import "swiper/css/pagination";
 import { FreeMode, Navigation } from "swiper/modules";
 import ImageContainer from "@/components/ImageContainer";
 import { Link } from "react-router";
+import { Progress } from "@/components/shadcn/ui/progress";
 
 const ConstructorProfileDetails = () => {
   const [openShowALl, setOpenShowALl] = useState(false);
@@ -81,6 +82,18 @@ const ConstructorProfileDetails = () => {
       contentId: "faq",
       offset: -50,
     },
+  ];
+
+  const languages = [
+    { name: "English" },
+    { name: "Spanish" },
+    { name: "French" },
+  ];
+
+  const qualities = [
+    { name: "Detailed oriented" },
+    { name: "Trustworthy" },
+    { name: "On-time" },
   ];
 
   return (
@@ -153,7 +166,7 @@ const ConstructorProfileDetails = () => {
                 offset={tab?.offset}
                 key={tab.id}
                 type="button"
-                className={`relative px-4 py-3 text-xl hover:text-primary ${activeTab === tab.id ? "text-primary after:absolute after:-bottom-px after:left-0 after:w-full after:border-b after:border-primary" : "text-[#3D3D3D]"} transition-all duration-300 cursor-pointer inline-block`}
+                className={`relative px-4 py-3 text-xl hover:text-primary ${activeTab === tab.id ? "text-primary after:absolute after:-bottom-px after:left-0 after:w-full after:border-b after:border-primary" : "text-[#3D3D3D]"} inline-block cursor-pointer transition-all duration-300`}
                 onClick={() => selectActiveTab(tab.id)}
               >
                 {tab.name}
@@ -175,7 +188,7 @@ const ConstructorProfileDetails = () => {
             </p>
             <div className="flex gap-12">
               <div className="left flex-1 space-y-8">
-                <div className="">
+                {/* <div className="">
                   <h4 className="mb-3 text-xl font-semibold">Overview</h4>
                   <div className="space-y-4">
                     <p className="flex items-center gap-1 text-[#575757]">
@@ -196,7 +209,7 @@ const ConstructorProfileDetails = () => {
                       experience
                     </p>
                   </div>
-                </div>
+                </div> */}
                 <div className="">
                   <h4 className="mb-3 text-xl font-semibold">Business hours</h4>
                   <div className="space-y-1.5 rounded border p-3">
@@ -253,7 +266,7 @@ const ConstructorProfileDetails = () => {
                     This Pro accepts payments via Credit card, Venmo, and zelle.
                   </p>
                 </div>
-                <div className="">
+                {/* <div className="">
                   <h4 className="mb-3 text-xl font-semibold">Top Pro Status</h4>
                   <p className="mb-3 w-[80%]">
                     I need assistance with installing a new kitchen tap and
@@ -273,15 +286,13 @@ const ConstructorProfileDetails = () => {
                       <p>2025</p>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
           <div className="border-b py-12" id="works">
             <div className="mb-7 flex items-center justify-between">
-              <h4 className="text-3xl font-semibold">
-                Recent Work
-              </h4>
+              <h4 className="text-3xl font-semibold">Recent Work</h4>
               <div className="flex gap-5">
                 <Dialog open={openShowALl} onOpenChange={setOpenShowALl}>
                   <DialogTrigger className="font-semibold">
@@ -549,8 +560,8 @@ const ConstructorProfileDetails = () => {
         </div>
         <div className="right h-full">
           <div className="sticky top-10 rounded-md bg-[#FFF2EB] px-5 py-6">
-            <p className="mb-1.5 text-xl text-[#494949]">Starting price</p>
-            <h2 className="mb-1.5 text-xl">$140</h2>
+            <p className="mb-1.5 text-xl text-[#494949]">Starting Budget</p>
+            <h2 className="mb-1.5 text-xl font-medium">$140</h2>
             <ScrollLink
               to="works"
               smooth={true}
@@ -560,64 +571,157 @@ const ConstructorProfileDetails = () => {
             >
               View Works
             </ScrollLink>
+            {/* Languages Section */}
+            <div className="my-4 flex">
+              <h3 className="min-w-[110px] text-lg font-semibold text-[#3D3D3D]">
+                Languages
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {languages.map((language) => (
+                  <div
+                    key={language.name}
+                    className="rounded-full bg-white/50 px-3 py-1 text-[#3D3D3D] hover:bg-white/70"
+                  >
+                    {language.name}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Qualities Section */}
+            <div className="my-4 flex">
+              <h3 className="min-w-[110px] text-lg font-semibold text-[#3D3D3D]">
+                Strengths
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {qualities.map((quality) => (
+                  <div
+                    key={quality.name}
+                    className="rounded-full bg-white/50 px-3 py-1 text-[#3D3D3D] hover:bg-white/70"
+                  >
+                    {quality.name}
+                  </div>
+                ))}
+              </div>
+            </div>
+
             <button
               type="button"
-              className="my-4 block w-full rounded-md bg-primary py-3 text-center text-xl text-white font-semibold"
+              className="my-4 block w-full rounded-md bg-primary py-3 text-center text-xl font-semibold text-white"
             >
               Connect Now
             </button>
-            <div className="mb-7 flex items-center justify-center gap-1.5 border-b-2 pb-7 text-[#3D3D3D]">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="25"
-                height="25"
-                viewBox="0 0 25 25"
-                fill="none"
-              >
-                <g clipPath="url(#clip0_17807_224)">
-                  <path
-                    d="M15.125 14.3748C14.2977 14.3748 13.625 15.0475 13.625 15.8748V16.6248H14.375V15.8748C14.375 15.4611 14.7114 15.1248 15.125 15.1248C15.5386 15.1248 15.875 15.4611 15.875 15.8748V16.2021C15.875 16.384 15.809 16.5595 15.6894 16.696L13.25 19.4841V20.3748H16.625V19.6248H14.1234L16.2541 17.1899C16.493 16.9161 16.625 16.5655 16.625 16.2021V15.8748C16.625 15.0475 15.9523 14.3748 15.125 14.3748Z"
-                    fill="#3D3D3D"
-                  />
-                  <path
-                    d="M21.125 18.4998V14.3748H20.1796L17.375 18.3816V19.2498H20.375V20.3748H21.125V19.2498H21.875V18.4998H21.125ZM20.375 18.4998H18.2079L20.375 15.4038V18.4998Z"
-                    fill="#3D3D3D"
-                  />
-                  <path
-                    d="M21.0361 12.2973C21.0909 11.8675 21.125 11.4329 21.125 10.9998C21.125 5.41676 16.583 0.874756 11 0.874756C5.417 0.874756 0.875 5.41676 0.875 10.9998C0.875 16.5828 5.417 21.1248 11 21.1248C11.4335 21.1248 11.8681 21.0906 12.2975 21.0355C13.415 22.8831 15.4377 24.1248 17.75 24.1248C21.2652 24.1248 24.125 21.265 24.125 17.7498C24.125 15.4375 22.8834 13.4148 21.0361 12.2973ZM11 20.3748C5.83063 20.3748 1.625 16.1691 1.625 10.9998C1.625 5.83038 5.83063 1.62476 11 1.62476C16.1694 1.62476 20.375 5.83038 20.375 10.9998C20.375 11.3076 20.3544 11.6155 20.3244 11.9226C20.0885 11.818 19.8463 11.7254 19.5965 11.6496C19.6134 11.4295 19.625 11.2113 19.625 10.9998C19.625 6.24401 15.7561 2.37476 11 2.37476C6.24388 2.37476 2.375 6.24401 2.375 10.9998C2.375 15.7555 6.24388 19.6248 11 19.6248C11.2119 19.6248 11.4301 19.6131 11.6499 19.5963C11.7256 19.846 11.8179 20.0883 11.9229 20.3241C11.6161 20.3541 11.3079 20.3748 11 20.3748ZM11.375 17.7498C11.375 18.1285 11.4144 18.4975 11.4781 18.8586C11.3161 18.8688 11.1564 18.8748 11 18.8748C8.96375 18.8748 7.11125 18.091 5.71175 16.8179L6.75725 15.7728L6.227 15.2425L5.1815 16.2876C3.98787 14.9755 3.23338 13.2629 3.14412 11.3748H4.625V10.6248H3.14412C3.23375 8.73663 3.98787 7.02401 5.18187 5.71188L6.22738 6.75701L6.75763 6.22676L5.71212 5.18163C7.02425 3.98763 8.73688 3.23351 10.625 3.14388V4.62476H11.375V3.14388C13.2631 3.23351 14.9757 3.98763 16.2882 5.18163L15.2428 6.22676L15.773 6.75701L16.8185 5.71188C18.0912 7.11101 18.875 8.96351 18.875 10.9998C18.875 11.1558 18.869 11.3159 18.8589 11.4779C18.4981 11.4141 18.1287 11.3748 17.75 11.3748C14.2347 11.3748 11.375 14.2345 11.375 17.7498ZM17.75 23.3748C14.6484 23.3748 12.125 20.8514 12.125 17.7498C12.125 14.6481 14.6484 12.1248 17.75 12.1248C20.8516 12.1248 23.375 14.6481 23.375 17.7498C23.375 20.8514 20.8516 23.3748 17.75 23.3748Z"
-                    fill="#3D3D3D"
-                  />
-                  <path
-                    d="M10.6255 10.8445L8.86035 12.6096L9.3906 13.1399L11.3755 11.155V6.87476H10.6255V10.8445Z"
-                    fill="#3D3D3D"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="clip0_17807_224">
-                    <rect
-                      width="24"
-                      height="24"
-                      fill="white"
-                      transform="translate(0.5 0.499756)"
+            <div className="cards space-y-3">
+              <div className="card flex items-center justify-center gap-2.5 text-[#3D3D3D]">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  viewBox="0 0 25 25"
+                  fill="none"
+                >
+                  <g clipPath="url(#clip0_18435_568)">
+                    <path
+                      d="M12.75 0.499756C6.13294 0.499756 0.75 5.88269 0.75 12.4998C0.75 19.1168 6.13294 24.4998 12.75 24.4998C19.3671 24.4998 24.75 19.1168 24.75 12.4998C24.75 5.88269 19.3671 0.499756 12.75 0.499756ZM18.457 18.7067C18.3643 18.7997 18.2541 18.8734 18.1328 18.9238C18.0115 18.9741 17.8814 18.9999 17.7501 18.9998C17.6187 18.9999 17.4887 18.9741 17.3673 18.9238C17.246 18.8735 17.1358 18.7997 17.0431 18.7067L12.043 13.7068C11.95 13.6141 11.8762 13.5039 11.8259 13.3826C11.7756 13.2612 11.7498 13.1312 11.7501 12.9998V6.49976C11.7501 5.94677 12.198 5.49982 12.75 5.49982C13.302 5.49982 13.7499 5.94677 13.7499 6.49976V12.5858L18.457 17.2927C18.848 17.6838 18.848 18.3157 18.457 18.7067Z"
+                      fill="#3D3D3D"
                     />
-                  </clipPath>
-                </defs>
-              </svg>
-              <p>
-                Responds in about <span className="font-semibold">10 min</span>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_18435_568">
+                      <rect
+                        width="24"
+                        height="24"
+                        fill="white"
+                        transform="translate(0.75 0.499756)"
+                      />
+                    </clipPath>
+                  </defs>
+                </svg>
+                <p>
+                  Responds in about{" "}
+                  <span className="font-semibold">10 min</span>
+                </p>
+              </div>
+              <div className="card flex items-center justify-center gap-2.5 text-[#3D3D3D]">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="27"
+                  viewBox="0 0 25 27"
+                  fill="none"
+                >
+                  <path
+                    d="M9.75 10.1248C9.75 8.21226 11.05 6.74976 12.75 6.74976C14.45 6.74976 15.75 8.21226 15.75 10.1248C15.75 12.0373 14.45 13.4998 12.75 13.4998C11.05 13.4998 9.75 12.0373 9.75 10.1248ZM12.75 15.7498C8.15 15.7498 6.75 19.4623 6.75 19.4623V21.3748H18.75V19.4623C18.75 19.4623 17.35 15.7498 12.75 15.7498Z"
+                    fill="#3D3D3D"
+                  />
+                  <path
+                    d="M19.25 12.3748C20.6307 12.3748 21.75 11.1156 21.75 9.56226C21.75 8.00896 20.6307 6.74976 19.25 6.74976C17.8693 6.74976 16.75 8.00896 16.75 9.56226C16.75 11.1156 17.8693 12.3748 19.25 12.3748Z"
+                    fill="#3D3D3D"
+                  />
+                  <path
+                    d="M19.25 14.6248C18.05 14.6248 17.15 14.9623 16.45 15.5248C18.75 16.7623 19.65 18.8998 19.65 19.1248V19.2373H23.75V17.7748C23.75 17.6623 22.65 14.6248 19.25 14.6248Z"
+                    fill="#3D3D3D"
+                  />
+                  <path
+                    d="M19.25 12.3748C20.6307 12.3748 21.75 11.1156 21.75 9.56226C21.75 8.00896 20.6307 6.74976 19.25 6.74976C17.8693 6.74976 16.75 8.00896 16.75 9.56226C16.75 11.1156 17.8693 12.3748 19.25 12.3748Z"
+                    fill="#3D3D3D"
+                  />
+                  <path
+                    d="M19.25 14.6248C18.05 14.6248 17.15 14.9623 16.45 15.5248C18.75 16.7623 19.65 18.8998 19.65 19.1248V19.2373H23.75V17.7748C23.75 17.6623 22.65 14.6248 19.25 14.6248Z"
+                    fill="#3D3D3D"
+                  />
+                  <path
+                    d="M6.25 12.3748C7.63071 12.3748 8.75 11.1156 8.75 9.56226C8.75 8.00896 7.63071 6.74976 6.25 6.74976C4.86929 6.74976 3.75 8.00896 3.75 9.56226C3.75 11.1156 4.86929 12.3748 6.25 12.3748Z"
+                    fill="#3D3D3D"
+                  />
+                  <path
+                    d="M6.25 14.6248C7.45 14.6248 8.35 14.9623 9.05 15.5248C6.75 16.7623 5.85 18.8998 5.85 19.1248V19.2373H1.75V17.7748C1.75 17.6623 2.85 14.6248 6.25 14.6248Z"
+                    fill="#3D3D3D"
+                  />
+                </svg>
+                <p>10 employees</p>
+              </div>
+              <div className="card flex items-center justify-center gap-2.5 text-[#3D3D3D]">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="27"
+                  height="25"
+                  viewBox="0 0 27 25"
+                  fill="none"
+                >
+                  <path
+                    d="M20.1022 16.2251C20.1513 16.173 20.186 16.1067 20.2025 16.034C20.2189 15.9613 20.2164 15.885 20.1953 15.8137C20.1741 15.7425 20.1352 15.6791 20.0828 15.631C20.0305 15.5828 19.9668 15.5517 19.8991 15.5412L15.7288 14.8772L13.8636 10.7343C13.7409 10.462 13.331 10.462 13.209 10.7343L11.3438 14.8772L7.1742 15.5412C7.10652 15.5517 7.04289 15.5828 6.99053 15.631C6.93818 15.6791 6.89921 15.7425 6.87805 15.8137C6.85689 15.885 6.85439 15.9613 6.87084 16.034C6.88729 16.1067 6.92202 16.173 6.9711 16.2251L9.98849 19.4495L9.27615 24.0025C9.26459 24.0762 9.27209 24.152 9.29779 24.2213C9.32349 24.2905 9.36637 24.3505 9.42158 24.3944C9.47678 24.4384 9.5421 24.4645 9.61015 24.4698C9.67819 24.4751 9.74623 24.4595 9.80657 24.4246L13.537 22.275L17.2668 24.4254C17.327 24.4609 17.3951 24.4769 17.4633 24.4715C17.5315 24.4661 17.5969 24.4396 17.6518 24.395C17.707 24.351 17.7498 24.2911 17.7755 24.2219C17.8012 24.1527 17.8087 24.077 17.7972 24.0033L17.0848 19.4503L20.1022 16.2251Z"
+                    fill="#3D3D3D"
+                  />
+                  <path
+                    d="M7.67168 19.5119L5.61503 19.1843L4.6952 17.1412C4.57246 16.8689 4.16259 16.8689 4.04058 17.1412L3.12075 19.1843L1.0641 19.5119C0.996415 19.5224 0.93278 19.5535 0.880426 19.6016C0.828072 19.6498 0.7891 19.7131 0.767941 19.7844C0.746782 19.8556 0.744285 19.932 0.760734 20.0047C0.777183 20.0774 0.811917 20.1436 0.860988 20.1958L2.34923 21.7856L1.99854 24.0305C1.98698 24.1041 1.99447 24.1799 2.02018 24.2492C2.04588 24.3185 2.08876 24.3784 2.14396 24.4224C2.19917 24.4663 2.26449 24.4924 2.33253 24.4977C2.40057 24.5031 2.46862 24.4874 2.52896 24.4525L4.36862 23.3921L6.20828 24.4525C6.26848 24.488 6.33665 24.504 6.40483 24.4986C6.47301 24.4932 6.53838 24.4667 6.59331 24.4221C6.64846 24.3782 6.69131 24.3182 6.717 24.249C6.74269 24.1798 6.75021 24.1041 6.7387 24.0305L6.38728 21.7856L7.87552 20.1958C7.9246 20.1436 7.95933 20.0773 7.97574 20.0045C7.99216 19.9317 7.98959 19.8554 7.96835 19.7841C7.94711 19.7128 7.90804 19.6495 7.85559 19.6014C7.80314 19.5533 7.73942 19.5222 7.67168 19.5119ZM26.2319 19.785C26.2109 19.7138 26.1722 19.6504 26.12 19.6021C26.0678 19.5539 26.0043 19.5226 25.9368 19.5119L23.8801 19.1843L22.9603 17.1412C22.8376 16.8689 22.4277 16.8689 22.3057 17.1412L21.3858 19.1843L19.3292 19.5119C19.2615 19.5224 19.1979 19.5535 19.1455 19.6016C19.0932 19.6498 19.0542 19.7131 19.033 19.7844C19.0119 19.8556 19.0094 19.932 19.0258 20.0047C19.0423 20.0774 19.077 20.1436 19.1261 20.1958L20.6143 21.7856L20.2629 24.0305C20.2514 24.1041 20.2588 24.1799 20.2845 24.2492C20.3103 24.3185 20.3531 24.3784 20.4083 24.4224C20.4635 24.4663 20.5289 24.4924 20.5969 24.4977C20.6649 24.5031 20.733 24.4874 20.7933 24.4525L22.633 23.3921L24.4727 24.4525C24.5329 24.488 24.601 24.504 24.6692 24.4986C24.7374 24.4932 24.8028 24.4667 24.8577 24.4221C24.9128 24.3782 24.9557 24.3182 24.9814 24.249C25.0071 24.1798 25.0146 24.1041 25.0031 24.0305L24.6516 21.7856L26.1399 20.1958C26.1887 20.1436 26.2232 20.0774 26.2395 20.0048C26.2557 19.9322 26.2531 19.856 26.2319 19.785Z"
+                    fill="#3D3D3D"
+                  />
+                  <path
+                    d="M13.5369 6.90684C15.1509 6.90684 16.4593 5.47256 16.4593 3.7033C16.4593 1.93403 15.1509 0.499756 13.5369 0.499756C11.9229 0.499756 10.6145 1.93403 10.6145 3.7033C10.6145 5.47256 11.9229 6.90684 13.5369 6.90684Z"
+                    fill="#3D3D3D"
+                  />
+                  <path
+                    d="M10.6169 13.7793L12.2271 10.2026C12.4704 9.66359 12.9723 9.32882 13.5371 9.32882C14.1018 9.32882 14.6038 9.66359 14.8471 10.2018L16.4573 13.7793L18.2553 14.0653C18.3001 13.8051 18.2974 13.5378 18.2473 13.2788L17.372 8.96122C17.2999 8.60552 17.1193 8.28742 16.86 8.0594C16.6007 7.83139 16.2783 7.70709 15.9459 7.70703H14.085V8.24603C14.085 8.40533 14.0273 8.55811 13.9246 8.67076C13.8218 8.78341 13.6824 8.84669 13.5371 8.84669C13.3918 8.84669 13.2524 8.78341 13.1496 8.67076C13.0469 8.55811 12.9891 8.40533 12.9891 8.24603V7.70783H11.1283C10.7959 7.70789 10.4734 7.83219 10.2142 8.0602C9.95489 8.28822 9.77428 8.60632 9.70215 8.96202L8.82689 13.2796C8.77355 13.5431 8.7772 13.8082 8.81885 14.0661L10.6169 13.7793Z"
+                    fill="#3D3D3D"
+                  />
+                </svg>
+                <p>2 years experience</p>
+              </div>
+            </div>
+            {/* <>
+              <div className="mb-3 flex items-center gap-2.5">
+                <img
+                  src={siteLogo}
+                  alt="Gold Lync site logo"
+                  className="size-9"
+                />
+                <p className="text-xl font-bold">GOLDLYNC Guarantee</p>
+              </div>
+              <p className="text-lg">
+                If you hire this pro, you’re covered by a money-back guarantee.
               </p>
-            </div>
-            <div className="mb-3 flex items-center gap-2.5">
-              <img
-                src={siteLogo}
-                alt="Gold Lync site logo"
-                className="size-9"
-              />
-              <p className="text-xl font-bold">GOLDLYNC Guarantee</p>
-            </div>
-            <p className="text-lg">
-              If you hire this pro, you’re covered by a money-back guarantee.
-            </p>
+            </> */}
           </div>
         </div>
       </div>

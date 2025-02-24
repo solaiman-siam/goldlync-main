@@ -40,7 +40,7 @@ export const explorMoreData = [
 export const recentProjectsData = {
   tabs: [
     {
-      name: "Home Maintenance",
+      name: "Home Improvement",
       sections: [
         {
           title: "House Cleaning",
@@ -71,7 +71,7 @@ export const recentProjectsData = {
       ],
     },
     {
-      name: "Home Remodeling",
+      name: "Cleaning",
       sections: [
         {
           title: "Interior Redesign",
@@ -101,7 +101,7 @@ export const recentProjectsData = {
       ],
     },
     {
-      name: "Weddings",
+      name: "Handyman",
       sections: [
         {
           title: "Venue Decoration",
@@ -131,7 +131,7 @@ export const recentProjectsData = {
       ],
     },
     {
-      name: "Events",
+      name: "Interior Painting",
       sections: [
         {
           title: "Corporate Events",
