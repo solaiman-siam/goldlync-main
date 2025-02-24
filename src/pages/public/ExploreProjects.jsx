@@ -1,10 +1,12 @@
 import projectImg1 from "@/assets/images/project1.png";
 import projectImg2 from "@/assets/images/project2.png";
 import projectImg3 from "@/assets/images/project3.png";
+import { Link } from "react-router";
+import { Button } from "@/components/shadcn/ui/button";
 
 const ExploreProjects = () => {
   return (
-    <div className="container my-14 space-y-12">
+    <div className="container mb-20 mt-10 space-y-12">
       <div className="">
         <h1 className="mb-7 text-center text-5xl font-bold text-[#313133]">
           House Cleaning
@@ -48,7 +50,7 @@ const ExploreProjects = () => {
       <div className="flex flex-row-reverse items-center gap-10">
         <div className="flex-1">
           <h2 className="mb-7 text-5xl font-bold text-[#313133]">
-          After Cleaning
+            After Cleaning
           </h2>
           <p className="mb-10 w-[90%] text-[#575757]">
             I need assistance with installing a new kitchen tap and addressing a
@@ -64,6 +66,13 @@ const ExploreProjects = () => {
             className="h-full w-full object-cover object-center"
           />
         </figure>
+      </div>
+      <div className="">
+        <Link to="/service-questionnaries" className="mx-auto block w-fit">
+          <Button type="button" className="px-20">
+            Get Service
+          </Button>
+        </Link>
       </div>
     </div>
   );

@@ -560,7 +560,7 @@ const ConstructorProfileDetails = () => {
         </div>
         <div className="right h-full">
           <div className="sticky top-10 rounded-md bg-[#FFF2EB] px-5 py-6">
-            <p className="mb-1.5 text-xl text-[#494949]">Starting Budget</p>
+            <p className="mb-1.5 text-xl text-[#494949]">Typical Project Cost</p>
             <h2 className="mb-1.5 text-xl font-medium">$140</h2>
             <ScrollLink
               to="works"
@@ -612,7 +612,7 @@ const ConstructorProfileDetails = () => {
               Connect Now
             </button>
             <div className="cards space-y-3">
-              <div className="card flex items-center justify-center gap-2.5 text-[#3D3D3D]">
+              {/* <div className="card flex items-center justify-center gap-2.5 text-[#3D3D3D]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="25"
@@ -641,7 +641,7 @@ const ConstructorProfileDetails = () => {
                   Responds in about{" "}
                   <span className="font-semibold">10 min</span>
                 </p>
-              </div>
+              </div> */}
               <div className="card flex items-center justify-center gap-2.5 text-[#3D3D3D]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
