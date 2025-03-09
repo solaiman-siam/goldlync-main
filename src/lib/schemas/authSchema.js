@@ -38,8 +38,10 @@ export const registerSchema = z
     confirmPassword: passwordValidation,
   })
   .refine(
-    ({ password, confirmPassword }) => password === confirmPassword,
-    "Confirm password does not match"
+    ({ password, confirmPassword }) => password === confirmPassword,{
+      message: "Confirm password does not match",
+      path: ["confirmPassword"],
+    }
   );
 
 export const loginSchema = z.object({

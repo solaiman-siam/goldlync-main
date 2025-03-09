@@ -1,16 +1,11 @@
 import SiteLogo from "@/components/SiteLogo";
-import { Link, Navigate } from "react-router";
+import { Link } from "react-router";
 import registerImage from "@/assets/images/auth-2.png";
 import RegisterForm from "@/components/forms/auth/RegisterForm";
 import SocialAuth from "@/components/SocialAuth";
-import useAuth from "@/hooks/useAuth";
+import { Toaster } from "react-hot-toast";
 
 const Register = () => {
-  const { chooseRole } = useAuth();
-
-  if (chooseRole !== "customer" && chooseRole !== "pro") {
-    return <Navigate to="/choose" />;
-  }
 
   return (
     <div className="flex h-screen overflow-hidden font-poppins">
@@ -51,6 +46,7 @@ const Register = () => {
           </div>
         </div>
       </div>
+      <Toaster position="top-right" reverseOrder={false} />
     </div>
   );
 };

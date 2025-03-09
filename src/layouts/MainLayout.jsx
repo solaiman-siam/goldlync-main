@@ -1,5 +1,6 @@
 import Footer from "@/components/shared/Footer";
 import HomeTopbar from "@/components/shared/HomeTopbar";
+import { Toaster } from "react-hot-toast";
 import { Outlet, ScrollRestoration, useLocation } from "react-router";
 
 const MainLayout = () => {
@@ -16,6 +17,7 @@ const MainLayout = () => {
         <Outlet />
       </main>
       {!hideFooterPaths.includes(location.pathname) && <Footer />}
+      <Toaster position="top-right" reverseOrder={false} />
     </div>
   );
 };

@@ -3,7 +3,7 @@ import profile from "@/assets/images/constructor.png";
 import RatingStar from "@/components/shared/RatingStar";
 import { Button } from "@/components/shadcn/ui/button";
 import { useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { Service1, Service2, TrustBadge } from "@/assets/icons";
 
 const Pros = () => {
@@ -237,7 +237,6 @@ const Pros = () => {
           ))}
         </div>
       </div>
-      <Toaster position="top-right" reverseOrder={false} />
     </>
   );
 };

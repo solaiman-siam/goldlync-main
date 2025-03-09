@@ -387,15 +387,15 @@ export const route = createBrowserRouter([
       },
     ],
   },
-  {
-    path: "/choose",
-    errorElement: <ErrorPage />,
-    element: (
-      <PageTitle title="Choose Role">
-        <RoleChoose />
-      </PageTitle>
-    ),
-  },
+  // {
+  //   path: "/choose",
+  //   errorElement: <ErrorPage />,
+  //   element: (
+  //     <PageTitle title="Choose Role">
+  //       <RoleChoose />
+  //     </PageTitle>
+  //   ),
+  // },
   {
     path: "/register",
     errorElement: <ErrorPage />,
