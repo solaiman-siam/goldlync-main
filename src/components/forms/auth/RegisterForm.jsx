@@ -69,10 +69,12 @@ const RegisterForm = () => {
         localStorage.setItem("auth_token", token);
       }
 
-      toast.success("Registration successful!");
-      setTimeout(() => {
-        navigate(-1); // Navigate to the previous path
-      }, 5000);
+      new Promise((resolve) => {
+        navigate(-2);
+        resolve();
+      }).then(() => {
+        toast.success("Registration successful!");
+      });
     } catch (error) {
       console.error("Registration error:", error);
       const errorMessage =

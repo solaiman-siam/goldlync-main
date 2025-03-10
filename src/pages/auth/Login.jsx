@@ -3,7 +3,6 @@ import SocialAuth from "@/components/SocialAuth";
 import { Link } from "react-router";
 import loginImage from "@/assets/images/auth-1.png";
 import LoginForm from "@/components/forms/auth/LoginForm";
-import { Toaster } from "react-hot-toast";
 
 const Login = () => {
   return (
@@ -44,7 +43,6 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <Toaster position="top-right" reverseOrder={false} />
     </div>
   );
 };

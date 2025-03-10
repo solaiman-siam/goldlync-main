@@ -60,6 +60,8 @@ const LoginForm = () => {
         localStorage.setItem("auth_token", token);
       }
 
+      if (response.data.user.role === "pro") navigate("/constructor-profile");
+      else navigate("/profile");
       toast.success("Login successful!");
     } catch (error) {
       console.error("Login error:", error.response?.data?.message);

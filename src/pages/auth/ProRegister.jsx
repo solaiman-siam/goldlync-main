@@ -1,11 +1,7 @@
-import RegisterForm from "@/components/forms/auth/RegisterForm";
 import SiteLogo from "@/components/SiteLogo";
-import SocialAuth from "@/components/SocialAuth";
-import { Link, Navigate } from "react-router";
-import useAuth from "@/hooks/useAuth";
+import { Link } from "react-router";
 import registerImage from "@/assets/images/auth-2.png";
 import ProRegisterForm from "@/components/forms/auth/ProRegisterForm";
-import { Toaster } from "react-hot-toast";
 
 const ProRegister = () => {
   
@@ -48,7 +44,6 @@ const ProRegister = () => {
           </div>
         </div>
       </div>
-      <Toaster position="top-right" reverseOrder={false} />
     </div>
   );
 };

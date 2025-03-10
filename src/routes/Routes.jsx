@@ -48,6 +48,7 @@ import OnlineHelpdesk from "@/pages/OnlineHelpdesk";
 import WorkArea from "@/pages/WorkArea";
 import ConstructorForm from "@/pages/ConstructorForm";
 import AddProjects from "@/pages/AddProjects";
+import VerifyCode from "@/pages/auth/VerifyCode";
 
 export const route = createBrowserRouter([
   {
@@ -429,6 +430,15 @@ export const route = createBrowserRouter([
     element: (
       <PageTitle title="Forget Password">
         <ForgetPassword />
+      </PageTitle>
+    ),
+  },
+  {
+    path: "/verify-code",
+    errorElement: <ErrorPage />,
+    element: (
+      <PageTitle title="Forget Password">
+        <VerifyCode />
       </PageTitle>
     ),
   },

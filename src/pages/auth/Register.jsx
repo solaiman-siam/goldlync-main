@@ -3,7 +3,6 @@ import { Link } from "react-router";
 import registerImage from "@/assets/images/auth-2.png";
 import RegisterForm from "@/components/forms/auth/RegisterForm";
 import SocialAuth from "@/components/SocialAuth";
-import { Toaster } from "react-hot-toast";
 
 const Register = () => {
 
@@ -46,7 +45,6 @@ const Register = () => {
           </div>
         </div>
       </div>
-      <Toaster position="top-right" reverseOrder={false} />
     </div>
   );
 };
