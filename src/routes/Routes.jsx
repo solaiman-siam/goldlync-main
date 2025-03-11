@@ -49,6 +49,7 @@ import WorkArea from "@/pages/WorkArea";
 import ConstructorForm from "@/pages/ConstructorForm";
 import AddProjects from "@/pages/AddProjects";
 import VerifyCode from "@/pages/auth/VerifyCode";
+import ResetPassword from "@/pages/auth/ResetPassword";
 
 export const route = createBrowserRouter([
   {
@@ -439,6 +440,15 @@ export const route = createBrowserRouter([
     element: (
       <PageTitle title="Forget Password">
         <VerifyCode />
+      </PageTitle>
+    ),
+  },
+  {
+    path: "/reset-password",
+    errorElement: <ErrorPage />,
+    element: (
+      <PageTitle title="Reset Password">
+        <ResetPassword />
       </PageTitle>
     ),
   },

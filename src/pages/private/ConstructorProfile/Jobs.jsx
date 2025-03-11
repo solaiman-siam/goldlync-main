@@ -65,7 +65,7 @@ const Jobs = () => {
                 </figure>
                 <p className="text-xl font-semibold">{item?.service}</p>
               </div>
-              <p className="text-3xl font-bold text-accent">Price : $250</p>
+              <p className="text-2xl font-bold text-accent"><span className="">Budjet Range: </span>{item?.budjet}</p>
             </div>
             <div className="space-y-5">
               {item.questions.map((question, idx) => (
@@ -107,7 +107,7 @@ const Jobs = () => {
                     </clipPath>
                   </defs>
                 </svg>
-                Nieuw-Vennep (28 km)
+                {item?.location?.city} ({item?.location?.distance})
               </p>
               <p className="flex items-center gap-3">
                 <svg
@@ -138,7 +138,7 @@ const Jobs = () => {
                     </clipPath>
                   </defs>
                 </svg>
-                30 min ago
+                {item?.time_posted}
               </p>
             </div>
             <Link to="/assignment-details" className="block">

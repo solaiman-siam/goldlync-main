@@ -49,7 +49,7 @@ const AssignmentDetails = () => {
 
   return (
     <div className="container">
-      <Link to="#" className="flex items-center gap-1.5">
+      <Link to="/constructor-profile/jobs" className="flex items-center gap-1.5">
         <BackSign className="stroke-[#2D2F34]" />
         <span className="text-[#2D2F34]">Assignments</span>
       </Link>
@@ -57,7 +57,7 @@ const AssignmentDetails = () => {
       <h2 className="mt-7 text-3xl font-bold text-[#313133]">
         Installing or replacing radiators: 4 radiators; New radiators...
       </h2>
-      <h4 className="my-4 text-3xl font-bold text-primary">Budget: $250</h4>
+      <h4 className="my-4 text-3xl font-bold text-primary">Budjet Range: $100-$300</h4>
 
       <div className="flex gap-20">
         <div className="left w-1/2 flex-shrink-0">

@@ -42,7 +42,7 @@ const VerifyCode = () => {
           },
         }
       );
-      navigate("/profile");
+      navigate("/reset-password", { state: { email: email } });
       toast.success(response.data.message);
     } catch (error) {
       console.error("Login error:", error.response?.data?.message);
