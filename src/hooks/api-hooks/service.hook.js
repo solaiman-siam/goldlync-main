@@ -1,6 +1,8 @@
 import useAxiosSecure from "../useAxios";
 import { useQuery } from "@tanstack/react-query";
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 export function useGetAllPrimaryServices() {
   const axios = useAxiosSecure();
 
@@ -15,7 +17,6 @@ export function useGetAllPrimaryServices() {
     },
   });
 }
-
 
 export function useGetSubCategoryServices() {
   const axios = useAxiosSecure();

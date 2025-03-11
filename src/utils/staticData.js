@@ -167,6 +167,7 @@ export const jobs = [
   {
     name: "Opportunity",
     service: "Gutter cleaning",
+    budjet: "$100-$300",
     price: "$250",
     questions: [
       {
@@ -200,6 +201,7 @@ export const jobs = [
   {
     name: "Opportunity",
     service: "Window Cleaning",
+    budjet: "$150-$500",
     price: "$180",
     questions: [
       {
@@ -224,6 +226,7 @@ export const jobs = [
   {
     name: "Opportunity",
     service: "Lawn Care",
+    budjet: "$75-$200",
     price: "$300",
     questions: [
       {
@@ -248,6 +251,7 @@ export const jobs = [
   {
     name: "Lead",
     service: "Pressure Washing",
+    budjet: "$150-$500",
     price: "$220",
     questions: [
       {
@@ -272,6 +276,7 @@ export const jobs = [
   {
     name: "Lead",
     service: "Roof Repair",
+    budjet: "$500-$1000",
     price: "$500",
     questions: [
       {
@@ -296,6 +301,7 @@ export const jobs = [
   {
     name: "Opportunity",
     service: "HVAC Maintenance",
+    budjet: "$5000-$10000",
     price: "$150",
     questions: [
       {

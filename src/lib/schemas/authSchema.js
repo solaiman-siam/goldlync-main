@@ -8,7 +8,7 @@ const nameValidation = z
 
 const phoneNumberValidation = z
   .string({ required_error: "Phone number is required" })
-  .min(1, "Phone number is required")
+  .min(1, "Phone number is required");
 
 const addressValidation = z
   .string({ required_error: "Address is required" })
@@ -32,15 +32,26 @@ export const registerSchema = z
     address: addressValidation,
     language: z
       .string({ required_error: "Language is required" })
-      .min(1, "Language is required").optional(),
+      .min(1, "Language is required")
+      .optional(),
     email: emailValidation,
     password: passwordValidation,
     confirmPassword: passwordValidation,
   })
-  .refine(
-    ({ password, confirmPassword }) => password === confirmPassword,
-    "Confirm password does not match"
-  );
+  .refine(({ password, confirmPassword }) => password === confirmPassword, {
+    message: "Confirm password does not match",
+    path: ["confirmPassword"],
+  });
+
+export const resetPassSchema = z
+  .object({
+    password: passwordValidation,
+    confirmPassword: passwordValidation,
+  })
+  .refine(({ password, confirmPassword }) => password === confirmPassword, {
+    message: "Confirm password does not match",
+    path: ["confirmPassword"],
+  });
 
 export const loginSchema = z.object({
   email: emailValidation,

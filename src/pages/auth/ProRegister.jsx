@@ -1,17 +1,10 @@
-import RegisterForm from "@/components/forms/auth/RegisterForm";
 import SiteLogo from "@/components/SiteLogo";
-import SocialAuth from "@/components/SocialAuth";
-import { Link, Navigate } from "react-router";
-import useAuth from "@/hooks/useAuth";
+import { Link } from "react-router";
 import registerImage from "@/assets/images/auth-2.png";
 import ProRegisterForm from "@/components/forms/auth/ProRegisterForm";
 
 const ProRegister = () => {
-  // const { chooseRole } = useAuth();
-
-  // if (chooseRole !== "customer" && chooseRole !== "pro") {
-  //   return <Navigate to="/choose" />;
-  // }
+  
 
   return (
     <div className="flex h-screen overflow-hidden font-poppins">

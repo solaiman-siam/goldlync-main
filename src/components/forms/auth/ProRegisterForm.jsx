@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema } from "@/lib/schemas/authSchema";
+import { useNavigate } from "react-router-dom";
 import {
   Form,
   FormControl,
@@ -12,9 +13,15 @@ import AuthInput from "@/components/shadcn/AuthInput";
 import { AuthUser1, Location1, MailIcon1, PhoneIcon1 } from "@/assets/icons";
 import PasswordField from "@/components/shadcn/PasswordField";
 import { Button } from "@/components/shadcn/ui/button";
-import { useNavigate } from "react-router";
+import toast from "react-hot-toast";
+import { useState } from "react";
+import axios from "axios";
+import { Loader2 } from "lucide-react";
 
 const ProRegisterForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+
   const form = useForm({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -27,11 +34,49 @@ const ProRegisterForm = () => {
     },
   });
 
-  const navigate = useNavigate();
-
   const handleSubmit = async (e) => {
-    console.log(e);
-    navigate("/constructor-form");
+    const userData = {
+      name: e.name,
+      email: e.email,
+      password: e.password,
+      password_confirmation: e.confirmPassword,
+      role: "pro",
+      address: e.address,
+      phone: e.phoneNumber,
+    };
+
+    setIsLoading(true);
+
+    try {
+      const response = await axios.post(
+        `https://goldlync.softvencefsd.xyz/api/register`,
+        userData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const token = response?.data?.access_token;
+
+      console.log("Registration response:", response.data);
+
+      if (token) {
+        localStorage.setItem("auth_token", token);
+      }
+
+      toast.success("Registration successful!");
+      navigate(-1);
+    } catch (error) {
+      console.error("Registration error:", error);
+      const errorMessage =
+        error.response?.data?.message ||
+        "Registration failed! Please try again.";
+      toast.error(errorMessage);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -145,7 +190,14 @@ const ProRegisterForm = () => {
           )}
         />
         <Button type="submit" className="w-full">
-          Register
+          {isLoading ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Registering...
+            </>
+          ) : (
+            "Register"
+          )}
         </Button>
       </form>
     </Form>

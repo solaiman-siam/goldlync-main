@@ -3,6 +3,13 @@ import { Link } from "react-router";
 import { useState } from "react";
 import Previews from "@/components/Previews";
 import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/shadcn/ui/select";
+import {
   Dialog,
   DialogContent,
   DialogDescription,
@@ -54,12 +61,19 @@ function Questionnaries() {
     },
   ];
 
+  const budgets = {
+    options: [
+      "$100 - $250",
+      "$250 - $500",
+      "$500 - $1000",
+      "$1000 - $2000",
+      "$2000 - $5000",
+      "$5000+",
+    ],
+  };
+
   const [isFocused, setIsFocused] = useState(false);
   const [budget, setBudget] = useState(null);
-
-  const increaseInputValue = (increment) => {
-    setBudget((prevBudget) => prevBudget + increment);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -84,19 +98,25 @@ function Questionnaries() {
                 />
               ))}
             </div>
-            <div className="flex flex-col gap-3">
-              <label className="text-xl font-semibold" htmlFor="">
-                {" "}
-                {selectData.length + 1}. Provide a detail job description.
-              </label>
-              <textarea
-                className="h-[250px] w-full rounded border border-gray-400 px-4 py-4 focus:outline-primary"
-                name=""
-                id=""
-                placeholder="Message"
-              ></textarea>
-            </div>
             <div className="flex gap-6">
+              <div className="flex flex-1 flex-col gap-3">
+                <label className="text-xl font-semibold" htmlFor="">
+                  {" "}
+                  {selectData.length + 1}. Budget
+                </label>
+                <Select>
+                  <SelectTrigger className="w-full px-4 py-8">
+                    <SelectValue placeholder={"Select Budget"} />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {budgets.options.map((option) => (
+                      <SelectItem key={option} value={option}>
+                        {option}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
               <div className="flex flex-1 flex-col gap-3">
                 <label className="text-xl font-semibold" htmlFor="">
                   {" "}
@@ -104,72 +124,18 @@ function Questionnaries() {
                 </label>
                 <Previews />
               </div>
-              <div className="flex flex-1 flex-col gap-3">
-                <label className="text-xl font-semibold" htmlFor="">
-                  {" "}
-                  {selectData.length + 3}. Your Budget
-                </label>
-                <div className="relative">
-                  <input
-                    type="number"
-                    className="h-[64px] w-full rounded border p-4 outline-primary"
-                    value={budget}
-                    onFocus={() => setIsFocused(true)}
-                    onBlur={(e) => {
-                      return e.target.value > 0 || setIsFocused(false);
-                    }}
-                    onChange={(e) => setBudget(parseInt(e.target.value))}
-                  />
-                  <div className="pointer-events-none absolute left-0 right-0 top-1/2 ml-auto flex -translate-y-1/2 items-center justify-between px-4">
-                    <p className={`text-[#8D8D8D] ${isFocused && "invisible"}`}>
-                      Budget <span className="text-primary">$250</span>
-                    </p>
-                    <div className="pointer-events-auto flex flex-col">
-                      <button
-                        type="button"
-                        onClick={() => increaseInputValue(1)}
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                        >
-                          <path
-                            d="M17 14L12 9L7 14"
-                            stroke="#434343"
-                            strokeWidth="1.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => increaseInputValue(-1)}
-                        disabled={budget <= 0}
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                        >
-                          <path
-                            d="M7 10L12 15L17 10"
-                            stroke="#434343"
-                            strokeWidth="1.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            </div>
+            <div className="flex flex-col gap-3">
+              <label className="text-xl font-semibold" htmlFor="">
+                {" "}
+                {selectData.length + 3}. Provide a detail job description.
+              </label>
+              <textarea
+                className="h-[250px] w-full rounded border border-gray-400 px-4 py-4 focus:outline-primary"
+                name=""
+                id=""
+                placeholder="Message"
+              ></textarea>
             </div>
             <div className="flex flex-1 flex-col gap-3">
               <label className="text-xl font-semibold" htmlFor="">
@@ -222,7 +188,6 @@ function Questionnaries() {
                 </div>
               </div>
             </div>
-
             <Dialog>
               <DialogTrigger
                 type="submit"
@@ -240,7 +205,7 @@ function Questionnaries() {
                       <Link
                         to="/pros"
                         type="button"
-                        className="mx-auto mb-6 w-[80%] rounded-full border border-primary bg-primary py-3 text-lg font-semibold text-white text-center"
+                        className="mx-auto mb-6 w-[80%] rounded-full border border-primary bg-primary py-3 text-center text-lg font-semibold text-white"
                       >
                         Choose Your Pro
                       </Link>
