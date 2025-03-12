@@ -8,16 +8,20 @@ function VisitHomeResource({
 }) {
   return (
     <div className="relative h-[500px] overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-y-1/2  -translate-x-1/2 z-[8] flex flex-col items-center gap-4 text-white">
-        <h3 className="w-5/12 text-center text-4xl font-semibold">{title}</h3>
-        <h4 className="w-6/12 pt-2 text-center font-light">{description}</h4>
+      <div className="absolute left-1/2 top-1/2 z-[8] flex w-full -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-4 px-4 text-white">
+        <h3 className="text-center text-4xl font-semibold xl:w-5/12">
+          {title}
+        </h3>
+        <h4 className="w-full pt-2 text-center font-light lg:w-6/12">
+          {description}
+        </h4>
 
         <div className="pt-8">
           <Link
             className="rounded-full bg-primary px-20 py-4 text-lg font-medium text-white"
             onClick={() =>
               document
-                .getElementById({link})
+                .getElementById({ link })
                 ?.scrollIntoView({ behavior: "smooth" })
             }
           >
@@ -27,7 +31,7 @@ function VisitHomeResource({
       </div>
 
       <img
-        className="w-full h-full object-cover object-center"
+        className="h-full w-full object-cover object-center"
         src="https://i.ibb.co.com/bjb5ZTwB/Rectangle-25146.png"
         alt=""
       />

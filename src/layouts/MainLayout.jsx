@@ -15,7 +15,7 @@ const MainLayout = () => {
       <main>
         <Outlet />
       </main>
-      {!hideFooterPaths.includes(location.pathname) && <Footer />}
+      {/* {!hideFooterPaths.includes(location.pathname) && <Footer />} */}
     </div>
   );
 };

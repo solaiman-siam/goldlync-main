@@ -10,10 +10,14 @@ const SiteLogo = forwardRef(({ className, ...props }, ref) => (
     className={cn("flex items-end gap-2", className)}
     {...props}
   >
-    <span className="font-manrope text-3xl font-bold uppercase text-accent">
+    <span className="font-manrope text-xl font-bold uppercase text-accent lg:text-3xl">
       GOLDLYNC
     </span>
-    <img src={siteLogo} alt="Gold Lync site logo" />
+    <img
+      className="w-[30px] lg:w-[60px]"
+      src={siteLogo}
+      alt="Gold Lync site logo"
+    />
   </Link>
 ));
 SiteLogo.displayName = "SiteLogo";
