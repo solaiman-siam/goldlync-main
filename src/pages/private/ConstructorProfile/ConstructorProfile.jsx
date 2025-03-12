@@ -37,8 +37,6 @@ const ConstructorProfile = () => {
     console.log(e);
   };
 
-  console.log(form.getValues("avatar"));
-
   return (
     <>
       <h2 className="mb-6 font-manrope text-3xl font-bold">Company Details</h2>
