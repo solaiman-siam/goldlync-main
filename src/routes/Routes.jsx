@@ -154,7 +154,7 @@ export const route = createBrowserRouter([
         ),
       },
       {
-        path: "/service-categories",
+        path: "/service-subcategories/:slug",
         element: (
           <PageTitle title="Service Categories">
             <ServiceCategories />
