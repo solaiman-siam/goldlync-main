@@ -12,8 +12,10 @@ const ServiceSection = () => {
   return (
     <Container>
       <section className="my-[80px]">
-        <SectionTitle tagName="h3">Get free cost estimates.</SectionTitle>
-        <SectionText>
+        <SectionTitle tagName="h3" className="text-[24px] md:text-4xl">
+          Get free cost estimates.
+        </SectionTitle>
+        <SectionText className="text-base md:text-lg">
           We analyzed millions of bids from Thumbtack professionals to see what
           things really cost, Find out what other people have paid for projects
           like yours.
@@ -29,7 +31,7 @@ const ServiceSection = () => {
         ) : data?.length === 0 ? (
           <div className="my-8 text-center">No Data Found!</div>
         ) : (
-          <div className="container my-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3 xxl:grid-cols-[repeat(auto-fill,minmax(420px,1fr))]">
+          <div className="xxl:grid-cols-[repeat(auto-fill,minmax(420px,1fr))] container my-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {data?.map((service, idx) => (
               <ServiceItem
                 key={`service-${idx}`}
@@ -78,10 +80,10 @@ const ServiceItem = ({ path, image, title, details, minPrice, maxPrice }) => {
         />
       </figure>
       <div className="mt-4 space-y-3">
-        <h6 className="font-manrope text-xl font-medium leading-[130%]">
+        <h6 className="font-manrope text-xl font-medium md:leading-[130%]">
           {title}
         </h6>
-        <p className="font-poppins text-lg font-normal leading-[180%] text-[#494949]">
+        <p className="font-poppins text-base font-normal md:leading-[180%] text-[#494949] md:text-lg">
           {details}
         </p>
         <div className="font-manrope text-lg font-semibold leading-[150%]">

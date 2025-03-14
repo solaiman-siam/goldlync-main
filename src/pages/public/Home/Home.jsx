@@ -17,9 +17,9 @@ const Home = () => {
       <RecentProjects />
       <ExploreMoreSection />
       <VisitHomeResource />
-      {/* <ServiceSection /> */}
-      {/* <WhatOurClientSays/> */}
-      {/* <GetInTouchBanner/> */}
+      <ServiceSection />
+      <WhatOurClientSays />
+      <GetInTouchBanner />
     </>
   );
 };
