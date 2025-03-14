@@ -11,7 +11,7 @@ const ServiceSection = () => {
 
   return (
     <Container>
-      <section className="my-[80px]">
+      <section className="my-[40px] lg:my-[80px]">
         <SectionTitle tagName="h3" className="text-[24px] md:text-4xl">
           Get free cost estimates.
         </SectionTitle>
@@ -83,10 +83,10 @@ const ServiceItem = ({ path, image, title, details, minPrice, maxPrice }) => {
         <h6 className="font-manrope text-xl font-medium md:leading-[130%]">
           {title}
         </h6>
-        <p className="font-poppins text-base font-normal md:leading-[180%] text-[#494949] md:text-lg">
+        <p className="font-poppins text-sm font-normal text-[#494949] md:leading-[180%] lg:text-lg">
           {details}
         </p>
-        <div className="font-manrope text-lg font-semibold leading-[150%]">
+        <div className="font-manrope text-base font-semibold lg:text-lg xl:leading-[150%]">
           Avg . Price ${minPrice}-${maxPrice}
         </div>
       </div>

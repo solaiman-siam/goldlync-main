@@ -28,6 +28,7 @@ import ConstructorBenefits from "@/components/shared/ConstructorBenefits";
 import AddServicesByConstructor from "./public/Services/AddServicesByConstructor";
 import { Slider } from "@/components/shadcn/ui/slider";
 import AddCategories from "./public/Services/AddCategories";
+import Container from "@/components/Container";
 
 const items = [
   {
@@ -100,432 +101,438 @@ const ConstructorForm = () => {
   }
 
   return (
-    <section className="container my-20">
-      <h2 className="mb-7 text-3xl font-semibold text-[#222]">
-        {tabsTitle[selectedTab]}
-      </h2>
-      <Progress
-        value={(selectedTab / tabsTitle.length) * 100}
-        className="h-2"
-      />
-      <div className="mt-12 w-[60%]">
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="">
-            {selectedTab == 0 && (
-              <>
+    <Container>
+      <section className="container my-20">
+        <h2 className="mb-7 text-[24px] font-semibold text-[#222] md:text-3xl">
+          {tabsTitle[selectedTab]}
+        </h2>
+        <Progress
+          value={(selectedTab / tabsTitle.length) * 100}
+          className="h-2"
+        />
+        <div className="mt-12 md:w-[60%]">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="">
+              {selectedTab == 0 && (
                 <>
-                  <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
-                    Enter your Company Name
-                  </h2>
-                  <FormField
-                    control={form.control}
-                    name="companyName"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input
-                            placeholder="Name of your company"
-                            {...field}
-                            className="px-5 py-4"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </>
-                <>
-                  <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
-                    Upload your company logo
-                  </h2>
-                  <Previews limit={1} />
-                </>
-                <>
-                  <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
-                    How long have you been in business?
-                  </h2>
+                  <>
+                    <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
+                      Enter your Company Name
+                    </h2>
+                    <FormField
+                      control={form.control}
+                      name="companyName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Input
+                              placeholder="Name of your company"
+                              {...field}
+                              className="px-5 py-4"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </>
+                  <>
+                    <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
+                      Upload your company logo
+                    </h2>
+                    <Previews limit={1} />
+                  </>
+                  <>
+                    <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
+                      How long have you been in business?
+                    </h2>
 
-                  <FormField
-                    control={form.control}
-                    name="type"
-                    render={({ field }) => (
-                      <FormItem className="space-y-3">
-                        <FormControl>
-                          <RadioGroup
-                            onValueChange={field.onChange}
-                            defaultValue={field.value}
-                            className="flex flex-col space-y-1"
-                          >
-                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                              <FormControl>
-                                <RadioGroupItem value="lessThanOne" />
-                              </FormControl>
-                              <FormLabel className="font-normal">
-                                Less than one year
-                              </FormLabel>
-                            </FormItem>
-                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                              <FormControl>
-                                <RadioGroupItem value="oneToThree" />
-                              </FormControl>
-                              <FormLabel className="font-normal">
-                                1-2 year experience
-                              </FormLabel>
-                            </FormItem>
-                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                              <FormControl>
-                                <RadioGroupItem value="threeToFive" />
-                              </FormControl>
-                              <FormLabel className="font-normal">
-                                3-5 year experience
-                              </FormLabel>
-                            </FormItem>
-                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                              <FormControl>
-                                <RadioGroupItem value="fivePlus" />
-                              </FormControl>
-                              <FormLabel className="font-normal">
-                                5 year above
-                              </FormLabel>
-                            </FormItem>
-                          </RadioGroup>
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </>
-                <>
-                  <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
-                    How many employee do you have?
-                  </h2>
+                    <FormField
+                      control={form.control}
+                      name="type"
+                      render={({ field }) => (
+                        <FormItem className="space-y-3">
+                          <FormControl>
+                            <RadioGroup
+                              onValueChange={field.onChange}
+                              defaultValue={field.value}
+                              className="flex flex-col space-y-1"
+                            >
+                              <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
+                                <FormControl>
+                                  <RadioGroupItem value="lessThanOne" />
+                                </FormControl>
+                                <FormLabel className="font-normal">
+                                  Less than one year
+                                </FormLabel>
+                              </FormItem>
+                              <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
+                                <FormControl>
+                                  <RadioGroupItem value="oneToThree" />
+                                </FormControl>
+                                <FormLabel className="font-normal">
+                                  1-2 year experience
+                                </FormLabel>
+                              </FormItem>
+                              <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
+                                <FormControl>
+                                  <RadioGroupItem value="threeToFive" />
+                                </FormControl>
+                                <FormLabel className="font-normal">
+                                  3-5 year experience
+                                </FormLabel>
+                              </FormItem>
+                              <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
+                                <FormControl>
+                                  <RadioGroupItem value="fivePlus" />
+                                </FormControl>
+                                <FormLabel className="font-normal">
+                                  5 year above
+                                </FormLabel>
+                              </FormItem>
+                            </RadioGroup>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </>
+                  <>
+                    <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
+                      How many employee do you have?
+                    </h2>
 
-                  <FormField
-                    control={form.control}
-                    name="type"
-                    render={({ field }) => (
-                      <FormItem className="space-y-3">
-                        <FormControl>
-                          <RadioGroup
-                            onValueChange={field.onChange}
-                            defaultValue={field.value}
-                            className="flex flex-col space-y-1"
-                          >
-                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                              <FormControl>
-                                <RadioGroupItem value="self" />
-                              </FormControl>
-                              <FormLabel className="font-normal">
-                                I am a self-employed entrepreneur, without
-                                employees
-                              </FormLabel>
-                            </FormItem>
-                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                              <FormControl>
-                                <RadioGroupItem value="twoToFive" />
-                              </FormControl>
-                              <FormLabel className="font-normal">
-                                2-5 employee
-                              </FormLabel>
-                            </FormItem>
-                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                              <FormControl>
-                                <RadioGroupItem value="sixToFifteen" />
-                              </FormControl>
-                              <FormLabel className="font-normal">
-                                6 to 15 employees
-                              </FormLabel>
-                            </FormItem>
-                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                              <FormControl>
-                                <RadioGroupItem value="fifteenPlus" />
-                              </FormControl>
-                              <FormLabel className="font-normal">
-                                More than 15 employees
-                              </FormLabel>
-                            </FormItem>
-                          </RadioGroup>
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </>
-                <>
-                  <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
-                    what set your company apart from other competitors?{" "}
-                    <span className="text-base font-normal text-primary">
-                      (Tell us 100 words)
-                    </span>
-                  </h2>
-                  <FormField
-                    control={form.control}
-                    name="benefits"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Textarea
-                            placeholder="Type..."
-                            className="h-[180px] resize-none"
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </>
-                <>
-                  <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
-                    Select 3 attributes why customers should hire you{" "}
-                    <span className="text-primary">
-                      {form.getValues().quality.length}/3
-                    </span>{" "}
-                    ?
-                  </h2>
-                  <FormField
-                    control={form.control}
-                    name="quality"
-                    render={() => (
-                      <FormItem>
-                        {items.map((item) => (
-                          <FormField
-                            key={item.id}
-                            control={form.control}
-                            name="quality"
-                            render={({ field }) => {
-                              const valueArray = Array.isArray(field.value)
-                                ? field.value
-                                : []; // Ensure it's an array
-                              return (
-                                <FormItem
-                                  key={item.id}
-                                  className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4"
-                                >
-                                  <FormControl>
-                                    <Checkbox
-                                      checked={valueArray.includes(item.id)}
-                                      onCheckedChange={(checked) => {
-                                        field.onChange(
-                                          checked
-                                            ? [...valueArray, item.id]
-                                            : valueArray.filter(
-                                                (value) => value !== item.id
-                                              )
-                                        );
-                                      }}
-                                    />
-                                  </FormControl>
-                                  <FormLabel className="font-normal">
-                                    {item.label}
-                                  </FormLabel>
-                                </FormItem>
-                              );
-                            }}
-                          />
-                        ))}
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </>
-                <div className="mt-8 space-x-3">
-                  <Button type="button" className="bg-[#9B9B9B]" asChild>
-                    <Link to="/constructor-profile">Cancel</Link>
-                  </Button>
-                  <Button type="button" onClick={() => setSelectedTab(1)}>
-                    Next
-                  </Button>
-                </div>
-              </>
-            )}
-            {selectedTab == 1 && (
-              <>
-                <AddCategories />
-                <>
-                  <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
-                    Upload your any license or certification
-                  </h2>
-                  <Previews2 />
-                </>
-                <div className="mt-8 space-x-3">
-                  <Button
-                    type="button"
-                    className="bg-[#9B9B9B]"
-                    onClick={() => setSelectedTab(0)}
-                  >
-                    Back
-                  </Button>
-                  <Button type="button" onClick={() => setSelectedTab(2)}>
-                    Next
-                  </Button>
-                </div>
-              </>
-            )}
-            {selectedTab == 2 && (
-              <>
-                <>
-                  <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
-                    What is your area of work?
-                  </h2>
-                  <FormField
-                    control={form.control}
-                    name="searchArea"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input
-                            placeholder="Search your area"
-                            {...field}
-                            className="px-5 py-4"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
-                    Set your maximum distance around your area
-                  </h2>
-                  <Slider
-                    defaultValue={[value]}
-                    max={50}
-                    min={5}
-                    step={1}
-                    onValueChange={(val) => setValue(val)}
-                  />
-                  <p className="my-4">Area of Service: {value} Miles</p>
-                  <div className="flex h-[450px] w-full items-center justify-center border">
-                    Map
+                    <FormField
+                      control={form.control}
+                      name="type"
+                      render={({ field }) => (
+                        <FormItem className="space-y-3">
+                          <FormControl>
+                            <RadioGroup
+                              onValueChange={field.onChange}
+                              defaultValue={field.value}
+                              className="flex flex-col space-y-1"
+                            >
+                              <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
+                                <FormControl>
+                                  <RadioGroupItem value="self" />
+                                </FormControl>
+                                <FormLabel className="font-normal">
+                                  I am a self-employed entrepreneur, without
+                                  employees
+                                </FormLabel>
+                              </FormItem>
+                              <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
+                                <FormControl>
+                                  <RadioGroupItem value="twoToFive" />
+                                </FormControl>
+                                <FormLabel className="font-normal">
+                                  2-5 employee
+                                </FormLabel>
+                              </FormItem>
+                              <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
+                                <FormControl>
+                                  <RadioGroupItem value="sixToFifteen" />
+                                </FormControl>
+                                <FormLabel className="font-normal">
+                                  6 to 15 employees
+                                </FormLabel>
+                              </FormItem>
+                              <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
+                                <FormControl>
+                                  <RadioGroupItem value="fifteenPlus" />
+                                </FormControl>
+                                <FormLabel className="font-normal">
+                                  More than 15 employees
+                                </FormLabel>
+                              </FormItem>
+                            </RadioGroup>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </>
+                  <>
+                    <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
+                      what set your company apart from other competitors?{" "}
+                      <span className="text-base font-normal text-primary">
+                        (Tell us 100 words)
+                      </span>
+                    </h2>
+                    <FormField
+                      control={form.control}
+                      name="benefits"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Textarea
+                              placeholder="Type..."
+                              className="h-[180px] resize-none"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </>
+                  <>
+                    <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
+                      Select 3 attributes why customers should hire you{" "}
+                      <span className="text-primary">
+                        {form.getValues().quality.length}/3
+                      </span>{" "}
+                      ?
+                    </h2>
+                    <FormField
+                      control={form.control}
+                      name="quality"
+                      render={() => (
+                        <FormItem>
+                          {items.map((item) => (
+                            <FormField
+                              key={item.id}
+                              control={form.control}
+                              name="quality"
+                              render={({ field }) => {
+                                const valueArray = Array.isArray(field.value)
+                                  ? field.value
+                                  : []; // Ensure it's an array
+                                return (
+                                  <FormItem
+                                    key={item.id}
+                                    className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4"
+                                  >
+                                    <FormControl>
+                                      <Checkbox
+                                        checked={valueArray.includes(item.id)}
+                                        onCheckedChange={(checked) => {
+                                          field.onChange(
+                                            checked
+                                              ? [...valueArray, item.id]
+                                              : valueArray.filter(
+                                                  (value) => value !== item.id
+                                                )
+                                          );
+                                        }}
+                                      />
+                                    </FormControl>
+                                    <FormLabel className="font-normal">
+                                      {item.label}
+                                    </FormLabel>
+                                  </FormItem>
+                                );
+                              }}
+                            />
+                          ))}
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </>
+                  <div className="mt-8 space-x-3">
+                    <Button type="button" className="bg-[#9B9B9B]" asChild>
+                      <Link to="/constructor-profile">Cancel</Link>
+                    </Button>
+                    <Button type="button" onClick={() => setSelectedTab(1)}>
+                      Next
+                    </Button>
                   </div>
                 </>
-                <div className="mt-8 space-x-3">
-                  <Button
-                    type="button"
-                    className="bg-[#9B9B9B]"
-                    onClick={() => setSelectedTab(1)}
-                  >
-                    Back
-                  </Button>
-                  <Button type="button" onClick={() => setSelectedTab(3)}>
-                    Next
-                  </Button>
-                </div>
-              </>
-            )}
-            {selectedTab == 3 && (
-              <>
-              <></>
-                <h2 className="my-6 text-xl font-semibold text-[#222]">
-                  Set your starting budget preference
-                </h2>
-                <FormField
-                  control={form.control}
-                  name="price"
-                  render={({ field }) => (
-                    <FormItem className="relative w-1/3">
-                      <FormControl>
-                        <Input
-                          placeholder="100"
-                          {...field}
-                          className="px-5 py-4"
-                        />
-                      </FormControl>
-                      <FaDollarSign className="absolute right-6 top-1/2 !mt-0 -translate-y-1/2 text-primary" />
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <figure className="w-full h-[350px] rounded-md overflow-hidden mt-8">
-                  <img src="https://i.ibb.co.com/hFLYHzqX/Rectangle-25152.png" alt="" className="w-full h-full object-cover object-center" />
-                </figure>
-                <div className="mt-8 space-x-3">
-                  <Button
-                    type="button"
-                    className="bg-[#9B9B9B]"
-                    onClick={() => setSelectedTab(2)}
-                  >
-                    Back
-                  </Button>
-                  <Button type="button" onClick={() => setSelectedTab(4)}>
-                    Next
-                  </Button>
-                </div>
-              </>
-            )}
-            {selectedTab == 4 && (
-              <>
+              )}
+              {selectedTab == 1 && (
                 <>
-                  <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
-                    How did you hear about us?
+                  <AddCategories />
+                  <>
+                    <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
+                      Upload your any license or certification
+                    </h2>
+                    <Previews2 />
+                  </>
+                  <div className="mt-8 space-x-3">
+                    <Button
+                      type="button"
+                      className="bg-[#9B9B9B]"
+                      onClick={() => setSelectedTab(0)}
+                    >
+                      Back
+                    </Button>
+                    <Button type="button" onClick={() => setSelectedTab(2)}>
+                      Next
+                    </Button>
+                  </div>
+                </>
+              )}
+              {selectedTab == 2 && (
+                <>
+                  <>
+                    <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
+                      What is your area of work?
+                    </h2>
+                    <FormField
+                      control={form.control}
+                      name="searchArea"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Input
+                              placeholder="Search your area"
+                              {...field}
+                              className="px-5 py-4"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
+                      Set your maximum distance around your area
+                    </h2>
+                    <Slider
+                      defaultValue={[value]}
+                      max={50}
+                      min={5}
+                      step={1}
+                      onValueChange={(val) => setValue(val)}
+                    />
+                    <p className="my-4">Area of Service: {value} Miles</p>
+                    <div className="flex h-[450px] w-full items-center justify-center border">
+                      Map
+                    </div>
+                  </>
+                  <div className="mt-8 space-x-3">
+                    <Button
+                      type="button"
+                      className="bg-[#9B9B9B]"
+                      onClick={() => setSelectedTab(1)}
+                    >
+                      Back
+                    </Button>
+                    <Button type="button" onClick={() => setSelectedTab(3)}>
+                      Next
+                    </Button>
+                  </div>
+                </>
+              )}
+              {selectedTab == 3 && (
+                <>
+                  <></>
+                  <h2 className="my-6 text-xl font-semibold text-[#222]">
+                    Set your starting budget preference
                   </h2>
-
                   <FormField
                     control={form.control}
-                    name="type"
+                    name="price"
                     render={({ field }) => (
-                      <FormItem className="space-y-3">
+                      <FormItem className="relative w-1/3">
                         <FormControl>
-                          <RadioGroup
-                            onValueChange={field.onChange}
-                            defaultValue={field.value}
-                            className="flex flex-col space-y-1"
-                          >
-                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                              <FormControl>
-                                <RadioGroupItem value="social-media" />
-                              </FormControl>
-                              <FormLabel className="font-normal">
-                                Social media
-                              </FormLabel>
-                            </FormItem>
-                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                              <FormControl>
-                                <RadioGroupItem value="google" />
-                              </FormControl>
-                              <FormLabel className="font-normal">
-                                Google
-                              </FormLabel>
-                            </FormItem>
-                            <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
-                              <FormControl>
-                                <RadioGroupItem value="nearest-pearson" />
-                              </FormControl>
-                              <FormLabel className="font-normal">
-                                Nearest Pearson
-                              </FormLabel>
-                            </FormItem>
-                          </RadioGroup>
+                          <Input
+                            placeholder="100"
+                            {...field}
+                            className="px-5 py-4"
+                          />
                         </FormControl>
+                        <FaDollarSign className="absolute right-6 top-1/2 !mt-0 -translate-y-1/2 text-primary" />
                         <FormMessage />
                       </FormItem>
                     )}
                   />
+                  <figure className="mt-8 h-[350px] w-full overflow-hidden rounded-md">
+                    <img
+                      src="https://i.ibb.co.com/hFLYHzqX/Rectangle-25152.png"
+                      alt=""
+                      className="h-full w-full object-cover object-center"
+                    />
+                  </figure>
+                  <div className="mt-8 space-x-3">
+                    <Button
+                      type="button"
+                      className="bg-[#9B9B9B]"
+                      onClick={() => setSelectedTab(2)}
+                    >
+                      Back
+                    </Button>
+                    <Button type="button" onClick={() => setSelectedTab(4)}>
+                      Next
+                    </Button>
+                  </div>
                 </>
-                <AddCategories
-                  sectionTitle="What language do you speak?"
-                  placeholder="Select Language"
-                  data={languages}
-                />
-                <div className="mt-8 space-x-3">
-                  <Button
-                    type="button"
-                    className="bg-[#9B9B9B]"
-                    onClick={() => setSelectedTab(3)}
-                  >
-                    Back
-                  </Button>
-                  <Button type="button" asChild>
-                    <Link to="/constructor-profile">Done</Link>
-                  </Button>
-                </div>
-              </>
-            )}
-          </form>
-        </Form>
-      </div>
-      <ConstructorBenefits />
-    </section>
+              )}
+              {selectedTab == 4 && (
+                <>
+                  <>
+                    <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
+                      How did you hear about us?
+                    </h2>
+
+                    <FormField
+                      control={form.control}
+                      name="type"
+                      render={({ field }) => (
+                        <FormItem className="space-y-3">
+                          <FormControl>
+                            <RadioGroup
+                              onValueChange={field.onChange}
+                              defaultValue={field.value}
+                              className="flex flex-col space-y-1"
+                            >
+                              <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
+                                <FormControl>
+                                  <RadioGroupItem value="social-media" />
+                                </FormControl>
+                                <FormLabel className="font-normal">
+                                  Social media
+                                </FormLabel>
+                              </FormItem>
+                              <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
+                                <FormControl>
+                                  <RadioGroupItem value="google" />
+                                </FormControl>
+                                <FormLabel className="font-normal">
+                                  Google
+                                </FormLabel>
+                              </FormItem>
+                              <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
+                                <FormControl>
+                                  <RadioGroupItem value="nearest-pearson" />
+                                </FormControl>
+                                <FormLabel className="font-normal">
+                                  Nearest Pearson
+                                </FormLabel>
+                              </FormItem>
+                            </RadioGroup>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </>
+                  <AddCategories
+                    sectionTitle="What language do you speak?"
+                    placeholder="Select Language"
+                    data={languages}
+                  />
+                  <div className="mt-8 space-x-3">
+                    <Button
+                      type="button"
+                      className="bg-[#9B9B9B]"
+                      onClick={() => setSelectedTab(3)}
+                    >
+                      Back
+                    </Button>
+                    <Button type="button" asChild>
+                      <Link to="/constructor-profile">Done</Link>
+                    </Button>
+                  </div>
+                </>
+              )}
+            </form>
+          </Form>
+        </div>
+        <ConstructorBenefits />
+      </section>
+    </Container>
   );
 };
 

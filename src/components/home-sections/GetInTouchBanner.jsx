@@ -2,8 +2,8 @@ import { Link } from "react-router";
 
 function GetInTouchBanner() {
   return (
-    <div className="container py-24">
-      <div className="group relative flex h-[500px] w-full items-center overflow-hidden rounded-lg">
+    <div className="container lg:py-24">
+      <div className="group relative flex h-[400px] w-full items-center overflow-hidden md:h-[500px] lg:rounded-lg">
         <div className="absolute z-[4] p-6 lg:p-12">
           <h1 className="pb-5 text-[24px] font-semibold text-white md:text-4xl">
             Open for business.

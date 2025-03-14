@@ -5,7 +5,7 @@ import Container from "../Container";
 
 function ExploreMoreSection() {
   return (
-    <div className="bg-[#FFF2EB] py-10 md:py-24">
+    <div className="bg-[#FFF2EB] py-10 lg:py-24">
       <Container>
         <div className="container">
           <SectionTitle className="text-[28px] md:text-4xl" tagName={"h3"}>

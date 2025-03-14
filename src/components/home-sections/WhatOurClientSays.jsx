@@ -4,7 +4,7 @@ import Twitter from "../../assets/images/Twitter.png";
 import Container from "../Container";
 function WhatOurClientSays() {
   return (
-    <div className="bg-[#FFF2EB] py-16 md:py-24" id="client-review">
+    <div className="bg-[#FFF2EB] py-10 lg:py-24" id="client-review">
       <Container>
         <div className="container">
           <div className=" ">

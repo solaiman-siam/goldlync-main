@@ -33,7 +33,7 @@ function RecentProjects() {
 
   return (
     <Container>
-      <div className="container py-16 md:py-24" id="explore-projects">
+      <div className="container py-10 lg:py-24" id="explore-projects">
         <SectionTitle tagName={"h3"} className="text-[28px] md:text-4xl">
           Explore Projects
         </SectionTitle>

@@ -19,7 +19,7 @@ const PrimaryServiceSection = ({ limit = false }) => {
 
   return (
     <Container>
-      <section className="my-[80px]">
+      <section className="my-[40px] lg:my-[80px]">
         <SectionTitle tagName="h3" className="text-[24px] md:text-4xl">
           Services Tailored to Your Needs.
         </SectionTitle>
@@ -38,7 +38,7 @@ const PrimaryServiceSection = ({ limit = false }) => {
         ) : data?.length === 0 ? (
           <div className="my-8 text-center">No Data Found!</div>
         ) : (
-          <div className="container my-8 grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 xl:grid-cols-[repeat(auto-fill,minmax(420px,1fr))]">
+          <div className="container my-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-[repeat(auto-fill,minmax(420px,1fr))]">
             {limit
               ? data
                   ?.slice(0, limit)
@@ -123,7 +123,7 @@ const PrimaryServiceItem = ({ path, icon, title, details }) => {
       <h3 className="font-manrope text-[20px] font-semibold text-card-foreground md:text-2xl md:leading-[130%]">
         {title}
       </h3>
-      <p className="font-poppins text-base font-normal text-[#494949] md:text-lg lg:leading-[180%]">
+      <p className="font-poppins text-base font-normal text-[#494949] md:text-base lg:leading-[180%]">
         {details}
       </p>
     </Link>
