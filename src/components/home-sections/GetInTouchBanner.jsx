@@ -12,7 +12,7 @@ function GetInTouchBanner() {
                     <Link to="/contact" className="px-14 bg-primary font-medium py-4 rounded-md text-white">Get in Touch</Link>
                 </div>
             </div>
-            <div className="w-full absolute z-[2] h-full bg-black/20 ">
+            <div className="w-full absolute z-[2] h-full bg-black/20 top-0 left-0">
             </div>
             <img className="w-full group-hover:scale-105 transition-all duration-300 h-full absolute top-0 left-0 object-cover" src="https://images.pexels.com/photos/6646770/pexels-photo-6646770.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
         </div>

@@ -2,59 +2,28 @@ import { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { IoMdClose } from "react-icons/io";
 
-const Previews = ({ onFilesChange, limit = 20 }) => {
-  const [files, setFiles] = useState([]);
-  
-  // Notify parent when files change
-  useEffect(() => {
-    onFilesChange && onFilesChange(files);
-  }, [files, onFilesChange]);
+const CompanyLogoForm = ({ props, file, setFile }) => {
 
   const { getRootProps, getInputProps } = useDropzone({
     accept: { "image/*": [] },
-    onDrop: acceptedFiles => {
-      const newFiles = acceptedFiles.map(file => 
-        Object.assign(file, { preview: URL.createObjectURL(file) })
-      );
-
-      setFiles(prev => {
-        const updatedFiles = [...prev, ...newFiles]
-          .filter((file, index, self) =>
-            index === self.findIndex(f => f.name === file.name)
-          )
-          .slice(0, limit);
-        return updatedFiles;
-      });
-    }
+    maxFiles: 1,
+    multiple: false,
+    onDrop: (acceptedFiles) => {
+      if (acceptedFiles.length > 0) {
+        const newFile = acceptedFiles[0];
+        setFile(
+          Object.assign(newFile, { preview: URL.createObjectURL(newFile) })
+        );
+      }
+    },
   });
 
-  const removeFile = fileName => {
-    setFiles(files.filter(file => file.name !== fileName));
-  };
-
-  const thumbs = files.map(file => (
-    <div className="relative" key={file.name}>
-      <figure className="size-24 overflow-hidden border p-1 shadow-md">
-        <img
-          src={file.preview}
-          className="size-full object-cover object-center"
-          onLoad={() => URL.revokeObjectURL(file.preview)}
-          alt={file.name}
-        />
-      </figure>
-      <button
-        type="button"
-        className="absolute -right-2 -top-2 flex size-5 items-center justify-center rounded-full bg-red-800"
-        onClick={() => removeFile(file.name)}
-      >
-        <IoMdClose className="text-white" />
-      </button>
-    </div>
-  ));
-
   useEffect(() => {
-    return () => files.forEach(file => URL.revokeObjectURL(file.preview));
-  }, [files]);
+    return () => {
+      if (file) URL.revokeObjectURL(file.preview);
+    };
+  }, [file]);
+
 
   return (
     <section className="container">
@@ -62,7 +31,7 @@ const Previews = ({ onFilesChange, limit = 20 }) => {
         <input {...getInputProps()} />
         <div className="flex h-[64px] items-center justify-between rounded border border-input px-4">
           <div className="flex items-center gap-4">
-          <svg
+            <svg
               xmlns="http://www.w3.org/2000/svg"
               width="33"
               height="26"
@@ -78,7 +47,8 @@ const Previews = ({ onFilesChange, limit = 20 }) => {
               />
             </svg>
             <p className="text-[#8D8D8D]">
-              Drag & Drop image here or <span className="text-primary">browse</span>
+              Drag & Drop an image here or{" "}
+              <span className="text-primary">browse</span>
             </p>
           </div>
           <svg
@@ -88,7 +58,6 @@ const Previews = ({ onFilesChange, limit = 20 }) => {
             viewBox="0 0 28 28"
             fill="none"
           >
-            {/* <rect width="28" height="28" rx="4" fill="#E0E0E0" /> */}
             <path
               d="M7 17.5V19.25C7 19.7141 7.18437 20.1592 7.51256 20.4874C7.84075 20.8156 8.28587 21 8.75 21H19.25C19.7141 21 20.1592 20.8156 20.4874 20.4874C20.8156 20.1592 21 19.7141 21 19.25V17.5M10.5 10.5L14 7M14 7L17.5 10.5M14 7V17.5"
               stroke="#8D8D8D"
@@ -99,12 +68,28 @@ const Previews = ({ onFilesChange, limit = 20 }) => {
           </svg>
         </div>
       </div>
-      
-      {files.length > 0 && (
-        <aside className="my-5 flex flex-wrap gap-4">{thumbs}</aside>
+      {file && (
+        <aside className="my-5 flex flex-wrap gap-4">
+          <div className="relative">
+            <figure className="size-24 overflow-hidden border p-1 shadow-md">
+              <img
+                src={file.preview}
+                className="size-full object-cover object-center"
+                onLoad={() => URL.revokeObjectURL(file.preview)}
+              />
+            </figure>
+            <button
+              type="button"
+              className="absolute -right-2 -top-2 flex size-5 items-center justify-center rounded-full bg-red-800"
+              onClick={() => setFile(null)}
+            >
+              <IoMdClose className="text-white" />
+            </button>
+          </div>
+        </aside>
       )}
     </section>
   );
 };
 
-export default Previews;
+export default CompanyLogoForm;

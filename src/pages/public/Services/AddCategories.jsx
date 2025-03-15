@@ -7,7 +7,14 @@ import {
   SelectValue,
 } from "@/components/shadcn/ui/select";
 
-const AddCategories = ({sectionTitle="Add your service here", title="Selected Services", data, placeholder="Select Service"}) => {
+const AddCategories = ({
+  sectionTitle = "Add your service here",
+  title = "Selected Services",
+  data,
+  placeholder = "Select Service",
+  selectedServices=[],
+  setSelectedServices,
+}) => {
   const defaultServices = [
     "Handy man",
     "Cleaning",
@@ -16,9 +23,7 @@ const AddCategories = ({sectionTitle="Add your service here", title="Selected Se
     "Pet care",
     "Catering",
   ];
-  const services = data? data : defaultServices;
-
-  const [selectedServices, setSelectedServices] = useState([]);
+  const services = data ? data : defaultServices;
 
   const handleSelectService = (service) => {
     setSelectedServices((prevSelectedServices) => {

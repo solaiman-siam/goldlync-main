@@ -67,7 +67,7 @@ const ProRegisterForm = () => {
       }
 
       toast.success("Registration successful!");
-      navigate(-1);
+      navigate("/constructor-form");
     } catch (error) {
       console.error("Registration error:", error);
       const errorMessage =

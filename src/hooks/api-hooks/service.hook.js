@@ -1,7 +1,7 @@
 import useAxiosSecure from "../useAxios";
 import { useQuery } from "@tanstack/react-query";
 
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+// const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 export function useGetAllPrimaryServices() {
   const axios = useAxiosSecure();
@@ -9,26 +9,33 @@ export function useGetAllPrimaryServices() {
   return useQuery({
     queryKey: ["primary", "services"],
     queryFn: async () => {
-      const { data } = await axios.get("/primary-service.json");
-      if (!data?.status) {
-        throw new Error(data?.message);
-      }
+      const { data } = await axios.get("/service/category");
+      console.log(data.data);
       return data?.data;
     },
   });
 }
 
-export function useGetSubCategoryServices() {
+export function useGetSubCategoryServices(path) {
   const axios = useAxiosSecure();
 
   return useQuery({
-    queryKey: ["primary", "services"],
+    queryKey: ["primary", "services", "subcategory", path],
     queryFn: async () => {
-      const { data } = await axios.get("/sub-category.json");
-      if (!data?.status) {
-        throw new Error(data?.message);
-      }
-      return data?.services;
+      const { data } = await axios.get(path);
+      return data?.data;
+    },
+  });
+}
+
+export function useGetQuestions(path) {
+  const axios = useAxiosSecure();
+
+  return useQuery({
+    queryKey: ["questions", path],
+    queryFn: async () => {
+      const { data } = await axios.get(path);
+      return data?.data[0];
     },
   });
 }

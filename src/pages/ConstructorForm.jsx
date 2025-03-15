@@ -13,7 +13,7 @@ import {
 } from "@/components/shadcn/ui/form";
 import { Checkbox } from "@/components/shadcn/ui/checkbox";
 import { Input } from "@/components/shadcn/ui/input";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useState } from "react";
 import Previews2 from "@/components/Previews2";
 import { Textarea } from "@/components/shadcn/ui/textarea";
@@ -28,6 +28,9 @@ import ConstructorBenefits from "@/components/shared/ConstructorBenefits";
 import AddServicesByConstructor from "./public/Services/AddServicesByConstructor";
 import { Slider } from "@/components/shadcn/ui/slider";
 import AddCategories from "./public/Services/AddCategories";
+import CompanyLogoForm from "@/components/shared/CompanyLogoForm";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const items = [
   {
@@ -62,41 +65,103 @@ const tabsTitle = [
   "Additional Information",
 ];
 
-const formSchema = z
-  .object({
-    companyName: z.string().min(2, {
-      message: "Company Name must be at least 2 characters.",
-    }),
-    searchArea: z.string().min(1, "Search area cannot be empty"),
-    type: z.string().min(1, "Please select an option"), // Ensuring radio selection
-    benefits: z
-      .string()
-      .min(20, "Please write at least 20 characters.")
-      .max(1000, "Maximum 1000 characters allowed."),
-    quality: z
-      .array(z.string())
-      .min(3, "Please select at least 3 attributes.")
-      .max(3, "You can only select up to 3 attributes."), // Restricts to exactly 3 selections
-  })
-  .passthrough();
+// const formSchema = z
+//   .object({
+//     name: z.string().min(2, {
+//       message: "Company Name must be at least 2 characters.",
+//     }),
+//     searchArea: z.string().min(1, "Search area cannot be empty"),
+//     type: z.string().min(1, "Please select an option"), // Ensuring radio selection
+//     benefits: z
+//       .string()
+//       .min(20, "Please write at least 20 characters.")
+//       .max(1000, "Maximum 1000 characters allowed."),
+//     quality: z
+//       .array(z.string())
+//       .min(3, "Please select at least 3 attributes.")
+//       .max(3, "You can only select up to 3 attributes."), // Restricts to exactly 3 selections
+//   })
+//   .passthrough();
 
 const ConstructorForm = () => {
   const [selectedTab, setSelectedTab] = useState(0);
+  const [logo, setLogo] = useState(null);
+  const [selectedServices, setSelectedServices] = useState([]);
+  const [selectedLanguages, setSelectedLanguages] = useState([]);
   const [value, setValue] = useState(20);
   const form = useForm({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      companyName: "",
-      searchArea: "",
-      type: "",
-      benefits: "",
-      quality: [], // Ensure an empty array for multi-checkbox selection
-    },
+    // resolver: zodResolver(formSchema),
+    // defaultValues: {
+    //   name: "",
+    // },
   });
 
-  function onSubmit(values) {
-    console.log(values);
-    console.log("submited");
+  const convertToFormData = (data) => {
+    const formData = new FormData();
+
+    Object.keys(data).forEach((key) => {
+      if (Array.isArray(data[key])) {
+        data[key].forEach((value) => {
+          formData.append(`${key}[]`, value);
+        });
+      } else {
+        formData.append(key, data[key]);
+      }
+    });
+
+    return formData;
+  };
+
+  const navigate = useNavigate();
+
+  async function onSubmit(e) {
+    const proProfileData = {
+      name: e.name,
+      logo: logo,
+      details: "This is Details",
+      business_duration: e.business_duration,
+      team_members: e.team_members,
+      competitive_advantages: e.benefits,
+      customer_hiring_factors: e.quality,
+      service_type: selectedServices,
+      licence: logo,
+      work_area: e.searchArea,
+      service_radius: value + " miles",
+      budget_preferences: e.budget_preferences,
+      referral_sources: e.referral_sources,
+      language: selectedLanguages,
+      warrenty: "Yes",
+    };
+    const formData = convertToFormData(proProfileData);
+    const token = localStorage.getItem("auth_token");
+    console.log("Token", token);
+    console.log("proProfileData", proProfileData);
+    try {
+      const response = await axios.post(
+        "https://goldlync.softvencefsd.xyz/api/company-information/create",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      toast.success(response?.data?.message);
+      navigate("/constructor-profile");
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error("Axios Error:", {
+          message: error.message,
+          status: error.response?.status || "No status",
+          statusText: error.response?.statusText || "No status text",
+          data: error.response?.data || "No response data",
+        });
+      } else {
+        console.error("Unexpected Error:", error);
+      }
+    }
   }
 
   return (
@@ -119,7 +184,7 @@ const ConstructorForm = () => {
                   </h2>
                   <FormField
                     control={form.control}
-                    name="companyName"
+                    name="name"
                     render={({ field }) => (
                       <FormItem>
                         <FormControl>
@@ -138,7 +203,7 @@ const ConstructorForm = () => {
                   <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
                     Upload your company logo
                   </h2>
-                  <Previews limit={1} />
+                  <CompanyLogoForm file={logo} setFile={setLogo} />
                 </>
                 <>
                   <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
@@ -147,7 +212,7 @@ const ConstructorForm = () => {
 
                   <FormField
                     control={form.control}
-                    name="type"
+                    name="business_duration"
                     render={({ field }) => (
                       <FormItem className="space-y-3">
                         <FormControl>
@@ -166,7 +231,7 @@ const ConstructorForm = () => {
                             </FormItem>
                             <FormItem className="flex items-center space-x-3 space-y-0 rounded border px-5 py-4">
                               <FormControl>
-                                <RadioGroupItem value="oneToThree" />
+                                <RadioGroupItem value="oneToTwo" />
                               </FormControl>
                               <FormLabel className="font-normal">
                                 1-2 year experience
@@ -202,7 +267,7 @@ const ConstructorForm = () => {
 
                   <FormField
                     control={form.control}
-                    name="type"
+                    name="team_members"
                     render={({ field }) => (
                       <FormItem className="space-y-3">
                         <FormControl>
@@ -279,7 +344,7 @@ const ConstructorForm = () => {
                   <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
                     Select 3 attributes why customers should hire you{" "}
                     <span className="text-primary">
-                      {form.getValues().quality.length}/3
+                      {form.watch("quality")?.length || 0}/3
                     </span>{" "}
                     ?
                   </h2>
@@ -296,7 +361,11 @@ const ConstructorForm = () => {
                             render={({ field }) => {
                               const valueArray = Array.isArray(field.value)
                                 ? field.value
-                                : []; // Ensure it's an array
+                                : [];
+
+                              const isMaxSelected = valueArray.length >= 3;
+                              const isChecked = valueArray.includes(item.id);
+
                               return (
                                 <FormItem
                                   key={item.id}
@@ -304,8 +373,10 @@ const ConstructorForm = () => {
                                 >
                                   <FormControl>
                                     <Checkbox
-                                      checked={valueArray.includes(item.id)}
+                                      checked={isChecked}
+                                      disabled={!isChecked && isMaxSelected} // Disable if max selected
                                       onCheckedChange={(checked) => {
+                                        if (checked && isMaxSelected) return; // Prevent selecting more than 3
                                         field.onChange(
                                           checked
                                             ? [...valueArray, item.id]
@@ -341,7 +412,10 @@ const ConstructorForm = () => {
             )}
             {selectedTab == 1 && (
               <>
-                <AddCategories />
+                <AddCategories
+                  selectedServices={selectedServices}
+                  setSelectedServices={setSelectedServices}
+                />
                 <>
                   <h2 className="mb-4 mt-8 text-xl font-semibold text-[#222]">
                     Upload your any license or certification
@@ -415,13 +489,13 @@ const ConstructorForm = () => {
             )}
             {selectedTab == 3 && (
               <>
-              <></>
+                <></>
                 <h2 className="my-6 text-xl font-semibold text-[#222]">
                   Set your starting budget preference
                 </h2>
                 <FormField
                   control={form.control}
-                  name="price"
+                  name="budget_preferences"
                   render={({ field }) => (
                     <FormItem className="relative w-1/3">
                       <FormControl>
@@ -436,8 +510,12 @@ const ConstructorForm = () => {
                     </FormItem>
                   )}
                 />
-                <figure className="w-full h-[350px] rounded-md overflow-hidden mt-8">
-                  <img src="https://i.ibb.co.com/hFLYHzqX/Rectangle-25152.png" alt="" className="w-full h-full object-cover object-center" />
+                <figure className="mt-8 h-[350px] w-full overflow-hidden rounded-md">
+                  <img
+                    src="https://i.ibb.co.com/hFLYHzqX/Rectangle-25152.png"
+                    alt=""
+                    className="h-full w-full object-cover object-center"
+                  />
                 </figure>
                 <div className="mt-8 space-x-3">
                   <Button
@@ -462,7 +540,7 @@ const ConstructorForm = () => {
 
                   <FormField
                     control={form.control}
-                    name="type"
+                    name="referral_sources"
                     render={({ field }) => (
                       <FormItem className="space-y-3">
                         <FormControl>
@@ -506,6 +584,8 @@ const ConstructorForm = () => {
                   sectionTitle="What language do you speak?"
                   placeholder="Select Language"
                   data={languages}
+                  selectedServices={selectedLanguages}
+                  setSelectedServices={setSelectedLanguages}
                 />
                 <div className="mt-8 space-x-3">
                   <Button
@@ -515,9 +595,7 @@ const ConstructorForm = () => {
                   >
                     Back
                   </Button>
-                  <Button type="button" asChild>
-                    <Link to="/constructor-profile">Done</Link>
-                  </Button>
+                  <Button type="submit">Done</Button>
                 </div>
               </>
             )}
