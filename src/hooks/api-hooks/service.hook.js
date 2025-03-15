@@ -28,6 +28,18 @@ export function useGetSubCategoryServices(path) {
   });
 }
 
+export function useGetQuestions(path) {
+  const axios = useAxiosSecure();
+
+  return useQuery({
+    queryKey: ["questions", path],
+    queryFn: async () => {
+      const { data } = await axios.get(path);
+      return data?.data[0];
+    },
+  });
+}
+
 export function useGetAllServices() {
   const axios = useAxiosSecure();
 

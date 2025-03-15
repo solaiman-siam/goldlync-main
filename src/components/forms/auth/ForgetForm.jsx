@@ -45,6 +45,7 @@ const ForgetForm = () => {
           },
         }
       );
+      console.log("forgot email response:", response.data);
       navigate("/verify-code", { state: { email: e.email } });
       toast.success(response.data.message);
     } catch (error) {

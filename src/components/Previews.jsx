@@ -2,47 +2,50 @@ import { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { IoMdClose } from "react-icons/io";
 
-const Previews = ({ props, limit = 20 }) => {
+const Previews = ({ onFilesChange, limit = 20 }) => {
   const [files, setFiles] = useState([]);
+  
+  // Notify parent when files change
+  useEffect(() => {
+    onFilesChange && onFilesChange(files);
+  }, [files, onFilesChange]);
+
   const { getRootProps, getInputProps } = useDropzone({
-    accept: {
-      "image/*": [],
-    },
-    onDrop: (acceptedFiles) => {
-      const newFiles = acceptedFiles.map((file) =>
-        Object.assign(file, {
-          preview: URL.createObjectURL(file),
-        })
+    accept: { "image/*": [] },
+    onDrop: acceptedFiles => {
+      const newFiles = acceptedFiles.map(file => 
+        Object.assign(file, { preview: URL.createObjectURL(file) })
       );
 
-      setFiles((prevFiles) => {
-        const allFiles = [...prevFiles, ...newFiles];
-
-        // Ensure unique files
-        const uniqueFiles = Array.from(
-          new Set(allFiles.map((file) => file.name))
-        ).map((name) => allFiles.find((file) => file.name === name));
-        return uniqueFiles.slice(0, limit);
+      setFiles(prev => {
+        const updatedFiles = [...prev, ...newFiles]
+          .filter((file, index, self) =>
+            index === self.findIndex(f => f.name === file.name)
+          )
+          .slice(0, limit);
+        return updatedFiles;
       });
-    },
+    }
   });
 
-  const thumbs = files.map((file) => (
+  const removeFile = fileName => {
+    setFiles(files.filter(file => file.name !== fileName));
+  };
+
+  const thumbs = files.map(file => (
     <div className="relative" key={file.name}>
       <figure className="size-24 overflow-hidden border p-1 shadow-md">
         <img
           src={file.preview}
           className="size-full object-cover object-center"
-          // Revoke data uri after image is loaded
-          onLoad={() => {
-            URL.revokeObjectURL(file.preview);
-          }}
+          onLoad={() => URL.revokeObjectURL(file.preview)}
+          alt={file.name}
         />
       </figure>
       <button
         type="button"
         className="absolute -right-2 -top-2 flex size-5 items-center justify-center rounded-full bg-red-800"
-        onClick={() => setFiles(files.filter((f) => f.name !== file.name))}
+        onClick={() => removeFile(file.name)}
       >
         <IoMdClose className="text-white" />
       </button>
@@ -50,15 +53,16 @@ const Previews = ({ props, limit = 20 }) => {
   ));
 
   useEffect(() => {
-    return () => files.forEach((file) => URL.revokeObjectURL(file.preview));
+    return () => files.forEach(file => URL.revokeObjectURL(file.preview));
   }, [files]);
+
   return (
     <section className="container">
       <div {...getRootProps({ className: "dropzone" })}>
         <input {...getInputProps()} />
         <div className="flex h-[64px] items-center justify-between rounded border border-input px-4">
           <div className="flex items-center gap-4">
-            <svg
+          <svg
               xmlns="http://www.w3.org/2000/svg"
               width="33"
               height="26"
@@ -74,8 +78,7 @@ const Previews = ({ props, limit = 20 }) => {
               />
             </svg>
             <p className="text-[#8D8D8D]">
-              Drag & Drop image here or{" "}
-              <span className="text-primary">browse</span>
+              Drag & Drop image here or <span className="text-primary">browse</span>
             </p>
           </div>
           <svg
@@ -96,6 +99,7 @@ const Previews = ({ props, limit = 20 }) => {
           </svg>
         </div>
       </div>
+      
       {files.length > 0 && (
         <aside className="my-5 flex flex-wrap gap-4">{thumbs}</aside>
       )}

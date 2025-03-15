@@ -6,13 +6,13 @@ import {
   SelectValue,
 } from "@/components/shadcn/ui/select";
 
-function CommonSelect({ id, label, options }) {
+function CommonSelect({ id, label, options, value, onChange, labelNum }) {
   return (
     <div className="flex flex-col gap-4">
-      <label className="text-xl font-semibold" htmlFor="">
-        {id} . {label}
+      <label className="text-xl font-semibold">
+        {labelNum}. {label}
       </label>
-      <Select>
+      <Select value={value} onValueChange={onChange}>
         <SelectTrigger className="w-full px-4 py-8">
           <SelectValue placeholder={label} />
         </SelectTrigger>

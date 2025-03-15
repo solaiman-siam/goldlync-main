@@ -5,7 +5,7 @@ import { useParams } from "react-router";
 
 function ServiceCategories() {
   const { slug } = useParams();
-  console.log(slug);
+  // console.log(slug);
   return (
     <div>
         <Categories slug={slug}/>

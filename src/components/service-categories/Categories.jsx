@@ -5,11 +5,11 @@ import { Skeleton } from "@/components/shadcn/ui/skeleton";
 import { useGetSubCategoryServices } from "@/hooks/api-hooks/service.hook";
 
 function Categories({ slug }) {
-  console.log("slug", slug);
+  // console.log("slug", slug);
   const { data, isLoading, isError } = useGetSubCategoryServices(
     `/service/category/${slug}`
   );
-  if (!isLoading) console.log(data);
+  // if (!isLoading) console.log(data);
 
   return (
     <div>
@@ -36,7 +36,7 @@ function Categories({ slug }) {
           <div className="my-8 text-center text-destructive">
             Something went wrong!
           </div>
-        ) : data?.length === 0 ? (
+        ) : data?.sub_categories?.length === 0 ? (
           <div className="my-8 text-center">No Data Found!</div>
         ) : (
           <>
@@ -49,6 +49,7 @@ function Categories({ slug }) {
                   details={service?.description}
                   img1={`https://goldlync.softvencefsd.xyz/${service?.photo_1}`}
                   img2={`https://goldlync.softvencefsd.xyz/${service?.photo_2}`}
+                  slug={service.slug}
                 />
               ))}
             </div>
@@ -70,9 +71,12 @@ const PrimaryServiceSkeletons = () => {
     ));
 };
 
-const PrimaryServiceItem = ({ path, icon, title, details, img1, img2 }) => {
+const PrimaryServiceItem = ({ title, details, img1, img2, slug }) => {
   return (
-    <Link to={"/service-questionnaries"} className="group relative rounded-xl overflow-hidden">
+    <Link
+      to={`/service-questionnaries/${slug}`}
+      className="group relative overflow-hidden rounded-xl"
+    >
       <figure className="aspect-square w-full overflow-hidden">
         <img
           src={img2}
@@ -89,7 +93,9 @@ const PrimaryServiceItem = ({ path, icon, title, details, img1, img2 }) => {
       </figure>
       <div className="absolute bottom-2 left-2 right-2 space-y-2.5 rounded-lg bg-[#FFF2EB] p-4 text-center">
         <h4 className="text-xl font-semibold">{title}</h4>
-        <p className="text-sm font-medium text-[#494949] line-clamp-3">{details} </p>
+        <p className="line-clamp-3 text-sm font-medium text-[#494949]">
+          {details}{" "}
+        </p>
       </div>
     </Link>
   );

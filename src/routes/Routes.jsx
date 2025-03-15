@@ -138,7 +138,7 @@ export const route = createBrowserRouter([
         ),
       },
       {
-        path: "/service-questionnaries",
+        path: "/service-questionnaries/:slug",
         element: (
           <PageTitle title="Questionnaries">
             <ServiceQuestionnaries />
