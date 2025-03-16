@@ -1,5 +1,5 @@
 import CommonSelect from "./CommonSelect";
-import { Link, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
 import Previews from "@/components/Previews";
 import {
@@ -60,6 +60,7 @@ function Questionnaries({ slug }) {
       [field]: value,
     }));
   };
+  const navigate= useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -73,7 +74,9 @@ function Questionnaries({ slug }) {
       photo,
     };
 
-    console.log("Form Data:", formData);
+    navigate("/assignment-details", { state: formData });
+
+    // console.log("Form Data:", formData);
   };
 
   if (isLoading) return <div className="my-40 text-center">Loading...</div>;

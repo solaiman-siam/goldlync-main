@@ -5,7 +5,7 @@ const BannerSearch = () => {
   return (
     <div className="flex h-20 w-full items-center gap-4 rounded-full bg-white px-8 py-4 text-foreground">
       <input
-        className="h-full w-full text-base font-medium outline-none placeholder:text-input md:text-lg"
+        className="h-full w-full text-base font-medium outline-none placeholder:text-foreground md:text-lg"
         placeholder="Search"
       />
       <div className="h-full border-l border-foreground" />

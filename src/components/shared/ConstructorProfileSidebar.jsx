@@ -18,9 +18,6 @@ const ConstructorProfileSidebar = () => {
         </Avatar>
         <div className="">
           <div className="font-manrope text-xl font-bold mb-1">YES Innovation</div>
-          <button type="button" className="hover:underline">
-            View Profile
-          </button>
         </div>
       </div>
       <div className="flex w-full flex-grow flex-col gap-1.5">
