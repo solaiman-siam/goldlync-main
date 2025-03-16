@@ -13,8 +13,9 @@ import { useGetAllPrimaryServices } from "@/hooks/api-hooks/service.hook";
 import { Skeleton } from "../shadcn/ui/skeleton";
 import { Button } from "../shadcn/ui/button";
 import AllServices from "../services-sections/AllServices";
+import Container from "../Container";
 
-const PrimaryServiceSection = ({limit =false}) => {
+const PrimaryServiceSection = ({ limit = false }) => {
   const { data, isLoading, isError } = useGetAllPrimaryServices();
 
   return (
@@ -29,4 +30,35 @@ const PrimaryServiceSection = ({limit =false}) => {
   );
 };
 
+const PrimaryServiceSkeletons = () => {
+  return Array(6)
+    .fill(null)
+    .map((_, idx) => (
+      <Skeleton
+        key={`service-skeleton-${idx}`}
+        className="aspect-video w-full"
+      />
+    ));
+};
+
+const PrimaryServiceItem = ({ path, icon, title, details }) => {
+  return (
+    <Link
+      to={'/service-categories'}
+      className="flex flex-col items-center justify-center gap-5 rounded-md border border-card bg-card px-8 py-10 text-center text-card-foreground transition-all duration-300 hover:-translate-y-2 hover:border-input hover:shadow-md"
+    >
+      <span className="inline-flex size-[100px] items-center justify-center rounded-full bg-accent [&_svg]:w-[50%] [&_svg]:text-accent-foreground">
+        {icon}
+      </span>
+      <h3 className="font-manrope text-2xl font-semibold leading-[130%] text-card-foreground">
+        {title}
+      </h3>
+      <p className="font-poppins text-lg font-normal leading-[180%] text-[#494949]">
+        {details}
+      </p>
+    </Link>
+  );
+};
+
+>>>>>>> 26d3c0c2099f58bb116a6ca7abec81ad50cc304f
 export default PrimaryServiceSection;

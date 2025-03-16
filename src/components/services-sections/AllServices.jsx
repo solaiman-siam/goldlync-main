@@ -12,6 +12,7 @@ import {
 import { Skeleton } from "@/components/shadcn/ui/skeleton";
 import { useGetAllPrimaryServices } from "@/hooks/api-hooks/service.hook";
 import { cn } from "@/lib/shadcn/utils";
+import Container from "../Container";
 
 function AllServices({ cardLimit, lineClamp = "line-clamp-3" }) {
   const { data, isLoading, isError } = useGetAllPrimaryServices();
@@ -73,7 +74,7 @@ const PrimaryServiceItem = ({ path, icon, title, details, lineClamp }) => {
       <span className="inline-flex size-[100px] items-center justify-center rounded-full bg-accent [&_svg]:w-[50%] [&_svg]:text-accent-foreground">
         <img src={icon} alt="" className="size-[50px]" />
       </span>
-      <h3 className="font-manrope text-2xl font-semibold leading-[130%] text-card-foreground">
+      <h3 className="font-manrope text-[20px] font-semibold text-card-foreground md:text-2xl md:leading-[130%]">
         {title}
       </h3>
       <p

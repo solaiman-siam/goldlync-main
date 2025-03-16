@@ -79,10 +79,10 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-card px-4 py-16">
+    <footer className="bg-card px-4 py-6 lg:py-16">
       <div className="container">
         <SiteLogo />
-        <div className="mt-8 flex justify-between">
+        <div className="mt-4 justify-between space-y-6 md:mt-8 lg:flex lg:space-y-0">
           <FooterLogo />
           {footerLinks?.map((footerLink, idx) => (
             <FooterLinks
@@ -95,11 +95,11 @@ const Footer = () => {
         </div>
 
         <hr className="my-8 border-border" />
-        <div className="flex items-center justify-between gap-2">
-          <p className="font-manrope text-[16.789px] font-normal">
+        <div className="items-center justify-between gap-2 md:flex">
+          <p className="font-manrope text-sm font-normal md:text-[16.789px]">
             © Copyright 2021, All Rights Reserved by Postcraft
           </p>
-          <ul className="flex items-center gap-2">
+          <ul className="mt-4 flex items-center justify-center gap-2 md:mt-0">
             <li>
               <Link
                 to="#"
@@ -132,8 +132,8 @@ const Footer = () => {
 };
 
 const FooterLogo = () => (
-  <div className="flex-[2] space-y-7">
-    <h3 className="w-[85%] font-medium text-[#494949]">
+  <div className="flex-[2] space-y-7 pb-4">
+    <h3 className="font-medium text-[#494949] md:w-[85%]">
       GoldLync is a services marketplace that connects customers with
       professionals for various tasks like home improvement, personal training,
       and event planning.
@@ -156,7 +156,7 @@ const FooterLogo = () => (
       <input
         type="text"
         placeholder="Your email"
-        className="w-[380px] px-6 py-4 outline-none"
+        className="w-[280px] px-6 py-4 outline-none sm:w-[350px] md:w-[380px]"
       />
       <button
         type="button"
@@ -173,7 +173,7 @@ const SocialLink = ({ path, children }) => (
     <Link
       to={path}
       target="_blank"
-      className="inline-flex size-[35px] items-center justify-center [&_svg]:w-full"
+      className="inline-flex size-[24px] items-center justify-center xl:size-[35px] [&_svg]:h-full [&_svg]:w-full"
     >
       {children}
     </Link>
