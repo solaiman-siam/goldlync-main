@@ -125,7 +125,7 @@ const ConstructorForm = () => {
       competitive_advantages: e.benefits,
       customer_hiring_factors: e.quality,
       service_type: selectedServices,
-      licence: logo,
+      license: [logo],
       work_area: e.searchArea,
       service_radius: value + " miles",
       budget_preferences: e.budget_preferences,

@@ -74,7 +74,7 @@ function Questionnaries({ slug }) {
       photo,
     };
 
-    navigate("/assignment-details", { state: formData });
+    navigate("/user-job-details", { state: formData });
 
     // console.log("Form Data:", formData);
   };
@@ -246,13 +246,13 @@ function Questionnaries({ slug }) {
                 </div>
               </div>
             </div>
-            {/* <button
+            <button
               type="submit"
               className="block w-80 rounded-full bg-primary py-4 text-center font-medium text-white"
             >
               Submit
-            </button> */}
-            <Dialog>
+            </button>
+            {/* <Dialog>
               <DialogTrigger
                 type="submit"
                 className="block w-80 rounded-full bg-primary py-4 text-center font-medium text-white"
@@ -284,7 +284,7 @@ function Questionnaries({ slug }) {
                   </DialogDescription>
                 </DialogHeader>
               </DialogContent>
-            </Dialog>
+            </Dialog> */}
           </form>
 
           <div className="mt-24">

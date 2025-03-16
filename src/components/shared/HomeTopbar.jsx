@@ -6,9 +6,11 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import Container from "../Container";
+import NotifySection from "../NotifySection";
 
 const HomeTopbar = () => {
   const [isOpen, setOpen] = useState(false);
+  const isAuthenticated = true;
 
   return (
     <Container>
@@ -33,7 +35,8 @@ const HomeTopbar = () => {
         </div>
 
         <div className="flex gap-5">
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
+            {isAuthenticated ? <NotifySection /> : 
             <div className="flex items-center gap-2">
               <Button variant="outline" asChild>
                 <Link to="/login">Sign in</Link>
@@ -41,7 +44,7 @@ const HomeTopbar = () => {
               <Button asChild>
                 <Link to="/pro-register">Join as a Pro</Link>
               </Button>
-            </div>
+            </div>}
           </div>
 
           {/* Mobile Menu */}
@@ -99,6 +102,7 @@ const HomeTopbar = () => {
                 </ul>
               </div>
               {/* auth button */}
+              { !isAuthenticated ?
               <div className="flex flex-col items-center gap-2">
                 <Button className="w-full " variant="outline" asChild>
                   <Link to="/login">Sign in</Link>
@@ -106,7 +110,8 @@ const HomeTopbar = () => {
                 <Button className="w-full" asChild>
                   <Link to="/pro-register">Join as a Pro</Link>
                 </Button>
-              </div>
+              </div> :
+              <NotifySection/>}
             </div>
           </div>
         </div>

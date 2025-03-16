@@ -9,6 +9,13 @@ import {
   Order4,
   Work1,
 } from "@/assets/icons";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTrigger,
+} from "@/components/shadcn/ui/custom-dialog";
 import { Link } from "react-router";
 import "./constructor.css";
 // Import Swiper React components
@@ -49,10 +56,6 @@ const UserJobDetails = () => {
 
   return (
     <div className="container">
-      <Link to="/constructor-profile/jobs" className="flex items-center gap-1.5">
-        <BackSign className="stroke-[#2D2F34]" />
-        <span className="text-[#2D2F34]">Assignments</span>
-      </Link>
 
       <h2 className="mt-7 text-3xl font-bold text-[#313133]">
         Installing or replacing radiators: 4 radiators; New radiators...
@@ -97,27 +100,6 @@ const UserJobDetails = () => {
                   </span>{" "}
                   I would like to install a new kitchen tap and there is a leak
                   at the coupling of the connection hose and water pipe.
-                </p>
-              </div>
-              <div className="flex">
-                <div className="w-[35px] flex-shrink-0">
-                  <Location4 className="" />
-                </div>
-                <p className="text-[#637381]">
-                  <span className="font-semibold text-[#637381]">
-                    Location :
-                  </span>{" "}
-                  Kitchen.
-                </p>
-              </div>
-              <div className="flex">
-                <div className="w-[35px] flex-shrink-0">
-                  <Cause4 className="" />
-                </div>
-                <p className="text-[#637381]">
-                  <span className="font-semibold text-[#637381]">Cause :</span>{" "}
-                  Leak at the coupling between the connection hose and the water
-                  pipe
                 </p>
               </div>
               <div className="flex">
@@ -191,7 +173,7 @@ const UserJobDetails = () => {
                   .fill(null)
                   .map((_, idx) => (
                     <SwiperSlide key={idx} className="w-[260px]">
-                      <figure className="h-[160px] w-[260px] flex-shrink-0 border-2 border-white">
+                      <figure className="h-[160px] w-[260px] flex-shrink-0 border-2 border-white cursor-pointer">
                         <img
                           src={assignmentDetailsBanner}
                           alt=""
@@ -206,15 +188,42 @@ const UserJobDetails = () => {
         </div>
       </div>
       <div className="mb-14 flex items-center gap-4">
-        <Button type="button" className="px-20">
-          Accept Request
-        </Button>
-        <Link
-          to="#"
-          className="w-[286px] rounded-full border border-[#ff0000]/80 px-20 py-3 text-center font-semibold text-[#ff0000]/80 transition-all duration-300 hover:bg-[#ff0000]/80 hover:text-white"
-        >
-          Decline
-        </Link>
+        {/* <Button type="button" className="px-20">
+          Submit Request
+        </Button> */}
+        <Dialog>
+              <DialogTrigger
+                type="submit"
+                className="block w-80 rounded-full bg-primary py-4 text-center font-medium text-white"
+              >
+                Submit Request
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogDescription>
+                    <div className="flex flex-col p-20">
+                      <h2 className="mb-12 text-center text-4xl font-bold leading-[120%]">
+                        Top-Rated Pros at Your <br /> Service
+                      </h2>
+                      <Link
+                        to="/pros"
+                        type="button"
+                        className="mx-auto mb-6 w-[80%] rounded-full border border-primary bg-primary py-3 text-center text-lg font-semibold text-white"
+                      >
+                        Choose Your Pro
+                      </Link>
+                      <Link
+                        to="/safety-guideline"
+                        type="button"
+                        className="mx-auto w-[80%] rounded-full border border-primary py-3 text-center text-lg font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-white"
+                      >
+                        Submit to random pro
+                      </Link>
+                    </div>
+                  </DialogDescription>
+                </DialogHeader>
+              </DialogContent>
+            </Dialog>
       </div>
     </div>
   );

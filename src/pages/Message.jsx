@@ -2,11 +2,20 @@ import { Button } from "@/components/shadcn/ui/button";
 import profile from "@/assets/images/constructor.png";
 import { AiOutlineSend } from "react-icons/ai";
 import NotifySection from "@/components/NotifySection";
+import { useEffect, useRef } from "react";
 
 const Message = () => {
+
+
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.scrollTop = containerRef.current.scrollHeight;
+    }
+  }, []);
   return (
     <div className="container mb-[2.5vh] mt-14">
-      <NotifySection/>
       <h1 className="mb-7 text-left text-3xl font-bold leading-[120%]">Chat</h1>
 
       <div className="grid grid-cols-5 gap-10">
@@ -133,7 +142,7 @@ const Message = () => {
               </div>
             </div>
           </div>
-          <div className="flex-grow overflow-y-auto pr-4">
+          <div className="flex-grow overflow-y-auto pr-4 " ref={containerRef}>
             {Array(12)
               .fill(null)
               .map((_, idx) => (
