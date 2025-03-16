@@ -15,7 +15,7 @@ const Home = () => {
       <PrimaryServiceSection limit={6} />
       <FeatureSection />
       <RecentProjects />
-      <ExploreMoreSection />
+      {/* <ExploreMoreSection /> */}
       <VisitHomeResource />
       <ServiceSection />
       <WhatOurClientSays />
