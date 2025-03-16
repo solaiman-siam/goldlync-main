@@ -22,7 +22,7 @@ function GetInTouchBanner() {
             </Link>
           </div>
         </div>
-        <div className="w-full absolute z-[2] h-full bg-black/20 top-0 left-0"></div>
+        <div className="w-full absolute z-[2] h-full bg-black/20 top-0 left-0 top-0 left-0"></div>
         <img
           className="absolute left-0 top-0 h-full w-full object-cover transition-all duration-300 group-hover:scale-105"
           src="https://images.pexels.com/photos/6646770/pexels-photo-6646770.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"

@@ -12,6 +12,7 @@ import {
 import { useGetAllPrimaryServices } from "@/hooks/api-hooks/service.hook";
 import { Skeleton } from "../shadcn/ui/skeleton";
 import { Button } from "../shadcn/ui/button";
+import Container from "../Container";
 import AllServices from "../services-sections/AllServices";
 import Container from "../Container";
 
@@ -46,6 +47,8 @@ const PrimaryServiceItem = ({ path, icon, title, details }) => {
     <Link
       to={'/service-categories'}
       className="flex flex-col items-center justify-center gap-5 rounded-md border border-card bg-card px-8 py-10 text-center text-card-foreground transition-all duration-300 hover:-translate-y-2 hover:border-input hover:shadow-md"
+      to={'/service-categories'}
+      className="flex flex-col items-center justify-center gap-5 rounded-md border border-card bg-card px-8 py-10 text-center text-card-foreground transition-all duration-300 hover:-translate-y-2 hover:border-input hover:shadow-md"
     >
       <span className="inline-flex size-[100px] items-center justify-center rounded-full bg-accent [&_svg]:w-[50%] [&_svg]:text-accent-foreground">
         {icon}
@@ -60,5 +63,4 @@ const PrimaryServiceItem = ({ path, icon, title, details }) => {
   );
 };
 
->>>>>>> 26d3c0c2099f58bb116a6ca7abec81ad50cc304f
 export default PrimaryServiceSection;

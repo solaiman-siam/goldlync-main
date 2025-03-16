@@ -11,6 +11,7 @@ import {
 } from "@/assets/icons";
 import { Skeleton } from "@/components/shadcn/ui/skeleton";
 import { useGetAllPrimaryServices } from "@/hooks/api-hooks/service.hook";
+<<<<<<< HEAD
 import { cn } from "@/lib/shadcn/utils";
 import Container from "../Container";
 
