@@ -14,7 +14,7 @@ const HomeTopbar = () => {
 
   return (
     <Container>
-      <nav className="container flex items-center justify-between gap-2 bg-background pb-6 pt-5">
+      <nav className="flex items-center justify-between gap-2 bg-background pb-6 pt-5">
         <SiteLogo />
 
         <div className="hidden lg:block">
@@ -38,10 +38,10 @@ const HomeTopbar = () => {
           <div className="hidden lg:block">
             {isAuthenticated ? <NotifySection /> : 
             <div className="flex items-center gap-2">
-              <Button variant="outline" asChild>
+              <Button variant="outline" className="text-sm xl:text-base" asChild>
                 <Link to="/login">Sign in</Link>
               </Button>
-              <Button asChild>
+              <Button asChild className="text-sm xl:text-base">
                 <Link to="/pro-register">Join as a Pro</Link>
               </Button>
             </div>}

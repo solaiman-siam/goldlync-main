@@ -5,6 +5,8 @@ import { recentProjectsData } from "@/utils/staticData";
 import { motion } from "framer-motion";
 import { Link } from "react-router";
 import Container from "../Container";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/shadcn/ui/select";
+
 function RecentProjects() {
   const [activeTabIdx, setActiveTabIdx] = useState(0);
   const [recentProjects, setRecentProjects] = useState(
@@ -33,7 +35,7 @@ function RecentProjects() {
 
   return (
     <Container>
-      <div className="container py-10 lg:py-24" id="explore-projects">
+      <div className="py-12 md:py-16 lg:py-20" id="explore-projects">
         <SectionTitle tagName={"h3"} className="text-[28px] md:text-4xl">
           Explore Projects
         </SectionTitle>
@@ -43,28 +45,28 @@ function RecentProjects() {
         </SectionText>
 
         <div>
-          {/* Dropdown  */}
           <div className="md:hidden">
-            <select
-              className="mt-4 w-full rounded-md border p-2 text-base text-[#262627] outline-none"
-              value={activeTabIdx}
-              onChange={(e) =>
-                handleTab(
-                  Number(e.target.value),
-                  tabsMenu[Number(e.target.value)]
-                )
+            <Select
+              value={String(activeTabIdx)}
+              onValueChange={(value) =>
+                handleTab(Number(value), tabsMenu[Number(value)])
               }
             >
-              {tabsMenu.map((item, index) => (
-                <option key={item} value={index}>
-                  {item}
-                </option>
-              ))}
-            </select>
+              <SelectTrigger className="mt-4 w-full">
+                <SelectValue placeholder="Select an option" />
+              </SelectTrigger>
+              <SelectContent>
+                {tabsMenu.map((item, index) => (
+                  <SelectItem key={item} value={String(index)}>
+                    {item}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           {/* Tab Menu  */}
-          <div className="hidden items-center justify-center py-4 md:flex md:space-x-4">
+          <div className="hidden flex-wrap items-center justify-center gap-4 py-4 md:flex">
             {tabsMenu.map((item, index) => (
               <div
                 onClick={() => handleTab(index, item)}
@@ -86,7 +88,7 @@ function RecentProjects() {
           initial="hidden"
           animate="visible"
           variants={gridVariants}
-          className="grid gap-8 pt-10 md:grid-cols-2"
+          className="grid gap-4 pt-6 md:pt-8 lg:pt-10 md:grid-cols-2 xl:gap-8"
         >
           {recentProjects[0]?.sections?.map((projects, index) => (
             <motion.div

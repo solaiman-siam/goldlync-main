@@ -5,16 +5,16 @@ import { CiSearch } from "react-icons/ci";
 const BannerSearch = () => {
   return (
     <div>
-      <div className="flex h-14 w-full items-center gap-1 rounded-full bg-white px-4 py-4 text-foreground md:h-20 md:gap-4 md:px-8">
+      <div className="flex h-14 w-full items-center gap-2 rounded-full bg-white px-4 py-4 text-foreground md:h-20 md:gap-4 md:pl-8">
         <input
-          className="h-full w-full text-sm font-medium outline-none placeholder:text-foreground md:text-lg"
+          className="h-full w-full text-sm font-semibold outline-none placeholder:text-foreground md:text-lg"
           placeholder="Search"
         />
         <div className="h-full border-l border-foreground" />
-        <div className="flex h-full items-center gap-2">
+        <div className="flex items-center gap-2">
           <LocationIcon1 />
           <input
-            className="w-full text-sm font-semibold outline-none placeholder:text-foreground md:text-lg"
+            className="w-full font-semibold outline-none placeholder:text-foreground text-sm md:text-lg"
             type="number"
             placeholder="Zip Code"
           />
@@ -28,7 +28,7 @@ const BannerSearch = () => {
         </div>
       </div>
       <div className="md:hidden">
-        <Button className="mt-4 h-full w-full md:[&_svg]:size-6" type="submit">
+        <Button className="mt-3 h-full w-full md:[&_svg]:size-6" type="submit">
           <SearchIcon1 className="text-white" />
           <span>Search</span>
         </Button>

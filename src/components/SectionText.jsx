@@ -7,7 +7,7 @@ const SectionText = forwardRef(
     return (
       <Comp
         className={cn(
-          "mx-auto my-3 w-full max-w-[700px] text-center font-manrope text-lg font-normal leading-[200%] text-[#242424]",
+          "mx-auto my-2 lg:my-3 w-full max-w-[700px] text-center font-manrope lg:text-lg font-normal lg:leading-[200%] text-[#242424]",
           className
         )}
         ref={ref}

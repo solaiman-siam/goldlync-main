@@ -342,7 +342,7 @@ export const reviewsData = {
       name: "Leslie Alexander",
       position: "CEO at Creativex",
       profileImage: "path/to/profile-image-2.jpg",
-      platform: "Twitter",
+      platform: "Goldlync",
       iconUrl: "path/to/twitter-icon.svg",
       message:
         "OMG! I cannot believe that I have got a brand new landing page after getting @Omega... Auctor enim mauris sagittis, sed tempus, ut mi interdum.",
@@ -362,7 +362,7 @@ export const reviewsData = {
       name: "Leslie Alexander",
       position: "CEO at Creativex",
       profileImage: "path/to/profile-image-4.jpg",
-      platform: "Twitter",
+      platform: "Goldlync",
       iconUrl: "path/to/twitter-icon.svg",
       message:
         "OMG! I cannot believe that I have got a brand new landing page after getting @Omega... Auctor enim mauris sagittis, sed tempus, ut mi interdum.",
