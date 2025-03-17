@@ -10,7 +10,7 @@ import NotifySection from "../NotifySection";
 
 const HomeTopbar = () => {
   const [isOpen, setOpen] = useState(false);
-  const isAuthenticated = true;
+  const isAuthenticated = localStorage.getItem("auth_token") ? true : false;
 
   return (
     <Container>

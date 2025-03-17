@@ -1,10 +1,7 @@
 import {
-  BackSign,
-  Cause4,
   Clock4,
   ClockIcon1,
   Location3,
-  Location4,
   Note4,
   Order4,
   Work1,
@@ -27,7 +24,6 @@ import "swiper/css/pagination";
 
 
 import assignmentDetailsBanner from "@/assets/images/assignmentDetailsBanner.png";
-import { Button } from "@/components/shadcn/ui/button";
 import { FreeMode } from "swiper/modules";
 
 const UserJobDetails = () => {

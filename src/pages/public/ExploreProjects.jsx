@@ -11,7 +11,7 @@ const ExploreProjects = () => {
         <h1 className="mb-7 text-center text-5xl font-bold text-[#313133]">
           House Cleaning
         </h1>
-        <p className="mx-auto mb-10 w-[80%] text-center text-[#575757]">
+        <p className="mx-auto mb-10 w-[70%] text-center text-[#575757]">
           I need assistance with installing a new kitchen tap and addressing a
           leak at the connection between the hose and the water pipe. The leak
           appears to be coming from the coupling, which may require replacement.

@@ -1,14 +1,51 @@
-import { NavLink, useLocation } from "react-router";
+import { Navigate, NavLink, useLocation, useNavigate } from "react-router";
 import { Avatar, AvatarFallback, AvatarImage } from "../shadcn/ui/avatar";
 import userImage from "@/assets/images/user-1.png";
 import { cn } from "@/lib/shadcn/utils";
 import {
   LogoutIcon1,
-  SupportIcon1,
 } from "@/assets/icons";
-import { Constructor1, Constructor10, Constructor11, Constructor12, Constructor2, Constructor3, Constructor4, Constructor5, Constructor7, Constructor8 } from "@/assets/icons/ProfileSidebarIcon";
+import { Constructor1, Constructor10, Constructor11, Constructor12, Constructor2, Constructor3, Constructor5, Constructor7, Constructor8 } from "@/assets/icons/ProfileSidebarIcon";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const ConstructorProfileSidebar = () => {
+
+  const token = localStorage.getItem("auth_token");
+  const navigate = useNavigate();
+
+  const handleLogOut = async() => {
+    try {
+      const response = await axios.post(
+        "https://goldlync.softvencefsd.xyz/api/logout",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      toast.success(response?.data?.message);
+      Navigate("/");
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error("Axios Error:", {
+          message: error.message,
+          status: error.response?.status || "No status",
+          statusText: error.response?.statusText || "No status text",
+          data: error.response?.data || "No response data",
+        });
+      } else {
+        console.error("Unexpected Error:", error);
+      }
+    }
+    finally {
+      localStorage.removeItem("auth_token");
+      navigate("/");
+    }
+  }
+
   return (
     <aside className="flex w-[420px] flex-shrink-0 flex-col items-start gap-8">
       <div className="flex gap-3 items-center">
@@ -83,6 +120,7 @@ const ConstructorProfileSidebar = () => {
       <button
         className="flex w-full items-center gap-5 px-3 py-5 font-manrope text-xl font-normal text-destructive transition-colors duration-300 hover:bg-card [&_svg]:w-[30px]"
         type="button"
+        onClick={handleLogOut}
       >
         <LogoutIcon1 className="text-destructive" />
         <span>Log out</span>
