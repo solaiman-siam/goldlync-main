@@ -21,6 +21,7 @@ import { use } from "react";
 import { Button } from "react-scroll";
 import CommonInput from "./CommonInput";
 
+
 function Questionnaries({ slug }) {
   const { data, isLoading, isError } = useGetQuestions(`/question/${slug}`);
   const [answers, setAnswers] = useState({});
@@ -61,7 +62,9 @@ function Questionnaries({ slug }) {
       [field]: value,
     }));
   };
+
   const navigate = useNavigate();
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -77,9 +80,11 @@ function Questionnaries({ slug }) {
 
     console.log("Form Data:", formData);
 
+
     // navigate("/user-job-details", { state: formData });
 
     // console.log("Form Data:", formData);
+
   };
 
   if (isLoading) return <div className="my-40 text-center">Loading...</div>;
@@ -90,6 +95,7 @@ function Questionnaries({ slug }) {
       id: question.id,
       label: question.title,
       type: question.type,
+
       options: question.options.map((option) => option.option),
     })) || [];
 
@@ -104,6 +110,7 @@ function Questionnaries({ slug }) {
             <div className="space-y-8">
               {/* Check if data is available before rendering options */}
               {selectData?.length > 0 ? (
+
                 selectData.map((select, idx) => {
                   // console.log("Select Data:", select.type);
                   return (
@@ -135,6 +142,7 @@ function Questionnaries({ slug }) {
                     </>
                   );
                 })
+
               ) : (
                 <div>No questions available</div>
               )}
@@ -183,7 +191,6 @@ function Questionnaries({ slug }) {
             </div> */}
             <div className="flex flex-col gap-3">
               <label className="text-xl font-semibold" htmlFor="">
-                {" "}
                 {selectData?.length + 3}. Detail job description
               </label>
               <textarea
@@ -197,7 +204,8 @@ function Questionnaries({ slug }) {
             </div>
             <div className="flex flex-1 flex-col gap-3">
               <label className="text-xl font-semibold" htmlFor="">
-                {" "}
+
+
                 {selectData?.length + 4}. Provide your details
               </label>
               <div className="grid grid-cols-3 gap-x-5 gap-y-6">

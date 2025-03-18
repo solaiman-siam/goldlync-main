@@ -33,6 +33,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import Container from "@/components/Container";
 
+
 const items = [
   {
     id: "on-time",
@@ -126,6 +127,7 @@ const ConstructorForm = () => {
       customer_hiring_factors: e.quality,
       service_type: selectedServices,
       license: [logo],
+
       work_area: e.searchArea,
       service_radius: value + " miles",
       budget_preferences: e.budget_preferences,
