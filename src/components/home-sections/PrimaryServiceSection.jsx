@@ -6,7 +6,7 @@ const PrimaryServiceSection = () => {
 
   return (
     <section className="pb-12 md:pb-16 lg:pb-20">
-      <div className="text-center">
+      <div className="text-center pt-12 md:pt-11 lg:pt-10">
         <AllServices cardLimit="6" lineClamp="line-clamp-2"/>
         <Button asChild className="mt-6 md:mt-10 xl:mt-14">
           <Link to="services">View All</Link>

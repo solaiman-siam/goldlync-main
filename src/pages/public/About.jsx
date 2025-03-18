@@ -40,26 +40,28 @@ const About = () => {
     <>
       {/* --- */}
       <section
-        className="flex min-h-[700px] items-center justify-center bg-cover bg-center bg-no-repeat p-4 md:gap-1 lg:gap-1"
+        className="flex items-center justify-center bg-cover bg-center bg-no-repeat md:gap-1 lg:gap-1"
         style={{ backgroundImage: `url('${bannerImage}')` }}
       >
-        <div className="flex w-full max-w-[1096px] shrink-0 flex-col items-start gap-5 rounded-2xl border border-solid border-[rgba(255,255,255,0.29)] bg-[rgba(255,255,255,0.06)] px-[16px] py-[86px] text-center font-manrope text-white backdrop-blur-[6px] md:w-[90%] lg:w-[45%] lg:px-[73px]">
-          <h1 className="mx-auto text-center text-[40px] font-bold leading-[120%] lg:text-[64px]">
-            About Us
-          </h1>
-          <p className="text-center font-normal md:text-base lg:text-lg lg:leading-[200%]">
-            Whether it’s a quick fix or a complete makeover, we’re here to make
-            your home improvement journey seamless and stress-free. Connect with
-            trusted professionals, set your budget, and bring
-          </p>
-        </div>
+        <Container className="py-12 md:py-16 lg:py-20 xl:py-36">
+          <div className="mx-auto flex w-full max-w-[1096px] shrink-0 flex-col gap-3 rounded-2xl border border-solid border-[rgba(255,255,255,0.29)] bg-[rgba(255,255,255,0.06)] px-3 py-8 text-center font-manrope text-white backdrop-blur-[6px] sm:px-6 sm:py-12 md:gap-5 md:px-12 md:py-16 lg:px-[55px] lg:py-[70px] xl:px-[72px] xl:py-[86px]">
+            <h1 className="w-full text-center text-3xl font-bold sm:text-4xl md:text-[40px] lg:text-[46px] xl:text-[64px] xl:leading-[120%]">
+              About Us
+            </h1>
+            <p className="mx-auto w-[90%] text-wrap text-center font-normal xl:text-lg xl:leading-[200%]">
+              Whether it’s a quick fix or a complete makeover, we’re here to
+              make your home improvement journey seamless and stress-free.
+              Connect with trusted professionals, set your budget, and bring
+            </p>
+          </div>
+        </Container>
       </section>
 
       {/* ---- */}
       <Container>
-        <section className="container py-12 lg:py-24">
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-            <figure className="h-[400px] w-full overflow-hidden rounded-2xl lg:h-[686px]">
+        <section className="py-12 md:py-16 lg:py-20">
+          <div className="grid grid-cols-1 gap-4 md:gap-8 lg:grid-cols-2">
+            <figure className="h-[240px] w-full overflow-hidden rounded-2xl sm:h-[400px] lg:h-[450px] xl:h-[600px]">
               <img
                 src={aboutImage}
                 alt=""
@@ -67,10 +69,10 @@ const About = () => {
               />
             </figure>
             <div className="text-[#242424]">
-              <h3 className="mb-5 text-2xl font-bold md:text-3xl lg:text-4xl">
+              <h3 className="mb-2.5 text-2xl font-bold md:mb-5 md:text-3xl lg:text-4xl">
                 Dominant Industrial Firm
               </h3>
-              <p className="mb-10 max-w-[640px] text-[15px] lg:text-lg">
+              <p className="mb-5 max-w-[640px] md:mb-10 lg:text-lg">
                 The profound impact and leadership that the company holds within
                 the industrial sphere, standing as a testament to its authority
                 and influence within the market.
@@ -91,7 +93,7 @@ const About = () => {
                       strokeLinejoin="round"
                     />
                   </svg>
-                  <p className="text-base font-semibold md:text-2xl lg:text-xl">
+                  <p className="text-base font-semibold md:text-xl xl:text-2xl">
                     Rigorous Quality Assurance
                   </p>
                 </div>
@@ -110,7 +112,7 @@ const About = () => {
                       strokeLinejoin="round"
                     />
                   </svg>
-                  <p className="text-xl font-semibold md:text-2xl">
+                  <p className="text-base font-semibold md:text-xl xl:text-2xl">
                     Guaranteed Full Satisfaction
                   </p>
                 </div>
@@ -129,7 +131,7 @@ const About = () => {
                       strokeLinejoin="round"
                     />
                   </svg>
-                  <p className="text-xl font-semibold md:text-2xl">
+                  <p className="text-base font-semibold md:text-xl xl:text-2xl">
                     Qualified Electrical Craftsman
                   </p>
                 </div>
@@ -148,7 +150,7 @@ const About = () => {
                       strokeLinejoin="round"
                     />
                   </svg>
-                  <p className="text-xl font-semibold md:text-2xl">
+                  <p className="text-base font-semibold md:text-xl xl:text-2xl">
                     Customer-Centric Focus
                   </p>
                 </div>
@@ -160,9 +162,9 @@ const About = () => {
 
       {/* Counter */}
       <Container>
-        <section className="container border-t py-[40px] xl:py-[70px]">
-          <div className="grid grid-cols-2 md:grid-cols-4 md:gap-0 lg:gap-8">
-            <div className="card flex items-center gap-4">
+        <section className="border-t py-12 md:py-16 lg:py-20">
+          <div className="grid grid-cols-2 md:grid-cols-4 md:gap-0 lg:gap-8 gap-y-8 gap-x-2">
+            <div className="card flex items-center gap-2 md:gap-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-[40px] lg:w-[70px] xl:h-[100px] xl:w-[100px]"
@@ -175,15 +177,15 @@ const About = () => {
                 />
               </svg>
               <div ref={counterRef}>
-                <p className="lg::text-[24px] font-bold text-[#AAAAAA] xl:text-6xl">
+                <p className="lg:text-[24px] font-bold text-[#AAAAAA] xl:text-6xl">
                   {startCounting ? <SlotCounter value={30} duration={2} /> : 30}
                   +
                 </p>
-                <p className="font-medium lg:text-2xl">Services</p>
+                <p className="font-medium lg:text-2xl text-nowrap">Services</p>
               </div>
             </div>
 
-            <div className="card flex items-center gap-4">
+            <div className="card flex items-center gap-2 md:gap-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-[40px] lg:w-[70px] xl:h-[100px] xl:w-[100px]"
@@ -198,7 +200,7 @@ const About = () => {
                 />
               </svg>
               <div ref={counterRef}>
-                <p className="lg::text-[24px] font-bold text-[#AAAAAA] xl:text-6xl">
+                <p className="lg:text-[24px] font-bold text-[#AAAAAA] xl:text-6xl">
                   {startCounting ? (
                     <SlotCounter value={550} duration={2} />
                   ) : (
@@ -206,11 +208,11 @@ const About = () => {
                   )}
                   +
                 </p>
-                <p className="font-medium lg:text-2xl">Work Done</p>
+                <p className="font-medium lg:text-2xl text-nowrap">Work Done</p>
               </div>
             </div>
 
-            <div className="card mt-8 flex items-center gap-4 md:mt-0">
+            <div className="card flex items-center gap-2 md:gap-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-[40px] lg:w-[70px] xl:h-[100px] xl:w-[100px]"
@@ -244,7 +246,7 @@ const About = () => {
               </svg>
 
               <div ref={counterRef}>
-                <p className="lg::text-[24px] font-bold text-[#AAAAAA] xl:text-6xl">
+                <p className="lg:text-[24px] font-bold text-[#AAAAAA] xl:text-6xl">
                   {startCounting ? (
                     <SlotCounter value={120} duration={2} />
                   ) : (
@@ -252,11 +254,11 @@ const About = () => {
                   )}
                   +
                 </p>
-                <p className="font-medium lg:text-2xl">Good Worker</p>
+                <p className="font-medium lg:text-2xl text-nowrap">Good Worker</p>
               </div>
             </div>
 
-            <div className="card mt-8 flex items-center gap-4 md:mt-0">
+            <div className="card flex items-center gap-2 md:gap-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-[40px] lg:w-[70px] xl:h-[100px] xl:w-[100px]"
@@ -285,7 +287,7 @@ const About = () => {
                 />
               </svg>
               <div ref={counterRef}>
-                <p className="lg::text-[24px] font-bold text-[#AAAAAA] xl:text-6xl">
+                <p className="lg:text-[24px] font-bold text-[#AAAAAA] xl:text-6xl">
                   {startCounting ? (
                     <SlotCounter value={700} duration={2} />
                   ) : (
@@ -293,7 +295,7 @@ const About = () => {
                   )}
                   +
                 </p>
-                <p className="font-medium lg:text-2xl">Happy clients</p>
+                <p className="font-medium lg:text-2xl text-nowrap">Happy clients</p>
               </div>
             </div>
           </div>
@@ -302,14 +304,14 @@ const About = () => {
 
       {/* --- */}
       <Container>
-        <section className="container">
-          <div className="justify-between gap-8 lg:flex">
-            <div className="left flex flex-1 flex-col gap-7">
-              <div className="up rounded-xl bg-[#FFF2EB] p-4 lg:p-12">
-                <div className="mb-6 flex items-center gap-3">
+        <section className="">
+          <div className="grid md:grid-cols-2 gap-4 md:gap-6 lg:gap-8">
+            <div className="left flex flex-1 flex-col gap-4 md:gap-5 lg:gap-7">
+              <div className="up rounded-xl bg-[#FFF2EB] p-4 md:p-6 lg:p-12 flex-grow">
+                <div className="mb-3 md:mb-6 flex items-center gap-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-[50px]"
+                    className="w-10 md:w-[50px]"
                     viewBox="0 0 50 51"
                     fill="none"
                   >
@@ -318,15 +320,15 @@ const About = () => {
                       fill="#FF6A16"
                     />
                   </svg>
-                  <p className="text-2xl font-bold lg:text-4xl">Our mission</p>
+                  <p className="text-xl md:text-2xl font-bold lg:text-4xl">Our mission</p>
                 </div>
-                <p className="mb-8 text-sm lg:text-base">
+                <p className="mb-4 md:mb-8 text-[15px] md:text-base">
                   We aim to empower every Flowire, enabling them to contribute
                   meaningfully, grow personally and professionally, and find
                   fulfillment.
                 </p>
 
-                <div className="space-y-3 lg:space-y-6">
+                <div className="space-y-2 md:space-y-4 lg:space-y-6">
                   <div className="flex items-center gap-3">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -433,7 +435,7 @@ const About = () => {
               </div>
 
               <div className="down">
-                <figure className="h-[320px] w-full overflow-hidden rounded-xl">
+                <figure className="h-[220px] md:h-[250px] xl:h-[320px] w-full overflow-hidden rounded-xl">
                   <img
                     src={bond}
                     alt=""
@@ -443,12 +445,11 @@ const About = () => {
               </div>
             </div>
 
-            <div className="right mt-6 flex-1 rounded-xl bg-[#FFF2EB] p-4 lg:mt-0 lg:p-12">
+            <div className="right flex-1 rounded-xl bg-[#FFF2EB] p-4 md:p-6 lg:p-12">
               <div className="mb-6 flex items-center gap-3">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="50"
-                  height="50"
+                  className="w-10 md:w-[50px]"
                   viewBox="0 0 50 50"
                   fill="none"
                 >
@@ -465,20 +466,20 @@ const About = () => {
                     fill="#FF6A16"
                   />
                 </svg>
-                <p className="text-2xl font-bold lg:text-4xl">Our Vision</p>
+                <p className="text-xl md:text-2xl font-bold lg:text-4xl">Our Vision</p>
               </div>
-              <p className="mb-6 text-sm lg:text-base">
+              <p className="mb-3 md:mb-6 text-[15px] md:text-base">
                 We aim to empower every Flowire, enabling them to contribute
                 meaningfully, grow personally and professionally, and find
                 fulfillment. Our vision extends beyond mere professional
                 development, emphasizing a nurturing culture.
               </p>
-              <p className="mb-6 text-sm lg:text-base">
+              <p className="mb-3 md:mb-6  text-[15px] md:text-base">
                 We aspire to cultivate an ecosystem where each Flowire thrives,
                 contributing their best while feeling fulfilled, respected, and
                 integral to our collective success
               </p>
-              <div className="space-y-3 lg:space-y-6">
+              <div className="space-y-2 md:space-y-4 lg:space-y-6">
                 <div className="flex items-center gap-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

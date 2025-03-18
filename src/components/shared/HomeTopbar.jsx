@@ -36,15 +36,22 @@ const HomeTopbar = () => {
 
         <div className="flex gap-5">
           <div className="hidden lg:block">
-            {isAuthenticated ? <NotifySection /> : 
-            <div className="flex items-center gap-2">
-              <Button variant="outline" className="text-sm xl:text-base" asChild>
-                <Link to="/login">Sign in</Link>
-              </Button>
-              <Button asChild className="text-sm xl:text-base">
-                <Link to="/pro-register">Join as a Pro</Link>
-              </Button>
-            </div>}
+            {isAuthenticated ? (
+              <NotifySection />
+            ) : (
+              <div className="flex items-center gap-2">
+                <Button
+                  variant="outline"
+                  className="text-sm xl:text-base"
+                  asChild
+                >
+                  <Link to="/login">Sign in</Link>
+                </Button>
+                <Button asChild className="text-sm xl:text-base">
+                  <Link to="/pro-register">Join as a Pro</Link>
+                </Button>
+              </div>
+            )}
           </div>
 
           {/* Mobile Menu */}
@@ -63,22 +70,20 @@ const HomeTopbar = () => {
           ></div>
 
           <div
-            className={`fixed right-0 top-0 z-50 h-full w-[250px] border-transparent bg-white px-5 py-4 shadow-lg transition-transform duration-500 md:w-[300px] lg:hidden ${
+            className={`fixed right-0 top-0 z-50 h-full w-[270px] border-transparent bg-white px-5 py-6 shadow-lg transition-transform duration-500 md:w-[300px] lg:hidden ${
               isOpen ? "translate-x-0" : "translate-x-full"
             }`}
           >
             <div className="flex h-full flex-col justify-between">
               <div>
-                <div>
-                  <Link onClick={() => setOpen(false)} to="/">
-                    <div className="flex justify-end">
-                      <RxCross2 size={24} />
-                    </div>
-                  </Link>
+                <div className="flex justify-between">
                   <SiteLogo className="w-30" />
+                  <button onClick={() => setOpen(false)}>
+                    <RxCross2 size={24} />
+                  </button>
                 </div>
                 {/* nav item */}
-                <ul className="font-syne mt-5 space-y-3 text-base">
+                <ul className="font-syne mt-10 space-y-4 text-base">
                   {[
                     { to: "/", label: "Home" },
                     { to: "/about-us", label: "About us" },
@@ -90,7 +95,7 @@ const HomeTopbar = () => {
                         onClick={() => setOpen(false)}
                         to={item.to}
                         className={({ isActive }) =>
-                          `text-md w-full pb-1 font-poppins font-medium capitalize transition-colors duration-300 ${
+                          `text-md w-full font-poppins font-medium capitalize transition-colors duration-300 ${
                             isActive ? "text-accent" : "hover:text-accent"
                           }`
                         }
@@ -102,16 +107,18 @@ const HomeTopbar = () => {
                 </ul>
               </div>
               {/* auth button */}
-              { !isAuthenticated ?
-              <div className="flex flex-col items-center gap-2">
-                <Button className="w-full " variant="outline" asChild>
-                  <Link to="/login">Sign in</Link>
-                </Button>
-                <Button className="w-full" asChild>
-                  <Link to="/pro-register">Join as a Pro</Link>
-                </Button>
-              </div> :
-              <NotifySection/>}
+              {!isAuthenticated ? (
+                <div className="flex flex-col items-center gap-2">
+                  <Button className="w-full" variant="outline" asChild>
+                    <Link to="/login">Sign in</Link>
+                  </Button>
+                  <Button className="w-full" asChild>
+                    <Link to="/pro-register">Join as a Pro</Link>
+                  </Button>
+                </div>
+              ) : (
+                <NotifySection />
+              )}
             </div>
           </div>
         </div>

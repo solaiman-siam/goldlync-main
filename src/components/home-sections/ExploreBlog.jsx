@@ -12,7 +12,7 @@ function ExploreBlog() {
   return (
     <section className="bg-[#FFF2EB]">
       <Container>
-        <div className="container py-10 lg:py-24">
+        <div className="py-12 md:py-16 lg:py-20">
           <SectionTitle tagName={"h3"} className="text-[24px] md:text-4xl">
             Explore Blog
           </SectionTitle>

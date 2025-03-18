@@ -9,7 +9,7 @@ const HomeBanner = () => {
       style={{ backgroundImage: `url('${BannerImage}')` }}
     >
       <Container>
-      <div className="flex w-full max-w-[1096px] shrink-0 flex-col gap-3 md:gap-5 rounded-2xl border border-solid border-[rgba(255,255,255,0.29)] bg-[rgba(255,255,255,0.06)] px-3 sm:px-6 md:px-12 lg:px-[55px] xl:px-[72px] py-5 sm:py-10 md:py-14 lg:py-[70px] xl:py-[86px]  text-center font-manrope text-white backdrop-blur-[6px] mx-auto">
+      <div className="flex w-full max-w-[1096px] shrink-0 flex-col gap-3 md:gap-5 rounded-2xl border border-solid border-[rgba(255,255,255,0.29)] bg-[rgba(255,255,255,0.06)] px-3 sm:px-6 md:px-12 lg:px-[55px] xl:px-[72px] py-8 sm:py-12 md:py-16 lg:py-[70px] xl:py-[86px]  text-center font-manrope text-white backdrop-blur-[6px] mx-auto">
         <h1 className="text-center text-3xl sm:text-4xl md:text-[40px] font-bold lg:text-[46px] xl:text-[64px] xl:leading-[120%]">
           Transform Your Home, Effortlessly.
         </h1>

@@ -18,22 +18,22 @@ const Contact = () => {
 
   return (
     <Container>
-      <section className="container lg:py-24">
+      <section className="md:pt-5 lg:pt-10 mb-12 md:mb-16 lg:mb-20">
         <SectionTitle tagName={"h3"}>Contact Us</SectionTitle>
         <SectionText>
           Any question or remarks? Just write us a message!
         </SectionText>
-        <div className="mt:6 rounded-xl p-3 shadow-2xl lg:mt-12">
-          <div className="grid gap-4 lg:grid-cols-5 xl:gap-12">
-            <div className="left relative col-span-3 flex w-full flex-col justify-between space-y-8 overflow-hidden rounded-lg bg-[#FFF2EB] p-4 text-[#1F1F1F] md:p-10 lg:col-span-2 lg:h-[650px]">
+        <div className="mt-6 rounded-md md:rounded-lg p-4 md:p-6 lg:p-3 xl:p-4 shadow md:shadow-xl md:ring-1 ring-gray-300/20 md:mt-8">
+          <div className="flex flex-col-reverse lg:grid gap-8 lg:grid-cols-6 xl:grid-cols-5 xl:gap-12">
+            <div className="left relative col-span-3 flex w-full flex-col justify-between gap-8 md:gap-12 overflow-hidden rounded-md md:rounded-lg bg-[#FFF2EB] p-4 text-[#1F1F1F] md:p-7 xl:p-10 xl:col-span-2 lg:h-[650px]">
               <div className="">
-                <h2 className="mb-2.5 text-2xl font-semibold">
+                <h2 className="mb-1 md:mb-1.5 lg:mb-2.5 text-xl md:text-2xl font-semibold">
                   Contact Information
                 </h2>
                 <p>Say something to start a live chat!</p>
               </div>
               <div className="space-y-4 text-[#1F1F1F] lg:space-y-10">
-                <div className="card flex items-center gap-6">
+                <div className="card flex items-center gap-3 md:gap-6">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -52,7 +52,7 @@ const Contact = () => {
                   </svg>
                   +1012 3456 789
                 </div>
-                <div className="card flex items-center gap-6">
+                <div className="card flex items-center gap-3 md:gap-6">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -67,7 +67,7 @@ const Contact = () => {
                   </svg>
                   demo@gmail.com
                 </div>
-                <div className="card flex gap-6 xl:w-[70%]">
+                <div className="card flex gap-3 md:gap-6 xl:w-[70%]">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -96,17 +96,17 @@ const Contact = () => {
                 </button>
               </div>
 
-              <div className="absolute -bottom-20 -right-20 hidden size-[270px] rounded-full bg-[#E79264] xl:block">
-                <div className="absolute -left-6 -top-6 size-[140px] rounded-full bg-[#E5B69C]"></div>
+              <div className="absolute -bottom-20 -right-20 hidden size-[240px] xl:size-[270px] rounded-full bg-[#E79264] lg:block">
+                <div className="absolute -left-6 -top-6 size-[120px] xl:size-[140px] rounded-full bg-[#E5B69C]"></div>
               </div>
             </div>
 
             <div className="right relative col-span-3">
               <form
-                className="space-y-4 md:p-6 xl:space-y-12"
+                className="space-y-4 md:space-y-6 lg:p-6 xl:space-y-12"
                 onSubmit={handelSubmit}
               >
-                <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
+                <div className="grid grid-cols-1 gap-4 md:gap-6 xl:grid-cols-2 mt-2 md:mt-4 lg:mt-0">
                   <fieldset className="space-y-2">
                     <Label
                       htmlFor="firstName"
@@ -135,7 +135,7 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
+                <div className="grid grid-cols-1 gap-4 md:gap-6 xl:grid-cols-2">
                   <div className="space-y-2">
                     <Label
                       htmlFor="email"
