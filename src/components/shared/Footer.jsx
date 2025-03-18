@@ -7,6 +7,7 @@ import {
   TwitterIcon2,
 } from "@/assets/icons/SocialIcon";
 import footerImage from "@/assets/images/footer-image.png";
+import Container from "../Container";
 
 const Footer = () => {
   const footerLinks = [
@@ -79,10 +80,10 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-card px-4 py-16">
-      <div className="container">
-        <SiteLogo />
-        <div className="mt-8 flex justify-between">
+    <footer className="bg-card py-6 lg:py-16">
+      <Container>
+        <SiteLogo className="mb-4 md:mb-6 lg:mb-8 " />
+        <div className="justify-between flex flex-wrap gap-5">
           <FooterLogo />
           {footerLinks?.map((footerLink, idx) => (
             <FooterLinks
@@ -94,12 +95,12 @@ const Footer = () => {
           ))}
         </div>
 
-        <hr className="my-8 border-border" />
-        <div className="flex items-center justify-between gap-2">
-          <p className="font-manrope text-[16.789px] font-normal">
+        <hr className="my-4 md:my-6 lg:my-8 border-border" />
+        <div className="items-center justify-between gap-2 md:flex">
+          <p className="font-manrope text-sm font-normal lg:text-base text-center">
             © Copyright 2021, All Rights Reserved by Postcraft
           </p>
-          <ul className="flex items-center gap-2">
+          <ul className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
             <li>
               <Link
                 to="#"
@@ -126,19 +127,19 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 };
 
 const FooterLogo = () => (
-  <div className="flex-[2] space-y-7">
-    <h3 className="w-[85%] font-medium text-[#494949]">
+  <div className="flex-[2] space-y-4 md:space-y-[22px] lg:space-y-7 pb-4 min-w-[250px]">
+    <h3 className="font-medium text-[#494949] md:w-[85%] lf:w-[70%] text-sm md:text-base">
       GoldLync is a services marketplace that connects customers with
       professionals for various tasks like home improvement, personal training,
       and event planning.
     </h3>
-    <ul className="flex items-center gap-5">
+    <ul className="flex items-center gap-3 md:gap-4 lg:gap-5">
       <SocialLink path="https://x.com">
         <TwitterIcon2 className="fill-current transition-all duration-300 hover:fill-primary" />
       </SocialLink>
@@ -152,11 +153,11 @@ const FooterLogo = () => (
         <GithubIcon2 className="fill-current transition-all duration-300 hover:fill-primary" />
       </SocialLink>
     </ul>
-    <fieldset className="relative w-fit overflow-hidden rounded-md">
+    {/* <fieldset className="relative w-fit overflow-hidden rounded-md">
       <input
         type="text"
         placeholder="Your email"
-        className="w-[380px] px-6 py-4 outline-none"
+        className="w-[280px] px-6 py-4 outline-none sm:w-[350px] md:w-[380px]"
       />
       <button
         type="button"
@@ -164,16 +165,16 @@ const FooterLogo = () => (
       >
         Sent
       </button>
-    </fieldset>
+    </fieldset> */}
   </div>
 );
 
 const SocialLink = ({ path, children }) => (
-  <li>
+  <li className=" h-fit">
     <Link
       to={path}
       target="_blank"
-      className="inline-flex size-[35px] items-center justify-center [&_svg]:w-full"
+      className="inline-flex size-[24px] items-center justify-center xl:size-[35px] [&_svg]:h-full [&_svg]:w-full"
     >
       {children}
     </Link>
@@ -181,14 +182,14 @@ const SocialLink = ({ path, children }) => (
 );
 
 const FooterLinks = ({ keyPrefix, links, title }) => (
-  <div className="flex-1">
-    <h3 className="text-xl font-semibold">{title}</h3>
-    <ul className="mt-6 space-y-4">
+  <div className="flex-1 min-w-[160px]">
+    <h3 className="md:text-base lg:text-xl font-semibold">{title}</h3>
+    <ul className="mt-4 lg:mt-6 space-y-2 md:space-y-3 xl:space-y-4">
       {links.map((link, index) => (
         <li key={`${keyPrefix}-${index}`}>
           <Link
             to={link.path}
-            className="inline-flex items-center gap-2 text-base transition-colors duration-200 hover:text-accent"
+            className="inline-flex items-center gap-2 transition-colors duration-200 hover:text-accent text-sm md:text-base "
             dangerouslySetInnerHTML={{ __html: link.text }}
           />
         </li>

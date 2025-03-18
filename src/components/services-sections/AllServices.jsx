@@ -12,6 +12,8 @@ import {
 import { Skeleton } from "@/components/shadcn/ui/skeleton";
 import { useGetAllPrimaryServices } from "@/hooks/api-hooks/service.hook";
 import { cn } from "@/lib/shadcn/utils";
+import Container from "../Container";
+
 
 function AllServices({ cardLimit, lineClamp = "line-clamp-3" }) {
   const { data, isLoading, isError } = useGetAllPrimaryServices();
@@ -19,24 +21,26 @@ function AllServices({ cardLimit, lineClamp = "line-clamp-3" }) {
   const selecteData = cardLimit ? data?.slice(0, cardLimit) : data;
 
   return (
-    <section className="my-[80px]">
+    <Container className="md:pt-5 lg:pt-10">
       <SectionTitle tagName="h3">Services Tailored to Your Needs.</SectionTitle>
       <SectionText>
         Connect with trusted professionals, set your budget, and bring your
         vision to life—all in one place.
       </SectionText>
       {isLoading ? (
-        <div className="container my-8 grid grid-cols-[repeat(auto-fill,minmax(420px,1fr))] gap-4">
+        <div className="mt-6 md:mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           <PrimaryServiceSkeletons />
         </div>
       ) : isError ? (
-        <div className="my-8 text-center text-destructive">
+        <div className="mt-6 md:mt-8 text-center text-destructive">
           Something went wrong!
         </div>
       ) : selecteData?.length === 0 ? (
-        <div className="my-8 text-center">No Data Found!</div>
+
+        <div className="mt-6 md:mt-8 text-center">No Data Found!</div>
       ) : (
-        <div className="container my-8 grid grid-cols-[repeat(auto-fill,minmax(420px,1fr))] gap-4">
+        <div className="mt-6 md:mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+
           {selecteData?.map((service, idx) => (
             <PrimaryServiceItem
               key={`primary-service-${idx}`}
@@ -49,7 +53,7 @@ function AllServices({ cardLimit, lineClamp = "line-clamp-3" }) {
           ))}
         </div>
       )}
-    </section>
+    </Container>
   );
 }
 
@@ -68,17 +72,21 @@ const PrimaryServiceItem = ({ path, icon, title, details, lineClamp }) => {
   return (
     <Link
       to={path}
-      className="flex flex-col items-center justify-center gap-5 rounded-md border border-card bg-card px-8 py-10 text-center text-card-foreground transition-all duration-300 hover:-translate-y-2 hover:border-input hover:shadow-md"
+
+      className="flex flex-col items-center justify-center gap-2 md:gap-3 xl:gap-4 rounded-md border border-card bg-card px-4 md:px-6 xl:px-8 py-5 md:py-8 xl:py-10 text-center text-card-foreground transition-all duration-300 hover:-translate-y-2 hover:border-input hover:shadow-md"
     >
-      <span className="inline-flex size-[100px] items-center justify-center rounded-full bg-accent [&_svg]:w-[50%] [&_svg]:text-accent-foreground">
-        <img src={icon} alt="" className="size-[50px]" />
+      <span className="inline-flex size-[60px] md:size-[80px] xl:size-[100px] items-center justify-center rounded-full bg-accent">
+        <img src={icon} alt="" className="size-1/2" />
+
       </span>
-      <h3 className="font-manrope text-2xl font-semibold leading-[130%] text-card-foreground">
+      <h3 className="font-manrope text-lg md:text-xl font-semibold text-card-foreground xl:text-2xl md:leading-[130%]">
         {title}
       </h3>
       <p
         className={cn(
-          `font-poppins text-lg font-normal leading-[180%] text-[#494949]`,
+
+          `font-poppins xl:text-lg font-normal xl:leading-[180%] text-[#494949]`,
+
           lineClamp
         )}
       >

@@ -50,6 +50,7 @@ import ConstructorForm from "@/pages/ConstructorForm";
 import AddProjects from "@/pages/AddProjects";
 import VerifyCode from "@/pages/auth/VerifyCode";
 import ResetPassword from "@/pages/auth/ResetPassword";
+import UserJobDetails from "@/pages/private/ConstructorProfile/UserJobDetails";
 
 export const route = createBrowserRouter([
   {
@@ -166,6 +167,14 @@ export const route = createBrowserRouter([
         element: (
           <PageTitle title="Assignment Details">
             <AssignmentDetails />
+          </PageTitle>
+        ),
+      },
+      {
+        path: "/user-job-details",
+        element: (
+          <PageTitle title="Assignment Details">
+            <UserJobDetails />
           </PageTitle>
         ),
       },

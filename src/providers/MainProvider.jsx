@@ -15,7 +15,7 @@ const MainProvider = ({ children }) => {
           <HelmetProvider>{children}<Toaster position="top-right" reverseOrder={false} /></HelmetProvider>
         </StateContextProvider>
       </AuthContextProvider>
-      <ReactQueryDevtools initialIsOpen={false} />
+      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     </QueryClientProvider>
   );
 };

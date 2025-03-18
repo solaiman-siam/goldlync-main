@@ -1,5 +1,11 @@
-const Container = ({ children }) => {
-  return <div className="container mx-auto max-w-[1720px]">{children}</div>;
+import { cn } from "@/lib/shadcn/utils";
+
+const Container = ({ className, children }) => {
+  return (
+    <div className={cn("container mx-auto max-w-[1500px] px-4 md:px-6 xl:px-8", className)}>
+      {children}
+    </div>
+  );
 };
 
 export default Container;

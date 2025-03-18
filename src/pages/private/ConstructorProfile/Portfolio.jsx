@@ -105,7 +105,6 @@ const Portfolio = () => {
                   Set your budget, and bring your vision to life—all in one
                   place.
                 </p>
-                <p className="text-lg font-semibold">Avg. Price $140-$150</p>
               </div>
             </div>
           ))}

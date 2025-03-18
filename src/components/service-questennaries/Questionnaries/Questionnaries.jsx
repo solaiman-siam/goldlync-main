@@ -1,5 +1,5 @@
 import CommonSelect from "./CommonSelect";
-import { Link, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
 import Previews from "@/components/Previews";
 import {
@@ -19,6 +19,8 @@ import {
 import { useGetQuestions } from "@/hooks/api-hooks/service.hook";
 import { use } from "react";
 import { Button } from "react-scroll";
+import CommonInput from "./CommonInput";
+
 
 function Questionnaries({ slug }) {
   const { data, isLoading, isError } = useGetQuestions(`/question/${slug}`);
@@ -61,6 +63,9 @@ function Questionnaries({ slug }) {
     }));
   };
 
+  const navigate = useNavigate();
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -74,6 +79,12 @@ function Questionnaries({ slug }) {
     };
 
     console.log("Form Data:", formData);
+
+
+    // navigate("/user-job-details", { state: formData });
+
+    // console.log("Form Data:", formData);
+
   };
 
   if (isLoading) return <div className="my-40 text-center">Loading...</div>;
@@ -83,6 +94,8 @@ function Questionnaries({ slug }) {
     data?.questions?.map((question) => ({
       id: question.id,
       label: question.title,
+      type: question.type,
+
       options: question.options.map((option) => option.option),
     })) || [];
 
@@ -97,17 +110,39 @@ function Questionnaries({ slug }) {
             <div className="space-y-8">
               {/* Check if data is available before rendering options */}
               {selectData?.length > 0 ? (
-                selectData.map((select, idx) => (
-                  <CommonSelect
-                    key={select.id}
-                    options={select?.options}
-                    label={select?.label}
-                    id={select.id}
-                    labelNum={idx + 1}
-                    value={answers[select.id] || ""}
-                    onChange={(value) => handleSelectAnswer(select.id, value)}
-                  />
-                ))
+
+                selectData.map((select, idx) => {
+                  // console.log("Select Data:", select.type);
+                  return (
+                    <>
+                      {select.type == "dropdown" ? (
+                        <CommonSelect
+                          key={idx}
+                          options={select?.options}
+                          label={select?.label}
+                          id={select.id}
+                          labelNum={idx + 1}
+                          value={answers[select.id] || ""}
+                          onChange={(value) =>
+                            handleSelectAnswer(select.id, value)
+                          }
+                        />
+                      ) : (
+                        <CommonInput
+                          key={idx}
+                          label={select?.label}
+                          id={select.id}
+                          labelNum={idx + 1}
+                          value={answers[select.id] || ""}
+                          onChange={(value) =>
+                            handleSelectAnswer(select.id, value)
+                          }
+                        />
+                      )}
+                    </>
+                  );
+                })
+
               ) : (
                 <div>No questions available</div>
               )}
@@ -139,10 +174,10 @@ function Questionnaries({ slug }) {
                 <Previews onFilesChange={setPhoto} />
               </div>
             </div>
-            <div className="flex flex-col gap-3">
+            {/* <div className="flex flex-col gap-3">
               <label className="text-xl font-semibold" htmlFor="">
                 {" "}
-                {selectData?.length + 3}. Type of job
+                {selectData?.length + 3}. Type of job (Optional)
               </label>
               <input
                 type="text"
@@ -153,25 +188,25 @@ function Questionnaries({ slug }) {
                 value={typeofjob}
                 onChange={(e) => setTypeofjob(e.target.value)}
               ></input>
-            </div>
+            </div> */}
             <div className="flex flex-col gap-3">
               <label className="text-xl font-semibold" htmlFor="">
-                {" "}
-                {selectData?.length + 4}. Provide detail job description
+                {selectData?.length + 3}. Detail job description
               </label>
               <textarea
                 className="h-[250px] w-full rounded border border-gray-400 px-4 py-4 focus:outline-primary"
                 name="details"
                 id="details"
-                placeholder="Detail job description"
+                placeholder="Provide detail job description"
                 value={details}
                 onChange={(e) => setDetails(e.target.value)}
               ></textarea>
             </div>
             <div className="flex flex-1 flex-col gap-3">
               <label className="text-xl font-semibold" htmlFor="">
-                {" "}
-                {selectData?.length + 5}. Provide your details
+
+
+                {selectData?.length + 4}. Provide your details
               </label>
               <div className="grid grid-cols-3 gap-x-5 gap-y-6">
                 <div className="">

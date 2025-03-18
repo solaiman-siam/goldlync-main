@@ -5,6 +5,7 @@ import { Button } from "@/components/shadcn/ui/button";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { Service1, Service2, TrustBadge } from "@/assets/icons";
+import Container from "@/components/Container";
 
 const Pros = () => {
   const constructors = [
@@ -119,7 +120,10 @@ const Pros = () => {
 
   const handleConnect = (id) => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-    if (selectedConstructors.length === 3 && !selectedConstructors.includes(id)) {
+    if (
+      selectedConstructors.length === 3 &&
+      !selectedConstructors.includes(id)
+    ) {
       toast.error("You can select maximum 3 Pros");
       return;
     }
@@ -141,109 +145,126 @@ const Pros = () => {
 
   return (
     <>
-      <div className="container my-14">
-        <div className="mx-auto mb-16 w-[60%] text-center">
-          <h1 className="mb-4 text-5xl font-bold leading-[120%]">
-            Your Trusted Painting Experts – Fast, Reliable, and Affordable!
-          </h1>
-          <p className="text-lg">
-            Connect with trusted professionals, set your budget, and bring your
-            vision to life—all in one place.
-          </p>
-        </div>
+      <Container>
+        <div className="container my-8 md:my-14">
+          <div className="mx-auto mb-8 text-center lg:mb-16 lg:w-[60%]">
+            <h1 className="mb-4 text-[24px] font-bold leading-[120%] md:text-3xl lg:text-5xl">
+              Your Trusted Painting Experts – Fast, Reliable, and Affordable!
+            </h1>
+            <p className="text-base lg:text-lg">
+              Connect with trusted professionals, set your budget, and bring
+              your vision to life—all in one place.
+            </p>
+          </div>
 
-        <div className="">
-          {selectedConstructors.length != 0 && (
-            <div>
-              <p className="mb-6 text-4xl font-bold">
-                Your Selected Pro&apos;s
-              </p>
-              <div className="mb-6 grid grid-cols-3 gap-x-5 gap-y-6">
-                {constructors
-                  .filter((constructor) =>
-                    selectedConstructors.includes(constructor.id)
-                  )
-                  .map((constructor, idx) => (
-                    <SelectedConstructor constructor={constructor} idx={idx} key={idx} handleRemove={handleRemove}/>
-                  ))}
+          <div className="">
+            {selectedConstructors.length != 0 && (
+              <div>
+                <p className="mb-6 text-4xl font-bold">
+                  Your Selected Pro&apos;s
+                </p>
+                <div className="mb-6 grid grid-cols-1 gap-x-5 gap-y-6 md:grid-cols-2 xl:grid-cols-3">
+                  {constructors
+                    .filter((constructor) =>
+                      selectedConstructors.includes(constructor.id)
+                    )
+                    .map((constructor, idx) => (
+                      <SelectedConstructor
+                        constructor={constructor}
+                        idx={idx}
+                        key={idx}
+                        handleRemove={handleRemove}
+                      />
+                    ))}
+                </div>
+                <Button className="mb-10">
+                  <Link to="/safety-guideline">Continue</Link>
+                </Button>
+                <p className="mb-6 text-4xl font-bold">Other Profile</p>
               </div>
-              <Button className="mb-10">
-                <Link to="/safety-guideline">Continue</Link>
-              </Button>
-              <p className="mb-6 text-4xl font-bold">Other Profile</p>
-            </div>
-          )}
-        </div>
+            )}
+          </div>
 
-        <div className="grid grid-cols-2 gap-x-5 gap-y-6">
-          {constructors.map((constructor, idx) => (
-            <div key={idx} className="card rounded-lg border border-accent p-5">
-              <div className="mb-6 flex items-center gap-2.5 rounded bg-[#FFF2EB] px-4 py-2.5 text-left">
-                <figure className="size-14 overflow-hidden rounded-full">
-                  <img
-                    src={profile}
-                    alt=""
-                    className="h-full w-full object-cover object-center"
-                  />
-                </figure>
-                <div className="">
-                  <p className="text-xl text-primary">{constructor.name}</p>
-                  <p className="text-sm text-[#637381]">
-                    {constructor.profession}
-                  </p>
+          <div className="grid grid-cols-1 gap-x-5 gap-y-6 md:grid-cols-2 xl:grid-cols-3">
+            {constructors.map((constructor, idx) => (
+              <div
+                key={idx}
+                className="card rounded-lg border border-accent p-5"
+              >
+                <div className="mb-6 flex items-center gap-2.5 rounded bg-[#FFF2EB] px-4 py-2.5 text-left">
+                  <figure className="size-14 overflow-hidden rounded-full">
+                    <img
+                      src={profile}
+                      alt=""
+                      className="h-full w-full object-cover object-center"
+                    />
+                  </figure>
+                  <div className="">
+                    <p className="text-xl text-primary">{constructor.name}</p>
+                    <p className="text-sm text-[#637381]">
+                      {constructor.profession}
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="space-y-5">
-                <div className="flex items-center gap-2">
-                  <TrustBadge/>
-                  <p>{constructor.trust_badge}</p>
-                </div>
-                <div className="mb-7 flex gap-2.5 text-lg font-medium">
-                  <p>Excellent {constructor.rating.score}</p>
-                  <RatingStar
-                    className="size-6"
-                    rate={constructor.rating.score}
-                  />
-                  <p className="-ml-2 self-end text-base text-primary">
-                    ({constructor.rating.reviews})
-                  </p>
-                </div>
-                <div className="flex items-center gap-4">
-                  <Service1/>
-                  <p>{constructor.services[0]}</p>
-                </div>
-                <div className="flex items-center gap-4">
-                  <Service2/>
-                  <p>{constructor.services[1]}</p>
-                </div>
-                <div className="flex items-center gap-8">
-                  <Link
-                    to="/constructor"
-                    className="h-full flex-1 flex-shrink-0 rounded-full border border-primary py-3 text-center font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-white"
-                  >
-                    View Profile
-                  </Link>
-                  <div
-                    className={`flex-1`}
-                    onClick={() => handleConnect(constructor.id)}
-                  >
-                    <Button type="button" className={`w-full ${selectedConstructors.includes(constructor.id) && "bg-[#ff0000]"}`}>
-                      {selectedConstructors.includes(constructor.id) ? "Remove" : "Connect Now"}
-                    </Button>
+                <div className="space-y-5">
+                  <div className="flex items-center gap-2">
+                    <TrustBadge />
+                    <p>{constructor.trust_badge}</p>
+                  </div>
+                  <div className="mb-7 flex gap-2.5 text-lg font-medium">
+                    <p>Excellent {constructor.rating.score}</p>
+                    <div className="flex items-center gap-3">
+                      <RatingStar
+                        className="size-6"
+                        rate={constructor.rating.score}
+                      />
+                      <p className="-ml-2 self-end text-base text-primary">
+                        ({constructor.rating.reviews})
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <Service1 />
+                    <p>{constructor.services[0]}</p>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <Service2 />
+                    <p>{constructor.services[1]}</p>
+                  </div>
+                  <div className="flex flex-col items-center gap-2 lg:flex-row lg:gap-8">
+                    <Link
+                      to="/constructor"
+                      className="h-full w-full flex-1 flex-shrink-0 rounded-full border border-primary py-2 text-center font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-white lg:py-3"
+                    >
+                      View Profile
+                    </Link>
+                    <div
+                      className={`w-full flex-1`}
+                      onClick={() => handleConnect(constructor.id)}
+                    >
+                      <Button
+                        type="button"
+                        className={`w-full ${selectedConstructors.includes(constructor.id) && "bg-[#ff0000]"}`}
+                      >
+                        {selectedConstructors.includes(constructor.id)
+                          ? "Remove"
+                          : "Connect Now"}
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      </Container>
     </>
   );
 };
 
 export default Pros;
 
-const SelectedConstructor = ({constructor,idx,handleRemove}) => (
+const SelectedConstructor = ({ constructor, idx, handleRemove }) => (
   <div key={idx} className="card rounded-lg border border-accent p-5">
     <div className="mb-6 flex items-center gap-2.5 rounded bg-[#FFF2EB] px-4 py-2.5 text-left">
       <figure className="size-14 overflow-hidden rounded-full">
@@ -271,22 +292,22 @@ const SelectedConstructor = ({constructor,idx,handleRemove}) => (
         </p>
       </div>
       <div className="flex items-center gap-4">
-        <Service1/>
+        <Service1 />
         <p>{constructor.services[0]}</p>
       </div>
       <div className="flex items-center gap-4">
-        <Service2/>
+        <Service2 />
         <p>{constructor.services[1]}</p>
       </div>
       <div className="flex items-center gap-4">
         <Link
           to="/constructor"
-          className="h-full flex-1 flex-shrink-0 rounded-full border border-primary py-2 text-center font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-white"
+          className="h-full flex-1 flex-shrink-0 rounded-full border border-primary py-2 text-center font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-white lg:py-4"
         >
           View Profile
         </Link>
         <div className="flex-1" onClick={() => handleRemove(constructor.id)}>
-          <Button type="button" className="w-full bg-[#ff0000] !py-2 h-fit">
+          <Button type="button" className="h-fit w-full bg-[#ff0000] !py-2">
             Remove
           </Button>
         </div>

@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
+import toast from "react-hot-toast";
 import { IoMdClose } from "react-icons/io";
 
 const Previews = ({ onFilesChange, limit = 20 }) => {
   const [files, setFiles] = useState([]);
-  
   // Notify parent when files change
   useEffect(() => {
     onFilesChange && onFilesChange(files);
@@ -12,15 +12,18 @@ const Previews = ({ onFilesChange, limit = 20 }) => {
 
   const { getRootProps, getInputProps } = useDropzone({
     accept: { "image/*": [] },
-    onDrop: acceptedFiles => {
-      const newFiles = acceptedFiles.map(file => 
+    onDrop: (acceptedFiles) => {
+      const newFiles = acceptedFiles.map((file) =>
         Object.assign(file, { preview: URL.createObjectURL(file) })
       );
 
-      setFiles(prev => {
-        const updatedFiles = [...prev, ...newFiles]
-          .filter((file, index, self) =>
-            index === self.findIndex(f => f.name === file.name)
+      setFiles((prev) => {
+        const allFiles = [...prev, ...newFiles];
+        allFiles.length > limit && toast.error(`You can only upload ${limit} images`);
+        const updatedFiles = allFiles
+          .filter(
+            (file, index, self) =>
+              index === self.findIndex((f) => f.name === file.name)
           )
           .slice(0, limit);
         return updatedFiles;
@@ -28,11 +31,11 @@ const Previews = ({ onFilesChange, limit = 20 }) => {
     }
   });
 
-  const removeFile = fileName => {
-    setFiles(files.filter(file => file.name !== fileName));
+  const removeFile = (fileName) => {
+    setFiles(files.filter((file) => file.name !== fileName));
   };
 
-  const thumbs = files.map(file => (
+  const thumbs = files.map((file) => (
     <div className="relative" key={file.name}>
       <figure className="size-24 overflow-hidden border p-1 shadow-md">
         <img
@@ -99,7 +102,6 @@ const Previews = ({ onFilesChange, limit = 20 }) => {
           </svg>
         </div>
       </div>
-      
       {files.length > 0 && (
         <aside className="my-5 flex flex-wrap gap-4">{thumbs}</aside>
       )}

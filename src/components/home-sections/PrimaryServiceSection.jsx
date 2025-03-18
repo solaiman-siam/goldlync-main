@@ -1,27 +1,14 @@
 import { Link } from "react-router";
-import SectionText from "../SectionText";
-import SectionTitle from "../SectionTitle";
-import {
-  ServiceIcon1,
-  ServiceIcon2,
-  ServiceIcon3,
-  ServiceIcon4,
-  ServiceIcon5,
-  ServiceIcon6,
-} from "@/assets/icons";
-import { useGetAllPrimaryServices } from "@/hooks/api-hooks/service.hook";
-import { Skeleton } from "../shadcn/ui/skeleton";
 import { Button } from "../shadcn/ui/button";
 import AllServices from "../services-sections/AllServices";
 
-const PrimaryServiceSection = ({limit =false}) => {
-  const { data, isLoading, isError } = useGetAllPrimaryServices();
+const PrimaryServiceSection = () => {
 
   return (
-    <section className="mb-20">
-      <div className="text-center">
+    <section className="pb-12 md:pb-16 lg:pb-20">
+      <div className="text-center pt-12 md:pt-11 lg:pt-10">
         <AllServices cardLimit="6" lineClamp="line-clamp-2"/>
-        <Button asChild>
+        <Button asChild className="mt-6 md:mt-10 xl:mt-14">
           <Link to="services">View All</Link>
         </Button>
       </div>

@@ -1,6 +1,6 @@
 const ConstructorBenefits = () => {
   return (
-    <div className="!mb-24 !mt-32 grid grid-cols-3">
+    <div className="!mb-24 !mt-32 grid grid-cols-1 gap-6 md:grid-cols-3">
       <div className="card">
         <div className="mx-auto flex size-24 flex-shrink-0 items-center justify-center rounded-full bg-[#FFF2EB]">
           <svg
