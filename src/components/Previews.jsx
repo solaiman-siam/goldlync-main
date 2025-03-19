@@ -5,7 +5,6 @@ import { IoMdClose } from "react-icons/io";
 
 const Previews = ({ onFilesChange, limit = 20 }) => {
   const [files, setFiles] = useState([]);
-
   // Notify parent when files change
   useEffect(() => {
     onFilesChange && onFilesChange(files);
@@ -29,7 +28,7 @@ const Previews = ({ onFilesChange, limit = 20 }) => {
           .slice(0, limit);
         return updatedFiles;
       });
-    },
+    }
   });
 
   const removeFile = (fileName) => {
@@ -57,7 +56,7 @@ const Previews = ({ onFilesChange, limit = 20 }) => {
   ));
 
   useEffect(() => {
-    return () => files.forEach((file) => URL.revokeObjectURL(file.preview));
+    return () => files.forEach(file => URL.revokeObjectURL(file.preview));
   }, [files]);
 
   return (
@@ -66,7 +65,7 @@ const Previews = ({ onFilesChange, limit = 20 }) => {
         <input {...getInputProps()} />
         <div className="flex h-[64px] items-center justify-between rounded border border-input px-4">
           <div className="flex items-center gap-4">
-            <svg
+          <svg
               xmlns="http://www.w3.org/2000/svg"
               width="33"
               height="26"
@@ -82,8 +81,7 @@ const Previews = ({ onFilesChange, limit = 20 }) => {
               />
             </svg>
             <p className="text-[#8D8D8D]">
-              Drag & Drop image here or{" "}
-              <span className="text-primary">browse</span>
+              Drag & Drop image here or <span className="text-primary">browse</span>
             </p>
           </div>
           <svg
@@ -104,7 +102,6 @@ const Previews = ({ onFilesChange, limit = 20 }) => {
           </svg>
         </div>
       </div>
-
       {files.length > 0 && (
         <aside className="my-5 flex flex-wrap gap-4">{thumbs}</aside>
       )}
