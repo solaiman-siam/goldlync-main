@@ -7,7 +7,7 @@ const SectionTitle = forwardRef(
 
     return (
       <Comp
-        className={`mx-auto my-2 lg:my-3 w-full max-w-[600px] text-center font-manrope text-2xl md:text-3xl lg:text-4xl font-bold leading-[120%] ${className}`}
+        className={`mx-auto mb-2 lg:mb-3 w-full max-w-[600px] text-center font-manrope text-2xl md:text-3xl lg:text-4xl font-bold leading-[120%] ${className}`}
         ref={ref}
         {...props}
       >
