@@ -3,6 +3,7 @@ import SectionTitle from "@/components/SectionTitle";
 import { Link } from "react-router";
 import { Skeleton } from "@/components/shadcn/ui/skeleton";
 import { useGetSubCategoryServices } from "@/hooks/api-hooks/service.hook";
+import Container from "../Container";
 
 function Categories({ slug }) {
   // console.log("slug", slug);
@@ -28,33 +29,36 @@ function Categories({ slug }) {
             </SectionText>
           </div>
         </figure>
-        {isLoading ? (
-          <div className="container my-8 grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4">
-            <PrimaryServiceSkeletons />
-          </div>
-        ) : isError ? (
-          <div className="my-8 text-center text-destructive">
-            Something went wrong!
-          </div>
-        ) : data?.sub_categories?.length === 0 ? (
-          <div className="my-8 text-center">No Data Found!</div>
-        ) : (
-          <>
-            <div className="container my-12 grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-x-8 gap-y-10">
-              {data?.sub_categories?.map((service, idx) => (
-                <PrimaryServiceItem
-                  key={`primary-service-${idx}`}
-                  path={`/service/${service.slug}`}
-                  title={service?.title}
-                  details={service?.description}
-                  img1={`https://goldlync.softvencefsd.xyz/${service?.photo_1}`}
-                  img2={`https://goldlync.softvencefsd.xyz/${service?.photo_2}`}
-                  slug={service.slug}
-                />
-              ))}
+
+        <Container>
+          {isLoading ? (
+            <div className="my-12 grid grid-cols-4 gap-4">
+              <PrimaryServiceSkeletons />
             </div>
-          </>
-        )}
+          ) : isError ? (
+            <div className="my-12 text-center text-destructive">
+              Something went wrong!
+            </div>
+          ) : data?.sub_categories?.length === 0 ? (
+            <div className="my-12 text-center">No Data Found!</div>
+          ) : (
+            <>
+              <div className="my-12 grid grid-cols-1 sm:grid-cols-2 lg:md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 xl:gap-8">
+                {data?.sub_categories?.map((service, idx) => (
+                  <PrimaryServiceItem
+                    key={`primary-service-${idx}`}
+                    path={`/service/${service.slug}`}
+                    title={service?.title}
+                    details={service?.description}
+                    img1={`https://goldlync.softvencefsd.xyz/${service?.photo_1}`}
+                    img2={`https://goldlync.softvencefsd.xyz/${service?.photo_2}`}
+                    slug={service.slug}
+                  />
+                ))}
+              </div>
+            </>
+          )}
+        </Container>
       </section>
     </div>
   );
