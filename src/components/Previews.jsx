@@ -60,15 +60,14 @@ const Previews = ({ onFilesChange, limit = 20 }) => {
   }, [files]);
 
   return (
-    <section className="container">
+    <section className="">
       <div {...getRootProps({ className: "dropzone" })}>
         <input {...getInputProps()} />
         <div className="flex h-[64px] items-center justify-between rounded border border-input px-4">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 md:gap-4">
           <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="33"
-              height="26"
+              className="h-5 md:h-6"
               viewBox="0 0 33 26"
               fill="none"
             >
@@ -80,7 +79,7 @@ const Previews = ({ onFilesChange, limit = 20 }) => {
                 strokeLinejoin="round"
               />
             </svg>
-            <p className="text-[#8D8D8D]">
+            <p className="text-[#8D8D8D text-sm">
               Drag & Drop image here or <span className="text-primary">browse</span>
             </p>
           </div>
