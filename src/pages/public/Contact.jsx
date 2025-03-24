@@ -18,7 +18,7 @@ const Contact = () => {
 
   return (
     <Container>
-      <section className="md:pt-5 lg:pt-10 mb-12 md:mb-16 lg:mb-20">
+      <section className="pt-3 md:pt-5 lg:pt-10 mb-12 md:mb-16 lg:mb-20">
         <SectionTitle tagName={"h3"}>Contact Us</SectionTitle>
         <SectionText>
           Any question or remarks? Just write us a message!

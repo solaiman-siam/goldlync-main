@@ -109,7 +109,7 @@ function Questionnaries({ slug }) {
     })) || [];
 
   return (
-    <Container className="md:pt-5 lg:pt-10">
+    <Container className="pt-3 md:pt-5 lg:pt-10">
       <SectionTitle tagName="h3" className="max-w-full md:text-left">
         {data?.title} questionnaire
       </SectionTitle>
@@ -126,33 +126,29 @@ function Questionnaries({ slug }) {
                 return (
                   <>
                     {select.type == "dropdown" ? (
-                      <>
-                        {idx % 2 == 0 ? (
-                          <CommonSelect
-                            key={idx}
-                            options={select?.options}
-                            label={select?.label}
-                            id={select.id}
-                            labelNum={idx + 1}
-                            value={answers[select.id]?.[0] || ""}
-                            onChange={(value) =>
-                              handleSingleSelectAnswer(select.id, value)
-                            }
-                          />
-                        ) : (
-                          <CommonMultiSelect
-                            key={idx}
-                            options={select?.options}
-                            label={select?.label}
-                            id={select.id}
-                            labelNum={idx + 1}
-                            value={answers[select.id] || []} // Initialize as empty array
-                            onChange={(value) =>
-                              handleSelectAnswer(select.id, value)
-                            }
-                          />
-                        )}
-                      </>
+                      <CommonSelect
+                        key={idx}
+                        options={select?.options}
+                        label={select?.label}
+                        id={select.id}
+                        labelNum={idx + 1}
+                        value={answers[select.id]?.[0] || ""}
+                        onChange={(value) =>
+                          handleSingleSelectAnswer(select.id, value)
+                        }
+                      />
+                    ) : select.type == "dropdown_multiple" ? (
+                      <CommonMultiSelect
+                        key={idx}
+                        options={select?.options}
+                        label={select?.label}
+                        id={select.id}
+                        labelNum={idx + 1}
+                        value={answers[select.id] || []} // Initialize as empty array
+                        onChange={(value) =>
+                          handleSelectAnswer(select.id, value)
+                        }
+                      />
                     ) : (
                       <CommonInput
                         key={idx}
@@ -179,7 +175,7 @@ function Questionnaries({ slug }) {
                 {selectData?.length + 1}. Budget
               </label>
               <Select onValueChange={setBudget} value={budget}>
-                <SelectTrigger className="w-full px-4 h-[52px] md:h-[64px]  text-left">
+                <SelectTrigger className="h-[52px] w-full px-4 text-left md:h-[64px]">
                   <SelectValue placeholder={"Select Budget"} />
                 </SelectTrigger>
                 <SelectContent>
@@ -191,7 +187,7 @@ function Questionnaries({ slug }) {
                 </SelectContent>
               </Select>
             </div>
-            <div className="flex flex-col gap-2 md:gap-3 lg:gap-4 w-full">
+            <div className="flex w-full flex-col gap-2 md:gap-3 lg:gap-4">
               <label className="text-lg font-semibold md:text-xl" htmlFor="">
                 {" "}
                 {selectData?.length + 2}. Upload Image
@@ -219,7 +215,7 @@ function Questionnaries({ slug }) {
               {selectData?.length + 3}. Detail job description
             </label>
             <textarea
-              className="h-[150px] md:h-[200px] lg:h-[250px] w-full rounded border border-gray-400 px-4 py-4 focus:outline-primary text-sm md:text-base"
+              className="h-[150px] w-full rounded border border-gray-400 px-4 py-4 text-sm focus:outline-primary md:h-[200px] md:text-base lg:h-[250px]"
               name="details"
               id="details"
               placeholder="Provide detail job description"
@@ -311,24 +307,24 @@ function Questionnaries({ slug }) {
             <DialogTrigger type="submit" asChild>
               <Button className="w-60 max-w-[50%] lg:w-80">Submit</Button>
             </DialogTrigger>
-            <DialogContent>
+            <DialogContent className="max-w-[680px] p-8 md:p-10 lg:p-14 xl:p-20">
               <DialogHeader>
                 <DialogDescription>
-                  <div className="flex flex-col p-20">
-                    <h2 className="mb-12 text-center text-4xl font-bold leading-[120%]">
-                      Top-Rated Pros at Your <br /> Service
+                  <div className="flex flex-col">
+                    <h2 className="mb-6 xl:mb-12 text-center text-2xl  lg:text-4xl font-bold leading-[120%]">
+                      Top-Rated Pros at Your Service
                     </h2>
                     <Link
                       to="/pros"
                       type="button"
-                      className="mx-auto mb-6 w-[80%] rounded-full border border-primary bg-primary py-3 text-center text-lg font-semibold text-white"
+                      className="mx-auto mb-3 xl:mb-6 w-full xl:w-[80%] rounded-full border border-primary bg-primary py-3 text-center lg:text-lg font-semibold text-white"
                     >
                       Choose Your Pro
                     </Link>
                     <Link
                       to="/safety-guideline"
                       type="button"
-                      className="mx-auto w-[80%] rounded-full border border-primary py-3 text-center text-lg font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-white"
+                      className="mx-auto w-full xl:w-[80%] rounded-full border border-primary py-3 text-center lg:text-lg font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-white"
                     >
                       Submit to random pro
                     </Link>

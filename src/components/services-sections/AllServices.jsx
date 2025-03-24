@@ -21,7 +21,7 @@ function AllServices({ cardLimit, lineClamp = "line-clamp-3" }) {
   const selecteData = cardLimit ? data?.slice(0, cardLimit) : data;
 
   return (
-    <Container className="md:pt-5 lg:pt-10">
+    <Container className="pt-3 md:pt-5 lg:pt-10">
       <SectionTitle tagName="h3">Services Tailored to Your Needs.</SectionTitle>
       <SectionText>
         Connect with trusted professionals, set your budget, and bring your

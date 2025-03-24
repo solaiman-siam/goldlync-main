@@ -1,5 +1,4 @@
 import { Link } from "react-router";
-import profile from "@/assets/images/constructor.png";
 import RatingStar from "@/components/shared/RatingStar";
 import { Button } from "@/components/shadcn/ui/button";
 import { useState } from "react";
@@ -11,22 +10,69 @@ const Pros = () => {
   const constructors = [
     {
       id: 1,
-      name: "Fedarel Paintoren",
-      profession: "House Cleaner",
-      trust_badge: "Highly Trusted by Customers",
+      name: "Dust Begone",
+      logo: "https://i.ibb.co.com/YFBKSwN3/e1d1df-352a1ec7b68040c4a96be96c4a12c6af-mv2-d-3333-3333-s-4-2.jpg",
+      profession: "Air Duct Cleaning",
+      trust_badge: "Reliable and Trustworthy",
       rating: {
-        score: 4.9,
-        reviews: 120,
+        score: 4.7,
+        reviews: 140,
       },
-      services: [
-        "Available for Residential & Commercial Services",
-        "Fast and reliable communication!",
-      ],
+      services: ["Residential & Commercial Cleaning", "Flexible Scheduling"],
     },
     {
       id: 2,
-      name: "John Doe",
-      profession: "Electrician",
+      name: "Green Glow Cleaners",
+      logo: "https://i.ibb.co.com/GQD0LvJH/images.jpg",
+      profession: "Eco-Friendly Cleaning",
+      trust_badge: "Eco-Friendly",
+      rating: {
+        score: 4.7,
+        reviews: 85,
+      },
+      services: ["Organic Gardening Services", "Landscape Design"],
+    },
+    {
+      id: 3,
+      name: "Bubbles Cleaning",
+      logo: "https://i.ibb.co.com/DD5L6gw7/Clean-Bubbles-logo-1-q61clus6x66kf9vyupdhbt8jwsg9vmc8ro6q8u7qr0.png",
+      profession: "Janitorial Services",
+      trust_badge: "Highly Recommended",
+      rating: {
+        score: 4.7,
+        reviews: 150,
+      },
+      services: ["Expert Plumbing Services", "Quick and Efficient Repairs"],
+    },
+    {
+      id: 4,
+      name: "Dust & Shine Crew",
+      logo: "https://i.ibb.co.com/wZvC2Z2B/5531-FA70-35-FF-4840-871-B-4-F6-F057-AF202.jpg",
+      profession: "Commercial Cleaning",
+      trust_badge: "Top Rated",
+      rating: {
+        score: 4.9,
+        reviews: 200,
+      },
+      services: ["Custom Carpentry Services", "High-Quality Craftsmanship"],
+    },
+    {
+      id: 5,
+      name: "Gleaming Spaces",
+      logo: "https://i.ibb.co.com/WNmHXKZq/images.png",
+      profession: "Official services",
+      trust_badge: "Customer Favorite",
+      rating: {
+        score: 4.8,
+        reviews: 110,
+      },
+      services: ["Interior & Exterior Painting", "Affordable Rates"],
+    },
+    {
+      id: 6,
+      name: "Fresh Start LLC",
+      logo: "https://i.ibb.co.com/SDmzH6BP/348s.jpg",
+      profession: "Consulting",
       trust_badge: "Certified Professional",
       rating: {
         score: 4.8,
@@ -38,52 +84,9 @@ const Pros = () => {
       ],
     },
     {
-      id: 3,
-      name: "Jane Smith",
-      profession: "Plumber",
-      trust_badge: "Highly Recommended",
-      rating: {
-        score: 4.7,
-        reviews: 150,
-      },
-      services: ["Expert Plumbing Services", "Quick and Efficient Repairs"],
-    },
-    {
-      id: 4,
-      name: "Michael Johnson",
-      profession: "Carpenter",
-      trust_badge: "Top Rated",
-      rating: {
-        score: 4.9,
-        reviews: 200,
-      },
-      services: ["Custom Carpentry Services", "High-Quality Craftsmanship"],
-    },
-    {
-      id: 5,
-      name: "Emily Davis",
-      profession: "Painter",
-      trust_badge: "Customer Favorite",
-      rating: {
-        score: 4.8,
-        reviews: 110,
-      },
-      services: ["Interior & Exterior Painting", "Affordable Rates"],
-    },
-    {
-      id: 6,
-      name: "David Wilson",
-      profession: "Gardener",
-      trust_badge: "Eco-Friendly",
-      rating: {
-        score: 4.7,
-        reviews: 85,
-      },
-      services: ["Organic Gardening Services", "Landscape Design"],
-    },
-    {
       id: 7,
-      name: "Sarah Brown",
+      name: "Neat & Tidy",
+      logo: "https://i.ibb.co.com/20dgQRxv/images.jpg",
       profession: "Roofer",
       trust_badge: "Highly Skilled",
       rating: {
@@ -94,8 +97,9 @@ const Pros = () => {
     },
     {
       id: 8,
-      name: "Chris Lee",
-      profession: "HVAC Technician",
+      name: "Superb Sparkle",
+      logo: "https://i.ibb.co.com/PGZtnRf5/download.png",
+      profession: "Commercial Janitorial",
       trust_badge: "Licensed and Insured",
       rating: {
         score: 4.8,
@@ -105,14 +109,18 @@ const Pros = () => {
     },
     {
       id: 9,
-      name: "Jessica Martinez",
-      profession: "Cleaner",
-      trust_badge: "Reliable and Trustworthy",
+      name: "Sparkle Clean",
+      profession: "Cleaning Service",
+      logo: "https://i.ibb.co.com/VWs3hhVk/images.png",
+      trust_badge: "Highly Trusted by Customers",
       rating: {
-        score: 4.7,
-        reviews: 140,
+        score: 4.9,
+        reviews: 120,
       },
-      services: ["Residential & Commercial Cleaning", "Flexible Scheduling"],
+      services: [
+        "Available for Residential & Commercial Services",
+        "Fast and reliable communication!",
+      ],
     },
   ];
 
@@ -146,10 +154,10 @@ const Pros = () => {
   return (
     <>
       <Container>
-        <div className="container my-8 md:my-14">
+        <div className="my-8 md:my-14">
           <div className="mx-auto mb-8 text-center lg:mb-16 lg:w-[60%]">
-            <h1 className="mb-4 text-[24px] font-bold leading-[120%] md:text-3xl lg:text-5xl">
-              Your Trusted Painting Experts – Fast, Reliable, and Affordable!
+            <h1 className="mb-4 text-[24px] font-bold md:text-3xl lg:text-5xl">
+              Your Trusted Service Experts - Fast, Reliable, and Affordable!
             </h1>
             <p className="text-base lg:text-lg">
               Connect with trusted professionals, set your budget, and bring
@@ -160,7 +168,7 @@ const Pros = () => {
           <div className="">
             {selectedConstructors.length != 0 && (
               <div>
-                <p className="mb-6 text-4xl font-bold">
+                <p className="mb-6 text-center text-2xl font-bold md:text-left lg:text-3xl xl:text-4xl">
                   Your Selected Pro&apos;s
                 </p>
                 <div className="mb-6 grid grid-cols-1 gap-x-5 gap-y-6 md:grid-cols-2 xl:grid-cols-3">
@@ -177,10 +185,14 @@ const Pros = () => {
                       />
                     ))}
                 </div>
-                <Button className="mb-10">
-                  <Link to="/safety-guideline">Continue</Link>
-                </Button>
-                <p className="mb-6 text-4xl font-bold">Other Profile</p>
+                <div className="flex justify-center md:justify-start">
+                  <Button className="mb-10">
+                    <Link to="/safety-guideline">Continue</Link>
+                  </Button>
+                </div>
+                <p className="mb-6 text-center text-2xl font-bold md:text-left lg:text-3xl xl:text-4xl">
+                  Other Profile
+                </p>
               </div>
             )}
           </div>
@@ -194,42 +206,42 @@ const Pros = () => {
                 <div className="mb-6 flex items-center gap-2.5 rounded bg-[#FFF2EB] px-4 py-2.5 text-left">
                   <figure className="size-14 overflow-hidden rounded-full">
                     <img
-                      src={profile}
+                      src={constructor?.logo}
                       alt=""
                       className="h-full w-full object-cover object-center"
                     />
                   </figure>
                   <div className="">
-                    <p className="text-xl text-primary">{constructor.name}</p>
+                    <p className="text-xl text-primary">{constructor?.name}</p>
                     <p className="text-sm text-[#637381]">
-                      {constructor.profession}
+                      {constructor?.profession}
                     </p>
                   </div>
                 </div>
                 <div className="space-y-5">
                   <div className="flex items-center gap-2">
                     <TrustBadge />
-                    <p>{constructor.trust_badge}</p>
+                    <p>{constructor?.trust_badge}</p>
                   </div>
                   <div className="mb-7 flex gap-2.5 text-lg font-medium">
-                    <p>Excellent {constructor.rating.score}</p>
+                    <p>Excellent {constructor?.rating?.score}</p>
                     <div className="flex items-center gap-3">
                       <RatingStar
                         className="size-6"
-                        rate={constructor.rating.score}
+                        rate={constructor?.rating?.score}
                       />
                       <p className="-ml-2 self-end text-base text-primary">
-                        ({constructor.rating.reviews})
+                        ({constructor?.rating?.reviews})
                       </p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
                     <Service1 />
-                    <p>{constructor.services[0]}</p>
+                    <p>{constructor?.services[0]}</p>
                   </div>
                   <div className="flex items-center gap-4">
                     <Service2 />
-                    <p>{constructor.services[1]}</p>
+                    <p>{constructor?.services[1]}</p>
                   </div>
                   <div className="flex flex-col items-center gap-2 lg:flex-row lg:gap-8">
                     <Link
@@ -269,7 +281,7 @@ const SelectedConstructor = ({ constructor, idx, handleRemove }) => (
     <div className="mb-6 flex items-center gap-2.5 rounded bg-[#FFF2EB] px-4 py-2.5 text-left">
       <figure className="size-14 overflow-hidden rounded-full">
         <img
-          src={profile}
+          src={constructor?.logo}
           alt=""
           className="h-full w-full object-cover object-center"
         />
