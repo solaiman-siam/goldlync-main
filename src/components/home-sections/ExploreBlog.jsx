@@ -25,7 +25,7 @@ function ExploreBlog() {
             initial="hidden"
             animate="visible"
             variants={gridVariants}
-            className="grid gap-8 pt-4 md:grid-cols-2 lg:grid-cols-3 lg:pt-10"
+            className="grid gap-4 xl:gap-8 md:grid-cols-2 lg:grid-cols-3 pt-6 md:pt-8 lg:pt-10"
           >
             {Array(6)
               .fill(null)
@@ -35,24 +35,24 @@ function ExploreBlog() {
                   className="card rounded-lg border bg-white p-3"
                   key={idx}
                 >
-                  <figure className="h-[220px] w-full overflow-hidden rounded-lg">
+                  <figure className="h-[180px] xl:h-[220px] w-full overflow-hidden rounded-lg">
                     <img
                       src="https://i.ibb.co.com/J83jd1f/image-8.png"
                       alt=""
                       className="h-full w-full object-cover object-center"
                     />
                   </figure>
-                  <div className="flex items-center gap-3 py-4">
-                    <div className="h-5 w-5 rounded-full bg-primary"></div>
+                  <div className="flex items-center gap-1.5 xl:gap-3 py-2 xl:py-4">
+                    <div className="size-3 xl:size-5 rounded-full bg-primary"></div>
                     <h4 className="text-base text-primary lg:text-lg">
                       Artificial Intelligence
                     </h4>
                   </div>
-                  <p className="mb-3 text-lg font-medium text-[#1B1B1F] lg:text-xl">
+                  <p className="mb-2 md:mb-3 font-medium text-[#1B1B1F] xl:text-xl">
                     How to Write Articles with AI? Include Your Unique
                     Perspective
                   </p>
-                  <div className="flex items-center gap-2 text-[#1B1B1F]">
+                  <div className="flex items-center gap-2 text-[#1B1B1F] text-sm md:text-base">
                     <p>Oct 19</p>
                     <div className="size-2 rounded-full bg-black"></div>
                     <p>10 min read</p>
@@ -61,7 +61,7 @@ function ExploreBlog() {
               ))}
           </motion.div>
 
-          <div className="flex items-center justify-center pt-16">
+          <div className="flex items-center justify-center pt-6 md:pt-10 xl:pt-14">
             <Link
               to="/blogs"
               className="rounded-full bg-primary px-14 py-2 text-lg font-medium text-white md:py-4"

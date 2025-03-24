@@ -8,12 +8,12 @@ import {
 
 function CommonSelect({ id, label, options, value, onChange, labelNum }) {
   return (
-    <div className="flex flex-col gap-4">
-      <label className="text-xl font-semibold">
+    <div className="flex flex-col gap-2 md:gap-3 lg:gap-4">
+      <label className="text-lg md:text-xl font-semibold">
         {labelNum}. {label}
       </label>
       <Select value={value} onValueChange={onChange}>
-        <SelectTrigger className="w-full px-4 py-8">
+        <SelectTrigger className="w-full px-4 h-[52px] md:h-[64px] text-left">
           <SelectValue placeholder={label} />
         </SelectTrigger>
         <SelectContent>
