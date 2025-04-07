@@ -11,19 +11,24 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/shadcn/ui/form";
+import { AuthContext } from "@/context/AuthContext";
 import { loginSchema } from "@/lib/schemas/authSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const { setChooseRole, setAccessToken, setUserData } =
+    useContext(AuthContext);
   const navigate = useNavigate();
+
+  const location = useLocation();
 
   const form = useForm({
     resolver: zodResolver(loginSchema),
@@ -52,16 +57,18 @@ const LoginForm = () => {
         }
       );
 
-      const token = response?.data?.access_token;
+      console.log("Login response:", response.data);
+      const token = response?.data?.token;
+      localStorage.setItem("auth_token", token);
 
-      console.log("Registration response:", response.data);
+      setAccessToken(token);
+      setUserData(response.data.user);
+      setChooseRole(response.data.user.role);
 
-      if (token) {
-        localStorage.setItem("auth_token", token);
-      }
-
-      if (response.data.user.role === "pro") navigate("/constructor-profile");
+      if(location?.state) navigate(location.state);
+      else if (response.data.user.role === "pro") navigate("/constructor-profile");
       else navigate("/profile");
+
       toast.success("Login successful!");
     } catch (error) {
       console.error("Login error:", error.response?.data?.message);

@@ -51,6 +51,7 @@ import AddProjects from "@/pages/AddProjects";
 import VerifyCode from "@/pages/auth/VerifyCode";
 import ResetPassword from "@/pages/auth/ResetPassword";
 import UserJobDetails from "@/pages/private/ConstructorProfile/UserJobDetails";
+import PrivateRoute from "@/components/shared/PrivateRoute";
 
 export const route = createBrowserRouter([
   {
@@ -117,9 +118,11 @@ export const route = createBrowserRouter([
       {
         path: "/safety-guideline",
         element: (
-          <PageTitle title="Pros">
-            <SafetyGuideline />
-          </PageTitle>
+          <PrivateRoute role={"user"}>
+            <PageTitle title="Safety Guideline">
+              <SafetyGuideline />
+            </PageTitle>
+          </PrivateRoute>
         ),
       },
       {
@@ -310,7 +313,7 @@ export const route = createBrowserRouter([
             path: "add-project",
             element: (
               <PageTitle title="Add Projects">
-                <AddProjects/>
+                <AddProjects />
               </PageTitle>
             ),
           },
@@ -318,7 +321,7 @@ export const route = createBrowserRouter([
             path: "working-area",
             element: (
               <PageTitle title="Working Area">
-                <WorkArea/>
+                <WorkArea />
               </PageTitle>
             ),
           },

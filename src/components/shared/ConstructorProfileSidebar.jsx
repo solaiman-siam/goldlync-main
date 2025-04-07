@@ -1,23 +1,35 @@
-import { Navigate, NavLink, useLocation, useNavigate } from "react-router";
+import { NavLink, useLocation, useNavigate } from "react-router";
 import { Avatar, AvatarFallback, AvatarImage } from "../shadcn/ui/avatar";
 import userImage from "@/assets/images/user-1.png";
 import { cn } from "@/lib/shadcn/utils";
+import { LogoutIcon1 } from "@/assets/icons";
 import {
-  LogoutIcon1,
-} from "@/assets/icons";
-import { Constructor1, Constructor10, Constructor11, Constructor12, Constructor2, Constructor3, Constructor5, Constructor7, Constructor8 } from "@/assets/icons/ProfileSidebarIcon";
+  Constructor1,
+  Constructor10,
+  Constructor11,
+  Constructor12,
+  Constructor2,
+  Constructor3,
+  Constructor5,
+  Constructor7,
+  Constructor8,
+} from "@/assets/icons/ProfileSidebarIcon";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useState } from "react";
+import { Loader2 } from "lucide-react";
 
 const ConstructorProfileSidebar = () => {
-
   const token = localStorage.getItem("auth_token");
   const navigate = useNavigate();
+  const [loader, setLoader] = useState(false);
 
-  const handleLogOut = async() => {
+  const handleLogOut = async () => {
+    setLoader(true);
     try {
       const response = await axios.post(
         "https://goldlync.softvencefsd.xyz/api/logout",
+        {}, // Empty body
         {
           headers: {
             "Content-Type": "application/json",
@@ -27,7 +39,10 @@ const ConstructorProfileSidebar = () => {
       );
 
       toast.success(response?.data?.message);
-      Navigate("/");
+      navigate("/");
+      localStorage.removeItem("auth_token");
+      localStorage.removeItem("user-data");
+      localStorage.removeItem("role");
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error("Axios Error:", {
@@ -39,22 +54,22 @@ const ConstructorProfileSidebar = () => {
       } else {
         console.error("Unexpected Error:", error);
       }
+    } finally {
+      setLoader(false);
     }
-    finally {
-      localStorage.removeItem("auth_token");
-      navigate("/");
-    }
-  }
+  };
 
   return (
     <aside className="flex w-[420px] flex-shrink-0 flex-col items-start gap-8">
-      <div className="flex gap-3 items-center">
+      <div className="flex items-center gap-3">
         <Avatar className="size-[70px]">
           <AvatarImage src={userImage} alt="user image" />
           <AvatarFallback />
         </Avatar>
         <div className="">
-          <div className="font-manrope text-xl font-bold mb-1">YES Innovation</div>
+          <div className="mb-1 font-manrope text-xl font-bold">
+            YES Innovation
+          </div>
         </div>
       </div>
       <div className="flex w-full flex-grow flex-col gap-1.5">
@@ -73,7 +88,7 @@ const ConstructorProfileSidebar = () => {
             <span>Portfolio</span>
           </SidebarLink>
           <SidebarLink path="/constructor-profile/manage-account">
-          <Constructor5 />
+            <Constructor5 />
             <span>Manage Account</span>
           </SidebarLink>
         </ul>
@@ -82,19 +97,19 @@ const ConstructorProfileSidebar = () => {
         <div className="font-manrope text-xl font-bold">Settings for jobs</div>
         <ul className="flex w-full flex-col gap-1.5">
           <SidebarLink path="/constructor-profile/jobs">
-          <Constructor7 />
+            <Constructor7 />
             <span>Jobs</span>
           </SidebarLink>
           <SidebarLink path="/constructor-profile/working-area">
-          <Constructor7 />
+            <Constructor7 />
             <span>Working area</span>
           </SidebarLink>
           <SidebarLink path="/constructor-profile/add-services">
-          <Constructor8 />
+            <Constructor8 />
             <span>Add Services</span>
           </SidebarLink>
           <SidebarLink path="/constructor-profile/notification-settings">
-          <Constructor10 />
+            <Constructor10 />
             <span>Notifications</span>
           </SidebarLink>
         </ul>
@@ -103,7 +118,7 @@ const ConstructorProfileSidebar = () => {
         <div className="font-manrope text-xl font-bold">Payments</div>
         <ul className="flex w-full flex-col gap-1.5">
           <SidebarLink path="/constructor-profile/balance">
-          <Constructor11 />
+            <Constructor11 />
             <span>Balance</span>
           </SidebarLink>
         </ul>
@@ -112,7 +127,7 @@ const ConstructorProfileSidebar = () => {
         <div className="font-manrope text-xl font-bold">Support</div>
         <ul className="flex w-full flex-col gap-1.5">
           <SidebarLink path="/online-help-desk">
-          <Constructor12 />
+            <Constructor12 />
             <span>Online Help Desk</span>
           </SidebarLink>
         </ul>
@@ -122,7 +137,11 @@ const ConstructorProfileSidebar = () => {
         type="button"
         onClick={handleLogOut}
       >
-        <LogoutIcon1 className="text-destructive" />
+        {loader ? (
+          <Loader2 className="size-[33px] animate-spin" />
+        ) : (
+          <LogoutIcon1 className="text-destructive" />
+        )}
         <span>Log out</span>
       </button>
     </aside>

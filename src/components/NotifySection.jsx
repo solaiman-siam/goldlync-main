@@ -9,10 +9,13 @@ import {
 import Notification from "./shared/Notification";
 import { MessageIcon, NotificationIcon } from "@/assets/icons";
 import { Link } from "react-router";
+import { useContext } from "react";
+import { AuthContext } from "@/context/AuthContext";
 
 const NotifySection = () => {
+  const { chooseRole } = useContext(AuthContext);
   return (
-    <div className="flex w-fit gap-2.5 h-[56px]">
+    <div className="flex h-[56px] w-fit gap-2.5">
       <DropdownMenu>
         <DropdownMenuTrigger className="outline-none">
           <span className="block rounded-full border border-primary p-2.5">
@@ -30,10 +33,14 @@ const NotifySection = () => {
         <MessageIcon />
       </Link>
       <Link
-        to="/constructor-profile"
-        className="h-full aspect-square rounded-full overflow-hidden"
+        to={chooseRole==="pro" ? "/constructor-profile" : "/profile"}
+        className="aspect-square h-full overflow-hidden rounded-full"
       >
-        <img src="https://i.ibb.co.com/V7XRPhM/image-6-1.png" alt="" className="size-full object-cover object-center" />
+        <img
+          src="https://i.ibb.co.com/V7XRPhM/image-6-1.png"
+          alt=""
+          className="size-full object-cover object-center"
+        />
       </Link>
     </div>
   );

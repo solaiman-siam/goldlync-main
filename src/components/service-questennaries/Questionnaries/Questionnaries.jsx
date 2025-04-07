@@ -1,6 +1,6 @@
 import CommonSelect from "./CommonSelect";
 import { Link, useNavigate, useParams } from "react-router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Previews from "@/components/Previews";
 import {
   Select,
@@ -24,6 +24,8 @@ import CommonMultiSelect from "./CommonMultiSelect";
 import Container from "@/components/Container";
 import { Button } from "@/components/shadcn/ui/button";
 import SectionTitle from "@/components/SectionTitle";
+import { StateContext } from "@/context/StateContext";
+import axios from "axios";
 
 function Questionnaries({ slug }) {
   const { data, isLoading, isError } = useGetQuestions(`/question/${slug}`);
@@ -40,6 +42,10 @@ function Questionnaries({ slug }) {
     phone_no_2: "",
   });
   const [photo, setPhoto] = useState([]);
+
+  const { questionnariesData, setQuestionnariesData } =
+    useContext(StateContext);
+  console.log("Questionnaries Data:", questionnariesData);
 
   const budgets = {
     options: [
@@ -85,15 +91,27 @@ function Questionnaries({ slug }) {
       budget,
       typeofjob,
       details,
-      userDetails,
+      ...userDetails,
       photo,
     };
 
-    console.log("Form Data:", formData);
+    // try {
+    //   const response = axios.post(
+    //     `https://goldlync.softvencefsd.xyz/api/service/question/answer`,
+    //     formData,
+    //     {
+    //       headers: {
+    //         "Content-Type": "multipart/form-data",
+    //         Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
+    //       },
+    //     }
+    //   );
+    //   console.log("Form submitted successfully:", response.data);
+    // } catch (error) {
+    //   console.error("Error submitting form:", error);
+    // }
 
-    // navigate("/user-job-details", { state: formData });
-
-    // console.log("Form Data:", formData);
+    setQuestionnariesData(formData);
   };
 
   if (isLoading) return <div className="my-40 text-center">Loading...</div>;
@@ -110,7 +128,10 @@ function Questionnaries({ slug }) {
 
   return (
     <Container className="pt-3 md:pt-5 lg:pt-10">
-      <SectionTitle tagName="h3" className="max-w-full md:text-left">
+      <SectionTitle
+        tagName="h3"
+        className="max-w-full text-primary md:text-left"
+      >
         {data?.title} questionnaire
       </SectionTitle>
       <div className="mt-6 font-manrope md:mt-8">
@@ -311,20 +332,20 @@ function Questionnaries({ slug }) {
               <DialogHeader>
                 <DialogDescription>
                   <div className="flex flex-col">
-                    <h2 className="mb-6 xl:mb-12 text-center text-2xl  lg:text-4xl font-bold leading-[120%]">
+                    <h2 className="mb-6 text-center text-2xl font-bold leading-[120%] lg:text-4xl xl:mb-12">
                       Top-Rated Pros at Your Service
                     </h2>
                     <Link
                       to="/pros"
                       type="button"
-                      className="mx-auto mb-3 xl:mb-6 w-full xl:w-[80%] rounded-full border border-primary bg-primary py-3 text-center lg:text-lg font-semibold text-white"
+                      className="mx-auto mb-3 w-full rounded-full border border-primary bg-primary py-3 text-center font-semibold text-white lg:text-lg xl:mb-6 xl:w-[80%]"
                     >
                       Choose Your Pro
                     </Link>
                     <Link
                       to="/safety-guideline"
                       type="button"
-                      className="mx-auto w-full xl:w-[80%] rounded-full border border-primary py-3 text-center lg:text-lg font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-white"
+                      className="mx-auto w-full rounded-full border border-primary py-3 text-center font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-white lg:text-lg xl:w-[80%]"
                     >
                       Submit to random pro
                     </Link>
