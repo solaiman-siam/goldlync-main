@@ -86,31 +86,19 @@ function Questionnaries({ slug }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const transformedAnswers = Object.entries(answers).map(([key, value]) => ({
+      question_id: parseInt(key),
+      answer: value
+    }));
+    console.log("Transformed Answers:", transformedAnswers);
     const formData = {
-      answers,
+      answers: transformedAnswers,
       budget,
       typeofjob,
       details,
       ...userDetails,
       photo,
     };
-
-    // try {
-    //   const response = axios.post(
-    //     `https://goldlync.softvencefsd.xyz/api/service/question/answer`,
-    //     formData,
-    //     {
-    //       headers: {
-    //         "Content-Type": "multipart/form-data",
-    //         Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
-    //       },
-    //     }
-    //   );
-    //   console.log("Form submitted successfully:", response.data);
-    // } catch (error) {
-    //   console.error("Error submitting form:", error);
-    // }
-
     setQuestionnariesData(formData);
   };
 
