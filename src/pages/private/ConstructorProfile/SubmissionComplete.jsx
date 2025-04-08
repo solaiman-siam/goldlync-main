@@ -1,10 +1,39 @@
 import Container from "@/components/Container";
-import { Button } from "@/components/shadcn/ui/button";
+import { useContext, useEffect } from "react";
+import axios from "axios";
+import { StateContext } from "@/context/StateContext";
+import toast from "react-hot-toast";
 
 const SubmissionComplete = () => {
+  const { questionnariesData, setQuestionnariesData } =
+    useContext(StateContext);
+  useEffect(() => {
+    const submitForm = async () => {
+
+      try {
+        const response = await axios.post(
+          `https://goldlync.softvencefsd.xyz/api/service/question/answer`,
+          questionnariesData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
+            },
+          }
+        );
+        toast.success("Form submitted successfully");
+        setQuestionnariesData(null);
+      } catch (error) {
+        console.error("Error submitting form:", error);
+      }
+    };
+
+    submitForm();
+  }, []); // Empty dependency array ensures this runs only once when the component mounts.
+
   return (
     <Container>
-      <div className="flex flex-col items-center gap-8 md:gap-10 lg:gap-12 py-10 md:py-16 lg:py-20 text-center">
+      <div className="flex flex-col items-center gap-8 py-10 text-center md:gap-10 md:py-16 lg:gap-12 lg:py-20">
         <div className="relative w-fit">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +61,7 @@ const SubmissionComplete = () => {
             />
           </svg>
         </div>
-        <h4 className="text-3xl md:text-4xl xl:text-5xl font-bold leading-[120%]">
+        <h4 className="text-3xl font-bold leading-[120%] md:text-4xl xl:text-5xl">
           Thank you for your <br /> submission.
         </h4>
       </div>

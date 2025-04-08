@@ -1,9 +1,17 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 const StateContext = createContext(null);
 
 const StateContextProvider = ({ children }) => {
-  return <StateContext.Provider value={{}}>{children}</StateContext.Provider>;
+  const [questionnariesData, setQuestionnariesData] = useState();
+
+  return (
+    <StateContext.Provider
+      value={{ questionnariesData, setQuestionnariesData }}
+    >
+      {children}
+    </StateContext.Provider>
+  );
 };
 
 export { StateContextProvider, StateContext };

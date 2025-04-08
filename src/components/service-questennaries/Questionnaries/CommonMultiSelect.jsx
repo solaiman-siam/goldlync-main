@@ -19,7 +19,6 @@ import { cn } from "@/lib/shadcn/utils";
 import { useEffect, useRef, useState } from "react";
 
 function CommonMultiSelect({
-  id,
   label,
   options,
   value = [],
@@ -45,7 +44,6 @@ function CommonMultiSelect({
 
   const divRef = useRef(null);
   const [divWidth, setDivWidth] = useState("");
-  console.log(divWidth);
 
   // Update the width after the component has rendered
   useEffect(() => {
