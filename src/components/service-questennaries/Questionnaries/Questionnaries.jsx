@@ -25,7 +25,6 @@ import Container from "@/components/Container";
 import { Button } from "@/components/shadcn/ui/button";
 import SectionTitle from "@/components/SectionTitle";
 import { StateContext } from "@/context/StateContext";
-import axios from "axios";
 
 function Questionnaries({ slug }) {
   const { data, isLoading, isError } = useGetQuestions(`/question/${slug}`);
