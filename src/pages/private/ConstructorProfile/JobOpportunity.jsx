@@ -21,7 +21,7 @@ const JobOpportunity = () => {
   const [jobs, setJobs] = useState([]);
   const token = localStorage.getItem("auth_token");
   const { data, isError, isLoading } = useQuery({
-    queryKey: ["data", token], // Token in query key for uniqueness
+    queryKey: ["jobsData", token], // Token in query key for uniqueness
     queryFn: () => fetchData(token),
     enabled: !!token, // Only fetch if token exists
   });
@@ -138,7 +138,7 @@ const JobOpportunity = () => {
               {item?.answer2?.updated_at}
             </p>
           </div>
-          <Link to="/assignment-details" className="block">
+          <Link to={`/assignment-details/${item.id}`}  state={{ updatedAt: item?.answer2?.updated_at, answers: item?.answers }} className="block">
             <Button type="button" className="w-[230px] text-lg">
               View more
             </Button>

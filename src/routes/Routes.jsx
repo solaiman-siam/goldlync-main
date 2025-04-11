@@ -52,6 +52,7 @@ import VerifyCode from "@/pages/auth/VerifyCode";
 import ResetPassword from "@/pages/auth/ResetPassword";
 import UserJobDetails from "@/pages/private/ConstructorProfile/UserJobDetails";
 import PrivateRoute from "@/components/shared/PrivateRoute";
+import DemoAssignmentDetails from "@/pages/private/ConstructorProfile/DemoAssignmentDetails";
 
 export const route = createBrowserRouter([
   {
@@ -166,7 +167,15 @@ export const route = createBrowserRouter([
         ),
       },
       {
-        path: "/assignment-details",
+        path: `/assignment-details`,
+        element: (
+          <PageTitle title="Assignment Details">
+            <DemoAssignmentDetails />
+          </PageTitle>
+        ),
+      },
+      {
+        path: `/assignment-details/:id`,
         element: (
           <PageTitle title="Assignment Details">
             <AssignmentDetails />
