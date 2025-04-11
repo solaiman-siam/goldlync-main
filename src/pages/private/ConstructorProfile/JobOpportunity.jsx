@@ -1,6 +1,6 @@
 import { Button } from "@/components/shadcn/ui/button";
 import { useQuery } from "@tanstack/react-query";
-import { use, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router";
 
 // Fetch function with token
@@ -49,7 +49,7 @@ const JobOpportunity = () => {
                 />
               </figure>
               <p className="text-xl font-semibold">
-                {item?.service_category_name}
+                {item?.service_sub_category_name}
               </p>
             </div>
             <p className="text-2xl font-bold text-accent">
