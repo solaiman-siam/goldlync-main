@@ -9,7 +9,7 @@ import {
   Order4,
   Work1,
 } from "@/assets/icons";
-import { Link, useParams } from "react-router";
+import { Link } from "react-router";
 import "./constructor.css";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -22,42 +22,8 @@ import assignmentDetailsBanner from "@/assets/images/assignmentDetailsBanner.png
 import { Button } from "@/components/shadcn/ui/button";
 import { FreeMode } from "swiper/modules";
 import Container from "@/components/Container";
-import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { useLocation } from "react-router-dom";
 
-const fetchData = async (token, id) => {
-  const response = await fetch(
-    `https://goldlync.softvencefsd.xyz/api/service/job_details/${id}`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
-  if (!response.ok) throw new Error("Network response failed");
-  return response.json();
-};
-
-const AssignmentDetails = () => {
-  const location = useLocation();
-  const updatedAt = location.state?.updatedAt;
-  const answers = location.state?.answers;
-  console.log(answers);
-
-  const [job, setJob] = useState([]);
-  const token = localStorage.getItem("auth_token");
-  const id = useParams().id;
-  const { data, isError, isLoading } = useQuery({
-    queryKey: ["jobData", token],
-    queryFn: () => fetchData(token, id),
-    enabled: !!token,
-  });
-
-  const [bigImg, setBigImg] = useState(assignmentDetailsBanner);
-
-  console.log(data?.data?.["Order Details"]?.answer2?.zip_code);
-
+const DemoAssignmentDetails = () => {
   const questionsAns = [
     {
       ques: "What type of property needs gutter cleaning?",
@@ -81,9 +47,6 @@ const AssignmentDetails = () => {
     },
   ];
 
-  if (isLoading) return <div className="my-40 text-center">Loading...</div>;
-  if (isError) return <div>Error loading data</div>;
-
   return (
     <Container className="">
       <Link
@@ -95,10 +58,10 @@ const AssignmentDetails = () => {
       </Link>
 
       <h2 className="mt-7 text-3xl font-bold text-[#313133]">
-        {data?.data?.Sub_Cateogry}
+        Installing or replacing radiators: 4 radiators; New radiators...
       </h2>
       <h4 className="my-4 text-3xl font-bold text-primary">
-        Budjet Range: {data?.data?.Order_Details?.answer2?.budget}
+        Budjet Range: $100-$300
       </h4>
 
       <div className="flex gap-20">
@@ -106,27 +69,30 @@ const AssignmentDetails = () => {
           <div className="mb-12 space-y-3 font-medium">
             <div className="flex items-center gap-3">
               <Work1 />
-              <p className="text-[#2D2F34]/70">{data?.data?.Category}</p>
+              <p className="text-[#2D2F34]/70">Renovation work</p>
             </div>
             <div className="flex items-center gap-3">
               <Location3 />
-              <p className="text-[#2D2F34]/70">
-                {data?.data?.Order_Details?.answer2?.city} (20km)
-              </p>
+              <p className="text-[#2D2F34]/70">Nieuw-Vennep (28 km)</p>
             </div>
             <div className="flex items-center gap-3">
               <ClockIcon1 />
-              <p className="text-[#2D2F34]/70">{updatedAt}</p>
+              <p className="text-[#2D2F34]/70">30 min ago</p>
             </div>
           </div>
 
           <div className="mb-14">
             <h3 className="mb-6 text-3xl font-bold">Description</h3>
             <p className="mb-8 text-[#242424]">
-              {data?.data?.Order_Details?.answer2?.details}
+              I need assistance with installing a new kitchen tap and addressing
+              a leak at the connection between the hose and the water pipe. The
+              leak appears to be coming from the coupling, which may require
+              replacement. In addition to installing the new tap, I would like
+              the couplings and any necessary fittings to be replaced to ensure
+              a secure, leak-free connection.
             </p>
             <div className="space-y-3">
-              {/* <div className="flex">
+              <div className="flex">
                 <div className="w-[35px] flex-shrink-0">
                   <Note4 className="" />
                 </div>
@@ -137,7 +103,7 @@ const AssignmentDetails = () => {
                   I would like to install a new kitchen tap and there is a leak
                   at the coupling of the connection hose and water pipe.
                 </p>
-              </div> */}
+              </div>
               <div className="flex">
                 <div className="w-[35px] flex-shrink-0">
                   <Location4 className="" />
@@ -146,10 +112,10 @@ const AssignmentDetails = () => {
                   <span className="font-semibold text-[#637381]">
                     Location :
                   </span>{" "}
-                  {data?.data?.Order_Details?.answer2?.state}
+                  Kitchen.
                 </p>
               </div>
-              {/* <div className="flex">
+              <div className="flex">
                 <div className="w-[35px] flex-shrink-0">
                   <Cause4 className="" />
                 </div>
@@ -169,7 +135,7 @@ const AssignmentDetails = () => {
                   </span>{" "}
                   Within 2 weeks
                 </p>
-              </div> */}
+              </div>
               <div className="flex">
                 <div className="w-[35px] flex-shrink-0">
                   <Order4 />
@@ -178,7 +144,7 @@ const AssignmentDetails = () => {
                   <span className="font-semibold text-[#637381]">
                     Order number:
                   </span>{" "}
-                  {data?.data?.Order_Details?.order_id}
+                  6104280
                 </p>
               </div>
             </div>
@@ -197,19 +163,12 @@ const AssignmentDetails = () => {
         </h3>
 
         <div className="space-y-5">
-          {answers.map((question, idx) => (
+          {questionsAns.map((qa, idx) => (
             <div key={idx}>
               <p className="mb-3 text-xl font-semibold text-[#242424]">
-                {idx + 1}. {question?.question_title}
+                {idx + 1}. {qa.ques}
               </p>
-              <p className="text-[#242424] font-semibold text-base">
-                {question?.answers.map((answer, index) => (
-                  <span key={index} className="text-sm text-gray-500">
-                    {answer}
-                    {index !== question.answers.length - 1 && ", "}
-                  </span>
-                ))}
-              </p>
+              <p className="text-[#242424]">{qa.ans}</p>
             </div>
           ))}
         </div>
@@ -220,7 +179,7 @@ const AssignmentDetails = () => {
         <div className="">
           <figure className="relative h-[800px] w-full overflow-hidden">
             <img
-              src={bigImg}
+              src={assignmentDetailsBanner}
               alt=""
               className="h-full w-full object-cover object-center"
             />
@@ -233,15 +192,15 @@ const AssignmentDetails = () => {
                 modules={[FreeMode]}
                 className="mySwiper"
               >
-                {data?.data?.Order_Details?.answer_images
-                  .map((img, idx) => (
+                {Array(15)
+                  .fill(null)
+                  .map((_, idx) => (
                     <SwiperSlide key={idx} className="w-[260px]">
-                      <figure className="aspect-video w-[260px] flex-shrink-0 border-2 border-white">
+                      <figure className=" w-[260px] aspect-video flex-shrink-0 border-2 border-white">
                         <img
-                          src={`https://goldlync.softvencefsd.xyz/${img.photo}`}
+                          src={assignmentDetailsBanner}
                           alt=""
-                          onClick={() => setBigImg(`https://goldlync.softvencefsd.xyz/${img.photo}`)}
-                          className="h-full w-full object-cover object-center cursor-pointer"
+                          className="h-full w-full object-cover object-center"
                         />
                       </figure>
                     </SwiperSlide>
@@ -266,4 +225,4 @@ const AssignmentDetails = () => {
   );
 };
 
-export default AssignmentDetails;
+export default DemoAssignmentDetails;
