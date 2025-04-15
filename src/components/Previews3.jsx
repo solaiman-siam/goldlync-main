@@ -76,7 +76,6 @@ const Previews3 = ({props, customHeight="h-[150px]"}) => {
           </svg>
         </div>
       </div>
-      <aside className="my-5 flex flex-wrap gap-4">{thumbs}</aside>
     </section>
   );
 };
