@@ -7,18 +7,80 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/shadcn/ui/select";
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const AddProjects = () => {
   const [category, setCategory] = useState("");
+  const [subCategory, setSubCategory] = useState();
+  const [banner, setBanner] = useState();
+  const [before_work_image, setBefore_work_image] = useState();
+  const [after_work_image, setAfter_work_image] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
-  const subCategories = ["cleaning", "handyman"];
+  console.log(banner);
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch(
+          "https://goldlync.softvencefsd.xyz/api/project/subcategory"
+        );
+        const data = await response.json();
+        setSubCategory(data.data);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     console.log(data);
+
+    const projectData = {
+      description: data.description,
+      after_work_image,
+      before_work_image,
+      banner,
+      name: data.title,
+      before_work: data.before,
+      after_work: data.after,
+      sub_category: category,
+    };
+
+    try {
+      const response = await axios.post(
+        `https://goldlync.softvencefsd.xyz/api/project/store`,
+        projectData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
+          },
+        }
+      );
+      toast.success("Form submitted successfully");
+      e.target.reset();
+      setCategory("");
+      setBanner(null);
+      setBefore_work_image(null);
+      setAfter_work_image(null);
+    } catch (error) {
+      if (error.response && error.response.data && error.response.data.errors) {
+        const errors = error.response.data.errors;
+        Object.values(errors).forEach((errArray) => {
+          errArray.forEach((errMsg) => toast.error(errMsg));
+        });
+      } else {
+        toast.error("Something went wrong while submitting the form");
+      }
+    }
   };
 
   return (
@@ -51,7 +113,7 @@ const AddProjects = () => {
         </fieldset>
 
         <div className="mt-5 flex flex-col space-y-3">
-          <label className="text-lg font-semibold md:text-xl" htmlFor="">
+          <label className="text-lg font-semibold md:text-xl">
             Category of Work
           </label>
           <Select onValueChange={setCategory} value={category}>
@@ -59,7 +121,7 @@ const AddProjects = () => {
               <SelectValue placeholder={"Select Category"} />
             </SelectTrigger>
             <SelectContent>
-              {subCategories.map((option) => (
+              {subCategory?.map((option) => (
                 <SelectItem key={option} value={option}>
                   {option}
                 </SelectItem>
@@ -71,7 +133,12 @@ const AddProjects = () => {
         <h2 className="mb-3 mt-5 text-xl font-semibold">
           Upload a banner image of your work
         </h2>
-        <Previews3 customHeight="h-[300px]" />
+        <Previews3
+          customAspect="aspect-[1436/600]"
+          img={banner}
+          setImg={setBanner}
+          text="1436*600"
+        />
         <div className="mt-5 grid grid-cols-2 gap-10">
           <div className="left">
             <fieldset className="flex flex-col space-y-3">
@@ -81,14 +148,19 @@ const AddProjects = () => {
               <textarea
                 type="text"
                 name="before"
-                className="h-[150px] rounded border px-6 py-4"
+                className="h-[250px] rounded border px-6 py-4"
                 placeholder="A description before your work"
               />
             </fieldset>
             <h2 className="my-3 text-xl font-semibold">
               Upload a image before your work
             </h2>
-            <Previews3 />
+            <Previews3
+              customAspect="aspect-[698/450]"
+              img={before_work_image}
+              setImg={setBefore_work_image}
+              text="698*450"
+            />
           </div>
           <div className="right">
             <fieldset className="flex flex-col space-y-3">
@@ -98,14 +170,19 @@ const AddProjects = () => {
               <textarea
                 type="text"
                 name="after"
-                className="h-[150px] rounded border px-6 py-4"
+                className="h-[250px] rounded border px-6 py-4"
                 placeholder="A description after your work"
               />
             </fieldset>
             <h2 className="my-3 text-xl font-semibold">
               Upload a image after your work
             </h2>
-            <Previews3 />
+            <Previews3
+              customAspect="aspect-[698/450]"
+              img={after_work_image}
+              setImg={setAfter_work_image}
+              text="698*450"
+            />
           </div>
         </div>
         <Button type="submit" className="mt-8">

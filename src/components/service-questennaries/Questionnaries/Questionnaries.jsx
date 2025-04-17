@@ -87,7 +87,7 @@ function Questionnaries({ slug }) {
 
     const transformedAnswers = Object.entries(answers).map(([key, value]) => ({
       question_id: parseInt(key),
-      answer: value
+      answer: value,
     }));
     console.log("Transformed Answers:", transformedAnswers);
     const formData = {

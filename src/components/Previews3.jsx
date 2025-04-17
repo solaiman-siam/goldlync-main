@@ -2,78 +2,81 @@ import { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { IoMdClose } from "react-icons/io";
 
-const Previews3 = ({props, customHeight="h-[150px]"}) => {
+const Previews3 = ({
+  customAspect = "aspect-[1436/600]",
+  img,
+  setImg,
+  text,
+}) => {
+  const [file, setFile] = useState(null);
 
-  const [files, setFiles] = useState([]);
   const { getRootProps, getInputProps } = useDropzone({
     accept: {
       "image/*": [],
     },
+    multiple: false,
     onDrop: (acceptedFiles) => {
-      const newFiles = acceptedFiles.map((file) =>
-        Object.assign(file, {
-          preview: URL.createObjectURL(file),
-        })
-      );
-
-      setFiles((prevFiles) => {
-        const allFiles = [...prevFiles, ...newFiles];
-
-        // Ensure unique files
-        const uniqueFiles = Array.from(
-          new Set(allFiles.map((file) => file.name))
-        ).map((name) => allFiles.find((file) => file.name === name));
-
-        // Limit to 5 files
-        return uniqueFiles.slice(0, 10);
-      });
+      const selectedFile = acceptedFiles[0];
+      if (selectedFile) {
+        selectedFile.preview = URL.createObjectURL(selectedFile);
+        setFile(selectedFile);
+        if (setImg) setImg(selectedFile);
+      }
     },
   });
 
-  const thumbs = files.map((file) => (
-      <div className="relative" key={file.name}>
-        <figure className="size-24 overflow-hidden border p-1 shadow-md">
-          <img
-            src={file.preview}
-            className="size-full object-cover object-center"
-            // Revoke data uri after image is loaded
-            onLoad={() => {
-              URL.revokeObjectURL(file.preview);
-            }}
-          />
-        </figure>
-        <button
-          type="button"
-          className="absolute -right-2 -top-2 flex size-5 items-center justify-center rounded-full bg-red-800"
-          onClick={() => setFiles(files.filter((f) => f.name !== file.name))}
-        >
-          <IoMdClose className="text-white" />
-        </button>
-      </div>
-    ));
-  
-
   useEffect(() => {
-    // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
-    return () => files.forEach((file) => URL.revokeObjectURL(file.preview));
-  }, [files]);
+    // Clean up preview URL when component unmounts or file changes
+    return () => {
+      if (file && file.preview) {
+        URL.revokeObjectURL(file.preview);
+      }
+    };
+  }, [file]);
+
   return (
     <section className="container">
-      <div {...getRootProps({ className: "dropzone" })}>
+      <div {...getRootProps()}>
         <input {...getInputProps()} />
-        <div className={`flex  items-center justify-center rounded border px-4 ${customHeight}`}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="21"
-            height="19"
-            viewBox="0 0 21 19"
-            fill="none"
-          >
-            <path
-              d="M2.2821 16.4502H18.2821V9.4502H20.2821V17.4502C20.2821 18.0025 19.8344 18.4502 19.2821 18.4502H1.2821C0.729824 18.4502 0.282104 18.0025 0.282104 17.4502V9.4502H2.2821V16.4502ZM11.2821 6.4502V13.4502H9.2821V6.4502H4.2821L10.2821 0.450195L16.2821 6.4502H11.2821Z"
-              fill="black"
-            />
-          </svg>
+        <div
+          className={`flex items-center justify-center overflow-hidden rounded border ${customAspect} w-full`}
+        >
+          {img ? (
+            <figure className="relative h-full w-full overflow-hidden">
+              <img
+                src={img?.preview}
+                className="size-full object-cover object-center"
+                onLoad={() => URL.revokeObjectURL(img?.preview)}
+              />
+              <button
+                type="button"
+                className="absolute left-1/2 top-1/2 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-red-800"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setFile(null);
+                  setImg(null);
+                }}
+              >
+                <IoMdClose className="size-10 text-white" />
+              </button>
+            </figure>
+          ) : (
+            <div className="flex gap-2 items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="21"
+                height="19"
+                viewBox="0 0 21 19"
+                fill="none"
+              >
+                <path
+                  d="M2.2821 16.4502H18.2821V9.4502H20.2821V17.4502C20.2821 18.0025 19.8344 18.4502 19.2821 18.4502H1.2821C0.729824 18.4502 0.282104 18.0025 0.282104 17.4502V9.4502H2.2821V16.4502ZM11.2821 6.4502V13.4502H9.2821V6.4502H4.2821L10.2821 0.450195L16.2821 6.4502H11.2821Z"
+                  fill="black"
+                />
+              </svg>
+              <p>{text}</p>
+            </div>
+          )}
         </div>
       </div>
     </section>

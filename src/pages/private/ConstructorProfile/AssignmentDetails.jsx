@@ -321,12 +321,12 @@ const AssignmentDetails = () => {
             <DialogDescription>
               <div className="flex flex-col gap-8">
                 <h2 className="text-center text-[45px] font-bold leading-[120%]">
-                  Success! Your coins have been deducted and your job is
-                  ready. 🎉
+                  Success! Your coins have been deducted and your job is ready.
+                  🎉
                 </h2>
 
                 <Link to="/">
-                  <Button className="text-lg w-full">Home</Button>
+                  <Button className="w-full text-lg">Home</Button>
                 </Link>
               </div>
             </DialogDescription>
