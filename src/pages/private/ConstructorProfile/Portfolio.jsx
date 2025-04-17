@@ -62,7 +62,9 @@ const Portfolio = () => {
           </Link>
         </div>
         {isLoading ? (
-          <div className="flex justify-center items-center my-20">Loading...</div>
+          <div className="my-20 flex items-center justify-center">
+            Loading...
+          </div>
         ) : (
           <div className="grid grid-cols-3 gap-x-7 gap-y-8">
             {projects.map((item, index) => (
@@ -81,7 +83,11 @@ const Portfolio = () => {
                 </figure>
                 <div className="space-y-[11px]">
                   <p className="text-xl font-medium">{item.name}</p>
-                  <p className="text-sm text-[#494949]">{item.description}</p>
+                  <p className="text-sm text-[#494949]">
+                    {item.description.length > 100
+                      ? item.description.slice(0, 100) + "..."
+                      : item.description}
+                  </p>
                 </div>
               </Link>
             ))}

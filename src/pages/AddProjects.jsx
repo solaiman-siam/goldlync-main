@@ -8,6 +8,7 @@ import {
   SelectValue,
 } from "@/components/shadcn/ui/select";
 import axios from "axios";
+import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -17,7 +18,7 @@ const AddProjects = () => {
   const [banner, setBanner] = useState();
   const [before_work_image, setBefore_work_image] = useState();
   const [after_work_image, setAfter_work_image] = useState();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   console.log(banner);
 
@@ -39,6 +40,7 @@ const AddProjects = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     console.log(data);
@@ -80,6 +82,8 @@ const AddProjects = () => {
       } else {
         toast.error("Something went wrong while submitting the form");
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -185,9 +189,15 @@ const AddProjects = () => {
             />
           </div>
         </div>
-        <Button type="submit" className="mt-8">
-          Add Project
-        </Button>
+        {isLoading ? (
+          <Button type="submit" className="mt-8 min-w-40" disabled>
+            <Loader2 />
+          </Button>
+        ) : (
+          <Button type="submit" className="mt-8 min-w-40">
+            Add Project
+          </Button>
+        )}
       </form>
     </>
   );
